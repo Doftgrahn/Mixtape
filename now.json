@@ -9,6 +9,9 @@
   "routes": [
     { "src": "/api/.*", "dest": "/backend/src/app.js" },
     { "src": "^/static/(.*)", "dest": "/frontend/static/$1" },
+    { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "/frontend/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {
