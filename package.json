@@ -4,5 +4,17 @@
   "main": "index.js",
   "repository": "https://github.com/Doftgrahn/goran.git",
   "author": "Simon grahn <simon.grahn@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start:frontend": "yarn && yarn --cwd ./frontend start",
+    "start:backend": "yarn && yarn --cwd ./backend start",
+    "build:frontend": "yarn && yarn --cwd ./frontend build",
+    "test:frontend": "yarn --cwd ./frontend test",
+    "test:backend": "yarn --cwd ./backend/ jest",
+    "dev": "concurrently \"yarn run start:frontend\" \"yarn run start:backend\"",
+    "deploy": "now --prod"
+  },
+  "dependencies": {
+    "prettier": "^1.19.1"
+  }
 }

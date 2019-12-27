@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "goran",
+  "public": false,
+  "builds": [
+    { "src": "frontend/package.json", "use": "@now/static-build" },
+    { "src": "/backend/src/app.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/api/.*", "dest": "/backend/src/app.js" },
+    { "src": "^/static/(.*)", "dest": "/frontend/static/$1" },
+    { "src": ".*", "dest": "/frontend/index.html" }
+  ],
+  "env": {
+    "mongo_uri": "@mongo_uri",
+    "email_login": "@email_login",
+    "email_passport": "@email_passport",
+    "my_secret": "@my_secret"
+  },
+  "github": {
+    "enabled": false
+  }
+}
