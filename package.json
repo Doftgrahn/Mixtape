@@ -12,7 +12,7 @@
     "test:frontend": "yarn --cwd ./frontend test",
     "test:backend": "yarn --cwd ./backend/ jest",
     "dev": "concurrently \"yarn run start:frontend\" \"yarn run start:backend\"",
-    "deploy": "now --prod"
+    "deploy": "yarn --cwd ./frontend build && now --prod"
   },
   "dependencies": {
     "prettier": "^1.19.1"

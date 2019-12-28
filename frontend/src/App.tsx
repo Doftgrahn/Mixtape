@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import './App.scss'
+import styles from './App.module.scss'
 
 const App: FC = () => {
-  return <div className="App">hej</div>
+  return <div className={styles.App}>hej osv</div>
 }
 
 export default App
