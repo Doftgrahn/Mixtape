@@ -7,13 +7,12 @@ export default (initialState: any) => {
   const storage = window.localStorage.getItem('state')
   initialState = storage !== null ? JSON.parse(storage) : initialState
   // initialState: any = JSON.parse(window.localStorage.getItem('state')) || state
-
   //  initialState = JSON.parse(storage)
   //const storage = JSON.parse(window.localStorage.getItem('state'))
 
   const middleware = [thunk]
 
-  const composeEnhancers: any = compose
+  const composeEnhancers = compose
   const store = createStore(
     rootReducer,
     initialState,
