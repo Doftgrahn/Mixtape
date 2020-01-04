@@ -1,12 +1,17 @@
 const { mongoUri } = require('../config/config')
 
 module.exports = async mongoose => {
-  await mongoose
-    .connect(mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false
-    })
-    .then(() => console.log('Connected do DataBase, Yihaa'))
-    .catch(error => console.error('something went wrong', error))
+  try {
+    await mongoose.connect(
+      mongoUri,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+      },
+      () => console.log('Connected do DataBase, Yiha!')
+    )
+  } catch (error) {
+    console.error('Something went wrong connecting to database', error)
+  }
 }

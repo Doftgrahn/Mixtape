@@ -18,6 +18,7 @@ app.use(express.json())
 
 // Connects do Mongodb
 db(mongoose)
+
 app.get('/api', (req, res) => {
   res.json('hehe')
 })
