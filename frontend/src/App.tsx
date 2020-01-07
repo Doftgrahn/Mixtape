@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
-import styles from './styles/App.module.scss'
+import './styles/App.scss'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import Routes from './routes/routes'
 const App: FC = () => {
   return (
-    <div className={styles.App}>
+    <div className="App">
       <Router>
-        hej osv hheehe
-        <h1>Mix</h1>
+        <Routes />
       </Router>
     </div>
   )

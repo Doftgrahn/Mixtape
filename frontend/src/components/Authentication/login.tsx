@@ -1,34 +1,27 @@
-import React, { useEffect, useReducer, FC } from 'react'
+import React, { useEffect, useState, FC, Reducer } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { loginUser } from '../../logic/auth/authAction'
+import { LoginProps } from './types'
 
-const Login: FC = ({ auth, errors, history }) => {
-  const [userInput, setUserInput] = useReducer((state, newState) => ({ ...state, ...newState }), {
-    email: '',
-    password: ''
-  })
-
-  const handleChange = (evt: any) => {
-    const name = evt.target.name
-    const newValue = evt.target.value
-    setUserInput({ [name]: newValue })
-  }
+const Login: FC<LoginProps> = ({ auth, errors, history }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (auth.isAuthenticated) {
+    if (auth.isAuthenticated && history) {
       history.push('/mixtapeww')
     }
   }, [auth.isAuthenticated, history])
 
-  const onSubmit = e => {
+  const onSubmit = (e: any): void => {
     e.preventDefault()
     const userData = {
-      email: userInput.email.toLowerCase(),
-      password: userInput.password
+      email: email.toLowerCase(),
+      password: password
     }
     dispatch(loginUser(userData))
   }
@@ -41,8 +34,8 @@ const Login: FC = ({ auth, errors, history }) => {
         <input
           type="email"
           name="email"
-          value={userInput.email}
-          onChange={handleChange}
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           placeholder="email"
           style={{ margin: '10px' }}
           autoComplete="email"
@@ -51,8 +44,8 @@ const Login: FC = ({ auth, errors, history }) => {
           autoComplete="currentPassword"
           type="password"
           name="password"
-          value={userInput.password}
-          onChange={handleChange}
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           placeholder="password"
           style={{ margin: '10px' }}
         />

@@ -3,7 +3,13 @@ import { AuthState, PayLoad } from '../types'
 
 const initialState: AuthState = {
   isAuthenticated: false,
-  user: {},
+  user: {
+    id: '',
+    name: '',
+    password: '',
+    loginCount: 0,
+    new: false
+  },
   loading: false
 }
 

@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
+import './styles/index.scss'
 import App from './App'
-import { unregister } from './serviceWorker'
+import { unregister } from './utils/ServiceWorker/serviceWorker'
 import Root from './logic/root'
 
 ReactDOM.render(
   <Root>
     <App />
   </Root>,
-  document.getElementById('root')
+  document.getElementById('root') as HTMLElement
 )
 
 unregister()

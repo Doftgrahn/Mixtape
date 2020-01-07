@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { ProtectedRouteProps } from '../types'
 
-const PrivateRoute: FC<ProtectedRouteProps> = ({ component: Component, auth, ...rest }): any => {
+const PrivateRoute: FC<any> = ({ component: Component, path, auth, ...rest }): any => {
   return (
     <Route
       {...rest}

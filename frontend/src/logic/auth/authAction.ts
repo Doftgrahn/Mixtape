@@ -51,7 +51,6 @@ export const loginUser = (userData: any) => (dispatch: Dispatch) => {
 
 export const recoverPassword = (email: string) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
-
   axios
     .post('/api/users/reset_password', email)
     .then(() => {

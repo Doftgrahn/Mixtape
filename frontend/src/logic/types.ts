@@ -20,7 +20,7 @@ export interface RootProps {
 }
 
 export interface AuthState {
-  readonly isAuthenticated: boolean
-  readonly user: object
-  readonly loading: boolean
+  isAuthenticated: boolean
+  user: User
+  loading: boolean
 }
