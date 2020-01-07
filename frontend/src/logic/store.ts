@@ -4,11 +4,8 @@ import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 
 export default (initialState: any) => {
-  const storage = window.localStorage.getItem('state')
+  const storage = localStorage.getItem('state')
   initialState = storage !== null ? JSON.parse(storage) : initialState
-  // initialState: any = JSON.parse(window.localStorage.getItem('state')) || state
-  //  initialState = JSON.parse(storage)
-  //const storage = JSON.parse(window.localStorage.getItem('state'))
 
   const middleware = [thunk]
 
@@ -21,7 +18,9 @@ export default (initialState: any) => {
   store.subscribe(() => {
     const state = store.getState()
 
-    const persist = {}
+    const persist = {
+      auth: state.auth
+    }
     window.localStorage.setItem('state', JSON.stringify(persist))
   })
   return store
