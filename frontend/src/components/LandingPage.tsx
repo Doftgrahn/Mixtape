@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Landingpage = () => {
+const Landingpage: FC = () => {
   return (
     <main>
       <h1>Göran</h1>

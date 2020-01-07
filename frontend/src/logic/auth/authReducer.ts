@@ -1,7 +1,5 @@
-import { SET_CURRENT_USER, USER_LOADING, SHOW_ERROR_TO_USER } from '../types/types'
+import { SET_CURRENT_USER, USER_LOADING, SHOW_ERROR_TO_USER } from './contants'
 import { AuthState, PayLoad } from '../types'
-import isEmpty from 'is-empty'
-import { Action } from 'redux'
 
 const initialState: AuthState = {
   isAuthenticated: false,
@@ -14,7 +12,7 @@ export default function(state = initialState, action: PayLoad) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticated: action.payload,
         user: action.payload,
         errorMsg: ''
       }

@@ -5,10 +5,14 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "nodemon --exec babel-node src/app.js",
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "eslint": "^6.8.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2"
   },
