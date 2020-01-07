@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const MixTape = () => {
-  return <main>hej</main>
+const MixTape: FC = () => {
+  return (
+    <main>
+      <button>Skapa Låtlista</button>
+    </main>
+  )
 }
 
 export default MixTape

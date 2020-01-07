@@ -8,7 +8,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const app = express()
-const db = require('./mongodb/db')
+const ConnectionToMongodb = require('./mongodb/db')
 const users = require('./routes/routesUsers')
 //MiddleWare
 app.use(express.static(`${__dirname}/../../frontend/build/`))
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
 // Connects do Mongodb
-db(mongoose)
+ConnectionToMongodb(mongoose)
 
 app.get('/api', (req, res) => {
   res.json('hehe')
