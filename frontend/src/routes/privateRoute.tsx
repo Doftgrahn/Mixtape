@@ -8,7 +8,9 @@ const PrivateRoute: FC<any> = ({ component: Component, auth, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => (auth.isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)}
+      render={(props: any) =>
+        auth.isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+      }
     />
   )
 }

@@ -1,12 +1,16 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-
-import { addBoard } from '../logic/board/boardAction'
-
+import { addBoard, AppModel } from '../logic/board/boardAction'
 import { connect } from 'react-redux'
-const MixTape: FC<any> = ({ auth }) => {
+import { MixtapeProps } from '../types'
+
+const MixTape: FC<MixtapeProps> = ({ auth, boards }) => {
   const { id } = auth.user
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(AppModel(id))
+  }, [dispatch, id])
 
   const createBoard = () => dispatch(addBoard(id))
 
@@ -19,7 +23,8 @@ const MixTape: FC<any> = ({ auth }) => {
   )
 }
 const mapStateToProps = (state: any) => ({
-  auth: state.auth
+  auth: state.auth,
+  boards: state.board
 })
 
 export default connect(mapStateToProps)(MixTape)

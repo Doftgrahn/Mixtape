@@ -2,7 +2,14 @@ import axios from 'axios'
 import { SET_BOARD, IS_LOADING } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
-export const AppModel = () => (dispatch: any) => {}
+export const AppModel = (id: string) => (dispatch: any) => {
+  axios
+    .get(`/api/board/getboards/${id}`)
+    .then(result => {
+      dispatch(setBoard(result.data))
+    })
+    .catch(e => console.log('Could not get ALL MUSICBOARDS', e))
+}
 
 export const addBoard = (userId: string) => (dispatch: any) => {
   dispatch(IsLoading(true))

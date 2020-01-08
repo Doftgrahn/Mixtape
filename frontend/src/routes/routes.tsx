@@ -19,11 +19,16 @@ const publicRoutes: PublicRoutesInterface[] = [
   { name: 'updatePassword', path: '/updatePassword', component: UpdatePassword, isExact: false }
 ]
 
-const Routes: FC = () => {
+const Routes: FC<any> = () => {
   const location = useLocation()
 
   const PublicRoutes = publicRoutes.map((c, i) => (
-    <Route key={i} path={c.path} component={c.component} exact={c.isExact} />
+    <Route
+      key={i}
+      path={c.path}
+      render={(props: any) => <c.component {...props} />}
+      exact={c.isExact}
+    />
   ))
 
   return (
