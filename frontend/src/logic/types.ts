@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { read } from 'fs'
 
 export interface User {
   id: string
@@ -9,9 +8,15 @@ export interface User {
   new: boolean
 }
 
+export interface BoardInterface {
+  userId: string
+  title: string
+  isLoading: boolean
+}
+
 export interface PayLoad {
   type: string
-  payload: object
+  payload: object | boolean | string
 }
 
 export interface RootProps {

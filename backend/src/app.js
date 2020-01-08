@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const ConnectionToMongodb = require('./mongodb/db')
 const users = require('./routes/routesUsers')
+const board = require('./routes/routesBoard')
 //MiddleWare
 app.use(express.static(`${__dirname}/../../frontend/build/`))
 app.use(favicon(path.join(__dirname, '/../../frontend/build/favicon.ico')))
@@ -25,6 +26,7 @@ app.get('/api', (req, res) => {
   res.json('hehe')
 })
 app.use('/api/users', users)
+app.use('/api/board', board)
 
 app.get('*', function(req, res) {
   res.sendFile('index.html', {
