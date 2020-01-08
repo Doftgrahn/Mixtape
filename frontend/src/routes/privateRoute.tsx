@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { ProtectedRouteProps } from '../types'
 
-const PrivateRoute: FC<any> = ({ component: Component, path, auth, ...rest }): any => {
+const PrivateRoute: FC<any> = ({ component: Component, auth, ...rest }) => {
   return (
     <Route
       {...rest}

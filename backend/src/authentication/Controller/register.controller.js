@@ -1,5 +1,5 @@
 const validateRegister = require('../validation/register')
-
+const bcrypt = require('bcryptjs')
 const User = require('../UserModel/User')
 module.exports = function register(req, res) {
   const { errors, isValid } = validateRegister(req.body)

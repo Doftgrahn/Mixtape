@@ -3,11 +3,7 @@ import { PayLoad } from '../types'
 
 import { BoardInterface } from '../types'
 
-const initialState: BoardInterface = {
-  userId: '',
-  title: '',
-  isLoading: false
-}
+const initialState: BoardInterface[] = []
 
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {

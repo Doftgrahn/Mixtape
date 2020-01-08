@@ -1,12 +1,19 @@
 import React, { FC } from 'react'
 
-const MixTape: FC = () => {
+import { connect } from 'react-redux'
+const MixTape: FC<any> = ({ auth }) => {
+  console.log('hej', auth)
+
   return (
     <main>
+      <h1>hej {auth.user.name}</h1>
       Skapa in låtlista!
       <button>+</button>
     </main>
   )
 }
+const mapStateToProps = (state: any) => ({
+  auth: state.auth
+})
 
-export default MixTape
+export default connect(mapStateToProps)(MixTape)
