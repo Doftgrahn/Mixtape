@@ -14,6 +14,8 @@ const MixTape: FC<MixtapeProps> = ({ auth, boards }) => {
 
   const createBoard = () => dispatch(addBoard(id))
 
+  console.log(boards)
+
   return (
     <main>
       <h1>hej {auth.user.name}</h1>

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SET_BOARD, IS_LOADING } from './constants'
+import { SET_BOARD, IS_LOADING, CREATE_BOARD } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = (id: string) => (dispatch: any) => {
@@ -17,13 +17,18 @@ export const addBoard = (userId: string) => (dispatch: any) => {
     .post('/api/board/newboard', { userId })
     .then(response => {
       const { data } = response
-      dispatch(setBoard(data))
+      dispatch(addOneBoard(data))
     })
-    .catch(error => console.log('error', error))
+    .catch(error => console.log('Could not create board', error))
 }
 
 const setBoard = (board: BoardInterface) => ({
   type: SET_BOARD,
+  payload: board
+})
+
+const addOneBoard = (board: BoardInterface) => ({
+  type: CREATE_BOARD,
   payload: board
 })
 
