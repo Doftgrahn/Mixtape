@@ -25,6 +25,7 @@ ConnectionToMongodb(mongoose)
 app.get('/api', (req, res) => {
   res.json('hehe')
 })
+
 app.use('/api/users', users)
 app.use('/api/board', board)
 

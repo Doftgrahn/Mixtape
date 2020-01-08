@@ -1,15 +1,18 @@
 import { SET_BOARD } from './constants'
 import { PayLoad } from '../types'
 
-import { BoardInterface } from '../types'
-
-const initialState: BoardInterface[] = []
+const initialState: any = {
+  data: []
+}
 
 export default (state = initialState, action: PayLoad) => {
+  console.log('data', state.data)
+
   switch (action.type) {
     case SET_BOARD:
       return {
-        state: action.payload
+        ...state,
+        data: [...state.data, action.payload]
       }
     default:
       return state

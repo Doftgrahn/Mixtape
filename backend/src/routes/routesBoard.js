@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const createBoard = require('../board/boardModel/board')
+const getAllBoards = require('../board/controller/getBoards')
+const createBoard = require('../board/controller/createBoard')
 
-router.post('/board', createBoard)
+router.get('/getboards', getAllBoards)
+router.post('/newboard', createBoard)
 
 module.exports = router

@@ -17,6 +17,10 @@ const BoardSchema = new Schema({
   collaborators: {
     type: Array,
     default: []
+  },
+  songList: {
+    type: Array,
+    default: []
   }
 })
 
