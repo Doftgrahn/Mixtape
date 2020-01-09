@@ -11,5 +11,5 @@ export interface RoutesInterface {
 
 export interface PrivateRouteProps extends RouteProps {
   component: ComponentType<RouteComponentProps<any>> | ComponentType<any>
-  auth: AuthState
+  auth?: AuthState
 }
