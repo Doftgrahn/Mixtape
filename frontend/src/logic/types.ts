@@ -17,7 +17,7 @@ export interface BoardInterface {
 
 export interface PayLoad {
   type: string
-  payload: object | boolean | string
+  payload: object | boolean | string | any
 }
 
 export interface RootProps {

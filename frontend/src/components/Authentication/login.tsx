@@ -13,7 +13,7 @@ const Login: FC<LoginProps> = ({ auth, errors, history }) => {
 
   useEffect(() => {
     if (auth.isAuthenticated && history) {
-      history.push('/mixtapeww')
+      history.push('/mixtapew')
     }
   }, [auth.isAuthenticated, history])
 
@@ -28,7 +28,6 @@ const Login: FC<LoginProps> = ({ auth, errors, history }) => {
 
   return (
     <main>
-      <Link to="/">Landingpage</Link>
       <hr />
       <form onSubmit={e => onSubmit(e)}>
         <input
@@ -54,7 +53,7 @@ const Login: FC<LoginProps> = ({ auth, errors, history }) => {
         {errors ? errors.emailnotfound : null}
         {errors ? errors.passwordincorrect : null}
         <br />
-        <Link to="/recoverPassword">Glömt ditt lösenord?</Link>
+        <Link to="/forgotPassword">Glömt ditt lösenord?</Link>
         <hr />
         <button type="submit">Logga in</button>
       </form>

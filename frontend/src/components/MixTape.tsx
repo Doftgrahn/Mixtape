@@ -16,7 +16,7 @@ const MixTape: FC<any> = ({ auth, allBoards }) => {
   const createBoard = () => dispatch(addBoard(id))
 
   const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
-    <Link to={`/${board._id}`} key={board._id}>
+    <Link to={`/${board.userId}/${board._id}`} key={board._id}>
       {board.title}
     </Link>
   ))

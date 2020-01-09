@@ -19,7 +19,8 @@ export default (initialState: any) => {
     const state = store.getState()
 
     const persist = {
-      auth: state.auth
+      auth: state.auth,
+      theme: state.theme
     }
     window.localStorage.setItem('state', JSON.stringify(persist))
   })

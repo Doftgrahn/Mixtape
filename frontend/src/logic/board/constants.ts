@@ -1,3 +1,4 @@
+export const ACTIVE_BOARD = 'ACTIVE_BOARD'
 export const SET_BOARD = 'SET_BOARD'
 export const CREATE_BOARD = 'CREATE_BOARD'
 export const DELETE_BOARD = 'DELETE_BOARD'
