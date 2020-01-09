@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
-import { Route, Redirect, RouteComponentProps } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { PrivateRouteProps } from './types'
 
-import { ProtectedRouteProps } from '../types'
-
-const PrivateRoute: FC<any> = ({ component: Component, auth, ...rest }) => {
+const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, auth, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props: any) =>
-        auth.isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+        auth && auth.isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   )

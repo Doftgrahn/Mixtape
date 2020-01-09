@@ -13,5 +13,5 @@ export interface ProtectedRouteProps extends RouteComponentProps {
 
 export interface MixtapeProps {
   auth: AuthState
-  boards: BoardInterface
+  allBoards: BoardInterface
 }

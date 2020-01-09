@@ -6,7 +6,7 @@ const BoardSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  title: {
     type: String,
     default: 'Ny låtlista...'
   },

@@ -2,9 +2,10 @@ import React, { FC, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addBoard, AppModel } from '../logic/board/boardAction'
 import { connect } from 'react-redux'
-import { MixtapeProps } from '../types'
+import { BoardInterface } from '../logic/types'
+import { Link } from 'react-router-dom'
 
-const MixTape: FC<MixtapeProps> = ({ auth, boards }) => {
+const MixTape: FC<any> = ({ auth, allBoards }) => {
   const { id } = auth.user
   const dispatch = useDispatch()
 
@@ -14,19 +15,26 @@ const MixTape: FC<MixtapeProps> = ({ auth, boards }) => {
 
   const createBoard = () => dispatch(addBoard(id))
 
-  console.log(boards)
+  const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
+    <Link to={`/${board._id}`} key={board._id}>
+      {board.title}
+    </Link>
+  ))
 
   return (
     <main>
       <h1>hej {auth.user.name}</h1>
-      Skapa in låtlista!
+      Skapa en låtlista!
+      <hr />
       <button onClick={createBoard}>+</button>
+      <hr />
+      {renderMyBoards}
     </main>
   )
 }
 const mapStateToProps = (state: any) => ({
   auth: state.auth,
-  boards: state.board
+  allBoards: state.board
 })
 
 export default connect(mapStateToProps)(MixTape)

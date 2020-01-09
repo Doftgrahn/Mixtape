@@ -12,6 +12,7 @@ export interface BoardInterface {
   userId: string
   title: string
   isLoading: boolean
+  _id: string
 }
 
 export interface PayLoad {
