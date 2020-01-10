@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+
+import { useDispatch } from 'react-redux'
+
+import { fetchSongList } from '../../logic/list/listAction'
+
+import AddToList from './addtoList'
 
 const List = () => {
-  return <main>list</main>
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchSongList())
+  }, [dispatch])
+  return (
+    <main>
+      Lista med låtar!
+      <AddToList />
+    </main>
+  )
 }
 
-export default List
+export default connect()(List)

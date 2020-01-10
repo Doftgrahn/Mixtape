@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const listController = require('../list/controller/list.controlller')
+const getList = require('../list/controller/getList.controlller')
+const addListController = require('../list/controller/addList.controller')
 
-router.post('/newlist', listController)
+router.get('/getlist/:id', getList)
+router.get('/addlist', addListController)
 
 module.exports = router

@@ -1,20 +1,13 @@
-import { SET_BOARD, DELETE_BOARD, IS_LOADING, ACTIVE_BOARD } from './constants'
+import { GET_BOARDS, DELETE_BOARD, IS_LOADING } from './constants'
 
 const initialState: any = {
-  activeBoard: '',
   boards: [],
-  list: [],
   loading: false
 }
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case ACTIVE_BOARD:
-      return {
-        ...state,
-        activeBoard: action.payload
-      }
-    case SET_BOARD:
+    case GET_BOARDS:
       const { payload } = action
       return {
         ...state,

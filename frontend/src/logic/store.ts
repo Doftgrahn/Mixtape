@@ -20,6 +20,7 @@ export default (initialState: any) => {
 
     const persist = {
       auth: state.auth,
+      activeBoard: state.activeBoard,
       theme: state.theme
     }
     window.localStorage.setItem('state', JSON.stringify(persist))

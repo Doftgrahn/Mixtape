@@ -1,0 +1,1 @@
+export const ACTIVE_BOARD = 'ACTIVE_BOARD'

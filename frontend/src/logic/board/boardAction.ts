@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { SET_BOARD, IS_LOADING } from './constants'
+import { GET_BOARDS, IS_LOADING } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
-export const AppModel = (id: string) => (dispatch: any) => {
+export const AppModel = (id: string) => (dispatch: any, state: any) => {
   dispatch(IsLoading(true))
   axios
     .get(`/api/board/getboards/${id}`)
     .then(result => {
-      console.log(result)
+      const { data } = result
 
-      dispatch(setBoard(result.data))
+      dispatch(setBoard(data))
       dispatch(IsLoading(false))
     })
     .catch(e => console.log('Could not get ALL MUSICBOARDS', e))
@@ -28,13 +28,8 @@ export const addBoard = (userId: string) => (dispatch: any) => {
 }
 
 const setBoard = (board: BoardInterface) => ({
-  type: SET_BOARD,
+  type: GET_BOARDS,
   payload: board
 })
 
-const IsLoading = (isLoading: boolean): PayLoad => {
-  return {
-    type: IS_LOADING,
-    payload: isLoading
-  }
-}
+const IsLoading = (isLoading: boolean): PayLoad => ({ type: IS_LOADING, payload: isLoading })

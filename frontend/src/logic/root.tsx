@@ -4,7 +4,7 @@ import store from './store'
 
 import { RootProps } from './types'
 
-const Root: FC = ({ initialState = {}, children }: RootProps) => (
+const Root: FC<any> = ({ initialState = {}, children }) => (
   <Provider store={store(initialState)}>{children}</Provider>
 )
 

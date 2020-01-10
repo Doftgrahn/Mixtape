@@ -6,5 +6,5 @@ module.exports = function getAllBoards(req, res) {
     .then(board => {
       res.status(200).json(board)
     })
-    .catch(error => console.error('Could not fetch boards', error))
+    .catch(error => res.status(500).json({ error: 'Could not get boards' }))
 }
