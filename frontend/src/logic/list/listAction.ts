@@ -4,7 +4,6 @@ import axios from 'axios'
 export const fetchSongList = () => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
   dispatch(isLoading(true))
-
   axios
     .get(`/api/list/getlist/${activeBoard}`)
     .then(result => {
@@ -19,14 +18,18 @@ export const fetchSongList = () => (dispatch: any, state: any) => {
 
 export const addToList = () => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
+  const { id } = state().auth.user
+  dispatch(isLoading(true))
+  const add = { activeBoard, id }
   axios
-    .post('/api/list/addlist', activeBoard)
+    .post('/api/list/addlist', add)
     .then(response => {
       const { data } = response
       dispatch(getList(data))
+      dispatch(isLoading(false))
     })
     .catch(error => {
-      console.log('Could not create board')
+      console.log('Could not creat list item')
     })
 }
 

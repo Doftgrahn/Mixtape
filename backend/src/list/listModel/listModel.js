@@ -12,7 +12,7 @@ const ListSchema = new Schema({
   },
   title: {
     type: String,
-    default: 'Ny låtlista...'
+    default: 'Ny LÅT'
   },
   date: {
     type: Date,

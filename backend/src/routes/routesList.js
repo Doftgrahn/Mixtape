@@ -5,6 +5,6 @@ const getList = require('../list/controller/getList.controlller')
 const addListController = require('../list/controller/addList.controller')
 
 router.get('/getlist/:id', getList)
-router.get('/addlist', addListController)
+router.post('/addlist', addListController)
 
 module.exports = router

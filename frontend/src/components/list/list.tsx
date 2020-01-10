@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, FC } from 'react'
 import { connect } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
@@ -7,7 +7,9 @@ import { fetchSongList } from '../../logic/list/listAction'
 
 import AddToList from './addtoList'
 
-const List = () => {
+const List: FC<any> = ({ list }) => {
+  console.log(list)
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchSongList())
@@ -20,4 +22,8 @@ const List = () => {
   )
 }
 
-export default connect()(List)
+const mapStateToProps = (state: any) => ({
+  list: state.list
+})
+
+export default connect(mapStateToProps)(List)

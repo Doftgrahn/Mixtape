@@ -2,15 +2,16 @@ const Board = require('../../board/boardModel/board')
 const List = require('../listModel/listModel')
 
 module.exports = function addListController(req, res) {
-  const { boardId } = req.body
+  const { activeBoard, id } = req.body
 
-  console.log('hej')
+  console.log(req.body)
 
-  Board.findOne({ _id: boardId }).then(board => {
+  Board.findOne({ _id: activeBoard }).then(board => {
     if (!board) return res.json({ error: 'Could not find a board with that id' })
 
     const newListItem = new List({
-      boardId: boardId
+      boardId: activeBoard,
+      userId: id
     })
     newListItem
       .save()
