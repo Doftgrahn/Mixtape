@@ -1,5 +1,5 @@
 import { PayLoad } from '../types'
-import { GET_LIST, ADD_LIST, IS_LOADING } from './constants'
+import { GET_LIST, ADD_LIST, IS_LOADING, DELETE_LIST_ITEM } from './constants'
 
 const initialState: any = {
   list: [],
@@ -17,6 +17,11 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         list: [...state.list, action.payload].flat()
+      }
+    case DELETE_LIST_ITEM:
+      return {
+        ...state,
+        list: state.list.filter((list: any) => list._id !== action.payload)
       }
     case IS_LOADING:
       return {

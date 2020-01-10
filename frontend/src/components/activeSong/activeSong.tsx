@@ -30,4 +30,5 @@ const ActiveSong: FC<any> = ({ activeList }) => {
 const mapStateToProps = (state: any) => ({
   activeList: state.activeList
 })
+
 export default connect(mapStateToProps)(ActiveSong)

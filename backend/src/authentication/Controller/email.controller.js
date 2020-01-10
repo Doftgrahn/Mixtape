@@ -4,7 +4,7 @@ const keys = require('../../config/config')
 
 const User = require('../UserModel/User')
 const validateNewPassword = require('../validation/recieveNewPassword')
-const { transporter, getPasswordUrl, resetPassportTemplate } = require('../Email/email')
+const { transporter, getPasswordUrl, resetPassportTemplate } = require('../email/email')
 
 const userPassportHashToMakeMeToken = user => {
   const { id, name } = user

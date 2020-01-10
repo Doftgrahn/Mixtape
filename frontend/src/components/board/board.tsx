@@ -16,10 +16,10 @@ const Board: FC<any> = ({ allBoards }) => {
 
   const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
     <li key={board._id}>
-      <Link onClick={id => setActiveBoard(board._id)} to={`/home/${board.userId}/${board._id}`}>
+      <Link onClick={() => setActiveBoard(board._id)} to={`/home/${board.userId}/${board._id}`}>
         {board.title}
       </Link>
-      <button onClick={id => deleteBoard(board._id)}>Delete</button>
+      <button onClick={() => deleteBoard(board._id)}>Delete</button>
     </li>
   ))
 
