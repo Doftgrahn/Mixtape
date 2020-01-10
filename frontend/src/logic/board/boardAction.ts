@@ -15,10 +15,14 @@ export const AppModel = (id: string) => (dispatch: any, state: any) => {
     .catch(e => console.log('Could not get ALL MUSICBOARDS', e))
 }
 
-export const addBoard = (userId: string) => (dispatch: any) => {
+export const addBoard = (board: any) => (dispatch: any) => {
+  const data = {
+    userId: board.userId,
+    title: board.title
+  }
   dispatch(IsLoading(true))
   axios
-    .post('/api/board/newboard', { userId })
+    .post('/api/board/newboard', data)
     .then(response => {
       const { data } = response
       dispatch(setBoard(data))

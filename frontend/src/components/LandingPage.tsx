@@ -1,9 +1,13 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Login from './authentication/Login'
 
-const Landingpage: FC = () => {
+const Landingpage: FC<any> = ({ auth }) => {
+  if (auth.isAuthenticated) {
+    return <Redirect to="/home" />
+  }
   return (
     <main>
       <h1>Välkommen till Göran, men också känt som MixTape</h1>
@@ -14,4 +18,9 @@ const Landingpage: FC = () => {
   )
 }
 
-export default Landingpage
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+  allBoards: state.board
+})
+
+export default connect(mapStateToProps)(Landingpage)

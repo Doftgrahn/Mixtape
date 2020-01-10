@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { clearAndHide } from '../../logic/activeList/activeListAction'
@@ -6,6 +6,12 @@ import { clearAndHide } from '../../logic/activeList/activeListAction'
 const ActiveSong: FC<any> = ({ activeList }) => {
   const { current } = activeList
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearAndHide())
+    }
+  }, [dispatch])
 
   const hide = () => dispatch(clearAndHide())
 
