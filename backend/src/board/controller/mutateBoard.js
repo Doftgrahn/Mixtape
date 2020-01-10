@@ -1,8 +1,8 @@
 const Board = require('../boardModel/board')
 
-module.exports = function getAllBoards(req, res) {
-  const { id } = req.params
-  Board.find({ userId: id })
+module.exports = function mutateBoard(req, res) {
+  const { id, title } = req.params
+  Board.findOneAndUpdate({ _id: id }, title, { upsert: true })
     .then(board => {
       if (!board) return res.status(404).json({ error: 'board could not be found' })
       res.status(200).json(board)
