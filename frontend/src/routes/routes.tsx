@@ -23,8 +23,8 @@ const publicRoutes: RoutesInterface[] = [
 ]
 
 const privateRoutes: RoutesInterface[] = [
-  { name: 'mixtape', path: '/:userId', component: MixTape, isExact: true },
-  { name: 'list', path: '/:userId/:id', component: List, isExact: true }
+  { name: 'mixtape', path: '/home', component: MixTape, isExact: true },
+  { name: 'list', path: '/home/:userId/:id', component: List, isExact: true }
 ]
 
 const Routes: FC<{}> = () => {

@@ -13,7 +13,7 @@ const Login: FC<LoginProps> = ({ auth, errors, history }) => {
 
   useEffect(() => {
     if (auth.isAuthenticated && history) {
-      history.push('/mixtapew')
+      //history.push('/')
     }
   }, [auth.isAuthenticated, history])
 

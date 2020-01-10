@@ -8,7 +8,7 @@ const Landingpage: FC = () => {
     <main>
       <h1>Välkommen till Göran, men också känt som MixTape</h1>
       Landingpage
-      <Link to="/mixtape">To mixtape</Link>
+      <Link to="/home">To mixtape</Link>
       <Login />
     </main>
   )

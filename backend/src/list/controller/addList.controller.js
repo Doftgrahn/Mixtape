@@ -4,8 +4,6 @@ const List = require('../listModel/listModel')
 module.exports = function addListController(req, res) {
   const { activeBoard, id } = req.body
 
-  console.log(req.body)
-
   Board.findOne({ _id: activeBoard }).then(board => {
     if (!board) return res.json({ error: 'Could not find a board with that id' })
 

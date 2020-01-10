@@ -14,7 +14,7 @@ const Board: FC<any> = ({ allBoards }) => {
   const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
     <Link
       onClick={id => setActiveBoard(board._id)}
-      to={`/${board.userId}/${board._id}`}
+      to={`/home/${board.userId}/${board._id}`}
       key={board._id}>
       {board.title}
     </Link>
