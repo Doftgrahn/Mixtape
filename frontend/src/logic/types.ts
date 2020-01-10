@@ -12,7 +12,15 @@ export interface BoardInterface {
   userId: string
   title: string
   isLoading: boolean
+  list: any
   _id: string
+}
+
+export interface BoardStateInterface {
+  activeBoard: string
+  boards: BoardInterface
+  list: any
+  loading: boolean
 }
 
 export interface PayLoad {

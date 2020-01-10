@@ -1,9 +1,9 @@
 import { SET_BOARD, DELETE_BOARD, IS_LOADING, ACTIVE_BOARD } from './constants'
-import { PayLoad } from '../types'
 
 const initialState: any = {
   activeBoard: '',
   boards: [],
+  list: [],
   loading: false
 }
 

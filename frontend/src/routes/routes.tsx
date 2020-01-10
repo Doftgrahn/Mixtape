@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Route, Switch, useLocation, RouteProps } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { RoutesInterface } from './types'
