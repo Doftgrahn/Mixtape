@@ -16,7 +16,7 @@ export default (state = initialState, action: any) => {
     case DELETE_BOARD:
       return {
         ...state,
-        boards: [...state.boards, payload]
+        boards: state.boards.filter((board: any) => board._id !== action.payload)
       }
     case IS_LOADING:
       return {

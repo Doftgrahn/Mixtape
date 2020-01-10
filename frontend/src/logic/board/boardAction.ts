@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_BOARDS, IS_LOADING } from './constants'
+import { GET_BOARDS, IS_LOADING, DELETE_BOARD } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = (id: string) => (dispatch: any, state: any) => {
@@ -26,6 +26,21 @@ export const addBoard = (userId: string) => (dispatch: any) => {
     })
     .catch(error => console.log('Could not create board', error))
 }
+
+export const deletion = (id: string) => (dispatch: any) => {
+  axios
+    .delete(`/api/board/deleteboard/${id}`)
+    .then((result: any) => {
+      dispatch(deleteBoard(id))
+      console.log('yey')
+    })
+    .catch((error: any) => console.log('error', error))
+}
+
+const deleteBoard = (id: string) => ({
+  type: DELETE_BOARD,
+  payload: id
+})
 
 const setBoard = (board: BoardInterface) => ({
   type: GET_BOARDS,

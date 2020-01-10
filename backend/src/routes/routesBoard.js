@@ -9,6 +9,6 @@ const mutateBoard = require('../board/controller/mutateBoard')
 router.get('/getboards/:id', getAllBoards)
 router.post('/newboard', createBoard)
 router.put('/mutateboard', mutateBoard)
-router.delete('/deleteboard', deleteBoard)
+router.delete('/deleteboard/:id', deleteBoard)
 
 module.exports = router
