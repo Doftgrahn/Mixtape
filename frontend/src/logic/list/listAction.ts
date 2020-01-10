@@ -25,7 +25,7 @@ export const addToList = () => (dispatch: any, state: any) => {
     .post('/api/list/addlist', add)
     .then(response => {
       const { data } = response
-      dispatch(getList(data))
+      dispatch(addList(data))
       dispatch(isLoading(false))
     })
     .catch(error => {
