@@ -6,12 +6,10 @@ import './styles/App.scss'
 import { BrowserRouter as Router } from 'react-router-dom'
 import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
-
 import { AppModel } from './logic/board/boardAction'
 
-const App: FC<any> = ({ auth, allBoards }) => {
+const App: FC<any> = ({ auth }) => {
   const { id } = auth.user
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,8 +29,7 @@ const App: FC<any> = ({ auth, allBoards }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth,
-  allBoards: state.board
+  auth: state.auth
 })
 
 export default connect(mapStateToProps)(App)

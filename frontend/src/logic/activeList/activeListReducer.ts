@@ -1,4 +1,4 @@
-import { SET_ACTIVE_LIST, IS_ACTIVE } from './constants'
+import { SET_ACTIVE_LIST, IS_ACTIVE, CLEAR } from './constants'
 
 const initialState = {
   current: '',
@@ -17,6 +17,13 @@ export default (state = initialState, action: any) => {
         ...state,
         isActive: action.payload
       }
+    case CLEAR:
+      return {
+        ...state,
+        current: '',
+        isActive: false
+      }
+
     default:
       return state
   }

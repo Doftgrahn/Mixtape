@@ -11,7 +11,7 @@ export const registerUser = (userData: object, history: any) => (dispatch: Dispa
   axios
     .post('/api/users/register', userData)
     .then(() => {
-      history.push('/mixtape')
+      history.push('/login')
       dispatch(setUserIsLoading(false))
     })
     .catch(err =>

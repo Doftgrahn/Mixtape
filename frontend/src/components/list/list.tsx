@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 
-import ShowList from './showList'
 import AddToList from './addtoList'
+import ActiveSong from '../activeSong/activeSong'
+import ShowList from './showList'
 
 const List: FC<any> = () => {
   return (
@@ -9,6 +10,7 @@ const List: FC<any> = () => {
       Lista med låtar!
       <AddToList />
       <ShowList />
+      <ActiveSong />
     </main>
   )
 }
