@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 
 const AddToListModal: FC<any> = ({ hideModal }) => {
   const [song, setSong] = useState('')
+  const [artist, setArtist] = useState('')
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,9 +20,12 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
   }, [hideModal])
 
   const addSong = (): void => {
-    dispatch(addToList(song))
-    setSong('')
-    hideModal()
+    const data = { song, artist }
+    if (song && artist) {
+      dispatch(addToList(data))
+      setSong('')
+      hideModal()
+    }
   }
 
   const pressEnter = (e: any) => (e.key === 'Enter' ? addSong() : null)
@@ -38,8 +42,15 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
             value={song}
             onChange={e => setSong(e.target.value)}
             onKeyPress={e => pressEnter(e)}
-            placeholder="Add song..."
+            placeholder="Song..."
             autoFocus
+          />
+          <input
+            type="text"
+            value={artist}
+            onChange={e => setArtist(e.target.value)}
+            placeholder="Artist..."
+            onKeyPress={e => pressEnter(e)}
           />
           <button onClick={addSong}>Add song!</button>
         </div>

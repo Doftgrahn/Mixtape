@@ -4,8 +4,7 @@
   flex-direction: column;
   position: absolute;
   height: 100vh;
-  background: indianred;
-  transition: 1000ms ease;
+  transition: 500ms ease;
   top: 0;
   bottom: 0;
   width: 400px;
@@ -15,9 +14,14 @@
 
   header {
     padding: 20px;
+    button {
+      background: none;
+      margin-left: auto;
+    }
   }
 
   article {
+    height: 100%;
     h1 {
       text-align: center;
       border-bottom: 1px solid black;

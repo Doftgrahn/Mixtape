@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import {
@@ -9,11 +9,12 @@ import {
 import { deleteListItem, updateListTitle } from '../../logic/list/listAction'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
-  const input = useRef('')
   const [isEditing, setIsEditing] = useState(false)
   const { current } = activeList
 
-  const [updateTitle, setTitle] = useState(current.title || '')
+  const [updateArtist, setArtist] = useState('')
+  const [updateSong, setUpdateSong] = useState('')
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -42,16 +43,21 @@ const ActiveSong: FC<any> = ({ activeList }) => {
   }
 
   const onEnter = (e: any) => {
-    if (updateTitle && e.key === 'Enter') {
-      dispatch(updateListTitle(current._id, updateTitle))
-      dispatch(mutateCurrentSong(updateTitle))
+    const data = {
+      id: current._id,
+      artist: updateArtist,
+      song: updateSong
+    }
+    if (updateArtist && e.key === 'Enter') {
+      dispatch(updateListTitle(data))
+      dispatch(mutateCurrentSong(updateArtist))
       setIsEditing(false)
       dispatch(setCurrentSong(current))
     }
   }
 
   return (
-    <main className={`activeSong ${current.title ? 'active' : null}`}>
+    <main className={`activeSong ${current.artist ? 'active' : null}`}>
       <header>
         <button onClick={hide}>hide</button>
       </header>
@@ -60,12 +66,29 @@ const ActiveSong: FC<any> = ({ activeList }) => {
           <h1
             className={`${isEditing ? 'hideTitle' : null}`}
             onClick={() => setIsEditing(!isEditing)}>
-            {updateTitle || current.title}
+            {updateArtist || current.artist}
           </h1>
           {isEditing ? (
             <input
-              value={updateTitle}
-              onChange={e => setTitle(e.target.value)}
+              defaultValue="default"
+              value={updateArtist}
+              onChange={e => setArtist(e.target.value)}
+              onKeyPress={e => onEnter(e)}
+              autoFocus
+            />
+          ) : null}
+        </div>
+        <div>
+          <h1
+            className={`${isEditing ? 'hideTitle' : null}`}
+            onClick={() => setIsEditing(!isEditing)}>
+            {updateSong || current.song}
+          </h1>
+          {isEditing ? (
+            <input
+              defaultValue="default"
+              value={updateSong}
+              onChange={e => setUpdateSong(e.target.value)}
               onKeyPress={e => onEnter(e)}
               autoFocus
             />

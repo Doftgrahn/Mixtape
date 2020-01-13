@@ -17,11 +17,12 @@ export const fetchSongList = () => (dispatch: any, state: any) => {
     })
 }
 
-export const addToList = (title: string) => (dispatch: any, state: any) => {
+export const addToList = (data: any) => (dispatch: any, state: any) => {
+  const { song, artist } = data
   const { activeBoard } = state().activeBoard
   const { id } = state().auth.user
   dispatch(isLoading(true))
-  const add = { activeBoard, id, title }
+  const add = { activeBoard, id, song, artist }
   axios
     .post('/api/list/addlist', add)
     .then(response => {
@@ -34,9 +35,14 @@ export const addToList = (title: string) => (dispatch: any, state: any) => {
     })
 }
 
-export const updateListTitle = (id: string, title: string) => (dispatch: any) => {
+export const updateListTitle = (data: any) => (dispatch: any) => {
+  console.log(data)
   dispatch(isLoading(true))
-  const update = { id, title }
+  const update = {
+    id: data.id,
+    song: data.song,
+    artist: data.artist
+  }
   dispatch(mutateList(update))
   axios
     .put('/api/list/mutatelist', update)

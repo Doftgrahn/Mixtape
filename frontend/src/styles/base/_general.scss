@@ -1,0 +1,14 @@
+button {
+  border: 0;
+  background-color: $color-text-light;
+  color: $color-text-dark;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

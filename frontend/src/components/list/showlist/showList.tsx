@@ -18,7 +18,8 @@ const ShowList: FC<any> = ({ playlist }) => {
 
   const renderPlaylist = list.map((list: any) => (
     <li key={list._id}>
-      <h3>{list.title}</h3>
+      <h3>{list.artist}</h3>
+      <h3>{list.song}</h3>
       <button onClick={() => setActiveSong(list)}>meny</button>
     </li>
   ))

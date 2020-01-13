@@ -10,9 +10,13 @@ const ListSchema = new Schema({
     type: String,
     required: true
   },
-  title: {
+  song: {
     type: String,
     default: 'Ny LÅT'
+  },
+  artist: {
+    type: String,
+    default: 'Artist'
   },
   date: {
     type: Date,
