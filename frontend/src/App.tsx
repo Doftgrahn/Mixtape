@@ -8,7 +8,7 @@ import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
 import { AppModel } from './logic/board/boardAction'
 
-const App: FC<any> = ({ auth }) => {
+const App: FC<any> = ({ auth, theme }) => {
   const { id } = auth.user
   const dispatch = useDispatch()
 
@@ -19,8 +19,16 @@ const App: FC<any> = ({ auth }) => {
     authlocalstorage()
   }, [auth.isAuthenticated, dispatch, id])
 
+  const Theme = () => {
+    if (theme.state === 'light') {
+      return 'light'
+    } else {
+      return 'dark'
+    }
+  }
+
   return (
-    <div className="App">
+    <div className={`App ${Theme()}`}>
       <Router>
         <Routes />
       </Router>
@@ -29,7 +37,8 @@ const App: FC<any> = ({ auth }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth
+  auth: state.auth,
+  theme: state.theme
 })
 
 export default connect(mapStateToProps)(App)

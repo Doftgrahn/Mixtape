@@ -39,6 +39,7 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
             onChange={e => setSong(e.target.value)}
             onKeyPress={e => pressEnter(e)}
             placeholder="Add song..."
+            autoFocus
           />
           <button onClick={addSong}>Add song!</button>
         </div>

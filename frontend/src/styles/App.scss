@@ -10,3 +10,17 @@
     height: 100vh;
   }
 }
+
+.light {
+  background-color: $color-background-light;
+  color: $color-text-light;
+  li,
+  article {
+    background-color: $color-container;
+  }
+}
+
+.dark {
+  background-color: $color-background-dark;
+  color: $color-text-dark;
+}

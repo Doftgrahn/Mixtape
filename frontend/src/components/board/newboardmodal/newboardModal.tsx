@@ -4,7 +4,6 @@ import { useDispatch, connect } from 'react-redux'
 
 const BoardModal: FC<any> = ({ auth, hideModal }) => {
   const dispatch = useDispatch()
-
   const [title, setTitle] = useState('')
   const { id } = auth.user
 
@@ -38,11 +37,15 @@ const BoardModal: FC<any> = ({ auth, hideModal }) => {
     }
   }
 
+  const exitModal = () => {
+    hideModal()
+  }
+
   return (
     <main className="newBoardModal">
       <article>
         <header>
-          <button onClick={hideModal}>x</button>
+          <button onClick={exitModal}>x</button>
         </header>
         <div className="input_wrapper">
           <input
@@ -51,6 +54,7 @@ const BoardModal: FC<any> = ({ auth, hideModal }) => {
             onChange={e => setTitle(e.target.value)}
             onKeyPress={e => pressEnter(e)}
             placeholder="new setlist"
+            autoFocus
           />
           <button onClick={createBoard}>add board</button>
         </div>

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, useRef } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import {
@@ -9,9 +9,11 @@ import {
 import { deleteListItem, updateListTitle } from '../../logic/list/listAction'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
+  const input = useRef('')
   const [isEditing, setIsEditing] = useState(false)
-  const [updateTitle, setTitle] = useState('')
   const { current } = activeList
+
+  const [updateTitle, setTitle] = useState(current.title || '')
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -65,6 +67,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
               value={updateTitle}
               onChange={e => setTitle(e.target.value)}
               onKeyPress={e => onEnter(e)}
+              autoFocus
             />
           ) : null}
         </div>
