@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import Board from './board/board'
 

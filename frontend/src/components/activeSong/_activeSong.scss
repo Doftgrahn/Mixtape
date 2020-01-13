@@ -1,0 +1,38 @@
+.activeSong {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 100vh;
+  background: indianred;
+  transition: 1000ms ease;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  right: 300px;
+  transform: translateX(180%);
+  overflow: hidden;
+
+  header {
+    padding: 20px;
+  }
+
+  article {
+    h1 {
+      text-align: center;
+      border-bottom: 1px solid black;
+    }
+    .hideTitle {
+      display: none;
+    }
+  }
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+  }
+}
+.active {
+  transform: translateX(0);
+  right: 0;
+}

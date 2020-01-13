@@ -1,5 +1,6 @@
-import { GET_LIST, ADD_LIST, IS_LOADING, DELETE_LIST_ITEM } from './constants'
+import { GET_LIST, ADD_LIST, IS_LOADING, DELETE_LIST_ITEM, MUTATE_LIST } from './constants'
 import axios from 'axios'
+import { setCurrentSong } from '../activeList/activeListAction'
 
 export const fetchSongList = () => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
@@ -33,6 +34,23 @@ export const addToList = (title: string) => (dispatch: any, state: any) => {
     })
 }
 
+export const updateListTitle = (id: string, title: string) => (dispatch: any) => {
+  dispatch(isLoading(true))
+  const update = { id, title }
+  dispatch(mutateList(update))
+  axios
+    .put('/api/list/mutatelist', update)
+    .then(respose => {
+      const { data } = respose
+      console.log(data)
+      dispatch(setCurrentSong(data))
+      dispatch(isLoading(false))
+    })
+    .catch(error => {
+      console.log('Could not sert', error)
+    })
+}
+
 export const deleteListItem = (id: string) => (dispatch: any) => {
   dispatch(isLoading(true))
   axios
@@ -54,6 +72,11 @@ export const deletetion = (id: string) => ({
 export const getList = (list: any) => ({
   type: GET_LIST,
   payload: list
+})
+
+export const mutateList = (updateString: any) => ({
+  type: MUTATE_LIST,
+  payload: updateString
 })
 
 export const addList = (boardId: string) => ({

@@ -6,13 +6,13 @@ import Login from './authentication/login'
 
 const Landingpage: FC<any> = ({ auth }) => {
   if (auth.isAuthenticated) {
-    return <Redirect to="/home" />
+    return <Redirect to="/dashboard" />
   }
   return (
     <main>
       <h1>Välkommen till Göran, men också känt som MixTape</h1>
       Landingpage
-      <Link to="/home">To mixtape</Link>
+      <Link to="/dashboard">To mixtape</Link>
       <Login />
     </main>
   )

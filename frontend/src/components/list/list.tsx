@@ -6,7 +6,7 @@ import ShowList from './showlist/showList'
 
 const List: FC<any> = () => {
   return (
-    <main>
+    <main className="list">
       Lista med låtar!
       <AddToList />
       <ShowList />

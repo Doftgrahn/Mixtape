@@ -1,4 +1,6 @@
+export const ACTIVE_BOARD = 'ACTIVE_BOARD'
 export const GET_LIST = 'GET_LIST'
 export const ADD_LIST = 'ADD_LIST'
+export const MUTATE_LIST = 'MUTATE_LIST'
 export const DELETE_LIST_ITEM = 'DELETE_LIST_ITEM'
 export const IS_LOADING = 'IS_LOADING'
