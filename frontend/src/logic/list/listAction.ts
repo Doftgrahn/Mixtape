@@ -42,7 +42,6 @@ export const updateListTitle = (id: string, title: string) => (dispatch: any) =>
     .put('/api/list/mutatelist', update)
     .then(respose => {
       const { data } = respose
-      console.log(data)
       dispatch(setCurrentSong(data))
       dispatch(isLoading(false))
     })

@@ -36,7 +36,6 @@ export const deletion = (id: string) => (dispatch: any) => {
     .delete(`/api/board/deleteboard/${id}`)
     .then((result: any) => {
       dispatch(deleteBoard(id))
-      console.log('yey')
     })
     .catch((error: any) => console.log('error', error))
 }

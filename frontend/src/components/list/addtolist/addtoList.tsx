@@ -15,7 +15,7 @@ const NewBoard: FC<any> = () => {
 
   return (
     <main>
-      <button onClick={showModal}>add Board</button>
+      <button onClick={showModal}>add list</button>
       {ifModalVisible()}
     </main>
   )

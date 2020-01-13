@@ -4,10 +4,12 @@ import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
 import ShowList from './showlist/showList'
 
-const List: FC<any> = () => {
+const List: FC<any> = ({ history }) => {
   return (
     <main className="list">
-      Lista med låtar!
+      <header>
+        <button onClick={history.goBack}>go back</button>
+      </header>
       <AddToList />
       <ShowList />
       <ActiveSong />

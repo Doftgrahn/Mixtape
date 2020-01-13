@@ -1,7 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { clearAndHide, setCurrentSong } from '../../logic/activeList/activeListAction'
+import {
+  clearAndHide,
+  setCurrentSong,
+  mutateCurrentSong
+} from '../../logic/activeList/activeListAction'
 import { deleteListItem, updateListTitle } from '../../logic/list/listAction'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
@@ -38,8 +42,9 @@ const ActiveSong: FC<any> = ({ activeList }) => {
   const onEnter = (e: any) => {
     if (updateTitle && e.key === 'Enter') {
       dispatch(updateListTitle(current._id, updateTitle))
+      dispatch(mutateCurrentSong(updateTitle))
       setIsEditing(false)
-      setTitle('')
+      dispatch(setCurrentSong(current))
     }
   }
 

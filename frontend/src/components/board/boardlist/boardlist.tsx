@@ -19,7 +19,7 @@ const BoardList: FC<any> = ({ allBoards }) => {
       <Link onClick={() => setActiveBoard(board._id)} to={`/dashboard/${board.title}`}>
         <h3>{board.title}</h3>
       </Link>
-      {/*<button onClick={() => deleteBoard(board._id)}>Delete</button>*/}
+      <button onClick={() => deleteBoard(board._id)}>Delete</button>
     </li>
   ))
 

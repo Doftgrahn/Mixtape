@@ -31,17 +31,17 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
       <article>
         <header>
           <button onClick={hideModal}>x</button>
-          <div>
-            <input
-              type="text"
-              value={song}
-              onChange={e => setSong(e.target.value)}
-              onKeyPress={e => pressEnter(e)}
-              placeholder="Add song..."
-            />
-            <button onClick={addSong}>Add song!</button>
-          </div>
         </header>
+        <div className="input_wrapper">
+          <input
+            type="text"
+            value={song}
+            onChange={e => setSong(e.target.value)}
+            onKeyPress={e => pressEnter(e)}
+            placeholder="Add song..."
+          />
+          <button onClick={addSong}>Add song!</button>
+        </div>
       </article>
     </main>
   )
