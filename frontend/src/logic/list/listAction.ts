@@ -16,11 +16,11 @@ export const fetchSongList = () => (dispatch: any, state: any) => {
     })
 }
 
-export const addToList = () => (dispatch: any, state: any) => {
+export const addToList = (title: string) => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
   const { id } = state().auth.user
   dispatch(isLoading(true))
-  const add = { activeBoard, id }
+  const add = { activeBoard, id, title }
   axios
     .post('/api/list/addlist', add)
     .then(response => {
@@ -36,7 +36,7 @@ export const addToList = () => (dispatch: any, state: any) => {
 export const deleteListItem = (id: string) => (dispatch: any) => {
   dispatch(isLoading(true))
   axios
-    .delete(`api/list/deletelist/${id}`)
+    .delete(`/api/list/deletelist/${id}`)
     .then(response => {
       dispatch(deletetion(id))
       dispatch(isLoading(false))

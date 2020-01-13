@@ -1,4 +1,3 @@
-const Board = require('../../board/boardModel/board')
 const List = require('../listModel/listModel')
 
 module.exports = function getList(req, res) {

@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-import AddToList from './addtoList'
+import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
-import ShowList from './showList'
+import ShowList from './showlist/showList'
 
 const List: FC<any> = () => {
   return (

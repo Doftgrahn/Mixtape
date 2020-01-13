@@ -1,0 +1,16 @@
+.boardlist {
+  list-style-type: none;
+  li {
+    border: 1px solid black;
+    margin: 10px;
+    flex-grow: 1;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: row;
+
+    h3 {
+      padding: 0;
+      flex-grow: 1;
+    }
+  }
+}

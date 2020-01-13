@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Login from './authentication/Login'
+import Login from './authentication/login'
 
 const Landingpage: FC<any> = ({ auth }) => {
   if (auth.isAuthenticated) {

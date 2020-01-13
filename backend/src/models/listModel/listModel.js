@@ -1,26 +1,25 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const BoardSchema = new Schema({
+const ListSchema = new Schema({
+  boardId: {
+    type: String,
+    required: true
+  },
   userId: {
     type: String,
     required: true
   },
   title: {
     type: String,
-    required: true,
-    default: 'Ny låtlista...'
+    default: 'Ny LÅT'
   },
   date: {
     type: Date,
     default: Date.now()
-  },
-  collaborators: {
-    type: Array,
-    default: []
   }
 })
 
-const Board = mongoose.model('board', BoardSchema)
+const List = mongoose.model('list', ListSchema)
 
-module.exports = Board
+module.exports = List
