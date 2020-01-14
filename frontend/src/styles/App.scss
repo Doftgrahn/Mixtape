@@ -9,18 +9,35 @@
   & * > {
     height: 100vh;
   }
-}
+  &.light {
+    color: $color-text-light;
 
-.light {
-  background-color: $color-background-light;
-  color: $color-text-light;
-  li,
-  article {
-    background-color: $color-container;
+    main {
+      background-color: $color-background-light;
+      a {
+        color: $color-text-light;
+      }
+    }
+    li,
+    section,
+    article {
+      background-color: $color-container;
+    }
   }
-}
 
-.dark {
-  background-color: $color-background-dark;
-  color: $color-text-dark;
+  &.dark {
+    color: $color-text-dark;
+
+    main {
+      background-color: $color-background-dark;
+      a {
+        color: $color-text-dark;
+      }
+    }
+    li,
+    section,
+    article {
+      background-color: $color-container;
+    }
+  }
 }
