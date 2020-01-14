@@ -4,7 +4,7 @@
 .App {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
 
   & * > {
     height: 100vh;
@@ -39,6 +39,9 @@
     article {
       color: $color-text-light;
       background-color: $color-container;
+      a {
+        color: $color-text-light;
+      }
     }
   }
 }
