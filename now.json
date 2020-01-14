@@ -12,6 +12,10 @@
     { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
     { "src": "/asset-manifest.json", "dest": "/frontend/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
+    { "src": "/apple-touch-icon.png", "dest": "/frontend/aelpp - touch - icon.png" },
+    { "src": "/favicon-32x32.png", "dest": "/frontend/favicon-32x32.png" },
+    { "src": "/favicon-16x16.png", "dest": "/frontend/favicon-16x16.png" },
+
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {
