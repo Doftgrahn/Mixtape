@@ -11,8 +11,6 @@ import Routes from './routes/routes'
 import { AppModel } from './logic/board/boardAction'
 import { lightTheme, darkTheme } from './utils/layout/layout'
 
-import { ThemeInterface } from './utils/layout/typeslayouur'
-
 const App: FC<any> = ({ auth, theme }) => {
   const { id } = auth.user
   const dispatch = useDispatch()

@@ -6,43 +6,9 @@
   margin: 0;
   min-height: 100vh;
   background: var(--color-background);
+  color: var(--color-text);
 
   & * > {
     height: 100vh;
-  }
-  &.light {
-    color: $color-text-light;
-
-    main {
-      background-color: $color-background-light;
-      a {
-        color: $color-text-light;
-      }
-    }
-    li,
-    section,
-    article {
-      background-color: $color-container;
-    }
-  }
-
-  &.dark {
-    color: $color-text-dark;
-
-    main {
-      background-color: $color-background-dark;
-      a {
-        color: $color-text-dark;
-      }
-    }
-    li,
-    section,
-    article {
-      color: $color-text-light;
-      background-color: $color-container;
-      a {
-        color: $color-text-light;
-      }
-    }
   }
 }

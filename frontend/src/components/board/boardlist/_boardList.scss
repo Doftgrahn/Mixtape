@@ -1,12 +1,14 @@
 .boardlist {
   list-style-type: none;
   li {
+    width: 400px;
+    height: 400px;
     border: 1px solid black;
     margin: 10px;
     flex-grow: 1;
     padding: 0 40px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     h3 {
       padding: 0;
