@@ -1,7 +1,8 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
-
 import { logoutUser } from '../../logic/auth/authAction'
+
+import ThemeSwitcher from '../shared/themeswitcher/themeswitcher'
 
 const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
   const dispatch = useDispatch()
@@ -13,8 +14,8 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
       </header>
       <h1>Profile</h1>
       <h1>{user.name}</h1>
-      <input type="checkbox" />
-
+      <p>change theme</p>
+      <ThemeSwitcher />
       <button onClick={() => dispatch(logoutUser())}>Log Out</button>
     </section>
   )

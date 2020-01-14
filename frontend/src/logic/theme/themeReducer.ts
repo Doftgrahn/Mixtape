@@ -1,7 +1,7 @@
 import { PayLoad } from '../types'
-import { SET_DARK_THEME, SET_LIGHT_THEME } from './constants'
+import { SET_DARK_THEME, SET_LIGHT_THEME, Theme } from './constants'
 
-const initialState: any = 'light'
+const initialState: any = Theme.LIGHT
 
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {

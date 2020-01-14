@@ -5,6 +5,7 @@ import rootReducer from './rootReducer'
 
 export default (initialState: any) => {
   const storage = localStorage.getItem('state')
+
   initialState = storage !== null ? JSON.parse(storage) : initialState
 
   const middleware = [thunk]
@@ -23,6 +24,7 @@ export default (initialState: any) => {
       activeBoard: state.activeBoard,
       theme: state.theme
     }
+
     window.localStorage.setItem('state', JSON.stringify(persist))
   })
   return store

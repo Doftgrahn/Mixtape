@@ -6,7 +6,7 @@ import { RoutesInterface } from './types'
 
 import PrivateRoute from './privateRoute'
 
-import Landingpage from '../components/LandingPage'
+import Landingpage from '../components/landingpage/LandingPage'
 import MixTape from '../components/MixTape'
 import Register from '../components/authentication/Register'
 import ForgotPassword from '../components/authentication/ForgotPassword'

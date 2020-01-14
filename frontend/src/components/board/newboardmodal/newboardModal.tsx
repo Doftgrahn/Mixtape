@@ -52,7 +52,9 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
             <button onClick={exitModal}>x</button>
           </header>
           <div className="input_wrapper">
+            <h1>Add Setlist!</h1>
             <input
+              tabIndex={0}
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
@@ -60,7 +62,9 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
               placeholder="new setlist"
               autoFocus
             />
-            <button onClick={createBoard}>add board</button>
+            <button tabIndex={0} onClick={createBoard}>
+              add setlist!
+            </button>
           </div>
         </article>
       ) : (
