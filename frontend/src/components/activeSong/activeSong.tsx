@@ -9,13 +9,13 @@ import {
 import { deleteListItem, updateListTitle } from '../../logic/list/listAction'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
+  const dispatch = useDispatch()
+
   const [isEditing, setIsEditing] = useState(false)
   const { current } = activeList
 
   const [updateArtist, setArtist] = useState('')
   const [updateSong, setUpdateSong] = useState('')
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
@@ -78,6 +78,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
             />
           ) : null}
         </div>
+
         <div>
           <h1
             className={`${isEditing ? 'hideTitle' : null}`}

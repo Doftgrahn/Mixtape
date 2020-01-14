@@ -9,7 +9,7 @@ const NewBoard: FC<any> = () => {
 
   const ifModalVisible = () => {
     if (isVisible) {
-      return <NewBoardModal hideModal={hideModal} />
+      return <NewBoardModal hideModal={hideModal} isVisible={isVisible} />
     }
     return null
   }
