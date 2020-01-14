@@ -1,7 +1,27 @@
 import React, { FC } from 'react'
+import { connect, useDispatch } from 'react-redux'
 
-const UserProfile: FC<any> = () => {
-  return <section>Min profil här</section>
+import { logoutUser } from '../../logic/auth/authAction'
+
+const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
+  const dispatch = useDispatch()
+  const { user } = auth
+  return (
+    <section className={`userProfile ${isVisible ? 'active' : null}`}>
+      <header>
+        <button onClick={hide}>hide</button>
+      </header>
+      <h1>Profile</h1>
+      <h1>{user.name}</h1>
+      <input type="checkbox" />
+
+      <button onClick={() => dispatch(logoutUser())}>Log Out</button>
+    </section>
+  )
 }
 
-export default UserProfile
+const mapStateToProps = (state: any) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(UserProfile)
