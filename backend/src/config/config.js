@@ -1,5 +1,5 @@
 module.exports = {
-  mongoUri: process.env.MONGO_URI_ClOUD,
+  mongoUri: process.env.mongo_uri_cloud,
   secretOrKey: process.env.secret
 }
 

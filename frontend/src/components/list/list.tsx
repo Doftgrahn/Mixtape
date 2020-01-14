@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 
 import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
 import ShowList from './showlist/showList'
 
-const List: FC<any> = ({ history, activeBoard, match }) => {
+const List: FC<any> = ({ history, match }) => {
   const { title } = match.params
   return (
     <main className="list">

@@ -1,14 +1,13 @@
-import React, { FC, useState, useEffect, useRef } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { addBoard } from '../../../logic/board/boardAction'
 import { useDispatch, connect } from 'react-redux'
 
 import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
 
 const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const [title, setTitle] = useState('')
-  const { id } = auth.user
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
@@ -25,7 +24,7 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
   const createBoard = () => {
     if (title) {
       const data = {
-        userId: id,
+        userId: auth.user.id,
         title: title
       }
       dispatch(addBoard(data))

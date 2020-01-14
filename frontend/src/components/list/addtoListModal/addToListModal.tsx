@@ -2,10 +2,14 @@ import React, { FC, useState, useEffect } from 'react'
 import { addToList } from '../../../logic/list/listAction'
 import { useDispatch } from 'react-redux'
 
-const AddToListModal: FC<any> = ({ hideModal }) => {
+import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
+
+const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
+  const dispatch = useDispatch()
+
   const [song, setSong] = useState('')
   const [artist, setArtist] = useState('')
-  const dispatch = useDispatch()
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
@@ -25,6 +29,7 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
       dispatch(addToList(data))
       setSong('')
       hideModal()
+      setIsComponentVisible(false)
     }
   }
 
@@ -32,29 +37,33 @@ const AddToListModal: FC<any> = ({ hideModal }) => {
 
   return (
     <main className="addToListModal">
-      <article>
-        <header>
-          <button onClick={hideModal}>x</button>
-        </header>
-        <div className="input_wrapper">
-          <input
-            type="text"
-            value={song}
-            onChange={e => setSong(e.target.value)}
-            onKeyPress={e => pressEnter(e)}
-            placeholder="Song..."
-            autoFocus
-          />
-          <input
-            type="text"
-            value={artist}
-            onChange={e => setArtist(e.target.value)}
-            placeholder="Artist..."
-            onKeyPress={e => pressEnter(e)}
-          />
-          <button onClick={addSong}>Add song!</button>
-        </div>
-      </article>
+      {isComponentVisible && isVisible ? (
+        <article ref={ref}>
+          <header>
+            <button onClick={hideModal}>x</button>
+          </header>
+          <div className="input_wrapper">
+            <input
+              type="text"
+              value={song}
+              onChange={e => setSong(e.target.value)}
+              onKeyPress={e => pressEnter(e)}
+              placeholder="Song..."
+              autoFocus
+            />
+            <input
+              type="text"
+              value={artist}
+              onChange={e => setArtist(e.target.value)}
+              placeholder="Artist..."
+              onKeyPress={e => pressEnter(e)}
+            />
+            <button onClick={addSong}>Add song!</button>
+          </div>
+        </article>
+      ) : (
+        hideModal()
+      )}
     </main>
   )
 }

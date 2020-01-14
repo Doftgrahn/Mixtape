@@ -15,10 +15,8 @@
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {
-    "mongo_uri": "@mongo_uri",
-    "email_login": "@email_login",
-    "email_passport": "@email_passport",
-    "my_secret": "@my_secret"
+    "mongo_uri_cloud": "@mongo_uri_cloud",
+    "secret": "@my_secret"
   },
   "github": {
     "enabled": false

@@ -8,7 +8,7 @@ const NewBoard: FC<any> = () => {
   const hideModal = () => setIsVisible(false)
   const ifModalVisible = () => {
     if (isVisible) {
-      return <AddToListModal hideModal={hideModal} />
+      return <AddToListModal hideModal={hideModal} isVisible={isVisible} />
     }
     return null
   }

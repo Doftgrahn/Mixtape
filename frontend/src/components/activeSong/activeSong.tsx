@@ -1,33 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import {
-  clearAndHide,
-  setCurrentSong,
-  mutateCurrentSong
-} from '../../logic/activeList/activeListAction'
-import { deleteListItem, updateListTitle } from '../../logic/list/listAction'
+import { clearAndHide } from '../../logic/activeList/activeListAction'
+import { deleteListItem } from '../../logic/list/listAction'
+
+import UpdateSong from './updateSong/updateSong'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
   const dispatch = useDispatch()
-
-  const [isEditing, setIsEditing] = useState(false)
   const { current } = activeList
-
-  const [updateArtist, setArtist] = useState('')
-  const [updateSong, setUpdateSong] = useState('')
-
-  useEffect(() => {
-    const onPressEscape = (event: any) => {
-      if (event.keyCode === 27) {
-        setIsEditing(false)
-      }
-    }
-    window.addEventListener('keydown', onPressEscape)
-    return () => {
-      window.removeEventListener('keydown', onPressEscape)
-    }
-  }, [])
 
   useEffect(() => {
     return () => {
@@ -42,63 +23,21 @@ const ActiveSong: FC<any> = ({ activeList }) => {
     dispatch(clearAndHide())
   }
 
-  const onEnter = (e: any) => {
-    const data = {
-      id: current._id,
-      artist: updateArtist,
-      song: updateSong
-    }
-    if (updateArtist && e.key === 'Enter') {
-      dispatch(updateListTitle(data))
-      dispatch(mutateCurrentSong(updateArtist))
-      setIsEditing(false)
-      dispatch(setCurrentSong(current))
-    }
-  }
-
   return (
-    <main className={`activeSong ${current.artist ? 'active' : null}`}>
-      <header>
-        <button onClick={hide}>hide</button>
-      </header>
-      <article>
-        <div>
-          <h1
-            className={`${isEditing ? 'hideTitle' : null}`}
-            onClick={() => setIsEditing(!isEditing)}>
-            {updateArtist || current.artist}
-          </h1>
-          {isEditing ? (
-            <input
-              defaultValue="default"
-              value={updateArtist}
-              onChange={e => setArtist(e.target.value)}
-              onKeyPress={e => onEnter(e)}
-              autoFocus
-            />
-          ) : null}
-        </div>
-
-        <div>
-          <h1
-            className={`${isEditing ? 'hideTitle' : null}`}
-            onClick={() => setIsEditing(!isEditing)}>
-            {updateSong || current.song}
-          </h1>
-          {isEditing ? (
-            <input
-              defaultValue="default"
-              value={updateSong}
-              onChange={e => setUpdateSong(e.target.value)}
-              onKeyPress={e => onEnter(e)}
-              autoFocus
-            />
-          ) : null}
-        </div>
+    <main className="activeSongModal">
+      <article className={`activeSong ${current._id ? 'active' : null}`}>
+        <header>
+          <button onClick={hide}>hide</button>
+        </header>
+        <article>
+          <UpdateSong />
+          <h1>Spotify</h1>
+          <h1>Lyrics</h1>
+        </article>
+        <footer>
+          <button onClick={() => deleteSong(current._id)}>delete song</button>
+        </footer>
       </article>
-      <footer>
-        <button onClick={() => deleteSong(current._id)}>delete song</button>
-      </footer>
     </main>
   )
 }
