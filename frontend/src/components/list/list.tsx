@@ -4,15 +4,13 @@ import { connect } from 'react-redux'
 import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
 import ShowList from './showlist/showList'
+import ListHeader from './listHeader/listHeader'
 
 const List: FC<any> = ({ history, match }) => {
   const { title } = match.params
   return (
     <main className="list">
-      <header>
-        <button onClick={history.goBack}>go back</button>
-      </header>
-      <h1>{title}</h1>
+      <ListHeader history={history} title={title} />
       <AddToList />
       <ShowList />
       <ActiveSong />

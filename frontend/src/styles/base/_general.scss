@@ -6,10 +6,15 @@ header {
 }
 
 button {
+  font-size: 16px;
   border: 0;
   background-color: $color-text-light;
   color: $color-text-dark;
   cursor: pointer;
+}
+
+input {
+  font-size: 16px;
 }
 
 a {

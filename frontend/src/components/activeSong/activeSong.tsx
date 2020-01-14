@@ -24,7 +24,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
   }
 
   return (
-    <main className="activeSongModal">
+    <section className="activeSongModal">
       <article className={`activeSong ${current._id ? 'active' : null}`}>
         <header>
           <button onClick={hide}>hide</button>
@@ -38,7 +38,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
           <button onClick={() => deleteSong(current._id)}>delete song</button>
         </footer>
       </article>
-    </main>
+    </section>
   )
 }
 
