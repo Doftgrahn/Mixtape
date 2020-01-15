@@ -4,6 +4,8 @@ import { useDispatch, connect } from 'react-redux'
 
 import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
 
+import Close from '../../../assets/cross/close'
+
 const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
   const dispatch = useDispatch()
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
@@ -49,7 +51,9 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
       {isComponentVisible && isVisible ? (
         <article className="modalContainer" ref={ref}>
           <header className="modalHeader">
-            <button onClick={exitModal}>x</button>
+            <button onClick={exitModal}>
+              <Close width={20} height={20} />
+            </button>
           </header>
           <div className="input_wrapper">
             <h1>Create New Setlist</h1>

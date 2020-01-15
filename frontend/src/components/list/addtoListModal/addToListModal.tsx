@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 
 import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
 
+import Close from '../../../assets/cross/close'
+
 const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
   const dispatch = useDispatch()
 
@@ -40,7 +42,9 @@ const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
       {isComponentVisible && isVisible ? (
         <article ref={ref} className="modalContainer">
           <header className="modalHeader">
-            <button onClick={hideModal}>x</button>
+            <button onClick={hideModal}>
+              <Close width={20} height={20} />
+            </button>
           </header>
           <div className="input_wrapper">
             <h1>Add a Song!</h1>
