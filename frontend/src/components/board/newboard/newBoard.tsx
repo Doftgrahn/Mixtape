@@ -18,8 +18,10 @@ const NewBoard: FC<any> = () => {
     <main className="newBoard">
       <button className="addSetlist" onClick={showModal}>
         <div className="text">
-          <span>+</span>
-          <h3>Add Setlist</h3>
+          <div className="plusWrapper">
+            <span>+</span>
+          </div>
+          <h3>Add setlist</h3>
         </div>
       </button>
       {ifModalVisible()}

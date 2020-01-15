@@ -2,12 +2,12 @@ import { lightLogo, darkLogo } from './logo/logo'
 import { addBoardLight, addboardDark } from './addboard/addboard'
 
 import { lightModal, darkModal } from './modal/modal'
-const black = '#223843'
-const white = '#EFF1F3'
-const whiteGray = '#DBD3D8'
-const lightOrange = '#D8B4A0'
-const blueGray = '#C5CCCF'
-const orange = '#D77A61'
+export const black = '#223843'
+export const white = '#EFF1F3'
+export const whiteGray = '#DBD3D8'
+export const lightOrange = '#D8B4A0'
+export const blueGray = '#C5CCCF'
+export const orange = '#D77A61'
 
 export const lightTheme: any = {
   '--color-background': whiteGray,
