@@ -2,7 +2,8 @@ import axios from 'axios'
 import { GET_BOARDS, IS_LOADING, DELETE_BOARD } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
-export const AppModel = (id: string) => (dispatch: any, state: any) => {
+export const AppModel = () => (dispatch: any, state: any) => {
+  const { id } = state().auth.user
   dispatch(IsLoading(true))
   axios
     .get(`/api/board/getboards/${id}`)

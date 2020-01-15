@@ -17,7 +17,7 @@ const App: FC<any> = ({ auth, theme }) => {
 
   useEffect(() => {
     if (auth.isAuthenticated) {
-      dispatch(AppModel(id))
+      dispatch(AppModel())
     }
     authlocalstorage()
   }, [auth.isAuthenticated, dispatch, id])
