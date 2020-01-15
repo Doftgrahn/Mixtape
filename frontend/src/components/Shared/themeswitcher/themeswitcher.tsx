@@ -1,10 +1,14 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { setLightTheme, setDarkTheme } from '../../../logic/theme/themeAction'
 import { useDispatch, connect } from 'react-redux'
 
 const ThemeSwitcher: FC<any> = ({ theme }) => {
   const dispatch = useDispatch()
   const [isChecked, setIsChecked] = useState(false)
+
+  useEffect(() => {
+    theme.state === 'light' ? setIsChecked(false) : setIsChecked(true)
+  }, [theme.state])
 
   const toggleTheme = () => {
     theme.state === 'light' ? dispatch(setDarkTheme()) : dispatch(setLightTheme())
