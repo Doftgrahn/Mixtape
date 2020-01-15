@@ -1,6 +1,7 @@
 import { lightLogo, darkLogo } from './logo/logo'
 import { addBoardLight, addboardDark } from './addboard/addboard'
 
+import { lightModal, darkModal } from './modal/modal'
 const black = '#223843'
 const white = '#EFF1F3'
 const whiteGray = '#DBD3D8'
@@ -17,7 +18,8 @@ export const lightTheme: any = {
   '--color-boxcolor': black,
   '--color-button': black,
   ...lightLogo,
-  ...addBoardLight
+  ...addBoardLight,
+  ...lightModal
 }
 
 export const darkTheme: any = {
@@ -28,5 +30,6 @@ export const darkTheme: any = {
   '--color-boxcolor': '',
   '--color-button': '',
   ...darkLogo,
-  ...addboardDark
+  ...addboardDark,
+  ...darkModal
 }

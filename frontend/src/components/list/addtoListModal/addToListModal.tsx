@@ -36,13 +36,14 @@ const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
   const pressEnter = (e: any) => (e.key === 'Enter' ? addSong() : null)
 
   return (
-    <main className="addToListModal">
+    <main className="modal">
       {isComponentVisible && isVisible ? (
-        <article ref={ref}>
-          <header>
+        <article ref={ref} className="modalContainer">
+          <header className="modalHeader">
             <button onClick={hideModal}>x</button>
           </header>
           <div className="input_wrapper">
+            <h1>Add a Song!</h1>
             <input
               type="text"
               value={song}

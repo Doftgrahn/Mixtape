@@ -45,14 +45,14 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
   }
 
   return (
-    <main className="newBoardModal">
+    <main className="modal newBoardModal">
       {isComponentVisible && isVisible ? (
-        <article ref={ref}>
-          <header>
+        <article className="modalContainer" ref={ref}>
+          <header className="modalHeader">
             <button onClick={exitModal}>x</button>
           </header>
           <div className="input_wrapper">
-            <h1>Add Setlist!</h1>
+            <h1>Create New Setlist</h1>
             <input
               tabIndex={0}
               type="text"

@@ -10,7 +10,7 @@ const BoardHeader = () => {
   const hideUserProfile = () => setIsVisible(false)
 
   return (
-    <header>
+    <header className="header">
       <div className="logoWrapper">
         <Logo height={50} width={80} />
         <h1>MixTape</h1>
