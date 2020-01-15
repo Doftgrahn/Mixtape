@@ -8,9 +8,9 @@
   label {
     cursor: pointer;
     text-indent: -9999px;
-    width: 100px;
-    height: 50px;
-    background: $color-background-light;
+    width: 50px;
+    height: 35px;
+    background: var(--color-theme);
     display: block;
     border-radius: 100px;
     position: relative;
@@ -21,15 +21,15 @@
     position: absolute;
     top: 5px;
     left: 5px;
-    width: 45px;
-    height: 45px;
-    background: gray;
+    width: 28px;
+    height: 28px;
+    background: var(--color-theme-circle);
     border-radius: 50%;
     transition: 0.3s;
   }
 
   input:checked + label {
-    background: $color-background-dark;
+    background: var(--color-theme);
   }
 
   input:checked + label:after {

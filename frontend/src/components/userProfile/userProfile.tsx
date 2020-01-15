@@ -15,7 +15,9 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
       <h1>Profile</h1>
       <h1>{user.name}</h1>
       <ThemeSwitcher />
-      <button onClick={() => dispatch(logoutUser())}>Log Out</button>
+      <button className="logout" onClick={() => dispatch(logoutUser())}>
+        Log Out
+      </button>
     </section>
   )
 }
