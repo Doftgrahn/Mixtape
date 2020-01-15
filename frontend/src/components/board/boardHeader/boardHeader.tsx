@@ -11,8 +11,11 @@ const BoardHeader = () => {
 
   return (
     <header>
-      <Logo height={100} width={80} />
-      <h1>logo</h1>
+      <div className="logoWrapper">
+        <Logo height={50} width={80} />
+        <h1>MixTape</h1>
+      </div>
+
       <button onClick={showUserProfil}>User Profile</button>
       <UserProfil isVisible={isVisible} hide={hideUserProfile} />
     </header>

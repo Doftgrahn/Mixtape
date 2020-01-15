@@ -1,3 +1,15 @@
+body {
+  background-color: var(--color-background);
+}
+
+ul {
+  color: var(--color-text-container);
+  li {
+    background-color: var(--color-background-list);
+    color: var(--color-text);
+  }
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -8,9 +20,11 @@ header {
 button {
   font-size: 16px;
   border: 0;
-  background-color: $color-text-light;
-  color: $color-text-dark;
   cursor: pointer;
+}
+
+h1 {
+  color: var(--color-headlineText);
 }
 
 input {
@@ -18,6 +32,8 @@ input {
 }
 
 a {
+  outline: none;
+  color: var(--color-text);
   text-decoration: none;
   cursor: pointer;
 }

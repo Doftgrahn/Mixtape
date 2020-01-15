@@ -7,6 +7,7 @@ import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/active
 import { deletion } from '../../../logic/board/boardAction'
 
 import { BoardInterface } from '../../../logic/types'
+import NewBoard from '../newboard/newBoard'
 
 const BoardList: FC<any> = ({ allBoards }) => {
   const dispatch = useDispatch()
@@ -19,11 +20,15 @@ const BoardList: FC<any> = ({ allBoards }) => {
       <Link tabIndex={0} onClick={() => setActiveBoard(board._id)} to={`/dashboard/${board.title}`}>
         <h3>{board.title}</h3>
       </Link>
-      <button onClick={() => deleteBoard(board._id)}>Delete</button>
     </li>
   ))
 
-  return <ul className="boardlist">{renderMyBoards}</ul>
+  return (
+    <ul className="boardlist">
+      <NewBoard />
+      {renderMyBoards}
+    </ul>
+  )
 }
 
 const mapStateToProps = (state: any) => ({

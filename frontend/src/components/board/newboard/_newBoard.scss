@@ -1,7 +1,38 @@
 .newBoard {
-  display: flex;
-  justify-content: center;
-  button {
+  .addSetlist {
+    background-color: var(--color-background-addBoard);
+    width: 400px;
+    height: 400px;
     text-align: center;
+    flex-direction: column;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    // display: block;
+
+    .text {
+      width: 100%;
+      align-items: center;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      span {
+        text-align: center;
+        display: block;
+        height: 280px;
+        width: 280px;
+        background-color: var(--color-background-button);
+        border-radius: 50%;
+        font-size: 1400%;
+        color: var(--color-cross);
+      }
+      h3 {
+        display: block;
+        text-align: center;
+      }
+    }
   }
 }

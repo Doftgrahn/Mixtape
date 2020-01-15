@@ -15,10 +15,15 @@ const NewBoard: FC<any> = () => {
   }
 
   return (
-    <div className="newBoard">
-      <button onClick={showModal}>add Board</button>
+    <main className="newBoard">
+      <button className="addSetlist" onClick={showModal}>
+        <div className="text">
+          <span>+</span>
+          <h3>Add Setlist</h3>
+        </div>
+      </button>
       {ifModalVisible()}
-    </div>
+    </main>
   )
 }
 
