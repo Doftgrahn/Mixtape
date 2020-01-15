@@ -14,10 +14,12 @@ const NewBoard: FC<any> = () => {
   }
 
   return (
-    <main>
-      <button onClick={showModal}>add list</button>
+    <>
+      <button className="addPlaylistBtn" onClick={showModal}>
+        <h3>+ Add a song</h3>
+      </button>
       {ifModalVisible()}
-    </main>
+    </>
   )
 }
 

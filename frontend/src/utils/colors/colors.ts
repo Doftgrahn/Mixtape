@@ -17,6 +17,7 @@ export const lightTheme: any = {
   '--color-headlineText': black,
   '--color-boxcolor': black,
   '--color-button': black,
+  '--color-add-song-button': orange,
   ...lightLogo,
   ...addBoardLight,
   ...lightModal
@@ -28,7 +29,8 @@ export const darkTheme: any = {
   '--color-text': black,
   '--color-headlineText': white,
   '--color-boxcolor': '',
-  '--color-button': '',
+  '--color-button': orange,
+  '--color-add-song-button': blueGray,
   ...darkLogo,
   ...addboardDark,
   ...darkModal

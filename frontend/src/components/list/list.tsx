@@ -11,8 +11,11 @@ const List: FC<any> = ({ history, match }) => {
   return (
     <main className="list">
       <ListHeader history={history} title={title} />
-      <AddToList />
-      <ShowList />
+      <div className="list_container">
+        <h1>{title}</h1>
+        <AddToList />
+        <ShowList />
+      </div>
       <ActiveSong />
     </main>
   )

@@ -1,9 +1,23 @@
 .playlist {
   list-style-type: none;
+
   li {
-    margin: 20px;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
+    box-shadow: 5px 5px 5px black;
+    margin-top: 20px;
+    padding: 10px;
+    .song {
+      display: flex;
+      flex-direction: row;
+      h3 {
+        margin: 20px;
+      }
+    }
+  }
+  button {
+    background: none;
+    font-style: italic;
   }
 }

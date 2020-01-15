@@ -3,6 +3,7 @@ body {
 }
 
 ul {
+  padding-inline-start: 0;
   color: var(--color-text-container);
   li {
     background-color: var(--color-background-list);

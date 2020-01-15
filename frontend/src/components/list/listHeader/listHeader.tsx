@@ -14,8 +14,6 @@ const ListHeader: FC<any> = ({ history, title }) => {
         <Logo height={50} width={80} />
         <h1>MixTape</h1>
       </div>
-      <h1>Logo</h1>
-      <h1>{title}</h1>
       <div>
         <button onClick={history.goBack}>go back</button>
         <button onClick={show}>Meny</button>
