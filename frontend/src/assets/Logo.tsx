@@ -8,7 +8,7 @@ interface props {
 const Logo: FC<props> = ({ height, width }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 475 295" version="1.1">
-      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Logo">
           <rect id="Rectangle" fill="#223843" x="6" y="0" width="463" height="295" rx="13"></rect>
           <rect id="Rectangle" fill="#223843" x="0" y="181" width="475" height="114" rx="13"></rect>
