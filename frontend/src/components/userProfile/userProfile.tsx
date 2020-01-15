@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { logoutUser } from '../../logic/auth/authAction'
-
+import Close from '../../assets/cross/close'
 import ThemeSwitcher from '../shared/themeswitcher/themeswitcher'
 
 const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
@@ -10,7 +10,9 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
   return (
     <section className={`userProfile sidebar ${isVisible ? 'active' : null}`}>
       <header>
-        <button onClick={hide}>hide</button>
+        <button className="hide" onClick={hide}>
+          <Close height={20} width={20} />
+        </button>
       </header>
       <h1>Profile</h1>
       <h1>{user.name}</h1>
