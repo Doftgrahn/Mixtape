@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import UserProfil from '../../userProfile/userProfile'
-import Logo from '../../../assets/Logo'
+import Logo from '../../../assets/logo/Logo'
 
 const BoardHeader = () => {
   const [isVisible, setIsVisible] = useState(false)

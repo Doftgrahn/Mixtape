@@ -9,7 +9,7 @@ import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
 
 import { AppModel } from './logic/board/boardAction'
-import { lightTheme, darkTheme } from './utils/layout/layout'
+import { lightTheme, darkTheme } from './utils/colors/colors'
 
 const App: FC<any> = ({ auth, theme }) => {
   const { id } = auth.user
