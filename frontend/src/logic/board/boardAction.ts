@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_BOARDS, IS_LOADING, DELETE_BOARD } from './constants'
+import { GET_BOARDS, IS_LOADING, DELETE_BOARD, CLEAR_SETLIST } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -49,6 +49,10 @@ const deleteBoard = (id: string) => ({
 const setBoard = (board: BoardInterface) => ({
   type: GET_BOARDS,
   payload: board
+})
+
+export const clearSetlist = () => ({
+  type: CLEAR_SETLIST
 })
 
 const IsLoading = (isLoading: boolean): PayLoad => ({ type: IS_LOADING, payload: isLoading })

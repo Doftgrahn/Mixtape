@@ -5,13 +5,14 @@ import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './contants'
 import { Dispatch } from 'redux'
 
+import { clearSetlist } from '../board/boardAction'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
   axios
     .post('/api/users/register', userData)
     .then(() => {
-      history.push('/login')
+      history.push('/')
       dispatch(setUserIsLoading(false))
     })
     .catch(err =>
@@ -105,4 +106,5 @@ export const logoutUser = () => (dispatch: Dispatch) => {
   setAuthToken(false)
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser(''))
+  dispatch(clearSetlist())
 }

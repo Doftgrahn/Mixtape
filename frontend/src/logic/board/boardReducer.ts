@@ -1,4 +1,4 @@
-import { GET_BOARDS, DELETE_BOARD, IS_LOADING } from './constants'
+import { GET_BOARDS, DELETE_BOARD, IS_LOADING, CLEAR_SETLIST } from './constants'
 
 const initialState: any = {
   boards: [],
@@ -22,6 +22,11 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         loading: action.payload
+      }
+    case CLEAR_SETLIST:
+      return {
+        ...state,
+        boards: []
       }
 
     default:
