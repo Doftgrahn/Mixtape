@@ -14,7 +14,7 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
   }
 
   return (
-    <section className={`boardSettings ${isVisible ? 'active' : null}`}>
+    <section className={`boardSettings sidebar ${isVisible ? 'active' : null}`}>
       <header>
         <button onClick={hide}>hide</button>
       </header>

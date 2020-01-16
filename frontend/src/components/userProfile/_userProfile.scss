@@ -1,7 +1,18 @@
 .userProfile {
+  color: var(--color-sidemenu-text);
+
+  .profileTitle {
+    color: var(--color-sidemenu-text);
+  }
+  .userName {
+    color: var(--color-sidemenu-text);
+  }
+
   .logout {
     margin-top: auto;
     padding: 20px;
+    color: var(--color-headlineText);
+    background-color: var(--color-sidemenu-button);
   }
   .hide {
     display: block;

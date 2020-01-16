@@ -2,6 +2,7 @@ import { lightLogo, darkLogo } from './logo/logo'
 import { addBoardLight, addboardDark } from './addboard/addboard'
 import { lightModal, darkModal } from './modal/modal'
 import { lightSwitch, darkSwitch } from './themeSwitcher/themeSwitcher'
+import { lightSideMenu, darkSideMenu } from './sidemenu/sidemenu'
 
 export const black = '#223843'
 export const white = '#EFF1F3'
@@ -22,7 +23,8 @@ export const lightTheme: any = {
   ...lightSwitch,
   ...lightLogo,
   ...addBoardLight,
-  ...lightModal
+  ...lightModal,
+  ...lightSideMenu
 }
 
 export const darkTheme: any = {
@@ -36,5 +38,6 @@ export const darkTheme: any = {
   ...darkSwitch,
   ...darkLogo,
   ...addboardDark,
-  ...darkModal
+  ...darkModal,
+  ...darkSideMenu
 }

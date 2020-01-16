@@ -25,7 +25,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
 
   return (
     <section className="activeSongModal">
-      <article className={`activeSong ${current._id ? 'active' : null}`}>
+      <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
         <header>
           <button onClick={hide}>hide</button>
         </header>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
