@@ -9,8 +9,7 @@ import Close from '../../../assets/cross/close'
 const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
   const dispatch = useDispatch()
 
-  const [song, setSong] = useState('')
-  const [artist, setArtist] = useState('')
+  const [title, setTitle] = useState('')
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   useEffect(() => {
@@ -26,10 +25,9 @@ const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
   }, [hideModal])
 
   const addSong = (): void => {
-    const data = { song, artist }
-    if (song && artist) {
-      dispatch(addToList(data))
-      setSong('')
+    if (title) {
+      dispatch(addToList(title))
+      setTitle('')
       hideModal()
       setIsComponentVisible(false)
     }
@@ -50,19 +48,13 @@ const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
             <h1>Add a Song!</h1>
             <input
               type="text"
-              value={song}
-              onChange={e => setSong(e.target.value)}
+              value={title}
+              onChange={e => setTitle(e.target.value)}
               onKeyPress={e => pressEnter(e)}
               placeholder="Song..."
               autoFocus
             />
-            <input
-              type="text"
-              value={artist}
-              onChange={e => setArtist(e.target.value)}
-              placeholder="Artist..."
-              onKeyPress={e => pressEnter(e)}
-            />
+
             <button onClick={addSong}>Add song!</button>
           </div>
         </article>

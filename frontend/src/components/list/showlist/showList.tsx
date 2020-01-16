@@ -19,8 +19,7 @@ const ShowList: FC<any> = ({ playlist }) => {
   const renderPlaylist = list.map((list: any) => (
     <li key={list._id}>
       <div className="song">
-        <h3>{list.artist}</h3>
-        <h3>{list.song}</h3>
+        <h3>{list.title}</h3>
       </div>
       <button onClick={() => setActiveSong(list)}>Edit / More info</button>
     </li>

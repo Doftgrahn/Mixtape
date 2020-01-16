@@ -1,8 +1,8 @@
 const List = require('../listModel/listModel')
 
 module.exports = function mutateList(req, res) {
-  const { id, song, artist } = req.body
-  List.findOneAndUpdate({ _id: id }, { song: song, artist: artist })
+  const { id, title } = req.body
+  List.findOneAndUpdate({ _id: id }, { title: title })
     .then(result => {
       console.log(result)
 

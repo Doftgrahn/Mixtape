@@ -28,7 +28,7 @@ export default (state = initialState, action: PayLoad) => {
         ...state,
         list: state.list.map((list: any) => {
           if (list._id === action.payload.id) {
-            return { ...list, song: action.payload.song, artist: action.payload.artist }
+            return { ...list, title: action.payload.title }
           }
           return list
         })
