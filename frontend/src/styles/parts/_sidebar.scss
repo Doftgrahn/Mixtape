@@ -17,6 +17,12 @@
 
   header {
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    button {
+      background: 0;
+      margin-left: auto;
+    }
   }
 
   article {
@@ -38,6 +44,13 @@
     margin-top: auto;
     text-align: center;
     padding: 20px;
+
+    .sideMenu_goBack {
+      background-color: var(--color-sidemenu-button);
+    }
+    .sideMenu_delete {
+      background-color: var(--color-sidemenu-delete);
+    }
   }
 }
 

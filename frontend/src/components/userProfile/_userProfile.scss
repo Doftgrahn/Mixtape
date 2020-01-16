@@ -1,8 +1,15 @@
+.sidebarHeader {
+  display: flex;
+  flex-direction: row;
+}
+
 .userProfile {
   color: var(--color-sidemenu-text);
 
   .profileTitle {
     color: var(--color-sidemenu-text);
+    margin-bottom: 0;
+    text-decoration: underline;
   }
   .userName {
     color: var(--color-sidemenu-text);

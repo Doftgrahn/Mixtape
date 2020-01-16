@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 
-import { connect, useDispatch } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion } from '../../logic/board/boardAction'
+import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
 const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
   const history = useHistory()
@@ -16,15 +17,21 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
   return (
     <section className={`boardSettings sidebar ${isVisible ? 'active' : null}`}>
       <header>
-        <button onClick={hide}>hide</button>
+        <button onClick={hide}>
+          <SideMenuCross height={20} width={20} />
+        </button>
       </header>
       <article>
         <h1>Invite folks here</h1>
       </article>
       <footer>
-        <button onClick={deleteBoard}>delete board (not done yet)</button>
+        <button className="sideMenu_goBack" onClick={() => history.goBack()}>
+          go Back
+        </button>
+        <button className="sideMenu_delete" onClick={deleteBoard}>
+          delete board
+        </button>
       </footer>
-      Board Settings here
     </section>
   )
 }

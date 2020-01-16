@@ -30,9 +30,9 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
         title: title
       }
       dispatch(addBoard(data))
+      setTitle('')
       hideModal()
     }
-    setTitle('')
   }
 
   const pressEnter = (e: any) => {

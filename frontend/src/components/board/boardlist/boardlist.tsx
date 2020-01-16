@@ -9,16 +9,14 @@ import { deletion } from '../../../logic/board/boardAction'
 import { BoardInterface } from '../../../logic/types'
 import NewBoard from '../newboard/newBoard'
 
+import Spinner from '../../shared/spinner/spinner'
+
 const BoardList: FC<any> = ({ allBoards }) => {
   const { loading } = allBoards
   const dispatch = useDispatch()
 
   const setActiveBoard = (id: string): any => dispatch(activeBoard(id))
   const deleteBoard = (id: string) => dispatch(deletion(id))
-
-  if (loading) {
-    return <h1>Hej du laddar</h1>
-  }
 
   const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
     <li key={board._id}>
@@ -30,6 +28,7 @@ const BoardList: FC<any> = ({ allBoards }) => {
 
   return (
     <ul className="boardlist">
+      {loading ? <Spinner /> : null}
       <NewBoard />
       {renderMyBoards}
     </ul>

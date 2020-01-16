@@ -5,6 +5,7 @@ import { clearAndHide } from '../../logic/activeList/activeListAction'
 import { deleteListItem } from '../../logic/list/listAction'
 
 import UpdateSong from './updateSong/updateSong'
+import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
 const ActiveSong: FC<any> = ({ activeList }) => {
   const dispatch = useDispatch()
@@ -27,7 +28,9 @@ const ActiveSong: FC<any> = ({ activeList }) => {
     <section className="activeSongModal">
       <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
         <header>
-          <button onClick={hide}>hide</button>
+          <button onClick={hide}>
+            <SideMenuCross height={20} width={20} />
+          </button>
         </header>
         <article>
           <UpdateSong />
