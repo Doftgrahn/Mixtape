@@ -1,6 +1,18 @@
 import React, { FC } from 'react'
 
-const BoardSettings: FC<any> = ({ isVisible, hide }) => {
+import { connect, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { deletion } from '../../logic/board/boardAction'
+
+const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  const deleteBoard = () => {
+    dispatch(deletion(activeBoard.activeBoard))
+    history.goBack()
+  }
+
   return (
     <section className={`boardSettings ${isVisible ? 'active' : null}`}>
       <header>
@@ -10,11 +22,15 @@ const BoardSettings: FC<any> = ({ isVisible, hide }) => {
         <h1>Invite folks here</h1>
       </article>
       <footer>
-        <button>delete board (not done yet)</button>
+        <button onClick={deleteBoard}>delete board (not done yet)</button>
       </footer>
       Board Settings here
     </section>
   )
 }
 
-export default BoardSettings
+const mapStateToProps = (state: any) => ({
+  activeBoard: state.activeBoard
+})
+
+export default connect(mapStateToProps)(BoardSettings)
