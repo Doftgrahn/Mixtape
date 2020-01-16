@@ -25,23 +25,21 @@ const ActiveSong: FC<any> = ({ activeList }) => {
   }
 
   return (
-    <section className="activeSongModal">
-      <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
-        <header>
-          <button onClick={hide}>
-            <SideMenuCross height={20} width={20} />
-          </button>
-        </header>
-        <article>
-          <UpdateSong />
-          <h1>Spotify</h1>
-          <h1>Lyrics</h1>
-        </article>
-        <footer>
-          <button onClick={() => deleteSong(current._id)}>delete song</button>
-        </footer>
+    <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
+      <header className="sidebarHeader">
+        <button onClick={hide}>
+          <SideMenuCross height={20} width={20} />
+        </button>
+      </header>
+      <article>
+        <UpdateSong />
+        <h1>Spotify</h1>
+        <h1>Lyrics</h1>
       </article>
-    </section>
+      <footer>
+        <button onClick={() => deleteSong(current._id)}>delete song</button>
+      </footer>
+    </article>
   )
 }
 
