@@ -11,6 +11,8 @@ import Routes from './routes/routes'
 import { AppModel } from './logic/board/boardAction'
 import { lightTheme, darkTheme } from './utils/colors/colors'
 
+import { getActiveUser } from './logic/auth/authAction'
+
 const App: FC<any> = ({ auth, theme }) => {
   const { id } = auth.user
   const dispatch = useDispatch()
@@ -21,6 +23,10 @@ const App: FC<any> = ({ auth, theme }) => {
     }
     authlocalstorage()
   }, [auth.isAuthenticated, dispatch, id])
+
+  useEffect(() => {
+    dispatch(getActiveUser())
+  }, [dispatch])
 
   useEffect(() => {
     const currentTheme = theme.state === 'light' ? lightTheme : darkTheme

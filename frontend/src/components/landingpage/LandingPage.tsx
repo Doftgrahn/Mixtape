@@ -3,17 +3,20 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Login from '../authentication/login'
+import GoogleButton from '../shared/googleButton/googleButton'
 
 const Landingpage: FC<any> = ({ auth }) => {
   if (auth.isAuthenticated) {
     return <Redirect to="/dashboard" />
   }
+
   return (
     <main className="landingpage">
       <section>
-        <h1>Välkommen till Göran, men också känt som MixTape</h1>
-        Landingpage
-        <Link to="/dashboard">To mixtape</Link>
+        <GoogleButton />
+        <a href="http://localhost:4000/api/users/google" className="link">
+          länk google
+        </a>
         <Login />
       </section>
     </main>

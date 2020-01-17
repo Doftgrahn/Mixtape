@@ -8,6 +8,11 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
   const dispatch = useDispatch()
   const { user } = auth
 
+  let url = 'https://www.mixtape.nu/api/users/logout'
+  if (process.env.NODE_ENV === 'development') {
+    url = 'http://localhost:4000/api/users/logout'
+  }
+
   return (
     <section className={`userProfile sidebar ${isVisible ? 'active' : null}`}>
       <header className="sidebarHeader">
@@ -18,8 +23,11 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
       </header>
       <h2 className="userName">{user.name}</h2>
       <ThemeSwitcher />
-      <button className="logout" onClick={() => dispatch(logoutUser())}>
-        Log Out
+
+      <button className="logout">
+        <a href={url} onClick={() => dispatch(logoutUser())} className="link">
+          Log out
+        </a>
       </button>
     </section>
   )

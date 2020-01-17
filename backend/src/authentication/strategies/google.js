@@ -1,26 +1,53 @@
 import passport from 'passport'
 import passportGoogle from 'passport-google-oauth'
-import { to } from 'await-to-js'
-
-import { getUserByProviderId, createUser } from '../../database/user'
-import { signToken } from '../utils'
-
 const GoogleStrategy = passportGoogle.OAuth2Strategy
 
-const strategy = app => {
-  const strategyOptions = {
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/api/auth/google/callback'
-  }
+const User = require('../UserModel/User')
 
-  const verifyCallback = async (accessToken,refreshToken,profile,done ) => {
-        let [err, user] = await to(getUserByProviderId(profile.id))
-       if (err || user) {  return done(err, user)
-        }
-  passport.use(new GoogleStrategy(strategyOptions, verifyCallback))
-
-  return app
+const strategyOptions = {
+  clientID: process.env.google_client_id,
+  clientSecret: process.env.google_client_secret,
+  callbackURL: '/api/users/google/redirect',
+  proxy: true
 }
 
-export { strategy }
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+})
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user)
+  })
+})
+
+passport.use(
+  new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
+    console.log('hej', profile)
+    User.findOne({ googleId: profile.id })
+      .then(currentUser => {
+        if (currentUser) {
+          return done(null, currentUser)
+        } else {
+          const newUser = new User({
+            name: profile.displayName,
+            googleId: profile.id,
+            avatar: profile.photos,
+            token: accessToken
+          })
+          newUser
+            .save()
+            .then(user => {
+              console.log('new user created', user)
+              done(null, user)
+            })
+            .catch(error => {
+              console.log('error', error)
+            })
+        }
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
+  })
+)

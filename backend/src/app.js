@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
+var cookieSession = require('cookie-session')
 
 const ConnectionToMongodb = require('./mongodb/db')
 
@@ -20,15 +21,23 @@ app.use(favicon(path.join(__dirname, '/../../frontend/build/favicon.ico')))
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 1000,
+    keys: ['hejejejeejeje']
+  })
+)
 app.use(passport.initialize())
-require('./authentication/strategies/passport')(passport)
+app.use(passport.session())
+//require('./authentication/strategies/passport')(passport)
 
 // Connects do Mongodb
 ConnectionToMongodb(mongoose)
 
 //Routes
 app.get('/api', (req, res) => {
-  res.json('hehe')
+  res.json({ hehe: req.user })
 })
 
 app.use('/api/users', users)

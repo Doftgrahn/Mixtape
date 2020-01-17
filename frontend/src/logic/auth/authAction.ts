@@ -82,6 +82,35 @@ export const updatePassword = (userData: any, history: any) => (dispatch: Dispat
     })
 }
 
+export const getActiveUser = () => (dispatch: any) => {
+  axios
+    .get('/api/users/getActiveUser')
+    .then(result => {
+      const { data } = result
+      if (!result.data) return
+      const user: any = {
+        date: data.date,
+        loginCount: data.loginCount,
+        new: data.new,
+        _id: data._id,
+        id: data._id,
+        name: data.name,
+        googleId: data.googleId,
+        avatar: data.avatar,
+        token: data.token
+      }
+
+      dispatch(setCurrentUser(user))
+    })
+    .catch(error => {
+      console.log('error', error)
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    })
+}
+
 // Set logged in user
 export const setCurrentUser = (decoded: string) => {
   return {

@@ -20,7 +20,9 @@
   ],
   "env": {
     "mongo_uri_cloud": "@mongo_uri_cloud",
-    "secret": "@my_secret"
+    "secret": "@my_secret",
+    "google_client_id": "@google_client_id",
+    "google_client_secret": "@google_client_secret"
   },
   "github": {
     "enabled": false
