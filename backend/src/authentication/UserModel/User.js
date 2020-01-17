@@ -30,10 +30,6 @@ const UserSchema = new Schema({
   loginCount: {
     default: 0,
     type: Number
-  },
-  new: {
-    type: Boolean,
-    default: true
   }
 })
 
