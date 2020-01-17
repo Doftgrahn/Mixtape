@@ -10,7 +10,6 @@ import Spinner from '../shared/spinner/spinner'
 const List: FC<any> = ({ history, match, list }) => {
   const { isLoading } = list
   const { title } = match.params
-  console.log(list)
   return (
     <main className="list">
       <ListHeader history={history} title={title} />

@@ -97,7 +97,8 @@ export const getActiveUser = () => (dispatch: any) => {
         name: data.name,
         googleId: data.googleId,
         avatar: data.avatar,
-        token: data.token
+        token: data.token,
+        email: data.email
       }
 
       dispatch(setCurrentUser(user))

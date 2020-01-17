@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion } from '../../logic/board/boardAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'

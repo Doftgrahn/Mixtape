@@ -9,7 +9,6 @@ export const AppModel = () => (dispatch: any, state: any) => {
     .get(`/api/board/getboards/${id}`)
     .then(result => {
       const { data } = result
-
       dispatch(setBoard(data))
       dispatch(IsLoading(false))
     })
@@ -34,7 +33,6 @@ export const addBoard = (board: any) => (dispatch: any) => {
 
 export const deletion = (id: string) => (dispatch: any) => {
   dispatch(deleteBoard(id))
-
   axios
     .delete(`/api/board/deleteboard/${id}`)
     .then((result: any) => {})

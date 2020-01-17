@@ -1,28 +1,21 @@
 import React, { FC, useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 import './styles/App.scss'
 
 import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
 
-import { AppModel } from './logic/board/boardAction'
 import { lightTheme, darkTheme } from './utils/colors/colors'
-
 import { getActiveUser } from './logic/auth/authAction'
 
-const App: FC<any> = ({ auth, theme }) => {
-  const { id } = auth.user
+const App: FC<any> = ({ theme }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (auth.isAuthenticated) {
-      dispatch(AppModel())
-    }
     authlocalstorage()
-  }, [auth.isAuthenticated, dispatch, id])
+  }, [])
 
   useEffect(() => {
     dispatch(getActiveUser())
