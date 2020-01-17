@@ -23,7 +23,6 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
-    console.log('hej', profile)
     User.findOne({ googleId: profile.id })
       .then(currentUser => {
         if (currentUser) {
@@ -33,6 +32,7 @@ passport.use(
             name: profile.displayName,
             googleId: profile.id,
             avatar: profile.photos,
+            email: profile.email,
             token: accessToken
           })
           newUser

@@ -33,11 +33,11 @@ export const addBoard = (board: any) => (dispatch: any) => {
 }
 
 export const deletion = (id: string) => (dispatch: any) => {
+  dispatch(deleteBoard(id))
+
   axios
     .delete(`/api/board/deleteboard/${id}`)
-    .then((result: any) => {
-      dispatch(deleteBoard(id))
-    })
+    .then((result: any) => {})
     .catch((error: any) => console.log('error', error))
 }
 

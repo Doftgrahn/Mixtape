@@ -7,8 +7,14 @@
   min-height: 100vh;
   //background: var(--color-background);
   //color: var(--color-text);
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
 
   & * > {
     min-height: 100vh;
+    overflow: hidden;
   }
 }

@@ -30,7 +30,7 @@ router.get('/getusers', getUsers)
 router.get(
   '/google',
   passport.authenticate('google', {
-    scope: ['profile']
+    scope: ['profile', 'email']
   })
 )
 

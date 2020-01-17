@@ -56,10 +56,11 @@ export const updateListTitle = (data: any) => (dispatch: any) => {
 
 export const deleteListItem = (id: string) => (dispatch: any) => {
   dispatch(isLoading(true))
+  dispatch(deletetion(id))
+
   axios
     .delete(`/api/list/deletelist/${id}`)
     .then(response => {
-      dispatch(deletetion(id))
       dispatch(isLoading(false))
     })
     .catch(error => {
