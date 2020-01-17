@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { connect, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 
 import AddToList from './addtolist/addtoList'
 import ActiveSong from '../activeSong/activeSong'
@@ -17,7 +17,7 @@ const List: FC<any> = ({ history, match, list }) => {
       <div className="list_container">
         <h1>{title}</h1>
         {isLoading ? <Spinner /> : null}
-        {!isLoading ? <AddToList /> : null}
+        <AddToList />
         <ShowList />
       </div>
       <ActiveSong />

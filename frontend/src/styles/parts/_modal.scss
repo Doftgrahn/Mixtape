@@ -18,6 +18,11 @@
     height: 400px;
     width: 800px;
     box-shadow: 5px 5px 5px black;
+    @media screen and (max-width: 800px) {
+      height: auto;
+      width: auto;
+      padding: 10px;
+    }
 
     .modalHeader {
       padding: 20px;

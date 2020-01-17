@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 //import Login from '../authentication/login'
 import GoogleButton from '../shared/googleButton/googleButton'
+import Logo from '../../assets/logo/Logo'
 
 const Landingpage: FC<any> = ({ auth }) => {
   if (auth.isAuthenticated) {
@@ -12,11 +13,16 @@ const Landingpage: FC<any> = ({ auth }) => {
 
   return (
     <main className="landingpage">
-      <section>
-        <GoogleButton />
+      <div className="landing_wrapper">
+        <div className="landing_container">
+          <Logo height={120} width={220} />
+
+          <h1>Mixtape</h1>
+          <GoogleButton />
+        </div>
 
         {/* <Login />*/}
-      </section>
+      </div>
     </main>
   )
 }
