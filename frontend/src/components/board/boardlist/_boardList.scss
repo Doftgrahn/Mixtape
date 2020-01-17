@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0px;
   padding: 0;
 
   li {
@@ -12,6 +11,12 @@
     height: 200px;
     margin: 20px;
     box-shadow: 5px 5px 5px black;
+    @media screen and (max-width: 800px) {
+      height: 100px;
+      width: 120px;
+      margin: 10px;
+      flex: 0 44%;
+    }
 
     a {
       display: block;
