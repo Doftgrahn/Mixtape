@@ -4,6 +4,7 @@ import activeBoardReducer from './activeBoard/activeBoardReducer'
 import activeListReducer from './activeList/activeListReducer'
 import boardReducer from './board/boardReducer'
 import listReducer from './list/listReducer'
+import lyricReducer from './lyrics/lyricsReducer'
 import themeReducer from './theme/themeReducer'
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   activeList: activeListReducer,
   board: boardReducer,
   list: listReducer,
+  lyrics: lyricReducer,
   theme: themeReducer
 })

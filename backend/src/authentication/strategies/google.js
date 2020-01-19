@@ -23,7 +23,7 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
-    User.findOneAndUpdate({ googleId: profile.id }, { $inc: { loginCount: 1 } })
+    User.findOne({ googleId: profile.id })
       .then(currentUser => {
         if (currentUser) {
           return done(null, currentUser)

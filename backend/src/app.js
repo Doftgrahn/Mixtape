@@ -15,13 +15,13 @@ const ConnectionToMongodb = require('./mongodb/db')
 const users = require('./routes/routesUsers')
 const board = require('./routes/routesBoard')
 const list = require('./routes/routesList')
+const lyrics = require('./routes/routeslyrics')
 //MiddleWare
 app.use(express.static(`${__dirname}/../../frontend/build/`))
 app.use(favicon(path.join(__dirname, '/../../frontend/build/favicon.ico')))
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
-
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 1000,
@@ -43,6 +43,7 @@ app.get('/api', (req, res) => {
 app.use('/api/users', users)
 app.use('/api/board', board)
 app.use('/api/list', list)
+app.use('/api/lyrics', lyrics)
 
 app.get('*', function(req, res) {
   res.sendFile('index.html', {

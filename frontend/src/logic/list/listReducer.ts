@@ -1,5 +1,13 @@
 import { PayLoad } from '../types'
-import { GET_LIST, ADD_LIST, IS_LOADING, DELETE_LIST_ITEM, MUTATE_LIST } from './constants'
+import {
+  GET_LIST,
+  ADD_LIST,
+  IS_LOADING,
+  DELETE_LIST_ITEM,
+  MUTATE_LIST,
+  SET_LYRIC
+} from './constants'
+import list from '../../components/list/list'
 
 const initialState: any = {
   list: [],
@@ -29,6 +37,16 @@ export default (state = initialState, action: PayLoad) => {
         list: state.list.map((list: any) => {
           if (list._id === action.payload.id) {
             return { ...list, title: action.payload.title }
+          }
+          return list
+        })
+      }
+    case SET_LYRIC:
+      return {
+        ...state,
+        list: state.list.map((list: any) => {
+          if (list._id === action.payload._id) {
+            return { ...list, lyrics: action.payload.lyrics }
           }
           return list
         })

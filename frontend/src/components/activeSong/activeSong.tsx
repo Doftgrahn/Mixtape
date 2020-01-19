@@ -6,7 +6,9 @@ import { deleteListItem } from '../../logic/list/listAction'
 
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
+import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser'
 
+import Lyrics from './lyrics/lyrics'
 const ActiveSong: FC<any> = ({ activeList }) => {
   const dispatch = useDispatch()
   const { current } = activeList
@@ -24,6 +26,8 @@ const ActiveSong: FC<any> = ({ activeList }) => {
     dispatch(clearAndHide())
   }
 
+  const newText = (text: string) => <p className="lyricText"> {text} </p>
+
   return (
     <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
       <header className="sidebarHeader">
@@ -35,6 +39,8 @@ const ActiveSong: FC<any> = ({ activeList }) => {
         <UpdateSong />
         <h1>Spotify</h1>
         <h1>Lyrics</h1>
+
+        {current.lyrics ? newText(current.lyrics) : <Lyrics />}
       </article>
       <footer>
         <button onClick={() => deleteSong(current._id)}>delete song</button>

@@ -14,6 +14,9 @@ const ListSchema = new Schema({
     type: String,
     default: 'Ny LÅT'
   },
+  lyrics: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now()

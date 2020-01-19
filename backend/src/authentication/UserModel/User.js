@@ -26,10 +26,6 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now()
-  },
-  loginCount: {
-    default: 0,
-    type: Number
   }
 })
 

@@ -1,11 +1,11 @@
 .sidebar {
   z-index: 1;
   background-color: var(--color-sidemenu-background);
-  overflow: hidden;
+  color: var(--color-sidemenu-button);
   display: flex;
   flex-direction: column;
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   transition: 200ms ease-out;
   top: 0;
   bottom: 0;
@@ -60,5 +60,6 @@
 
 .active {
   transform: translateX(0);
+  overflow: auto;
   right: 0;
 }

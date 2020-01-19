@@ -13,7 +13,7 @@ module.exports = function logIn(req, res) {
   if (!isValid) return res.status(400).json(errors)
   const { email, password } = req.body
   // Find user by email
-  User.findOneAndUpdate({ email }, { $inc: { loginCount: 1 } }).then(user => {
+  User.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) return res.status(404).json({ email: 'Email not found' })
 

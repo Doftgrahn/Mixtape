@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   transition: 500ms ease;
   top: 0;
   bottom: 0;
@@ -29,6 +29,9 @@
       border: none;
       text-align: center;
       margin: 0 auto;
+    }
+    .lyricText {
+      white-space: pre-line;
     }
   }
   footer {
