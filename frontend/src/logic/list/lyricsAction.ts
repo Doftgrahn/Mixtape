@@ -10,7 +10,6 @@ export const fetchSetLyric = (url: string, id: string) => (dispatch: any) => {
     .then(song => {
       const { lyrics } = song.data
       // add to actual listc
-      console.log('RESULT WHEN SETTING SONG', lyrics)
       dispatch(setLyric({ lyrics, _id: id }))
       dispatch(isLoading(false))
     })

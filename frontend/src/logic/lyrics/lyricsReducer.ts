@@ -1,4 +1,4 @@
-import { GET_TRACKS, IS_LOADING } from './constants'
+import { GET_TRACKS, LYRIC_IS_LOADING } from './constants'
 
 const initialState = {
   lyrics: [],
@@ -12,7 +12,7 @@ export default (state = initialState, action: any) => {
         ...state,
         lyrics: action.payload
       }
-    case IS_LOADING:
+    case LYRIC_IS_LOADING:
       return {
         ...state,
         isLoading: action.payload

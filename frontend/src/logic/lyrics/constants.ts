@@ -1,2 +1,2 @@
 export const GET_TRACKS = 'GET_TRACKS'
-export const IS_LOADING = 'IS_LOADING'
+export const LYRIC_IS_LOADING = 'LYRIC_IS_LOADING'

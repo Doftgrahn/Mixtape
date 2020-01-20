@@ -15,14 +15,14 @@
     { "src": "/apple-touch-icon.png", "dest": "/frontend/aelpp - touch - icon.png" },
     { "src": "/favicon-32x32.png", "dest": "/frontend/favicon-32x32.png" },
     { "src": "/favicon-16x16.png", "dest": "/frontend/favicon-16x16.png" },
-
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {
     "mongo_uri_cloud": "@mongo_uri_cloud",
     "secret": "@my_secret",
     "google_client_id": "@google_client_id",
-    "google_client_secret": "@google_client_secret"
+    "google_client_secret": "@google_client_secret",
+    "genius_token": "@genius_token"
   },
   "github": {
     "enabled": false

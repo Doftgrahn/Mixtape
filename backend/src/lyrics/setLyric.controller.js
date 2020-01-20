@@ -8,10 +8,11 @@ module.exports = async function setLyric(req, res) {
 
   const { lyrics } = await Genius.getLyrics(url)
 
-  Playlist.findOneAndUpdate({ _id }, { lyrics })
+  console.log(lyrics)
+  Playlist.findOneAndUpdate({ _id }, { lyrics }, { new: true })
     .then(result => {
-      res.status(200).json(result)
-      console.log('RESULT', result)
+      res.status(200).json({ lyrics })
+      console.log('Success sett lyric')
     })
     .catch(error => {
       res.json({ error: error })

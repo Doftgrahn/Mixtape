@@ -1,4 +1,4 @@
-import { GET_TRACKS, IS_LOADING } from './constants'
+import { GET_TRACKS, LYRIC_IS_LOADING } from './constants'
 import Axios from 'axios'
 
 export const fetchgetTracks = (song: string) => (dispatch: any) => {
@@ -23,6 +23,6 @@ const getTracks = (tracks: any) => ({
 })
 
 const isLoading = (loading: boolean) => ({
-  type: IS_LOADING,
+  type: LYRIC_IS_LOADING,
   payload: loading
 })
