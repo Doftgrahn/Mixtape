@@ -2,3 +2,5 @@ Mixtape - Create your own setlists for your concert, link them together with Spo
 
 
 ![alt text](https://raw.githubusercontent.com/Doftgrahn/goran/blob/master/design/colors.png)
+
+![myimage-alt-tag](https://raw.githubusercontent.com/Doftgrahn/goran/blob/master/design/colors.png)
