@@ -1,4 +1,4 @@
-import { IS_ACTIVE, SET_ACTIVE_LIST, CLEAR, MUTATE_ACTIVE_LIST } from './constants'
+import { IS_ACTIVE, SET_ACTIVE_LIST, CLEAR, MUTATE_ACTIVE_LIST, SET_LYRIC } from './constants'
 import { PayLoad } from '../types'
 
 export const activeSong = (id: string) => (dispatch: any, state: any) => {
@@ -23,4 +23,9 @@ export const setIfActive = (isActive: boolean): PayLoad => ({
 
 export const clearAndHide = () => ({
   type: CLEAR
+})
+
+export const setLyricInActiveSong = (song: string) => ({
+  type: SET_LYRIC,
+  payload: song
 })

@@ -3,6 +3,8 @@ import Axios from 'axios'
 import { SET_LYRIC } from './constants'
 import { isLoading } from './listAction'
 
+import { setLyricInActiveSong } from '../activeList/activeListAction'
+
 export const fetchSetLyric = (url: string, id: string) => (dispatch: any) => {
   dispatch(isLoading(true))
 
@@ -10,7 +12,10 @@ export const fetchSetLyric = (url: string, id: string) => (dispatch: any) => {
     .then(song => {
       const { lyrics } = song.data
       // add to actual listc
-      dispatch(setLyric({ lyrics, _id: id }))
+
+      console.log(lyrics)
+      dispatch(setLyric({ lyrics: lyrics, _id: id }))
+      dispatch(setLyricInActiveSong(lyrics))
       dispatch(isLoading(false))
     })
     .catch(error => {

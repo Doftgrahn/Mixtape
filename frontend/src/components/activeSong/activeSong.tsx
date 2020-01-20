@@ -6,7 +6,6 @@ import { deleteListItem } from '../../logic/list/listAction'
 
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
-import { activeSong } from '../../logic/activeList/activeListAction'
 
 import Lyrics from './lyrics/lyrics'
 const ActiveSong: FC<any> = ({ activeSong }) => {
@@ -25,8 +24,7 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
     dispatch(clearAndHide())
   }
 
-  const newText = (text: string) => <p className="lyricText"> {text} </p>
-
+  console.log(activeSong)
   return (
     <article className={`activeSong sidebar ${activeSong._id ? 'active' : null}`}>
       <header className="sidebarHeader">
@@ -39,7 +37,7 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
         <h1>Spotify</h1>
         <h1>Lyrics</h1>
 
-        {activeSong.lyrics ? newText(activeSong.lyrics) : <Lyrics />}
+        {activeSong.lyrics ? <p className="lyricText"> {activeSong.lyrics} </p> : <Lyrics />}
       </article>
       <footer>
         <button onClick={() => deleteSong(activeSong._id)}>delete song</button>
