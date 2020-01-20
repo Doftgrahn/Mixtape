@@ -1,13 +1,11 @@
 import React, { FC, useState } from 'react'
-import BoardSettings from '../../boardSettings/boardSettings'
-
 import { useHistory } from 'react-router-dom'
 
 import Logo from '../../../assets/logo/Logo'
-
+import BoardSettings from '../../boardSettings/boardSettings'
 import Account from '../../../assets/account/account'
 
-const ListHeader: FC<any> = ({ title }) => {
+const ListHeader: FC<any> = () => {
   const history = useHistory()
 
   const [isVisible, setIsVisible] = useState(false)

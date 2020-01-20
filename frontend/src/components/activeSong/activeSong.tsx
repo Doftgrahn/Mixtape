@@ -7,7 +7,8 @@ import { deleteListItem } from '../../logic/list/listAction'
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
-import Lyrics from './lyrics/lyrics'
+import Trash from '../../assets/trash/trash'
+
 const ActiveSong: FC<any> = ({ activeSong }) => {
   const dispatch = useDispatch()
 
@@ -33,13 +34,16 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
       </header>
       <article>
         <UpdateSong />
-        <h1>Spotify</h1>
-        <h1>Lyrics</h1>
-
-        {activeSong.lyrics ? <p className="lyricText"> {activeSong.lyrics} </p> : <Lyrics />}
+        <div className="socialBtns">
+          <button>+ add lyric</button>
+          <button>+ add from spotify</button>
+        </div>
+        <button className="deleteSongBtn" onClick={() => deleteSong(activeSong._id)}>
+          <Trash height={50} width={50} />
+        </button>
       </article>
       <footer>
-        <button onClick={() => deleteSong(activeSong._id)}>delete song</button>
+        
       </footer>
     </article>
   )

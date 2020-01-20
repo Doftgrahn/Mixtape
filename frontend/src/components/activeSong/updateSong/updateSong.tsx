@@ -44,7 +44,7 @@ const UpdateSong: FC<any> = ({ activeList }) => {
   return (
     <div className="updateSong">
       <h1
-        className={`${isEditingTitle ? 'hideTitle' : null}`}
+        className={`${isEditingTitle ? 'hideTitle' : ''}`}
         onClick={() => setIsEditingTitle(!isEditingTitle)}>
         {updateTitle || current.title}
       </h1>
