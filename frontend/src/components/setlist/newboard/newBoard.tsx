@@ -1,33 +1,23 @@
-import React, { useState, FC } from 'react'
-import NewBoardModal from '../newboardmodal/newboardModal'
+import React, { FC } from 'react'
+
+import { useDispatch } from 'react-redux'
+import { showSetlistModal } from '../../../logic/modal/modalAction'
 
 const NewBoard: FC<any> = () => {
-  const [isVisible, setIsVisible] = useState(false)
-
-  const showModal = () => setIsVisible(true)
-  const hideModal = () => setIsVisible(false)
-
-  const ifModalVisible = () => {
-    if (isVisible) {
-      return <NewBoardModal hideModal={hideModal} isVisible={isVisible} />
-    }
-    return null
-  }
+  const dispatch = useDispatch()
+  const showModal = () => dispatch(showSetlistModal())
 
   return (
-    <>
-      <li className="newSetlist boardlist">
-        <button className="addSetlist" onClick={showModal}>
-          <div className="text">
-            <div className="plusWrapper">
-              <span>+</span>
-            </div>
-            <h3>Add setlist</h3>
+    <li className="newSetlist boardlist">
+      <button className="addSetlist" onClick={showModal}>
+        <div className="text">
+          <div className="plusWrapper">
+            <span>+</span>
           </div>
-        </button>
-      </li>
-      {ifModalVisible()}
-    </>
+          <h3>Add setlist</h3>
+        </div>
+      </button>
+    </li>
   )
 }
 

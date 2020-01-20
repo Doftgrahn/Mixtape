@@ -6,6 +6,7 @@ import setlistReducer from './setlist/setlistReducer'
 import listReducer from './list/listReducer'
 import lyricReducer from './lyrics/lyricsReducer'
 import themeReducer from './theme/themeReducer'
+import modalReducer from './modal/modalReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   setlist: setlistReducer,
   list: listReducer,
   lyrics: lyricReducer,
-  theme: themeReducer
+  theme: themeReducer,
+  modal: modalReducer
 })

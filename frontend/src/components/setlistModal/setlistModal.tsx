@@ -1,12 +1,14 @@
 import React, { FC, useState, useEffect } from 'react'
-import { addBoard } from '../../../logic/setlist/setlistAction'
+import { addBoard } from '../../logic/setlist/setlistAction'
 import { useDispatch, connect } from 'react-redux'
 
-import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
+import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
-import Close from '../../../assets/cross/close'
+import Close from '../../assets/cross/close'
 
-const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
+import { closeSetlistModal } from '../../logic/modal/modalAction'
+
+const SetlistModal: FC<any> = ({ auth, modal }) => {
   const dispatch = useDispatch()
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const [title, setTitle] = useState('')
@@ -14,14 +16,14 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
   useEffect(() => {
     const onPressEscape = (event: any) => {
       if (event.keyCode === 27) {
-        hideModal()
+        dispatch(closeSetlistModal())
       }
     }
     window.addEventListener('keydown', onPressEscape)
     return () => {
       window.removeEventListener('keydown', onPressEscape)
     }
-  }, [hideModal])
+  }, [dispatch])
 
   const createBoard = () => {
     if (title) {
@@ -31,7 +33,7 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
       }
       dispatch(addBoard(data))
       setTitle('')
-      hideModal()
+      dispatch(closeSetlistModal())
     }
   }
 
@@ -42,13 +44,13 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
   }
 
   const exitModal = () => {
-    hideModal()
+    dispatch(closeSetlistModal())
     setIsComponentVisible(false)
   }
 
   return (
     <main className="modal newBoardModal">
-      {isComponentVisible && isVisible ? (
+      {isComponentVisible && modal ? (
         <article className="modalContainer" ref={ref}>
           <header className="modalHeader">
             <button onClick={exitModal}>
@@ -72,7 +74,7 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
           </div>
         </article>
       ) : (
-        hideModal()
+        dispatch(closeSetlistModal()) && null
       )}
     </main>
   )
@@ -80,7 +82,7 @@ const BoardModal: FC<any> = ({ auth, isVisible, hideModal }) => {
 
 const mapStateToProps = (state: any) => ({
   auth: state.auth,
-  allBoards: state.board
+  modal: state.modal.setlistModal
 })
 
-export default connect(mapStateToProps)(BoardModal)
+export default connect(mapStateToProps)(SetlistModal)

@@ -1,26 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
-import AddToListModal from '../addtoListModal/addToListModal'
-const NewBoard: FC<any> = () => {
-  const [isVisible, setIsVisible] = useState(false)
-
-  const showModal = () => setIsVisible(true)
-  const hideModal = () => setIsVisible(false)
-  const ifModalVisible = () => {
-    if (isVisible) {
-      return <AddToListModal hideModal={hideModal} isVisible={isVisible} />
-    }
-    return null
-  }
+import { useDispatch } from 'react-redux'
+import { showPlaylistModal } from '../../../logic/modal/modalAction'
+const NewSong: FC<any> = () => {
+  const dispatch = useDispatch()
 
   return (
-    <>
-      <button className="addPlaylistBtn" onClick={showModal}>
-        <h3>+ Add a song</h3>
-      </button>
-      {ifModalVisible()}
-    </>
+    <button className="addPlaylistBtn" onClick={() => dispatch(showPlaylistModal())}>
+      <h3>+ Add a song</h3>
+    </button>
   )
 }
 
-export default NewBoard
+export default NewSong

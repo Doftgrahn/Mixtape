@@ -1,46 +1,53 @@
 import React, { FC, useState, useEffect } from 'react'
-import { addToList } from '../../../logic/list/listAction'
-import { useDispatch } from 'react-redux'
+import { addToList } from '../../logic/list/listAction'
+import { useDispatch, connect } from 'react-redux'
 
-import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
+import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
-import Close from '../../../assets/cross/close'
+import Close from '../../assets/cross/close'
 
-const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
+import { closePlaylistModal } from '../../logic/modal/modalAction'
+
+const PlaylistModal: FC<any> = ({ modal }) => {
   const dispatch = useDispatch()
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   const [title, setTitle] = useState('')
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
       if (event.keyCode === 27) {
-        hideModal()
+        dispatch(closePlaylistModal())
       }
     }
     window.addEventListener('keydown', onPressEscape)
     return () => {
       window.removeEventListener('keydown', onPressEscape)
     }
-  }, [hideModal])
+  }, [dispatch])
 
   const addSong = (): void => {
     if (title) {
       dispatch(addToList(title))
       setTitle('')
-      hideModal()
+      dispatch(closePlaylistModal())
       setIsComponentVisible(false)
     }
+  }
+
+  const exitModal = () => {
+    dispatch(closePlaylistModal())
+    setIsComponentVisible(false)
   }
 
   const pressEnter = (e: any) => (e.key === 'Enter' ? addSong() : null)
 
   return (
     <main className="modal">
-      {isComponentVisible && isVisible ? (
+      {isComponentVisible && modal ? (
         <article ref={ref} className="modalContainer">
           <header className="modalHeader">
-            <button onClick={hideModal}>
+            <button onClick={exitModal}>
               <Close width={20} height={20} />
             </button>
           </header>
@@ -55,14 +62,20 @@ const AddToListModal: FC<any> = ({ isVisible, hideModal }) => {
               autoFocus
             />
 
-            <button onClick={addSong}>Add song!</button>
+            <button tabIndex={0} onClick={addSong}>
+              Add song!
+            </button>
           </div>
         </article>
       ) : (
-        hideModal()
+        dispatch(closePlaylistModal()) && null
       )}
     </main>
   )
 }
 
-export default AddToListModal
+const mapStateToProps = (state: any) => ({
+  modal: state.modal.playlistModal
+})
+
+export default connect(mapStateToProps)(PlaylistModal)

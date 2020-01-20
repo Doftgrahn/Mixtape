@@ -6,7 +6,9 @@ import BoardHeader from './setlist/boardHeader/boardHeader'
 
 import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
 
-const Setlist: FC<any> = () => {
+import SetlistModal from './setlistModal/setlistModal'
+
+const Setlist: FC<any> = ({ modal }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -15,18 +17,23 @@ const Setlist: FC<any> = () => {
       dispatch(clearSetlist())
     }
   }, [dispatch])
+
+  const setListModal = modal ? <SetlistModal /> : null
+
   return (
     <main className="board">
       <BoardHeader />
       <section className="container">
         <BoardList />
       </section>
+      {setListModal}
     </main>
   )
 }
 
 const mapStateToProps = (state: any) => ({
-  allBoards: state.board
+  allBoards: state.board,
+  modal: state.modal.setlistModal
 })
 
 export default connect(mapStateToProps)(Setlist)
