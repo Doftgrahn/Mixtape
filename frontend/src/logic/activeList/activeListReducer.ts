@@ -1,4 +1,10 @@
-import { SET_ACTIVE_LIST, IS_ACTIVE, CLEAR, MUTATE_ACTIVE_LIST, SET_LYRIC } from './constants'
+import {
+  SET_ACTIVE_LIST,
+  IS_ACTIVE,
+  CLEAR,
+  MUTATE_ACTIVE_LIST,
+  SET_ACTIVE_LYRIC
+} from './constants'
 
 const initialState = {
   current: {},
@@ -25,10 +31,11 @@ export default (state = initialState, action: any) => {
           title: action.payload
         }
       }
-    case SET_LYRIC:
+    case SET_ACTIVE_LYRIC:
+      console.log(action.payload)
       return {
         ...state,
-        current: { ...state.current, lyrics: action.payload.lyrics }
+        current: { ...state.current, lyrics: action.payload }
       }
 
     case CLEAR:

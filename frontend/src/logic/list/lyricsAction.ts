@@ -11,9 +11,6 @@ export const fetchSetLyric = (url: string, id: string) => (dispatch: any) => {
   Axios.post('/api/lyrics/setLyric', { url, _id: id })
     .then(song => {
       const { lyrics } = song.data
-      // add to actual listc
-
-      console.log(lyrics)
       dispatch(setLyric({ lyrics: lyrics, _id: id }))
       dispatch(setLyricInActiveSong(lyrics))
       dispatch(isLoading(false))

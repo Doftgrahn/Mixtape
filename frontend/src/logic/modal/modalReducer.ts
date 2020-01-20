@@ -1,6 +1,5 @@
 import { TOOGLE_PLAYLIST_MODAL, TOGGLE_SETLIST_MODAL } from './constants'
 import { PayLoad } from '../types'
-import { stat } from 'fs'
 
 const initialState = {
   setlistModal: false,

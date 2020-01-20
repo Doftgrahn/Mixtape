@@ -24,7 +24,6 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
     dispatch(clearAndHide())
   }
 
-  console.log(activeSong)
   return (
     <article className={`activeSong sidebar ${activeSong._id ? 'active' : null}`}>
       <header className="sidebarHeader">
