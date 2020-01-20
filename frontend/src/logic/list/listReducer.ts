@@ -7,7 +7,6 @@ import {
   MUTATE_LIST,
   SET_LYRIC
 } from './constants'
-import list from '../../components/list/list'
 
 const initialState: any = {
   list: [],

@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import BoardList from './boardlist/boardlist'
-import BoardHeader from './boardHeader/boardHeader'
+import BoardList from './board/boardlist/boardlist'
+import BoardHeader from './board/boardHeader/boardHeader'
 
-import { AppModel, clearSetlist } from '../../logic/board/boardAction'
+import { AppModel, clearSetlist } from '../logic/board/boardAction'
 
-const Board: FC<any> = ({ allBoards }) => {
+const Setlist: FC<any> = ({ allBoards }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const mapStateToProps = (state: any) => ({
   allBoards: state.board
 })
 
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps)(Setlist)

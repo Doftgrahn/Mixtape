@@ -6,13 +6,13 @@ import { RoutesInterface } from './types'
 
 import PrivateRoute from './privateRoute'
 
-import Landingpage from '../components/landingpage/LandingPage'
-import MixTape from '../components/MixTape'
+import Landingpage from '../components/LandingPage'
 import Register from '../components/authentication/Register'
 import ForgotPassword from '../components/authentication/ForgotPassword'
 import UpdatePassword from '../components/authentication/UpdatePassword'
 import NotFound from '../components/shared/NotFound'
-import List from '../components/list/list'
+import Setlist from '../components/Setlist'
+import Playlist from '../components/Playlist'
 
 const publicRoutes: RoutesInterface[] = [
   { name: 'home', path: '/', component: Landingpage, isExact: true },
@@ -23,8 +23,8 @@ const publicRoutes: RoutesInterface[] = [
 ]
 
 const privateRoutes: RoutesInterface[] = [
-  { name: 'mixtape', path: '/dashboard', component: MixTape, isExact: true },
-  { name: 'list', path: '/dashboard/:title', component: List, isExact: true }
+  { name: 'mixtape', path: '/dashboard', component: Setlist, isExact: true },
+  { name: 'list', path: '/dashboard/:title', component: Playlist, isExact: true }
 ]
 
 const Routes: FC<{}> = () => {
