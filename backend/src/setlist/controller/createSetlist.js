@@ -1,7 +1,7 @@
 const User = require('../../authentication/UserModel/User')
-const Board = require('../boardModel/board')
+const Setlist = require('../setlistModel/setlist')
 
-module.exports = function createBoard(req, res) {
+module.exports = function createSetlist(req, res) {
   const { userId, title } = req.body
 
   User.findOne({ _id: userId })
@@ -9,7 +9,7 @@ module.exports = function createBoard(req, res) {
       if (!user)
         res.json({ error: 'Could not find user, that problably means you are not logged in.' })
 
-      const newBoard = new Board({
+      const newBoard = new Setlist({
         userId: userId,
         title: title
       })
@@ -18,5 +18,7 @@ module.exports = function createBoard(req, res) {
         .then(user => res.json(user))
         .catch(() => res.status(500).json({ error: 'Could not create board.' }))
     })
-    .catch(e => console.log(e))
+    .catch(e => {
+      res.status(404).json({ error: e })
+    })
 }

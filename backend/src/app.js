@@ -13,8 +13,8 @@ var cookieSession = require('cookie-session')
 const ConnectionToMongodb = require('./mongodb/db')
 
 const users = require('./routes/routesUsers')
-const board = require('./routes/routesBoard')
-const list = require('./routes/routesList')
+const setlist = require('./routes/routesSetlist')
+const playlist = require('./routes/routesPlaylist')
 const lyrics = require('./routes/routeslyrics')
 //MiddleWare
 app.use(express.static(`${__dirname}/../../frontend/build/`))
@@ -41,8 +41,8 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/users', users)
-app.use('/api/board', board)
-app.use('/api/list', list)
+app.use('/api/setlist', setlist)
+app.use('/api/playlist', playlist)
 app.use('/api/lyrics', lyrics)
 
 app.get('*', function(req, res) {

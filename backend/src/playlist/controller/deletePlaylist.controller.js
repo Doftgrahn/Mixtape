@@ -1,7 +1,7 @@
-const List = require('../listModel/listModel')
-module.exports = function deleteListController(req, res) {
+const Playlist = require('../playlistModel/listModel')
+module.exports = function deletePlaylist(req, res) {
   const { id } = req.params
-  List.deleteOne({ _id: id })
+  Playlist.deleteOne({ _id: id })
     .then(result => {
       res.status(200).json({ success: 'deletion sucess', result })
     })

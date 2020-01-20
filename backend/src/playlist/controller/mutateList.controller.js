@@ -1,8 +1,8 @@
-const List = require('../listModel/listModel')
+const Playlist = require('../playlistModel/listModel')
 
-module.exports = function mutateList(req, res) {
+module.exports = function mutatePlaylist(req, res) {
   const { id, title } = req.body
-  List.findOneAndUpdate({ _id: id }, { title: title })
+  Playlist.findOneAndUpdate({ _id: id }, { title: title })
     .then(result => {
       console.log(result)
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const ListSchema = new Schema({
+const PlaylistSchema = new Schema({
   boardId: {
     type: String,
     required: true
@@ -23,6 +23,6 @@ const ListSchema = new Schema({
   }
 })
 
-const List = mongoose.model('list', ListSchema)
+const Playlist = mongoose.model('playlist', PlaylistSchema)
 
-module.exports = List
+module.exports = Playlist

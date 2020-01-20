@@ -6,7 +6,7 @@ export const fetchSongList = () => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
   dispatch(isLoading(true))
   axios
-    .get(`/api/list/getlist/${activeBoard}`)
+    .get(`/api/playlist/getplaylist/${activeBoard}`)
     .then(result => {
       const { data } = result
       dispatch(getList(data))
@@ -23,7 +23,7 @@ export const addToList = (title: any) => (dispatch: any, state: any) => {
   dispatch(isLoading(true))
   const add = { activeBoard, id, title }
   axios
-    .post('/api/list/addlist', add)
+    .post('/api/playlist/addplaylist', add)
     .then(response => {
       const { data } = response
       dispatch(addList(data))
@@ -43,7 +43,7 @@ export const updateListTitle = (data: any) => (dispatch: any) => {
   }
   dispatch(mutateList(update))
   axios
-    .put('/api/list/mutatelist', update)
+    .put('/api/playlist/mutateplaylist', update)
     .then(respose => {
       const { data } = respose
       dispatch(setCurrentSong(data))
@@ -59,7 +59,7 @@ export const deleteListItem = (id: string) => (dispatch: any) => {
   dispatch(deletetion(id))
 
   axios
-    .delete(`/api/list/deletelist/${id}`)
+    .delete(`/api/playlist/deleteplaylist/${id}`)
     .then(response => {
       dispatch(isLoading(false))
     })

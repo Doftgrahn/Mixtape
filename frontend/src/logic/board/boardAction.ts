@@ -6,7 +6,7 @@ export const AppModel = () => (dispatch: any, state: any) => {
   const { id } = state().auth.user
   dispatch(IsLoading(true))
   axios
-    .get(`/api/board/getboards/${id}`)
+    .get(`/api/setlist/getsetlists/${id}`)
     .then(result => {
       const { data } = result
       dispatch(setBoard(data))
@@ -22,7 +22,7 @@ export const addBoard = (board: any) => (dispatch: any) => {
   }
   dispatch(IsLoading(true))
   axios
-    .post('/api/board/newboard', data)
+    .post('/api/setlist/newsetlist', data)
     .then(response => {
       const { data } = response
       dispatch(setBoard(data))
@@ -34,7 +34,7 @@ export const addBoard = (board: any) => (dispatch: any) => {
 export const deletion = (id: string) => (dispatch: any) => {
   dispatch(deleteBoard(id))
   axios
-    .delete(`/api/board/deleteboard/${id}`)
+    .delete(`/api/setlist/deletesetlist/${id}`)
     .then((result: any) => {})
     .catch((error: any) => console.log('error', error))
 }

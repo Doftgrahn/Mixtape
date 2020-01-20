@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const BoardSchema = new Schema({
+const SetlistSchema = new Schema({
   userId: {
     type: String,
     required: true
@@ -21,6 +21,6 @@ const BoardSchema = new Schema({
   }
 })
 
-const Board = mongoose.model('board', BoardSchema)
+const Setlist = mongoose.model('setlists', SetlistSchema)
 
-module.exports = Board
+module.exports = Setlist
