@@ -6,12 +6,11 @@ import { deleteListItem } from '../../logic/list/listAction'
 
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
-import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser'
+import { activeSong } from '../../logic/activeList/activeListAction'
 
 import Lyrics from './lyrics/lyrics'
-const ActiveSong: FC<any> = ({ activeList }) => {
+const ActiveSong: FC<any> = ({ activeSong }) => {
   const dispatch = useDispatch()
-  const { current } = activeList
 
   useEffect(() => {
     return () => {
@@ -29,7 +28,7 @@ const ActiveSong: FC<any> = ({ activeList }) => {
   const newText = (text: string) => <p className="lyricText"> {text} </p>
 
   return (
-    <article className={`activeSong sidebar ${current._id ? 'active' : null}`}>
+    <article className={`activeSong sidebar ${activeSong._id ? 'active' : null}`}>
       <header className="sidebarHeader">
         <button onClick={hide}>
           <SideMenuCross height={20} width={20} />
@@ -40,17 +39,17 @@ const ActiveSong: FC<any> = ({ activeList }) => {
         <h1>Spotify</h1>
         <h1>Lyrics</h1>
 
-        {current.lyrics ? newText(current.lyrics) : <Lyrics />}
+        {activeSong.lyrics ? newText(activeSong.lyrics) : <Lyrics />}
       </article>
       <footer>
-        <button onClick={() => deleteSong(current._id)}>delete song</button>
+        <button onClick={() => deleteSong(activeSong._id)}>delete song</button>
       </footer>
     </article>
   )
 }
 
 const mapStateToProps = (state: any) => ({
-  activeList: state.activeList
+  activeSong: state.activeList.current
 })
 
 export default connect(mapStateToProps)(ActiveSong)

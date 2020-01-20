@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
 import { fetchSongList } from '../../../logic/list/listAction'
-import { setCurrentSong } from '../../../logic/activeList/activeListAction'
+import { activeSong } from '../../../logic/activeList/activeListAction'
 
 const ShowList: FC<any> = ({ playlist }) => {
   const { list } = playlist
@@ -14,14 +14,14 @@ const ShowList: FC<any> = ({ playlist }) => {
     dispatch(fetchSongList())
   }, [dispatch])
 
-  const setActiveSong = (id: string) => dispatch(setCurrentSong(id))
+  const setActiveSong = (id: string) => dispatch(activeSong(id))
 
   const renderPlaylist = list.map((list: any) => (
     <li key={list._id}>
       <div className="song">
         <h3>{list.title}</h3>
       </div>
-      <button onClick={() => setActiveSong(list)}>Edit / More info</button>
+      <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
     </li>
   ))
 

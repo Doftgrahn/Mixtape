@@ -1,8 +1,9 @@
 import { IS_ACTIVE, SET_ACTIVE_LIST, CLEAR, MUTATE_ACTIVE_LIST } from './constants'
 import { PayLoad } from '../types'
 
-export const activeSong = (song: any) => (dispatch: any, state: any) => {
-  dispatch(setCurrentSong(song))
+export const activeSong = (id: string) => (dispatch: any, state: any) => {
+  const currentSongFromState = state().list.list.find((x: any) => x._id === id)
+  dispatch(setCurrentSong(currentSongFromState))
 }
 
 export const setCurrentSong = (song: any): PayLoad => ({
