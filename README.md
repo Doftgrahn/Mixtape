@@ -6,4 +6,3 @@ Mixtape - Create your own setlists for your concert, link them together with Spo
 
 
 
-https://raw.githubusercontent.com/Doftgrahn/goran/master/design/Screenshot%202020-01-20%20at%2015.39.52.png
