@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import GoogleButton from './shared/googleButton/googleButton'
 import Logo from './../assets/logo/Logo'
 
-const Landingpage: FC<any> = ({ auth }) => {
+import { LandingInterface } from '../types'
+
+const Landingpage: FC<LandingInterface> = ({ auth }) => {
   if (auth) {
     return <Redirect to="/dashboard" />
   }

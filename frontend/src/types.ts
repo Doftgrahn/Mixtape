@@ -1,8 +1,15 @@
 import { RouteComponentProps } from 'react-router-dom'
 import { AuthState } from './logic/types'
-import { BoardInterface } from './logic/types'
 
-export interface MixtapeProps {
+interface MatchParams {
+  title: string
+}
+
+export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
   auth: AuthState
-  allBoards: BoardInterface
+  list: any
+}
+
+export interface LandingInterface {
+  auth: AuthState
 }

@@ -7,12 +7,15 @@ import ShowList from './playlist/showlist/showList'
 import ListHeader from './playlist/listHeader/listHeader'
 import Spinner from './shared/spinner/spinner'
 
-const Playlist: FC<any> = ({ history, match, list }) => {
+import { PlaylistInterface } from '../types'
+
+const Playlist: FC<PlaylistInterface> = ({ match, list }) => {
   const { isLoading } = list
   const { title } = match.params
+
   return (
     <main className="list">
-      <ListHeader history={history} title={title} />
+      <ListHeader title={title} />
       <div className="list_container">
         <h1>{title}</h1>
         {isLoading ? <Spinner /> : null}
@@ -25,7 +28,6 @@ const Playlist: FC<any> = ({ history, match, list }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
-  activeBoard: state.activeBoard,
   list: state.list
 })
 
