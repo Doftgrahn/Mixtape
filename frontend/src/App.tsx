@@ -28,7 +28,6 @@ const App: FC<any> = ({ theme }) => {
       document.documentElement.style.setProperty(key, value)
     })
   }, [theme.state])
-  console.log('variable', process.env)
 
   return (
     <div className="App">

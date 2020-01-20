@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import BoardList from './board/boardlist/boardlist'
-import BoardHeader from './board/boardHeader/boardHeader'
+import BoardList from './setlist/boardlist/boardlist'
+import BoardHeader from './setlist/boardHeader/boardHeader'
 
 import { AppModel, clearSetlist } from '../logic/board/boardAction'
 
-const Setlist: FC<any> = ({ allBoards }) => {
+const Setlist: FC<any> = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
