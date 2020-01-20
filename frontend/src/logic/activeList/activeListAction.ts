@@ -10,6 +10,7 @@ import { PayLoad } from '../types'
 export const activeSong = (id: string) => (dispatch: any, state: any) => {
   const currentSongFromState = state().list.list.find((x: any) => x._id === id)
   dispatch(setCurrentSong(currentSongFromState))
+  dispatch(setIfActive(true))
 }
 
 export const setCurrentSong = (song: any): PayLoad => ({

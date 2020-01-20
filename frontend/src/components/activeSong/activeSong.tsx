@@ -9,14 +9,11 @@ import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
 import Trash from '../../assets/trash/trash'
 
-const ActiveSong: FC<any> = ({ activeSong }) => {
+const ActiveSong: FC<any> = ({ currentsong }) => {
   const dispatch = useDispatch()
+  const { current, isActive } = currentsong
 
-  useEffect(() => {
-    return () => {
-      //dispatch(clearAndHide())
-    }
-  }, [dispatch])
+  console.log(current)
 
   const hide = () => dispatch(clearAndHide())
 
@@ -25,8 +22,13 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
     dispatch(clearAndHide())
   }
 
+  const lyricModal = () => {
+    dispatch(showLyricModal())
+    dispatch(clearAndHide())
+  }
+
   return (
-    <article className={`activeSong sidebar ${activeSong._id ? 'active' : null}`}>
+    <article className={`activeSong sidebar ${isActive ? 'active' : null}`}>
       <header className="sidebarHeader">
         <button onClick={hide}>
           <SideMenuCross height={20} width={20} />
@@ -35,10 +37,10 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
       <article>
         <UpdateSong />
         <div className="socialBtns">
-          <button onClick={() => dispatch(showLyricModal())}>+ add lyric</button>
+          <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
           <button>+ add from spotify</button>
         </div>
-        <button className="deleteSongBtn" onClick={() => deleteSong(activeSong._id)}>
+        <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />
         </button>
       </article>
@@ -48,7 +50,7 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  activeSong: state.activeList.current
+  currentsong: state.activeList
 })
 
 export default connect(mapStateToProps)(ActiveSong)

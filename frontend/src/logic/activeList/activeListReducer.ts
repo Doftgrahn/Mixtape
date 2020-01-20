@@ -41,7 +41,6 @@ export default (state = initialState, action: any) => {
     case CLEAR:
       return {
         ...state,
-        current: '',
         isActive: false
       }
 

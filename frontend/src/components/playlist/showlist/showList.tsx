@@ -7,6 +7,7 @@ import { fetchSongList } from '../../../logic/list/listAction'
 import { activeSong } from '../../../logic/activeList/activeListAction'
 
 import Paper from '../../../assets/paper/paper'
+import { showLyricModal } from '../../../logic/modal/modalAction'
 
 const ShowList: FC<any> = ({ playlist }) => {
   const { list } = playlist
@@ -24,7 +25,11 @@ const ShowList: FC<any> = ({ playlist }) => {
         <h3>{list.title}</h3>
       </div>
       <div className="edit">
-        {list.lyrics ? <Paper height={20} width={20} /> : null}
+        {list.lyrics ? (
+          <button onClick={() => dispatch(showLyricModal())}>
+            <Paper height={20} width={20} />
+          </button>
+        ) : null}
         <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
       </div>
     </li>
