@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { deletion } from '../../logic/board/boardAction'
+import { deletion } from '../../logic/setlist/setlistAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
 const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {

@@ -10,13 +10,13 @@ import NewBoard from '../newboard/newBoard'
 
 import Spinner from '../../shared/spinner/spinner'
 
-const BoardList: FC<any> = ({ allBoards }) => {
-  const { loading } = allBoards
+const BoardList: FC<any> = ({ setlist }) => {
+  const { loading } = setlist
   const dispatch = useDispatch()
 
   const setActiveBoard = (id: string): any => dispatch(activeBoard(id))
 
-  const renderMyBoards = allBoards.boards.map((board: BoardInterface): any => (
+  const renderMyBoards = setlist.boards.map((board: BoardInterface): any => (
     <li key={board._id}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board._id)} to={`/dashboard/${board.title}`}>
         <h3>{board.title}</h3>
@@ -34,7 +34,7 @@ const BoardList: FC<any> = ({ allBoards }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  allBoards: state.board
+  setlist: state.setlist
 })
 
 export default connect(mapStateToProps)(BoardList)

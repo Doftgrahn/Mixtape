@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import BoardList from './setlist/boardlist/boardlist'
 import BoardHeader from './setlist/boardHeader/boardHeader'
 
-import { AppModel, clearSetlist } from '../logic/board/boardAction'
+import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
 
 const Setlist: FC<any> = () => {
   const dispatch = useDispatch()

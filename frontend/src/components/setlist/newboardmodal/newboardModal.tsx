@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { addBoard } from '../../../logic/board/boardAction'
+import { addBoard } from '../../../logic/setlist/setlistAction'
 import { useDispatch, connect } from 'react-redux'
 
 import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'

@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './contants'
 import { Dispatch } from 'redux'
 
-import { clearSetlist } from '../board/boardAction'
+import { clearSetlist } from '../setlist/setlistAction'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
