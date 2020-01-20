@@ -16,8 +16,11 @@
     flex-direction: column;
     background-color: var(--color-modal-background);
     min-height: 400px;
-    width: 800px;
+    min-width: 800px;
+    height: 100%;
     box-shadow: -1px -1px 5px 4px black;
+    overflow: auto;
+    padding: 20px;
 
     @media screen and (max-width: 800px) {
       height: auto;
