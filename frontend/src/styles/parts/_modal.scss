@@ -15,9 +15,10 @@
   .modalContainer {
     flex-direction: column;
     background-color: var(--color-modal-background);
-    height: 400px;
+    min-height: 400px;
     width: 800px;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: -1px -1px 5px 4px black;
+
     @media screen and (max-width: 800px) {
       height: auto;
       width: 100vh;

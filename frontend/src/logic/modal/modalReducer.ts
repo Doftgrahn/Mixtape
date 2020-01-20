@@ -1,9 +1,10 @@
-import { TOOGLE_PLAYLIST_MODAL, TOGGLE_SETLIST_MODAL } from './constants'
+import { TOOGLE_PLAYLIST_MODAL, TOGGLE_SETLIST_MODAL, TOGGlE_LYRIC_MODAL } from './constants'
 import { PayLoad } from '../types'
 
 const initialState = {
   setlistModal: false,
-  playlistModal: false
+  playlistModal: false,
+  lyricModal: false
 }
 
 export default (state = initialState, action: PayLoad) => {
@@ -17,6 +18,11 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         playlistModal: action.payload
+      }
+    case TOGGlE_LYRIC_MODAL:
+      return {
+        ...state,
+        lyricModal: action.payload
       }
     default:
       return state

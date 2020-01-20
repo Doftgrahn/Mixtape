@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { clearAndHide } from '../../logic/activeList/activeListAction'
 import { deleteListItem } from '../../logic/list/listAction'
-
+import { showLyricModal } from '../../logic/modal/modalAction'
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 
@@ -14,7 +14,7 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
 
   useEffect(() => {
     return () => {
-      dispatch(clearAndHide())
+      //dispatch(clearAndHide())
     }
   }, [dispatch])
 
@@ -35,16 +35,14 @@ const ActiveSong: FC<any> = ({ activeSong }) => {
       <article>
         <UpdateSong />
         <div className="socialBtns">
-          <button>+ add lyric</button>
+          <button onClick={() => dispatch(showLyricModal())}>+ add lyric</button>
           <button>+ add from spotify</button>
         </div>
         <button className="deleteSongBtn" onClick={() => deleteSong(activeSong._id)}>
           <Trash height={50} width={50} />
         </button>
       </article>
-      <footer>
-        
-      </footer>
+      <footer></footer>
     </article>
   )
 }

@@ -17,12 +17,7 @@ const LyricsList: FC<any> = ({ lyrics, activeSong }) => {
       <button onClick={() => setMyLyric(song.url)}>get Lyric</button>
     </div>
   ))
-  return (
-    <div>
-      <h1>List of Lyrics</h1>
-      {renderLyrics}
-    </div>
-  )
+  return <div>{renderLyrics}</div>
 }
 
 const mapStateToProps = (state: any) => ({

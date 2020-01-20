@@ -49,7 +49,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
   }
 
   return (
-    <main className="modal newBoardModal">
+    <div className="modal newBoardModal">
       {isComponentVisible && modal ? (
         <article className="modalContainer" ref={ref}>
           <header className="modalHeader">
@@ -76,7 +76,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
       ) : (
         dispatch(closeSetlistModal()) && null
       )}
-    </main>
+    </div>
   )
 }
 
