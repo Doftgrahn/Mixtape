@@ -7,14 +7,10 @@ import { updateListTitle } from '../../../logic/list/listAction'
 const UpdateSong: FC<any> = ({ activeList }) => {
   const { current } = activeList
   const dispatch = useDispatch()
-
   const [isEditingTitle, setIsEditingTitle] = useState(false)
-
   const [updateTitle, setUpdateTitle] = useState('')
 
-  const setEditToFalse = () => {
-    setIsEditingTitle(false)
-  }
+  const setEditToFalse = () => setIsEditingTitle(false)
 
   useEffect(() => {
     const onPressEscape = (event: any) => {

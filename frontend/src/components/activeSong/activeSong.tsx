@@ -1,19 +1,18 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
+
 import { clearAndHide } from '../../logic/activeList/activeListAction'
 import { deleteListItem } from '../../logic/list/listAction'
 import { showLyricModal } from '../../logic/modal/modalAction'
+
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
-
 import Trash from '../../assets/trash/trash'
 
 const ActiveSong: FC<any> = ({ currentsong }) => {
   const dispatch = useDispatch()
   const { current, isActive } = currentsong
-
-  console.log(current)
 
   const hide = () => dispatch(clearAndHide())
 

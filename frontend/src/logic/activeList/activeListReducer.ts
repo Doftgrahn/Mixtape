@@ -32,7 +32,6 @@ export default (state = initialState, action: any) => {
         }
       }
     case SET_ACTIVE_LYRIC:
-      console.log(action.payload)
       return {
         ...state,
         current: { ...state.current, lyrics: action.payload }

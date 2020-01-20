@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import { useDispatch, connect } from 'react-redux'
 
-import LyricInput from './lyricInput/lyricInput'
-import LyricsList from './lyricList/lyricsList'
 import Close from '../../assets/cross/close'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 import { closeLyricModal } from '../../logic/modal/modalAction'
 
-const Lyrics: FC<any> = ({ modal }) => {
+import SearchLyrics from './searchLyrics'
+import ShowLyrics from './showLyrics'
+
+const Lyrics: FC<any> = ({ modal, activeSong }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
 
@@ -25,10 +26,7 @@ const Lyrics: FC<any> = ({ modal }) => {
               <Close width={20} height={20} />
             </button>
           </header>
-          <article>
-            <LyricInput />
-            <LyricsList />
-          </article>
+          <article>{activeSong.lyrics ? <ShowLyrics /> : <SearchLyrics />}</article>
         </div>
       ) : (
         dispatch(closeLyricModal()) && null
@@ -38,7 +36,8 @@ const Lyrics: FC<any> = ({ modal }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
-  modal: state.modal.lyricModal
+  modal: state.modal.lyricModal,
+  activeSong: state.activeList.current
 })
 
 export default connect(mapStatetoProp)(Lyrics)

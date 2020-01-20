@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
 import { fetchSongList } from '../../../logic/list/listAction'
-import { activeSong } from '../../../logic/activeList/activeListAction'
+import { activeSong, setCurrentSong } from '../../../logic/activeList/activeListAction'
 
 import Paper from '../../../assets/paper/paper'
 import { showLyricModal } from '../../../logic/modal/modalAction'
@@ -19,6 +19,11 @@ const ShowList: FC<any> = ({ playlist }) => {
 
   const setActiveSong = (id: string) => dispatch(activeSong(id))
 
+  const shortCutLyrics = (song: any) => {
+    dispatch(setCurrentSong(song))
+    dispatch(showLyricModal())
+  }
+
   const renderPlaylist = list.map((list: any) => (
     <li key={list._id}>
       <div className="song">
@@ -26,7 +31,7 @@ const ShowList: FC<any> = ({ playlist }) => {
       </div>
       <div className="edit">
         {list.lyrics ? (
-          <button onClick={() => dispatch(showLyricModal())}>
+          <button onClick={id => shortCutLyrics(list)}>
             <Paper height={20} width={20} />
           </button>
         ) : null}
