@@ -10,7 +10,7 @@
   top: 0;
   bottom: 0;
   width: 400px;
-  transform: translateX(200%);
+  right: -400px;
   overflow: hidden;
   padding: 20px;
   box-shadow: -5px 0px 10px 1px black;
@@ -48,7 +48,6 @@
 }
 
 .active {
-  transform: translateX(0);
   overflow: auto;
   right: 0;
 }
