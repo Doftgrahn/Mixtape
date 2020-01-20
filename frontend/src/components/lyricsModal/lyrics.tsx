@@ -1,36 +1,15 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useDispatch, connect } from 'react-redux'
 
+import LyricInput from './lyricInput/lyricInput'
 import LyricsList from './lyricList/lyricsList'
 import Close from '../../assets/cross/close'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
-import { fetchgetTracks } from '../../logic/lyrics/lyricsAction'
 import { closeLyricModal } from '../../logic/modal/modalAction'
 
 const Lyrics: FC<any> = ({ modal }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
-  const [song, setSong] = useState('')
-
-  useEffect(() => {
-    const onPressEscape = (event: any) => {
-      if (event.keyCode === 27) {
-        dispatch(closeLyricModal())
-      }
-    }
-    window.addEventListener('keydown', onPressEscape)
-    return () => {
-      window.removeEventListener('keydown', onPressEscape)
-    }
-  }, [dispatch])
-
-  const getAllTracks = () => {
-    if (song) {
-      dispatch(fetchgetTracks(song))
-    }
-  }
-
-  const pressEnter = (e: any) => (e.key === 'Enter' ? getAllTracks() : null)
 
   const exitModal = () => {
     dispatch(closeLyricModal())
@@ -47,17 +26,7 @@ const Lyrics: FC<any> = ({ modal }) => {
             </button>
           </header>
           <article>
-            <div className="input_wrapper">
-              <input
-                type="text"
-                value={song}
-                onChange={e => setSong(e.target.value)}
-                onKeyPress={e => pressEnter(e)}
-                placeholder="search for a song..."
-                autoFocus
-              />
-              <button onClick={getAllTracks}>Check for lyrics</button>
-            </div>
+            <LyricInput />
             <LyricsList />
           </article>
         </div>
