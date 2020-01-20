@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux'
 import { fetchSongList } from '../../../logic/list/listAction'
 import { activeSong } from '../../../logic/activeList/activeListAction'
 
+import Paper from '../../../assets/paper/paper'
+
 const ShowList: FC<any> = ({ playlist }) => {
   const { list } = playlist
   const dispatch = useDispatch()
@@ -21,7 +23,10 @@ const ShowList: FC<any> = ({ playlist }) => {
       <div className="song">
         <h3>{list.title}</h3>
       </div>
-      <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
+      <div className="edit">
+        {list.lyrics ? <Paper height={20} width={20} /> : null}
+        <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
+      </div>
     </li>
   ))
 

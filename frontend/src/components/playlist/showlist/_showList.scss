@@ -15,10 +15,15 @@
         margin: 20px;
       }
     }
-  }
-  button {
-    background: none;
-    font-style: italic;
+    .edit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        background: none;
+        font-style: italic;
+      }
+    }
   }
 
   .showActiveSong {
