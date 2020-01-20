@@ -1,11 +1,15 @@
 import React, { FC } from 'react'
-
 import { useDispatch, connect } from 'react-redux'
+
+import Spinner from '../../shared/spinner/spinner'
+
 import { fetchSetLyric } from '../../../logic/list/lyricsAction'
 
-const LyricsList: FC<any> = ({ lyrics, activeSong }) => {
-  const dispatch = useDispatch()
+const LyricsList: FC<any> = ({ getLyrics, activeSong }) => {
+  const { lyrics, isLoading } = getLyrics
   const { _id } = activeSong
+
+  const dispatch = useDispatch()
 
   const setMyLyric = (url: string) => {
     dispatch(fetchSetLyric(url, _id))
@@ -17,11 +21,11 @@ const LyricsList: FC<any> = ({ lyrics, activeSong }) => {
       <button onClick={() => setMyLyric(song.url)}>get Lyric</button>
     </div>
   ))
-  return <div>{renderLyrics}</div>
+  return <div>{isLoading ? <Spinner /> : renderLyrics}</div>
 }
 
 const mapStateToProps = (state: any) => ({
-  lyrics: state.lyrics.lyrics,
+  getLyrics: state.lyrics,
   activeSong: state.activeList.current
 })
 

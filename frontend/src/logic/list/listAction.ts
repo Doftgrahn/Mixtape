@@ -35,7 +35,6 @@ export const addToList = (title: any) => (dispatch: any, state: any) => {
 }
 
 export const updateListTitle = (data: any) => (dispatch: any) => {
-  console.log(data)
   dispatch(isLoading(true))
   const update = {
     id: data.id,
