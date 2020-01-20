@@ -51,7 +51,7 @@ const UpdateSong: FC<any> = ({ activeList }) => {
       {isEditingTitle ? (
         <input
           placeholder={current.title}
-          value={updateTitle ? updateTitle : current.title}
+          value={updateTitle}
           onChange={e => setUpdateTitle(e.target.value)}
           onKeyPress={e => onEnter(e)}
           onBlur={() => setIsEditingTitle(false)}
