@@ -29,7 +29,7 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
           go Back
         </button>
         <button className="sideMenu_delete" onClick={deleteBoard}>
-          delete board
+          delete Setlist
         </button>
       </footer>
     </section>
