@@ -1,52 +1,37 @@
 import React, { useEffect, FC } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { DndProvider } from 'react-dnd'
+import Backend from 'react-dnd-html5-backend'
 
-import { connect } from 'react-redux'
-
-import { useDispatch } from 'react-redux'
 import { fetchSongList } from '../../../logic/list/listAction'
-import { activeSong, setCurrentSong } from '../../../logic/activeList/activeListAction'
+import { movePlaylistItem } from '../../../logic/list/moveAction'
 
-import Paper from '../../../assets/paper/paper'
-import { showLyricModal } from '../../../logic/modal/modalAction'
+import Playlistitem from './playlistItem/playListItem'
 
-const ShowList: FC<any> = ({ playlist, active }) => {
-  const { current, isActive } = active
-  const { list } = playlist
+const ShowList: FC<any> = ({ list }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchSongList())
   }, [dispatch])
 
-  console.log(active)
-  const setActiveSong = (id: string) => dispatch(activeSong(id))
-
-  const shortCutLyrics = (song: any) => {
-    dispatch(setCurrentSong(song))
-    dispatch(showLyricModal())
+  const moveCard = (dragIndex: any, hoverIndex: any) => {
+    dispatch(movePlaylistItem(dragIndex, hoverIndex))
   }
 
-  const renderPlaylist = list.map((list: any) => (
-    <li key={list._id} className={current._id === list._id && isActive ? 'showActiveSong' : ''}>
-      <div className="song">
-        <h3>{list.title}</h3>
-      </div>
-      <div className="edit">
-        {list.lyrics ? (
-          <button onClick={id => shortCutLyrics(list)}>
-            <Paper height={20} width={20} />
-          </button>
-        ) : null}
-        <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
-      </div>
-    </li>
+  const playistItem = list.map((list: any, index: number) => (
+    <Playlistitem key={list._id} list={list} index={index} id={list._id} moveCard={moveCard} />
   ))
 
-  return <ul className="playlist">{renderPlaylist}</ul>
+  return (
+    <DndProvider backend={Backend}>
+      <ul className="playlist">{playistItem}</ul>
+    </DndProvider>
+  )
 }
 
 const mapStateToProps = (state: any) => ({
-  playlist: state.list,
+  list: state.list.list,
   active: state.activeList
 })
 

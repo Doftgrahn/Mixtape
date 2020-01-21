@@ -5,7 +5,8 @@ import {
   IS_LOADING,
   DELETE_LIST_ITEM,
   MUTATE_LIST,
-  SET_LYRIC
+  SET_LYRIC,
+  MOVE_PLAYLIST_ITEM
 } from './constants'
 
 const initialState: any = {
@@ -39,6 +40,11 @@ export default (state = initialState, action: PayLoad) => {
           }
           return list
         })
+      }
+    case MOVE_PLAYLIST_ITEM:
+      return {
+        ...state,
+        list: action.payload
       }
     case SET_LYRIC:
       return {
