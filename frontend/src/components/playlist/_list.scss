@@ -1,8 +1,8 @@
 .list {
   overflow: hidden;
   width: 100%;
-  min-height: 100vh;
-  position: relative;
+  height: 100%;
+  // position: relative;
 
   .list_container {
     max-width: $max-width;

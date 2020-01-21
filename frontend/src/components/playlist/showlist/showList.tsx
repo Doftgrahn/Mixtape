@@ -9,7 +9,8 @@ import { activeSong, setCurrentSong } from '../../../logic/activeList/activeList
 import Paper from '../../../assets/paper/paper'
 import { showLyricModal } from '../../../logic/modal/modalAction'
 
-const ShowList: FC<any> = ({ playlist }) => {
+const ShowList: FC<any> = ({ playlist, active }) => {
+  const { current, isActive } = active
   const { list } = playlist
   const dispatch = useDispatch()
 
@@ -17,6 +18,7 @@ const ShowList: FC<any> = ({ playlist }) => {
     dispatch(fetchSongList())
   }, [dispatch])
 
+  console.log(active)
   const setActiveSong = (id: string) => dispatch(activeSong(id))
 
   const shortCutLyrics = (song: any) => {
@@ -25,7 +27,7 @@ const ShowList: FC<any> = ({ playlist }) => {
   }
 
   const renderPlaylist = list.map((list: any) => (
-    <li key={list._id}>
+    <li key={list._id} className={current._id === list._id && isActive ? 'showActiveSong' : ''}>
       <div className="song">
         <h3>{list.title}</h3>
       </div>
@@ -44,7 +46,8 @@ const ShowList: FC<any> = ({ playlist }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  playlist: state.list
+  playlist: state.list,
+  active: state.activeList
 })
 
 export default connect(mapStateToProps)(ShowList)

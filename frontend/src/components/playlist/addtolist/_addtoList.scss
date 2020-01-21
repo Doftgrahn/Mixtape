@@ -1,6 +1,8 @@
 .addPlaylistBtn {
   width: 100%;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: $color-shadow;
+  border-radius: 4px;
+
   background: var(--color-add-song-button);
   h3 {
     color: var(--color-text);

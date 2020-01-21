@@ -5,9 +5,11 @@
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: $color-shadow;
     margin-top: 20px;
     padding: 10px;
+    border-radius: 4px;
+    transition: 400ms;
 
     .song {
       display: flex;
@@ -28,7 +30,18 @@
   }
 
   .showActiveSong {
-    left: 0;
-    background-color: var(--color-button);
+    transition: 400ms;
+    position: relative;
+    &::before {
+      content: '';
+      border-radius: 4px;
+      transition: inherit;
+      display: block;
+      height: 90%;
+      left: 5px;
+      top: 4px;
+      position: absolute;
+      outline: 5px solid var(--color-sidemenu-delete);
+    }
   }
 }
