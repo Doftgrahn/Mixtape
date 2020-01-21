@@ -2,19 +2,6 @@
 @import './transition/transition.scss';
 
 .App {
-  padding: 0;
-  margin: 0;
   min-height: 100vh;
-  //background: var(--color-background);
-  //color: var(--color-text);
-  // overflow-x: hidden;
-
-  body {
-    // overflow-x: hidden;
-  }
-
-  & * > {
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  width: 100%;
 }

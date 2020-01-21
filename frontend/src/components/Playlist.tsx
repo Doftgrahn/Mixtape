@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-
 import NewSong from './playlist/addtolist/addtoList'
 import ActiveSong from './activeSong/activeSong'
 import ShowList from './playlist/showlist/showList'
@@ -8,7 +7,6 @@ import ListHeader from './playlist/listHeader/listHeader'
 import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
-
 import { PlaylistInterface } from '../types'
 
 const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {

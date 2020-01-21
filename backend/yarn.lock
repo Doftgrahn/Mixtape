@@ -1116,14 +1116,6 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.9.0.tgz#24390e6ad61386b0a747265754d2a17219de862c"
   integrity sha512-Uvq6hVe90D0B2WEnUqtdgY1bATGz3mw33nH9Y+dmA+w5DHvUmBgkr5rM/KCHpCsiFNRUfokW/szpPPgMK2hm4A==
 
-azlyrics-scraper@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/azlyrics-scraper/-/azlyrics-scraper-1.0.5.tgz#30e2d1f3228fb7ed5637c7b7f16059b75c356ff6"
-  integrity sha512-htzRjhjhjhBzNWQAUxXDdq8vN/WYxVMn/XcTKOHcH7pFZ/nq4w65RkL/u3Aa74vx7JYXxevAqr9fwVv94zlAew==
-  dependencies:
-    cheerio "^1.0.0-rc.3"
-    request "^2.88.0"
-
 babel-jest@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-24.9.0.tgz#3fc327cb8467b89d14d7bc70e315104a783ccd54"
@@ -4746,7 +4738,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.1"
     tough-cookie "^2.3.3"
 
-request@^2.87.0, request@^2.88.0:
+request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
