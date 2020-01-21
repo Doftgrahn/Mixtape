@@ -8,16 +8,18 @@
   height: 100vh;
   transition: 200ms ease-out;
   top: 0;
+  right: 0;
   bottom: 0;
   width: 40vh;
-  right: -500px;
+  transform: translateX(40vh);
   overflow: hidden;
   padding: 20px;
-  box-shadow: -5px 0px 10px 1px black;
+  box-shadow: -5px 0px 10px 1px $color-shadow-base;
 
   @media screen and (max-width: 800px) {
     width: 100%;
     min-height: 100vh;
+    transform: translateX(100vh);
   }
 
   header {
@@ -49,5 +51,5 @@
 
 .active {
   overflow: auto;
-  right: 0;
+  transform: translateX(0);
 }

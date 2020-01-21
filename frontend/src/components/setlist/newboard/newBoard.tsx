@@ -8,7 +8,7 @@ const NewBoard: FC<any> = () => {
   const showModal = () => dispatch(showSetlistModal())
 
   return (
-    <li className="newSetlist boardlist">
+    <li className="newSetlist">
       <button className="addSetlist" onClick={showModal}>
         <div className="text">
           <div className="plusWrapper">
