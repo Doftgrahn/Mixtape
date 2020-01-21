@@ -8,14 +8,7 @@ interface CloseProps {
 
 const SideMenuCross: FC<CloseProps> = ({ height, width }) => {
   return (
-    <svg
-      height={height}
-      width={width}
-      version="1.1"
-      id="Layer_1"
-      x="0px"
-      y="0px"
-      viewBox="0 0 492 492">
+    <svg height={height} width={width} version="1.1" x="0px" y="0px" viewBox="0 0 492 492">
       <path
         className="sidemenucross"
         d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872

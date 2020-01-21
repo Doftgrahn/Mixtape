@@ -5,10 +5,7 @@ const initialState: AuthState = {
   isAuthenticated: false,
   user: {
     id: '',
-    name: '',
-    password: '',
-    loginCount: 0,
-    new: false
+    name: ''
   },
   loading: false
 }

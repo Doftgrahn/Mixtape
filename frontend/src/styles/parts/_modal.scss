@@ -21,6 +21,7 @@
     box-shadow: -1px -1px 5px 4px black;
     overflow: auto;
     padding: 20px;
+    border-radius: 4px;
 
     @media screen and (max-width: 800px) {
       height: 100vh;

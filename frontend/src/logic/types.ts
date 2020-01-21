@@ -3,9 +3,6 @@ import { ReactNode } from 'react'
 export interface User {
   id: string
   name: string
-  password: string
-  loginCount: number
-  new: boolean
 }
 
 export interface BoardInterface {
@@ -19,7 +16,6 @@ export interface BoardInterface {
 export interface BoardStateInterface {
   activeBoard: string
   boards: BoardInterface
-  list: any
   loading: boolean
 }
 
