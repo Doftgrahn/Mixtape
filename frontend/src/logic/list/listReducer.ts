@@ -6,12 +6,14 @@ import {
   DELETE_LIST_ITEM,
   MUTATE_LIST,
   SET_LYRIC,
-  MOVE_PLAYLIST_ITEM
+  MOVE_PLAYLIST_ITEM,
+  SET_REFERENCE_LIST
 } from './constants'
 
 const initialState: any = {
   list: [],
-  isLoading: false
+  isLoading: false,
+  referenceList: []
 }
 
 export default (state = initialState, action: PayLoad) => {
@@ -45,6 +47,11 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         list: action.payload
+      }
+    case SET_REFERENCE_LIST:
+      return {
+        ...state,
+        referenceList: [...action.payload]
       }
     case SET_LYRIC:
       return {

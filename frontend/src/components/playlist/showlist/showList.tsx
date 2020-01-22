@@ -1,12 +1,17 @@
 import React, { useEffect, FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { DndProvider } from 'react-dnd'
-import Backend from 'react-dnd-html5-backend'
+import HTML5Backend from 'react-dnd-html5-backend'
+import TouchBackend from 'react-dnd-touch-backend'
 
 import { fetchSongList } from '../../../logic/list/listAction'
 import { movePlaylistItem } from '../../../logic/list/moveAction'
 
 import Playlistitem from './playlistItem/playListItem'
+
+// Checks if touchScreen
+const isTouchDevice = () => ('ontouchstart' in window ? true : false)
+const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend
 
 const ShowList: FC<any> = ({ list }) => {
   const dispatch = useDispatch()
@@ -24,7 +29,7 @@ const ShowList: FC<any> = ({ list }) => {
   ))
 
   return (
-    <DndProvider backend={Backend}>
+    <DndProvider backend={backendForDND}>
       <ul className="playlist">{playistItem}</ul>
     </DndProvider>
   )

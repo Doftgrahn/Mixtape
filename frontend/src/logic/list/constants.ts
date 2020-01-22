@@ -4,6 +4,8 @@ export const ADD_LIST = 'ADD_LIST'
 export const MUTATE_LIST = 'MUTATE_LIST'
 export const DELETE_LIST_ITEM = 'DELETE_LIST_ITEM'
 export const IS_LOADING = 'IS_LOADING'
+
 export const MOVE_PLAYLIST_ITEM = 'MOVE_PLAYLIST_ITEM'
+export const SET_REFERENCE_LIST = 'SET_REFERENCE_LIST'
 
 export const SET_LYRIC = 'SET_LYRIC'

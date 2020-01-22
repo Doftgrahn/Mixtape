@@ -1,15 +1,16 @@
 import React, { FC, useRef } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd'
+import { useDrag, useDrop, DropTargetMonitor, DragLayerMonitor } from 'react-dnd'
 import { XYCoord } from 'dnd-core'
-
 import { activeSong, setCurrentSong } from '../../../../logic/activeList/activeListAction'
 import { showLyricModal } from '../../../../logic/modal/modalAction'
 import ItemTypes from './itemType'
-
 import Paper from '../../../../assets/paper/paper'
+import { moveplaylistPUT, alternativePlatlist } from '../../../../logic/list/moveAction'
 
-const Playlistitem: FC<any> = ({ active, list, index, id, moveCard }): any => {
+import { CardProps, DragItem } from './itemType'
+
+const Playlistitem: FC<CardProps> = ({ active, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
   const ref = useRef<HTMLLIElement>(null)
   const { current, isActive } = active
@@ -18,10 +19,14 @@ const Playlistitem: FC<any> = ({ active, list, index, id, moveCard }): any => {
 
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
-    hover(item: any, monitor: DropTargetMonitor) {
+    drop(_item: DragItem, _monitor: DropTargetMonitor) {
+      dispatch(moveplaylistPUT(index))
+    },
+    hover(item: DragItem, monitor: DropTargetMonitor) {
       if (!ref.current) {
         return
       }
+
       const dragIndex = item.index
       const hoverIndex = index
 
@@ -29,7 +34,6 @@ const Playlistitem: FC<any> = ({ active, list, index, id, moveCard }): any => {
       if (dragIndex === hoverIndex) {
         return
       }
-
       // Determine rectangle on screen
       const hoverBoundingRect = ref.current!.getBoundingClientRect()
 
@@ -69,10 +73,14 @@ const Playlistitem: FC<any> = ({ active, list, index, id, moveCard }): any => {
 
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.CARD, id, index },
-    collect: (monitor: any) => ({
+    collect: (monitor: DragLayerMonitor) => ({
       isDragging: monitor.isDragging()
-    })
+    }),
+    begin() {
+      dispatch(alternativePlatlist())
+    }
   })
+
   drag(drop(ref))
 
   const opacity = isDragging ? 0.6 : 1

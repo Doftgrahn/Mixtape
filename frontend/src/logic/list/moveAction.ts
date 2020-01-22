@@ -1,4 +1,4 @@
-import { MOVE_PLAYLIST_ITEM } from './constants'
+import { MOVE_PLAYLIST_ITEM, SET_REFERENCE_LIST } from './constants'
 import Axios from 'axios'
 export const movePlaylistItem = (oldIndex: number, newIndex: number) => (
   dispatch: any,
@@ -7,11 +7,14 @@ export const movePlaylistItem = (oldIndex: number, newIndex: number) => (
   const items = getState().list.list.slice()
   const results = items.slice()
   const firstItem = items[oldIndex]
-  const secondItem = items[newIndex]
   results[oldIndex] = items[newIndex]
   results[newIndex] = firstItem
-  moveplaylistPUT(firstItem, secondItem)
   dispatch(moveItem(results))
+}
+
+export const alternativePlatlist = () => (dispatch: any, getState: any) => {
+  const playlist = getState().list.list
+  dispatch(setalternativelist(playlist))
 }
 
 const moveItem = (result: any) => ({
@@ -19,7 +22,16 @@ const moveItem = (result: any) => ({
   payload: result
 })
 
-const moveplaylistPUT = (firstItem: any, secondItem: any) => {
+export const setalternativelist = (playlist: any) => ({
+  type: SET_REFERENCE_LIST,
+  payload: playlist
+})
+
+export const moveplaylistPUT = (finalIndex: any) => (_dispatch: any, getState: any) => {
+  const firstItem = getState().list.referenceList[finalIndex]
+  const secondItem = getState().list.list[finalIndex]
+  console.log(firstItem)
+  console.log(secondItem)
   Axios.post('/api/playlist/moveplaylist', { firstItem, secondItem })
     .then(result => {
       console.log(result)
