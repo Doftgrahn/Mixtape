@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_BOARDS, IS_LOADING, DELETE_BOARD, CLEAR_SETLIST } from './constants'
+import { GET_BOARDS, IS_LOADING, DELETE_BOARD, CLEAR_SETLIST, CREATE_BOARD } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -25,7 +25,7 @@ export const addBoard = (board: any) => (dispatch: any) => {
     .post('/api/setlist/newsetlist', data)
     .then(response => {
       const { data } = response
-      dispatch(setBoard(data))
+      dispatch(addSetlist(data))
       dispatch(IsLoading(false))
     })
     .catch(error => console.log('Could not create board', error))
@@ -42,6 +42,11 @@ export const deletion = (id: string) => (dispatch: any) => {
 const deleteBoard = (id: string) => ({
   type: DELETE_BOARD,
   payload: id
+})
+
+const addSetlist = (setlist: BoardInterface) => ({
+  type: CREATE_BOARD,
+  payload: setlist
 })
 
 const setBoard = (board: BoardInterface) => ({
