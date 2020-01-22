@@ -1,11 +1,20 @@
-import { GET_BOARDS, DELETE_BOARD, IS_LOADING, CLEAR_SETLIST, CREATE_BOARD } from './constants'
+import {
+  GET_BOARDS,
+  DELETE_BOARD,
+  IS_LOADING,
+  CLEAR_SETLIST,
+  CREATE_BOARD,
+  SET_SETLIST_ERRORS
+} from './constants'
+import { PayLoad } from '../types'
 
 const initialState: any = {
   boards: [],
-  loading: false
+  loading: false,
+  errors: {}
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: PayLoad) => {
   const { payload } = action
 
   switch (action.type) {
@@ -38,6 +47,11 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         boards: []
+      }
+    case SET_SETLIST_ERRORS:
+      return {
+        ...state,
+        errors: action.payload
       }
 
     default:

@@ -4,3 +4,5 @@ export const DELETE_BOARD = 'DELETE_BOARD'
 export const MUTATE_BOARD = 'MUTATE_BOARD'
 export const IS_LOADING = 'IS_LOADING'
 export const CLEAR_SETLIST = 'CLEAR_SETLIST'
+
+export const SET_SETLIST_ERRORS = 'SET_SETLIST_ERRORS'

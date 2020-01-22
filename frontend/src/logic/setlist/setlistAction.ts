@@ -1,5 +1,12 @@
 import axios from 'axios'
-import { GET_BOARDS, IS_LOADING, DELETE_BOARD, CLEAR_SETLIST, CREATE_BOARD } from './constants'
+import {
+  GET_BOARDS,
+  IS_LOADING,
+  DELETE_BOARD,
+  CLEAR_SETLIST,
+  CREATE_BOARD,
+  SET_SETLIST_ERRORS
+} from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -12,7 +19,7 @@ export const AppModel = () => (dispatch: any, state: any) => {
       dispatch(setBoard(data))
       dispatch(IsLoading(false))
     })
-    .catch(e => console.log('Could not get ALL MUSICBOARDS', e))
+    .catch(error => dispatch(setErrors(error)))
 }
 
 export const addBoard = (board: any) => (dispatch: any) => {
@@ -28,7 +35,7 @@ export const addBoard = (board: any) => (dispatch: any) => {
       dispatch(addSetlist(data))
       dispatch(IsLoading(false))
     })
-    .catch(error => console.log('Could not create board', error))
+    .catch(error => dispatch(setErrors(error)))
 }
 
 export const deletion = (id: string) => (dispatch: any) => {
@@ -36,7 +43,7 @@ export const deletion = (id: string) => (dispatch: any) => {
   axios
     .delete(`/api/setlist/deletesetlist/${id}`)
     .then((result: any) => {})
-    .catch((error: any) => console.log('error', error))
+    .catch((error: any) => dispatch(setErrors(error)))
 }
 
 const deleteBoard = (id: string) => ({
@@ -59,3 +66,5 @@ export const clearSetlist = () => ({
 })
 
 const IsLoading = (isLoading: boolean): PayLoad => ({ type: IS_LOADING, payload: isLoading })
+
+const setErrors = (error: any): PayLoad => ({ type: SET_SETLIST_ERRORS, payload: error })
