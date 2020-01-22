@@ -18,7 +18,7 @@
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {
-    "mongo_uri_cloud": "@mongo_uri_cloud",
+    "mongo_uri_production": "@mongo_uri_production",
     "secret": "@my_secret",
     "google_client_id": "@google_client_id",
     "google_client_secret": "@google_client_secret",
