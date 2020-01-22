@@ -1,6 +1,9 @@
-module.exports = {
-  mongoUri: process.env.mongo_uri_cloud,
-  secretOrKey: process.env.secret
+let uri = process.env.mongo_uri_cloud
+if (process.env.NODE_ENV === 'development') {
+  uri = process.env.mongo_uri_development
 }
 
-//mongoUri: process.env.MONGO_URI,
+module.exports = {
+  mongoUri: uri,
+  secretOrKey: process.env.secret
+}

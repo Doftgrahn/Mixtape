@@ -13,7 +13,7 @@ const UserSchema = new Schema({
     type: Object
   },
   email: {
-    type: String,
+    type: Array,
     reqiured: false
   },
   token: {
