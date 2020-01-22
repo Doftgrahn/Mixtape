@@ -1,2 +1,4 @@
 export const GET_TRACKS = 'GET_TRACKS'
 export const LYRIC_IS_LOADING = 'LYRIC_IS_LOADING'
+
+export const SET_LYRIC_ERROR = 'SET_LYRIC_ERROR'

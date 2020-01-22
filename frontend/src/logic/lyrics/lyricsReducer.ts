@@ -1,11 +1,13 @@
-import { GET_TRACKS, LYRIC_IS_LOADING } from './constants'
+import { GET_TRACKS, LYRIC_IS_LOADING, SET_LYRIC_ERROR } from './constants'
+import { PayLoad } from '../types'
 
 const initialState = {
   lyrics: [],
-  isLoading: false
+  isLoading: false,
+  errors: {}
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case GET_TRACKS:
       return {
@@ -16,6 +18,11 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         isLoading: action.payload
+      }
+    case SET_LYRIC_ERROR:
+      return {
+        ...state,
+        errors: action.payload
       }
     default:
       return state
