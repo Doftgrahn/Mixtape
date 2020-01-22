@@ -1,6 +1,14 @@
-import { GET_LIST, ADD_LIST, IS_LOADING, DELETE_LIST_ITEM, MUTATE_LIST } from './constants'
+import {
+  GET_LIST,
+  ADD_LIST,
+  IS_LOADING,
+  DELETE_LIST_ITEM,
+  MUTATE_LIST,
+  SET_PLAYLIST_ERROR
+} from './constants'
 import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
+import { PayLoad } from '../types'
 
 export const fetchSongList = () => (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
@@ -30,7 +38,7 @@ export const addToList = (title: any) => (dispatch: any, state: any) => {
       dispatch(isLoading(false))
     })
     .catch(error => {
-      console.log('Could not creat list item')
+      dispatch(setErrors(error))
     })
 }
 
@@ -49,7 +57,7 @@ export const updateListTitle = (data: any) => (dispatch: any) => {
       dispatch(isLoading(false))
     })
     .catch(error => {
-      console.log('Could not sert', error)
+      dispatch(setErrors(error))
     })
 }
 
@@ -63,31 +71,36 @@ export const deleteListItem = (id: string) => (dispatch: any) => {
       dispatch(isLoading(false))
     })
     .catch(error => {
-      console.log('Error', error)
+      dispatch(setErrors(error))
     })
 }
 
-export const deletetion = (id: string) => ({
+export const deletetion = (id: string): PayLoad => ({
   type: DELETE_LIST_ITEM,
   payload: id
 })
 
-export const getList = (list: any) => ({
+export const getList = (list: any): PayLoad => ({
   type: GET_LIST,
   payload: list
 })
 
-export const mutateList = (updateString: any) => ({
+export const mutateList = (updateString: any): PayLoad => ({
   type: MUTATE_LIST,
   payload: updateString
 })
 
-export const addList = (boardId: string) => ({
+export const addList = (boardId: string): PayLoad => ({
   type: ADD_LIST,
   payload: boardId
 })
 
-export const isLoading = (isLoading: boolean) => ({
+export const isLoading = (isLoading: boolean): PayLoad => ({
   type: IS_LOADING,
   payload: isLoading
+})
+
+const setErrors = (errors: any): PayLoad => ({
+  type: SET_PLAYLIST_ERROR,
+  payload: errors
 })

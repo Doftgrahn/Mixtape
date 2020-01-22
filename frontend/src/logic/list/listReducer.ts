@@ -7,13 +7,15 @@ import {
   MUTATE_LIST,
   SET_LYRIC,
   MOVE_PLAYLIST_ITEM,
-  SET_REFERENCE_LIST
+  SET_REFERENCE_LIST,
+  SET_PLAYLIST_ERROR
 } from './constants'
 
 const initialState: any = {
   list: [],
   isLoading: false,
-  referenceList: []
+  referenceList: [],
+  errors: {}
 }
 
 export default (state = initialState, action: PayLoad) => {
@@ -67,6 +69,11 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         isLoading: action.payload
+      }
+    case SET_PLAYLIST_ERROR:
+      return {
+        ...state,
+        errors: action.payload
       }
     default:
       return state
