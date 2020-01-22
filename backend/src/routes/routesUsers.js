@@ -52,6 +52,9 @@ router.get('/logout', (req, res) => {
 
 router.get('/getActiveUser', (req, res) => {
   const { user } = req
+  if (!user) {
+    return req.logOut()
+  }
   res.status(200).json(user)
 })
 
