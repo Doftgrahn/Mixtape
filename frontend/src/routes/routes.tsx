@@ -2,10 +2,12 @@ import React, { FC } from 'react'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import { RoutesInterface } from './types'
+import { RoutesInterface } from './routeTypes'
 
+// Higher order Route for authentication
 import PrivateRoute from './privateRoute'
 
+// Components
 import Landingpage from '../components/LandingPage'
 import Register from '../components/authentication/Register'
 import ForgotPassword from '../components/authentication/ForgotPassword'

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import GoogleButton from './shared/googleButton/googleButton'
 import Logo from './../assets/logo/Logo'
 
-import { LandingInterface } from '../types'
+import { LandingInterface } from '../types/propTypes'
 
 const Landingpage: FC<LandingInterface> = ({ auth }) => {
   if (auth) {

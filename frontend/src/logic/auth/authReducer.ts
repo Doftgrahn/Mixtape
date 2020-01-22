@@ -1,12 +1,9 @@
 import { SET_CURRENT_USER, USER_LOADING, SHOW_ERROR_TO_USER } from './contants'
-import { AuthState, PayLoad } from '../types'
+import { PayLoad } from '../types'
 
-const initialState: AuthState = {
+const initialState = {
   isAuthenticated: false,
-  user: {
-    id: '',
-    name: ''
-  },
+  user: {},
   loading: false
 }
 

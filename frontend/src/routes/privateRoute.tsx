@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { PrivateRouteProps } from './types'
+import { PrivateRouteProps } from './routeTypes'
 
 const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, auth, ...rest }) => {
   return (

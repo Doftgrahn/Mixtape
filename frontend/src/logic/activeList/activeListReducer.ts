@@ -3,15 +3,17 @@ import {
   IS_ACTIVE,
   CLEAR,
   MUTATE_ACTIVE_LIST,
-  SET_ACTIVE_LYRIC
-} from './constants'
+  SET_ACTIVE_LYRIC,
+  ActivePlaylist
+} from './types'
+import { PayLoad } from '../types'
 
-const initialState = {
+const initialState: ActivePlaylist = {
   current: {},
   isActive: false
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case SET_ACTIVE_LIST:
       return {

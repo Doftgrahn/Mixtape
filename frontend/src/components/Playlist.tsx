@@ -7,7 +7,7 @@ import ListHeader from './playlist/listHeader/listHeader'
 import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
-import { PlaylistInterface } from '../types'
+import { PlaylistInterface } from '../types/propTypes'
 
 const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
   const { isLoading } = list

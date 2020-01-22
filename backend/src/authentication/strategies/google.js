@@ -1,7 +1,6 @@
 import passport from 'passport'
 import passportGoogle from 'passport-google-oauth'
 const GoogleStrategy = passportGoogle.OAuth2Strategy
-
 const User = require('../UserModel/User')
 
 const strategyOptions = {
@@ -23,7 +22,6 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
     User.findOne({ googleId: profile.id })
       .then(currentUser => {
         if (currentUser) {

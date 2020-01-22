@@ -3,9 +3,8 @@ import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { loginUser } from '../../logic/auth/authAction'
-import { LoginProps } from './types'
 
-const Login: FC<LoginProps> = ({ auth, errors, history }) => {
+const Login: FC<any> = ({ auth, errors, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 

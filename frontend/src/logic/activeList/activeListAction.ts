@@ -1,10 +1,4 @@
-import {
-  IS_ACTIVE,
-  SET_ACTIVE_LIST,
-  CLEAR,
-  MUTATE_ACTIVE_LIST,
-  SET_ACTIVE_LYRIC
-} from './constants'
+import { IS_ACTIVE, SET_ACTIVE_LIST, CLEAR, MUTATE_ACTIVE_LIST, SET_ACTIVE_LYRIC } from './types'
 import { PayLoad } from '../types'
 
 export const activeSong = (id: string) => (dispatch: any, state: any) => {

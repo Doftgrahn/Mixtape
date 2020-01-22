@@ -3,14 +3,12 @@ import { connect, useDispatch } from 'react-redux'
 
 import BoardList from './setlist/boardlist/boardlist'
 import BoardHeader from './setlist/boardHeader/boardHeader'
+import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
 
-import SetlistModal from './setlistModal/setlistModal'
-
 const Setlist: FC<any> = ({ modal }) => {
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(AppModel())
     return () => {
@@ -32,7 +30,6 @@ const Setlist: FC<any> = ({ modal }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  allBoards: state.board,
   modal: state.modal.setlistModal
 })
 

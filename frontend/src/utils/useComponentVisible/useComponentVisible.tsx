@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-export const useComponentVisible = (initialIsVisible: any) => {
+export const useComponentVisible = (initialIsVisible: boolean) => {
   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible)
   const ref: any = useRef(null)
 
@@ -10,7 +10,7 @@ export const useComponentVisible = (initialIsVisible: any) => {
     }
   }
 
-  const handleClickOutside = (event: any) => {
+  const handleClickOutside = (event: KeyboardEvent) => {
     if (ref.current && !ref.current.contains(event.target)) {
       setIsComponentVisible(false)
     }

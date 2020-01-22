@@ -1,12 +1,11 @@
-import { RouteComponentProps } from 'react-router-dom'
-import { AuthState } from './logic/types'
+import { RouteComponentProps, RouteProps } from 'react-router-dom'
 
 export interface AppInterface {
   theme: string
 }
 
 export interface LandingInterface {
-  auth: AuthState
+  auth: any
 }
 
 interface MatchParams {
@@ -15,7 +14,11 @@ interface MatchParams {
 }
 
 export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
-  auth: AuthState
+  auth: any
   list: any
   modal: any
+}
+
+export interface SetlistInterface {
+  modal: boolean
 }

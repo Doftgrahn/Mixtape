@@ -11,11 +11,11 @@ import Routes from './routes/routes'
 import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
 
-import { AppInterface } from './types'
+import { AppInterface } from './types/propTypes'
 
 ReactGA.initialize('UA-153619692-2')
 const browserHistory = createBrowserHistory()
-browserHistory.listen((location, action) => {
+browserHistory.listen((location, _action) => {
   ReactGA.pageview(location.pathname + location.search)
 })
 

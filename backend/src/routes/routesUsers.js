@@ -10,7 +10,7 @@ const {
   recieveNewPassword
 } = require('../authentication/controller/email.controller')
 
-const googleSetup = require('../authentication/strategies/google')
+require('../authentication/strategies/google')
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -41,7 +41,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  // res.json(req.user)
   res.redirect(url)
 })
 
@@ -52,7 +51,6 @@ router.get('/logout', (req, res) => {
 
 router.get('/getActiveUser', (req, res) => {
   const { user } = req
-
   res.status(200).json(user)
 })
 

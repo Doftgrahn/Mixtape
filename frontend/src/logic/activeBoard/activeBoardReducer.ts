@@ -1,6 +1,6 @@
-import { ACTIVE_BOARD } from './constants'
+import { ACTIVE_BOARD, ActiveBoardInterface } from './types'
 
-const initialState = {
+const initialState: ActiveBoardInterface = {
   activeBoard: ''
 }
 export default (state = initialState, action: any) => {

@@ -1,10 +1,5 @@
 import { ReactNode } from 'react'
 
-export interface User {
-  id: string
-  name: string
-}
-
 export interface BoardInterface {
   userId: string
   title: string
@@ -19,6 +14,8 @@ export interface BoardStateInterface {
   loading: boolean
 }
 
+export interface PlaylistInterface {}
+
 export interface PayLoad {
   type: string
   payload: object | boolean | string | any
@@ -27,10 +24,4 @@ export interface PayLoad {
 export interface RootProps {
   initialState: object
   children: ReactNode
-}
-
-export interface AuthState {
-  isAuthenticated: boolean
-  user: User
-  loading: boolean
 }
