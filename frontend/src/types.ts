@@ -1,6 +1,10 @@
 import { RouteComponentProps } from 'react-router-dom'
 import { AuthState } from './logic/types'
 
+export interface AppInterface {
+  theme: string
+}
+
 export interface LandingInterface {
   auth: AuthState
 }

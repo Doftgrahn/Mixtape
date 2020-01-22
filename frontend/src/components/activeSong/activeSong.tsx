@@ -37,7 +37,7 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
         <UpdateSong />
         <div className="socialBtns">
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
-          <button>+ add from spotify</button>
+          <button>+ add from spotify (In Development...)</button>
         </div>
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />
