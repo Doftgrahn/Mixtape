@@ -9,6 +9,6 @@ module.exports = async function getTracks(req, res) {
     const result = hits.map(song => song.result)
     res.status(200).json(result)
   } catch (error) {
-    res.status(404).json({ error: error })
+    res.status(404).json({ error: 'Something went wrong getting you the tracks!' })
   }
 }

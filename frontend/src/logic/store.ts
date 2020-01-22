@@ -18,6 +18,7 @@ export default (initialState: any) => {
     initialState,
     composeEnhancers(applyMiddleware(...middleware))
   )
+
   store.subscribe(() => {
     const state = store.getState()
 

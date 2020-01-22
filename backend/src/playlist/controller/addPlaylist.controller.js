@@ -4,7 +4,7 @@ const Playlist = require('../playlistModel/listModel')
 module.exports = function addPlaylistController(req, res) {
   const { activeBoard, id, title } = req.body
   Setlist.findOne({ _id: activeBoard }).then(setlist => {
-    if (!setlist) return res.json({ error: 'Could not find a board with that id' })
+    if (!setlist) return res.json({ error: 'Could not find your board!' })
 
     const newPlaylist = new Playlist({
       boardId: activeBoard,
@@ -14,6 +14,8 @@ module.exports = function addPlaylistController(req, res) {
     newPlaylist
       .save()
       .then(list => res.json(list))
-      .catch(error => res.status(500).json({ error: 'Could create list.', error }))
+      .catch(_error =>
+        res.status(500).json({ error: 'Could not save your song, please try again!' })
+      )
   })
 }

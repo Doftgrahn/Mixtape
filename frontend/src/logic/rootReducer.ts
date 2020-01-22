@@ -18,3 +18,5 @@ export default combineReducers({
   theme: themeReducer,
   modal: modalReducer
 })
+
+export type RootState = ReturnType<typeof combineReducers>
