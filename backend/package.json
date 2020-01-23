@@ -32,6 +32,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
+    "passport-spotify": "^1.1.0",
     "serve-favicon": "^2.5.0",
     "validator": "^12.1.0"
   },

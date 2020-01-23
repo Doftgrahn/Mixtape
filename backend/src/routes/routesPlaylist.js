@@ -7,10 +7,12 @@ const mutatePlaylist = require('../playlist/controller/mutateList.controller')
 const deletePlaylist = require('../playlist/controller/deletePlaylist.controller')
 const movePlaylist = require('../playlist/controller/moveplaylist.controller')
 
-router.get('/getplaylist/:id', getPlaylist)
-router.post('/addplaylist', addPlaylistController)
-router.put('/mutateplaylist', mutatePlaylist)
-router.delete('/deleteplaylist/:id', deletePlaylist)
-router.post('/moveplaylist', movePlaylist)
+const authCheck = require('./authCheck')
+
+router.get('/getplaylist/:id', authCheck, getPlaylist)
+router.post('/addplaylist', authCheck, addPlaylistController)
+router.put('/mutateplaylist', authCheck, mutatePlaylist)
+router.delete('/deleteplaylist/:id', authCheck, deletePlaylist)
+router.post('/moveplaylist', authCheck, movePlaylist)
 
 module.exports = router

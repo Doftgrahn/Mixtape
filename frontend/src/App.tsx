@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+
 import ReactGA from 'react-ga'
 import './styles/App.scss'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { connect, useDispatch } from 'react-redux'
 
 import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
@@ -51,7 +52,6 @@ const App: FC<AppInterface> = ({ theme }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth,
   theme: state.theme.state
 })
 

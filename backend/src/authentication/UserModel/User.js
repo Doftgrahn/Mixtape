@@ -5,6 +5,9 @@ const UserSchema = new Schema({
   googleId: {
     type: String
   },
+  spotifyId: {
+    type: String
+  },
   name: {
     type: String,
     reqiured: true

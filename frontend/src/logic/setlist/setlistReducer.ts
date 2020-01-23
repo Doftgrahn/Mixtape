@@ -4,7 +4,8 @@ import {
   IS_LOADING,
   CLEAR_SETLIST,
   CREATE_BOARD,
-  SET_SETLIST_ERRORS
+  SET_SETLIST_ERRORS,
+  MUTATE_SETLIST
 } from './constants'
 import { PayLoad } from '../types'
 
@@ -37,6 +38,16 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         boards: state.boards.filter((board: any) => board._id !== action.payload)
+      }
+    case MUTATE_SETLIST:
+      return {
+        ...state,
+        boards: state.boards.map((setlist: any) => {
+          if (setlist._id === action.payload.id) {
+            return { ...setlist, title: action.payload.title }
+          }
+          return setlist
+        })
       }
     case IS_LOADING:
       return {

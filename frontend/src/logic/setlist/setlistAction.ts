@@ -5,7 +5,8 @@ import {
   DELETE_BOARD,
   CLEAR_SETLIST,
   CREATE_BOARD,
-  SET_SETLIST_ERRORS
+  SET_SETLIST_ERRORS,
+  MUTATE_SETLIST
 } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
@@ -46,6 +47,10 @@ export const deletion = (id: string) => (dispatch: any) => {
     .catch((error: any) => dispatch(setErrors(error)))
 }
 
+export const updateSetlistTitle = (setlist: object) => (dispatch: any) => {
+  console.log(setlist)
+}
+
 const deleteBoard = (id: string) => ({
   type: DELETE_BOARD,
   payload: id
@@ -53,6 +58,11 @@ const deleteBoard = (id: string) => ({
 
 const addSetlist = (setlist: BoardInterface) => ({
   type: CREATE_BOARD,
+  payload: setlist
+})
+
+const mutateSetList = (setlist: object): PayLoad => ({
+  type: MUTATE_SETLIST,
   payload: setlist
 })
 

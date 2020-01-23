@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import rootReducer from './rootReducer'
 
-export default (initialState: any) => {
+export default (initialState: object) => {
   const storage = localStorage.getItem('state')
 
   initialState = storage !== null ? JSON.parse(storage) : initialState

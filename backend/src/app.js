@@ -1,14 +1,16 @@
 require('dotenv').config()
-const express = require('express')
-const app = express()
-
-const path = require('path')
+import express from 'express'
+import path from 'path'
 const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-var cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session')
+
+//Strategies
+require('./authentication/strategies/spotify')
+require('./authentication/strategies/google')
 
 const ConnectionToMongodb = require('./mongodb/db')
 
@@ -16,7 +18,9 @@ const users = require('./routes/routesUsers')
 const setlist = require('./routes/routesSetlist')
 const playlist = require('./routes/routesPlaylist')
 const lyrics = require('./routes/routeslyrics')
+
 //MiddleWare
+const app = express()
 app.use(express.static(`${__dirname}/../../frontend/build/`))
 app.use(favicon(path.join(__dirname, '/../../frontend/build/favicon.ico')))
 app.use(cors())
@@ -24,13 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(
   cookieSession({
-    maxAge: 24 * 60 * 1000,
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
     keys: ['hejejejeejeje']
   })
 )
 app.use(passport.initialize())
 app.use(passport.session())
-//require('./authentication/strategies/passport')(passport)
 
 // Connects do Mongodb
 ConnectionToMongodb(mongoose)

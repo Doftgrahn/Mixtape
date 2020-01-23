@@ -96,6 +96,7 @@ export const getActiveUser = () => (dispatch: any) => {
         id: data._id,
         name: data.name,
         googleId: data.googleId,
+        spotifyId: data.spotifyId,
         avatar: data.avatar,
         token: data.token,
         email: data.email

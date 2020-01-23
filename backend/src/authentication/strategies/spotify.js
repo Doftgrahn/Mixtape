@@ -1,12 +1,11 @@
 import passport from 'passport'
-import passportGoogle from 'passport-google-oauth'
-const GoogleStrategy = passportGoogle.OAuth2Strategy
+const SpotifyStrategy = require('passport-spotify').Strategy
 import User from '../UserModel/User'
 
 const strategyOptions = {
-  clientID: process.env.google_client_id,
-  clientSecret: process.env.google_client_secret,
-  callbackURL: '/api/users/google/redirect',
+  clientID: process.env.spotify_client_id,
+  clientSecret: process.env.spotify_client_secret,
+  callbackURL: '/api/users/spotify/redirect',
   proxy: true
 }
 
@@ -21,23 +20,22 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
-  new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ googleId: profile.id })
+  new SpotifyStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
+    User.findOne({ spotifyId: profile.id })
       .then(currentUser => {
         if (currentUser) {
           return done(null, currentUser)
         } else {
           const newUser = new User({
             name: profile.displayName,
-            googleId: profile.id,
+            spotifyId: profile.id,
             avatar: profile.photos,
-            email: profile.emails,
             token: accessToken
           })
           newUser
             .save()
             .then(user => {
-              console.log('new user created')
+              console.log('new user created', user)
               done(null, user)
             })
             .catch(error => {
