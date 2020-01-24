@@ -12,7 +12,8 @@ module.exports = function createSetlist(req, res) {
       const newBoard = new Setlist({
         userId: userId,
         title: title,
-        date: Date.now()
+        date: Date.now(),
+        isOwner: true
       })
       newBoard
         .save()

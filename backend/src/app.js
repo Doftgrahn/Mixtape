@@ -14,6 +14,7 @@ require('./authentication/strategies/google')
 
 const ConnectionToMongodb = require('./mongodb/db')
 
+const auth = require('./routes/routesAuth')
 const users = require('./routes/routesUsers')
 const setlist = require('./routes/routesSetlist')
 const playlist = require('./routes/routesPlaylist')
@@ -43,7 +44,8 @@ app.get('/api', (req, res) => {
   res.json({ hehe: req.user })
 })
 
-app.use('/api/users', users)
+app.use('/api/users', auth)
+app.use('/api/allUsers', users)
 app.use('/api/setlist', setlist)
 app.use('/api/playlist', playlist)
 app.use('/api/lyrics', lyrics)

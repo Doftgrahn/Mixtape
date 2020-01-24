@@ -3,7 +3,10 @@ import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion } from '../../logic/setlist/setlistAction'
+
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
+import SearchUsers from './searchUsers/searchUsers'
+import ShowUsers from './showUsers/showUsers'
 
 const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
   const history = useHistory()
@@ -22,7 +25,8 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
         </button>
       </header>
       <article>
-        <h1>Invite folks here</h1>
+        <SearchUsers />
+        <ShowUsers />
       </article>
       <footer>
         <button className="sideMenu_goBack" onClick={() => history.goBack()}>

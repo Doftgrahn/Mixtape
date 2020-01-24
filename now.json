@@ -23,6 +23,8 @@
     "secret": "@my_secret",
     "google_client_id": "@google_client_id",
     "google_client_secret": "@google_client_secret",
+    "spotify_client_id": "@spotify_client_id",
+    "spotify_client_secret": "@spotify_client_secret",
     "genius_token": "@genius_token"
   },
   "github": {

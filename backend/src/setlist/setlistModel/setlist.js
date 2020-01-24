@@ -18,6 +18,10 @@ const SetlistSchema = new Schema({
   collaborators: {
     type: Array,
     default: []
+  },
+  isOwner: {
+    type: Boolean,
+    default: true
   }
 })
 
