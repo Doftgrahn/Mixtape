@@ -6,7 +6,8 @@ import {
   CLEAR_SETLIST,
   CREATE_BOARD,
   SET_SETLIST_ERRORS,
-  MUTATE_SETLIST
+  MUTATE_SETLIST,
+  INVITE_COLLABORATOR
 } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
@@ -47,6 +48,19 @@ export const deletion = (id: string) => (dispatch: any) => {
     .catch((error: any) => dispatch(setErrors(error)))
 }
 
+export const inviteCollaborator = (userId: string) => (dispatch: any, getState: any) => {
+  const setlistId = getState().activeBoard.activeBoard
+  axios
+    .post('/api/setlist/addcollaborator', { userId, setlistId })
+    .then(result => {
+      dispatch(addCollaborator(result.data))
+      console.log('restult', result)
+    })
+    .catch(error => {
+      dispatch(setErrors(error))
+    })
+}
+
 export const updateSetlistTitle = (setlist: object) => (dispatch: any) => {
   console.log(setlist)
 }
@@ -63,6 +77,11 @@ const addSetlist = (setlist: BoardInterface) => ({
 
 const mutateSetList = (setlist: object): PayLoad => ({
   type: MUTATE_SETLIST,
+  payload: setlist
+})
+
+const addCollaborator = (setlist: string): PayLoad => ({
+  type: INVITE_COLLABORATOR,
   payload: setlist
 })
 
