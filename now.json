@@ -16,6 +16,7 @@
     { "src": "/favicon-32x32.png", "dest": "/frontend/favicon-32x32.png" },
     { "src": "/favicon-16x16.png", "dest": "/frontend/favicon-16x16.png" },
     { "src": "android-chrome-512x512.png", "dest": "/frontend/android-chrome-512x512.png" },
+    { "src": "/service-worker.js", "dest": "/frontend/service-worker.js" },
     { "src": ".*", "dest": "/frontend/index.html" }
   ],
   "env": {

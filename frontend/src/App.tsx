@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, Suspense } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import ReactGA from 'react-ga'
@@ -13,6 +13,8 @@ import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
 
 import { AppInterface } from './types/propTypes'
+
+import Spinner from './components/shared/spinner/spinner'
 
 ReactGA.initialize('UA-153619692-2')
 const browserHistory = createBrowserHistory()
@@ -45,7 +47,9 @@ const App: FC<AppInterface> = ({ theme }) => {
   return (
     <div className="App">
       <Router>
-        <Routes />
+        <Suspense fallback={<Spinner />}>
+          <Routes />
+        </Suspense>
       </Router>
     </div>
   )

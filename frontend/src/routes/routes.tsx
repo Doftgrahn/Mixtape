@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, lazy } from 'react'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
@@ -7,14 +7,15 @@ import { RoutesInterface } from './routeTypes'
 // Higher order Route for authentication
 import PrivateRoute from './privateRoute'
 
-// Components
-import Landingpage from '../components/LandingPage'
-import Register from '../components/authentication/Register'
-import ForgotPassword from '../components/authentication/ForgotPassword'
-import UpdatePassword from '../components/authentication/UpdatePassword'
-import NotFound from '../components/shared/NotFound'
-import Setlist from '../components/Setlist'
-import Playlist from '../components/Playlist'
+// Lazy Loading Components
+
+const Landingpage = lazy(() => import('../components/LandingPage'))
+const Register = lazy(() => import('../components/authentication/Register'))
+const ForgotPassword = lazy(() => import('../components/authentication/ForgotPassword'))
+const UpdatePassword = lazy(() => import('../components/authentication/UpdatePassword'))
+const NotFound = lazy(() => import('../components/shared/NotFound'))
+const Setlist = lazy(() => import('../components/Setlist'))
+const Playlist = lazy(() => import('../components/Playlist'))
 
 const publicRoutes: RoutesInterface[] = [
   { name: 'home', path: '/', component: Landingpage, isExact: true },
@@ -24,7 +25,7 @@ const publicRoutes: RoutesInterface[] = [
   { name: '404', path: '*', component: NotFound, isExact: false }
 ]
 
-const privateRoutes: RoutesInterface[] = [
+const privateRoutes: any = [
   { name: 'mixtape', path: '/dashboard', component: Setlist, isExact: true },
   { name: 'list', path: '/dashboard/:title', component: Playlist, isExact: true }
 ]
@@ -32,7 +33,7 @@ const privateRoutes: RoutesInterface[] = [
 const Routes: FC<{}> = () => {
   const location: any = useLocation()
 
-  const PrivateRoutes = privateRoutes.map(route => (
+  const PrivateRoutes = privateRoutes.map((route: any) => (
     <PrivateRoute
       key={route.name}
       path={route.path}

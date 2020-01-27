@@ -31,6 +31,7 @@
           display: block;
           font-size: 4.5em;
           color: var(--color-cross);
+          padding-top: 5px;
           @media screen and (max-width: 800px) {
             font-size: 4em;
           }

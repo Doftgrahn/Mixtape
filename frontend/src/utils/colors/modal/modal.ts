@@ -6,7 +6,7 @@ const blueGray = '#C5CCCF'
 const orange = '#D77A61'
 
 export const lightModal = {
-  '--color-modal-background': blueGray,
+  '--color-modal-background': white,
   '--color-modal-input-background': whiteGray,
   '--color-modal-input-text': black,
   '--color-modal-button': black,

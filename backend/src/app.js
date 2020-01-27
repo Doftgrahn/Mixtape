@@ -50,6 +50,12 @@ app.use('/api/setlist', setlist)
 app.use('/api/playlist', playlist)
 app.use('/api/lyrics', lyrics)
 
+app.get('/service-worker.js', (_req, res) => {
+  res.sendFile('service-worker.js', {
+    root: path.join(__dirname, '../../frontend/build/')
+  })
+})
+
 app.get('*', function(_req, res) {
   res.sendFile('index.html', {
     root: path.join(__dirname, '../../frontend/build/')

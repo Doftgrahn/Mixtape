@@ -18,7 +18,7 @@
     min-height: 400px;
     width: 800px;
     max-height: 80vh;
-    box-shadow: -1px -1px 5px 4px black;
+    box-shadow: $color-shadow;
     overflow: auto;
     padding: 20px;
     border-radius: 4px;
@@ -55,6 +55,8 @@
         width: 80%;
         background-color: var(--color-modal-input-background);
         color: var(--color-modal-input-text);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         &::placeholder {
           color: var(--color-modal-input-text);
         }
@@ -65,6 +67,8 @@
         background: var(--color-modal-button);
         width: 80%;
         margin: 0 auto;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
   }
