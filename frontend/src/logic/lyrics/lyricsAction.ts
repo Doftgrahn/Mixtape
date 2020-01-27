@@ -1,4 +1,4 @@
-import { GET_TRACKS, LYRIC_IS_LOADING, SET_LYRIC_ERROR } from './constants'
+import { GET_TRACKS, LYRIC_IS_LOADING, SET_LYRIC_ERROR, CLEAR_LYRICS } from './constants'
 import Axios from 'axios'
 import { PayLoad } from '../types'
 
@@ -19,6 +19,10 @@ export const fetchgetTracks = (song: string) => (dispatch: any) => {
 const getTracks = (tracks: any): PayLoad => ({
   type: GET_TRACKS,
   payload: tracks
+})
+
+export const clearLyrics = () => ({
+  type: CLEAR_LYRICS
 })
 
 const isLoading = (loading: boolean): PayLoad => ({

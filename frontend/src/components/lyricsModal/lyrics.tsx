@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useDispatch, connect } from 'react-redux'
 
 import Close from '../../assets/cross/close'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 import { closeLyricModal } from '../../logic/modal/modalAction'
+import { clearLyrics } from '../../logic/lyrics/lyricsAction'
 
 import SearchLyrics from './searchLyrics'
 import ShowLyrics from './showLyrics'
@@ -16,6 +17,12 @@ const Lyrics: FC<any> = ({ modal, activeSong }) => {
     dispatch(closeLyricModal())
     setIsComponentVisible(false)
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearLyrics())
+    }
+  }, [dispatch])
 
   return (
     <div className="modal" role="dialog">

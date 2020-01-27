@@ -8,7 +8,6 @@ import { RoutesInterface } from './routeTypes'
 import PrivateRoute from './privateRoute'
 
 // Lazy Loading Components
-
 const Landingpage = lazy(() => import('../components/LandingPage'))
 const Register = lazy(() => import('../components/authentication/Register'))
 const ForgotPassword = lazy(() => import('../components/authentication/ForgotPassword'))
