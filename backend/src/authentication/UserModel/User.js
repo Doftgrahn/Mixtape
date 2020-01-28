@@ -16,10 +16,13 @@ const UserSchema = new Schema({
     type: Object
   },
   email: {
-    type: Array,
+    type: String,
     reqiured: false
   },
-  token: {
+  googleToken: {
+    type: String
+  },
+  spotifyToken: {
     type: String
   },
   password: {

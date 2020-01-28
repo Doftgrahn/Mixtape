@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
-import { connect } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 import { clearAndHide } from '../../logic/activeList/activeListAction'
 import { deleteListItem } from '../../logic/list/listAction'
-import { showLyricModal } from '../../logic/modal/modalAction'
+import { showLyricModal, showSpotifyModal } from '../../logic/modal/modalAction'
 
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
@@ -26,6 +25,11 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
     dispatch(clearAndHide())
   }
 
+  const spotifyModal = () => {
+    dispatch(showSpotifyModal())
+    dispatch(clearAndHide())
+  }
+
   return (
     <article className={`activeSong sidebar ${isActive ? 'active' : null}`}>
       <header className="sidebarHeader">
@@ -37,8 +41,9 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
         <UpdateSong />
         <div className="socialBtns">
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
-          <button onClick={() => null}>+ add from spotify</button>
+          <button onClick={spotifyModal}>+ add from spotify</button>
         </div>
+
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />
         </button>

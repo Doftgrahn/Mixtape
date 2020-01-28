@@ -1,5 +1,4 @@
-import React, { FC, FormEvent, ChangeEvent } from 'react'
-import { any } from 'prop-types'
+import React, { FC } from 'react'
 
 interface ModalInputInterface {
   value: string

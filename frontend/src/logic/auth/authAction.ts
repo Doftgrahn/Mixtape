@@ -90,15 +90,14 @@ export const getActiveUser = () => (dispatch: any) => {
       if (!result.data) return
       const user: any = {
         date: data.date,
-        loginCount: data.loginCount,
-        new: data.new,
         _id: data._id,
         id: data._id,
         name: data.name,
         googleId: data.googleId,
         spotifyId: data.spotifyId,
         avatar: data.avatar,
-        token: data.token,
+        spotifyToken: data.spotifyToken,
+        googleToken: data.googleToken,
         email: data.email
       }
 

@@ -8,6 +8,7 @@ import lyricReducer from './lyrics/lyricsReducer'
 import themeReducer from './theme/themeReducer'
 import modalReducer from './modal/modalReducer'
 import usersReducer from './users/usersReducer'
+import spotifyReducer from './spotify/spotifyReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -18,7 +19,8 @@ export default combineReducers({
   lyrics: lyricReducer,
   theme: themeReducer,
   modal: modalReducer,
-  users: usersReducer
+  users: usersReducer,
+  spotify: spotifyReducer
 })
 
 export type RootState = ReturnType<typeof combineReducers>

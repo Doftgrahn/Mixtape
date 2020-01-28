@@ -19,6 +19,7 @@ const users = require('./routes/routesUsers')
 const setlist = require('./routes/routesSetlist')
 const playlist = require('./routes/routesPlaylist')
 const lyrics = require('./routes/routeslyrics')
+const spotify = require('./routes/routesSpotify')
 
 //MiddleWare
 const app = express()
@@ -49,6 +50,7 @@ app.use('/api/allUsers', users)
 app.use('/api/setlist', setlist)
 app.use('/api/playlist', playlist)
 app.use('/api/lyrics', lyrics)
+app.use('/api/spotify', spotify)
 
 app.get('/service-worker.js', (_req, res) => {
   res.sendFile('service-worker.js', {

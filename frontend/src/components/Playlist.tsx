@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
+
 import NewSong from './playlist/addtolist/addtoList'
 import ActiveSong from './activeSong/activeSong'
 import ShowList from './playlist/showlist/showList'
@@ -7,6 +8,8 @@ import ListHeader from './playlist/listHeader/listHeader'
 import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
+import SpotifyModal from './spotifyModal/spotifyModal'
+
 import { PlaylistInterface } from '../types/propTypes'
 
 const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
@@ -15,6 +18,7 @@ const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
+  const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
 
   return (
     <main className="list">
@@ -26,8 +30,10 @@ const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
         <ShowList />
       </div>
       <ActiveSong />
+      {/*Modals */}
       {playlistModal}
       {lyricModal}
+      {spotifyModal}
     </main>
   )
 }

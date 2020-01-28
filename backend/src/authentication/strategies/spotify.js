@@ -21,16 +21,30 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new SpotifyStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ spotifyId: profile.id })
+    const email = profile.emails.map(mail => mail.value)[0]
+
+    console.log(profile.id)
+    User.findOne({ email: email })
       .then(currentUser => {
         if (currentUser) {
-          return done(null, currentUser)
+          User.findOneAndUpdate(
+            { email: email },
+            { spotifyToken: accessToken, spotifyId: profile.id },
+            { new: true }
+          )
+            .then(updatedUser => {
+              console.log('updated Token')
+              return done(null, updatedUser)
+            })
+            .catch(error => {
+              console.log('could not update token', error)
+            })
         } else {
           const newUser = new User({
             name: profile.displayName,
             spotifyId: profile.id,
             avatar: profile.photos,
-            token: accessToken
+            spotifyToken: accessToken
           })
           newUser
             .save()

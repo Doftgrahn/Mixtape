@@ -10,7 +10,7 @@ const initialState = {
   setlistModal: false,
   playlistModal: false,
   lyricModal: false,
-  spotifyModal: false
+  spotifyModal: true
 }
 
 export default (state = initialState, action: PayLoad) => {
