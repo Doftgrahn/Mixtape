@@ -12,7 +12,6 @@ const ShowUsers: FC<any> = () => {
     dispatch(fechGetAllUsers())
   })
 
-  console.log(searchResult)
   const renderUsers = searchResult.map((user: any) => (
     <div key={user._id}>
       <h2>{user.name}</h2>

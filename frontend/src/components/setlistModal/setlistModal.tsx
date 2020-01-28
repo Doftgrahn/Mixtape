@@ -5,6 +5,7 @@ import { useDispatch, connect } from 'react-redux'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
 import Close from '../../assets/cross/close'
+import ModalInput from '../shared/modalInput/modalInput'
 
 import { closeSetlistModal } from '../../logic/modal/modalAction'
 
@@ -59,14 +60,11 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
           </header>
           <div className="input_wrapper">
             <h1>Create New Setlist</h1>
-            <input
-              tabIndex={0}
-              type="text"
+            <ModalInput
               value={title}
-              onChange={e => setTitle(e.target.value)}
-              onKeyPress={e => pressEnter(e)}
-              placeholder="new setlist"
-              autoFocus
+              setValue={setTitle}
+              pressEnter={pressEnter}
+              placeholder="New Setlist"
             />
             <button tabIndex={0} onClick={createBoard}>
               add setlist!

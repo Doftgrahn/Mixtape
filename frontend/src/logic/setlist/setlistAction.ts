@@ -75,10 +75,10 @@ const addSetlist = (setlist: BoardInterface) => ({
   payload: setlist
 })
 
-const mutateSetList = (setlist: object): PayLoad => ({
-  type: MUTATE_SETLIST,
-  payload: setlist
-})
+// const mutateSetList = (setlist: object): PayLoad => ({
+//   type: MUTATE_SETLIST,
+//   payload: setlist
+// })
 
 const addCollaborator = (setlist: string): PayLoad => ({
   type: INVITE_COLLABORATOR,

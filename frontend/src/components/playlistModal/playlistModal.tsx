@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { addToList } from '../../logic/list/listAction'
 import { useDispatch, connect } from 'react-redux'
+import ModalInput from '../shared/modalInput/modalInput'
 
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
@@ -53,15 +54,12 @@ const PlaylistModal: FC<any> = ({ modal }) => {
           </header>
           <div className="input_wrapper">
             <h1>Add a Song!</h1>
-            <input
-              type="text"
+            <ModalInput
               value={title}
-              onChange={e => setTitle(e.target.value)}
-              onKeyPress={e => pressEnter(e)}
-              placeholder="Song..."
-              autoFocus
+              setValue={setTitle}
+              pressEnter={pressEnter}
+              placeholder="Add a song!"
             />
-
             <button tabIndex={0} onClick={addSong}>
               Add song!
             </button>

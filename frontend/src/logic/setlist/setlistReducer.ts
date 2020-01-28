@@ -50,6 +50,7 @@ export default (state = initialState, action: PayLoad) => {
         })
       }
     case INVITE_COLLABORATOR:
+      console.log(action.payload)
       return {
         ...state,
         boards: state.boards.map((setlist: any) => {
@@ -64,17 +65,16 @@ export default (state = initialState, action: PayLoad) => {
         ...state,
         loading: action.payload
       }
-    case CLEAR_SETLIST:
-      return {
-        ...state,
-        boards: []
-      }
     case SET_SETLIST_ERRORS:
       return {
         ...state,
         errors: action.payload
       }
-
+    case CLEAR_SETLIST:
+      return {
+        ...state,
+        boards: []
+      }
     default:
       return state
   }

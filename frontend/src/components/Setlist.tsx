@@ -22,7 +22,9 @@ const Setlist: FC<any> = ({ modal }) => {
     <main className="board">
       <BoardHeader />
       <section className="container">
+        <h1>My Setlists</h1>
         <BoardList />
+        <h1>Invited to</h1>
       </section>
       {setListModal}
     </main>
