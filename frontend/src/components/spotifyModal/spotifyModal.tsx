@@ -11,7 +11,6 @@ const SpotifyModal: FC<any> = ({ modal }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
 
-  //const [isValidSpotify, setIsValidSpotify] = useState(true)
   const [search, setSearch] = useState('')
 
   const pressEnter = (e: any) => {
@@ -50,8 +49,7 @@ const SpotifyModal: FC<any> = ({ modal }) => {
               autoFocus
             />
             <SpotifySearchResult />
-
-            <button onClick={searchForSong}>Search...</button>
+            {/*<button onClick={searchForSong}>Search...</button>*/}
           </div>
         </div>
       ) : (

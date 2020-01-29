@@ -21,8 +21,9 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
-  new GoogleStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
+  new GoogleStrategy(strategyOptions, (accessToken, _refreshToken, profile, done) => {
     const email = profile.emails.map(mail => mail.value)[0]
+    console.log(email)
     User.findOne({ email: email })
       .then(currentUser => {
         if (currentUser) {

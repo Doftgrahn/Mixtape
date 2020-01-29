@@ -30,8 +30,6 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
     dispatch(clearAndHide())
   }
 
-  //https://open.spotify.com/track/7jjLKYImKi4sXsvPKwLoRq
-  //https://open.spotify.com/embed/track/1gEyTDvDPI88QsTgzZxX7r"
   return (
     <article className={`activeSong sidebar ${isActive ? 'active' : null}`}>
       <header className="sidebarHeader">
@@ -45,7 +43,6 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
           <button onClick={spotifyModal}>+ add from spotify</button>
         </div>
-
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />
         </button>

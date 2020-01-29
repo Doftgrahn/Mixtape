@@ -1,10 +1,16 @@
-import { GET_SPOTIFY_SEARCH, IS_SPOTIFY_LOADING, ERRORS_SPOTIFY } from './types'
+import {
+  GET_SPOTIFY_SEARCH,
+  IS_SPOTIFY_LOADING,
+  ERRORS_SPOTIFY,
+  DOES_SPOTIFY_NEED_REFRESH
+} from './types'
 import { PayLoad } from '../types'
 
 const intialState = {
   spotify: [],
   isLoading: false,
-  errors: {}
+  errors: {},
+  needsRefresh: false
 }
 
 export default (state = intialState, action: PayLoad) => {
@@ -23,6 +29,11 @@ export default (state = intialState, action: PayLoad) => {
       return {
         ...state,
         isLoading: action.payload
+      }
+    case DOES_SPOTIFY_NEED_REFRESH:
+      return {
+        ...state,
+        needsRefresh: action.payload
       }
     default:
       return state

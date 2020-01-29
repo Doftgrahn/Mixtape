@@ -1,10 +1,19 @@
-import { GET_SPOTIFY_SEARCH, IS_SPOTIFY_LOADING, ERRORS_SPOTIFY } from './types'
+import {
+  GET_SPOTIFY_SEARCH,
+  IS_SPOTIFY_LOADING,
+  ERRORS_SPOTIFY,
+  DOES_SPOTIFY_NEED_REFRESH
+} from './types'
 import { PayLoad } from '../types'
 import Axios from 'axios'
 
 export const getSpotifySearch = (searchString: string) => (dispatch: any, useState: any) => {
+  if (searchString.length <= 1) {
+    return dispatch(setSpotifySearch([]))
+  }
   const spotifytoken = useState().auth.user.spotifyToken
   const url = `https://api.spotify.com/v1/search?q=${searchString}&type=track`
+
   const config = {
     headers: {
       Authorization: `Bearer ${spotifytoken}`
@@ -37,8 +46,7 @@ export const getSpotifySearch = (searchString: string) => (dispatch: any, useSta
     .catch(error => {
       if (error.response.status === 401) {
         // Fetch anrop här tack
-
-        return console.log('Refresha token tack')
+        dispatch(spotifyNeedsRefresh(true))
       }
       dispatch(setSpotifyErrors(error))
     })
@@ -57,4 +65,9 @@ const setSpotifyLoading = (loading: boolean): PayLoad => ({
 const setSpotifyErrors = (errors: object): PayLoad => ({
   type: ERRORS_SPOTIFY,
   payload: errors
+})
+
+const spotifyNeedsRefresh = (refresh: boolean): PayLoad => ({
+  type: DOES_SPOTIFY_NEED_REFRESH,
+  payload: refresh
 })

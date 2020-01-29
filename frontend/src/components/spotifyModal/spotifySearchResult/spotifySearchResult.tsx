@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
-import { useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
-const SpotifySearchResult: FC<any> = ({ spotify }) => {
-  //const dispatch = useDispatch()
-
+const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
   const addSongToUser = (spotUrl: string) => {
     console.log('hej', spotUrl)
   }
@@ -17,11 +15,26 @@ const SpotifySearchResult: FC<any> = ({ spotify }) => {
     </li>
   ))
 
+  if (needsRefresh) {
+    let url = 'https://www.mixtape.nu/api/users/spotify'
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost:4000/api/users/spotify'
+    }
+
+    return (
+      <div>
+        <h3>Du behöver logga in med spotify för att forsätta!</h3>
+        <a href={url}>Logga in.</a>
+      </div>
+    )
+  }
+
   return <ul>{renderSearchResult}</ul>
 }
 
 const mapStatetoProp = (state: any) => ({
-  spotify: state.spotify.spotify
+  spotify: state.spotify.spotify,
+  needsRefresh: state.spotify.needsRefresh
 })
 
 export default connect(mapStatetoProp)(SpotifySearchResult)
