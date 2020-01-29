@@ -87,6 +87,7 @@ export const getActiveUser = () => (dispatch: any) => {
     .get('/api/users/getActiveUser')
     .then(result => {
       const { data } = result
+
       if (!result.data) return
       const user: any = {
         date: data.date,

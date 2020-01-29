@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useDispatch, connect } from 'react-redux'
 
 const SpotifySearchResult: FC<any> = ({ spotify }) => {
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
 
   const addSongToUser = (spotUrl: string) => {
     console.log('hej', spotUrl)

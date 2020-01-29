@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 import passport from 'passport'
 
+const jwt = require('jsonwebtoken')
+const keys = require('../config/config')
+
 const getUsers = require('../authentication/controller/getUsers')
 const register = require('../authentication/controller/register.controller')
 const login = require('../authentication/controller/login.controller')

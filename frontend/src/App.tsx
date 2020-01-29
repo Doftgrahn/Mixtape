@@ -1,21 +1,20 @@
 import React, { FC, useEffect, Suspense } from 'react'
-import { connect, useDispatch } from 'react-redux'
-
-import ReactGA from 'react-ga'
 import './styles/App.scss'
+
+import { connect, useDispatch } from 'react-redux'
+import Routes from './routes/routes'
+import ReactGA from 'react-ga'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
-import Routes from './routes/routes'
-
 import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
+import checkSpotifyToken from './utils/checkSpotifyToken/checkSpotifyToken'
+import checkGoogleToken from './utils/checkGoogleToken/checkGoogleToken'
 
 import { AppInterface } from './types/propTypes'
 
 import Spinner from './components/shared/spinner/spinner'
-import checkSpotifyToken from './utils/checkSpotifyToken/checkSpotifyToken'
-import checkGoogleToken from './utils/checkGoogleToken/checkGoogleToken'
 
 ReactGA.initialize('UA-153619692-2')
 const browserHistory = createBrowserHistory()
@@ -44,13 +43,13 @@ const App: FC<AppInterface> = ({ theme, user }) => {
 
   useEffect(() => {
     if (spotifyToken) {
-      checkSpotifyToken(spotifyToken, dispatch)
+      //checkSpotifyToken(spotifyToken, dispatch)
     }
   }, [spotifyToken, dispatch])
 
   useEffect(() => {
     if (googleToken) {
-      checkGoogleToken(googleToken, dispatch)
+      // checkGoogleToken(googleToken, dispatch)
       // Check if token from google is active.
     }
   })
