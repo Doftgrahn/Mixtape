@@ -6,7 +6,6 @@ import './styles/App.scss'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
-import authlocalstorage from './utils/AuthLocalStorage/authlocalstorage'
 import Routes from './routes/routes'
 
 import { lightTheme, darkTheme } from './utils/colors/colors'
@@ -15,6 +14,8 @@ import { getActiveUser } from './logic/auth/authAction'
 import { AppInterface } from './types/propTypes'
 
 import Spinner from './components/shared/spinner/spinner'
+import checkSpotifyToken from './utils/checkSpotifyToken/checkSpotifyToken'
+import checkGoogleToken from './utils/checkGoogleToken/checkGoogleToken'
 
 ReactGA.initialize('UA-153619692-2')
 const browserHistory = createBrowserHistory()
@@ -22,14 +23,11 @@ browserHistory.listen((location, _action) => {
   ReactGA.pageview(location.pathname + location.search)
 })
 
-const App: FC<AppInterface> = ({ theme }) => {
+const App: FC<AppInterface> = ({ theme, user }) => {
+  const { spotifyToken, googleToken } = user
   const dispatch = useDispatch()
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
-  }, [])
-
-  useEffect(() => {
-    authlocalstorage()
   }, [])
 
   useEffect(() => {
@@ -44,6 +42,19 @@ const App: FC<AppInterface> = ({ theme }) => {
     })
   }, [theme])
 
+  useEffect(() => {
+    if (spotifyToken) {
+      checkSpotifyToken(spotifyToken, dispatch)
+    }
+  }, [spotifyToken, dispatch])
+
+  useEffect(() => {
+    if (googleToken) {
+      checkGoogleToken(googleToken, dispatch)
+      // Check if token from google is active.
+    }
+  })
+
   return (
     <div className="App">
       <Router>
@@ -56,7 +67,8 @@ const App: FC<AppInterface> = ({ theme }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  theme: state.theme.state
+  theme: state.theme.state,
+  user: state.auth.user
 })
 
 export default connect(mapStateToProps)(App)

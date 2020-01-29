@@ -10,6 +10,7 @@ export const getSpotifySearch = (searchString: string) => (dispatch: any, useSta
       Authorization: `Bearer ${spotifytoken}`
     }
   }
+
   dispatch(setSpotifyLoading(true))
   Axios.get(url, config)
     .then(result => {
@@ -34,6 +35,11 @@ export const getSpotifySearch = (searchString: string) => (dispatch: any, useSta
       dispatch(setSpotifyLoading(false))
     })
     .catch(error => {
+      if (error.response.status === 401) {
+        // Fetch anrop här tack
+
+        return console.log('Refresha token tack')
+      }
       dispatch(setSpotifyErrors(error))
     })
 }

@@ -30,6 +30,8 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
     dispatch(clearAndHide())
   }
 
+  //https://open.spotify.com/track/7jjLKYImKi4sXsvPKwLoRq
+  //https://open.spotify.com/embed/track/1gEyTDvDPI88QsTgzZxX7r"
   return (
     <article className={`activeSong sidebar ${isActive ? 'active' : null}`}>
       <header className="sidebarHeader">

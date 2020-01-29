@@ -26,7 +26,13 @@ passport.use(
     User.findOne({ email: email })
       .then(currentUser => {
         if (currentUser) {
-          return done(null, currentUser)
+          User.findOneAndUpdate({ email: email }, { googleToken: accessToken }, { new: true })
+            .then(updatedUser => {
+              return done(null, currentUser)
+            })
+            .catch(error => {
+              console.log('Could not update token')
+            })
         } else {
           const newUser = new User({
             name: profile.displayName,

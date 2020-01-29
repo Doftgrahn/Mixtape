@@ -23,7 +23,6 @@ passport.use(
   new SpotifyStrategy(strategyOptions, (accessToken, refreshToken, profile, done) => {
     const email = profile.emails.map(mail => mail.value)[0]
 
-    console.log(profile.id)
     User.findOne({ email: email })
       .then(currentUser => {
         if (currentUser) {

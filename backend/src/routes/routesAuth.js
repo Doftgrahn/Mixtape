@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 router.get(
   '/spotify',
   passport.authenticate('spotify', {
-    scope: ['user-read-email', 'user-read-private']
+    scope: ['user-read-email', 'user-read-private', 'streaming']
   })
 )
 
