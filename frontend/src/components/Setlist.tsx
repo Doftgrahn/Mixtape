@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import SpotifyPlayer from 'react-spotify-web-playback'
 
 import BoardList from './setlist/boardlist/boardlist'
 import BoardHeader from './setlist/boardHeader/boardHeader'
@@ -7,7 +8,8 @@ import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
 
-const Setlist: FC<any> = ({ modal }) => {
+const Setlist: FC<any> = ({ modal, user }) => {
+  const { spotifyToken } = user
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
@@ -32,7 +34,8 @@ const Setlist: FC<any> = ({ modal }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  modal: state.modal.setlistModal
+  modal: state.modal.setlistModal,
+  user: state.auth.user
 })
 
 export default connect(mapStateToProps)(Setlist)

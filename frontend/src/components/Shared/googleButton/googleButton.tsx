@@ -37,9 +37,11 @@ const GoogleButton: FC = () => {
           <span className="google-button__text">Sign in with Google</span>
         </a>
       </button>
-      {/*<a className="spotify" href="http://localhost:4000/api/users/spotify">
-        Log in to Spotify
-  </a>*/}
+      {
+        <a className="spotify" href="http://localhost:4000/api/users/spotify">
+          Log in to Spotify
+        </a>
+      }
     </div>
   )
 }

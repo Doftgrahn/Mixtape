@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
+import SpotifyPlayer from 'react-spotify-web-playback'
 
 const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
   const addSongToUser = (spotUrl: string) => {
     console.log('hej', spotUrl)
   }
+  console.log(spotify)
   const renderSearchResult = spotify.map((song: any) => (
     <li key={song.id}>
       <h3>{song.name}</h3>
@@ -12,6 +14,10 @@ const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
       <h4>{song.artist}</h4>
       <img src={song.img} alt={song.name} />
       <button onClick={() => addSongToUser(song.spotUrl)}>Add me</button>
+      <span>{song.previewURL}</span>
+      <audio controls>
+        <source src={song.previewURL} type="audio/ogg" />
+      </audio>
     </li>
   ))
 
@@ -29,7 +35,7 @@ const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
     )
   }
 
-  return <ul>{renderSearchResult}</ul>
+  return <ul>{renderSearchResult} </ul>
 }
 
 const mapStatetoProp = (state: any) => ({
