@@ -2,10 +2,11 @@ import axios from 'axios'
 import setAuthToken from './utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './contants'
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, CLEAR_USER } from './contants'
 import { Dispatch } from 'redux'
 
 import { clearSetlist } from '../setlist/setlistAction'
+import { PayLoad } from '../types'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
@@ -128,6 +129,9 @@ export const setUserIsLoading = (isLoading: boolean) => {
     payload: isLoading
   }
 }
+export const clearUser = () => ({
+  type: CLEAR_USER
+})
 
 // Log user out
 export const logoutUser = () => (dispatch: Dispatch) => {
@@ -136,6 +140,7 @@ export const logoutUser = () => (dispatch: Dispatch) => {
   // Remove auth header for future requests
   setAuthToken(false)
   // Set current user to empty object {} which will set isAuthenticated to false
-  dispatch(setCurrentUser(''))
+  dispatch(clearUser())
+  // dispatch(setCurrentUser(''))
   dispatch(clearSetlist())
 }

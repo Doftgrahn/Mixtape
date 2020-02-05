@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, USER_LOADING, SHOW_ERROR_TO_USER } from './contants'
+import { SET_CURRENT_USER, USER_LOADING, SHOW_ERROR_TO_USER, CLEAR_USER } from './contants'
 import { PayLoad } from '../types'
 
 const initialState = {
@@ -12,7 +12,7 @@ export default function(state = initialState, action: PayLoad) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        isAuthenticated: action.payload,
+        isAuthenticated: true,
         user: action.payload,
         errorMsg: ''
       }
@@ -25,6 +25,12 @@ export default function(state = initialState, action: PayLoad) {
       return {
         ...state,
         loading: action.payload
+      }
+    case CLEAR_USER:
+      return {
+        ...state,
+        user: {},
+        isAuthenticated: false
       }
     default:
       return state
