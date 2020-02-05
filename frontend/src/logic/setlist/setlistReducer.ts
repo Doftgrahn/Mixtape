@@ -1,5 +1,6 @@
 import {
   GET_BOARDS,
+  GET_COLLABORATOR_SETLIST,
   DELETE_BOARD,
   IS_LOADING,
   CLEAR_SETLIST,
@@ -12,6 +13,7 @@ import { PayLoad } from '../types'
 
 const initialState: any = {
   boards: [],
+  collaborators: [],
   loading: false,
   errors: {}
 }
@@ -28,6 +30,11 @@ export default (state = initialState, action: PayLoad) => {
           const second = new Date(a.date).getTime()
           return first - second
         })
+      }
+    case GET_COLLABORATOR_SETLIST:
+      return {
+        ...state,
+        collaborators: action.payload
       }
     case CREATE_BOARD:
       return {

@@ -1,12 +1,12 @@
 import axios from 'axios'
 import {
   GET_BOARDS,
+  GET_COLLABORATOR_SETLIST,
   IS_LOADING,
   DELETE_BOARD,
   CLEAR_SETLIST,
   CREATE_BOARD,
   SET_SETLIST_ERRORS,
-  MUTATE_SETLIST,
   INVITE_COLLABORATOR
 } from './constants'
 import { PayLoad, BoardInterface } from '../types'
@@ -17,17 +17,20 @@ export const AppModel = () => (dispatch: any, state: any) => {
   axios
     .get(`/api/setlist/getsetlists/${id}`)
     .then(result => {
-      const { data } = result
-      dispatch(setBoard(data))
+      const { mySetlist, collaborators } = result.data
+      dispatch(setBoard(mySetlist))
+      dispatch(getCollabotorsSetList(collaborators))
       dispatch(IsLoading(false))
     })
     .catch(error => dispatch(setErrors(error)))
 }
 
-export const addBoard = (board: any) => (dispatch: any) => {
+export const addBoard = (board: any) => (dispatch: any, getState: any) => {
+  const user = getState().auth.user.name
   const data = {
     userId: board.userId,
-    title: board.title
+    title: board.title,
+    user: user
   }
   dispatch(IsLoading(true))
   axios
@@ -88,6 +91,11 @@ const addCollaborator = (setlist: string): PayLoad => ({
 const setBoard = (board: BoardInterface) => ({
   type: GET_BOARDS,
   payload: board
+})
+
+const getCollabotorsSetList = (setlists: any): PayLoad => ({
+  type: GET_COLLABORATOR_SETLIST,
+  payload: setlists
 })
 
 export const clearSetlist = () => ({

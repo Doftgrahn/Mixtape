@@ -1,6 +1,6 @@
 const Playlist = require('../playlistModel/listModel')
 
-module.exports = function getPlaylist(req, res) {
+module.exports = async function getPlaylist(req, res) {
   const { id } = req.params
   Playlist.find({ boardId: id })
     .then(list => {

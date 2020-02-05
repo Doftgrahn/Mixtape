@@ -1,15 +1,15 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import SpotifyPlayer from 'react-spotify-web-playback'
 
 import BoardList from './setlist/boardlist/boardlist'
+import Collaborators from './setlist/collaborators/collaborators'
 import BoardHeader from './setlist/boardHeader/boardHeader'
 import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
 
 const Setlist: FC<any> = ({ modal, user }) => {
-  const { spotifyToken } = user
+  //const { spotifyToken } = user
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
@@ -26,7 +26,8 @@ const Setlist: FC<any> = ({ modal, user }) => {
       <section className="container">
         <h1>My Setlists</h1>
         <BoardList />
-        {/*<h1>Invited to</h1>*/}
+        <h1>Collaborations</h1>
+        <Collaborators />
       </section>
       {setListModal}
     </main>

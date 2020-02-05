@@ -41,10 +41,7 @@ app.use(passport.session())
 ConnectionToMongodb(mongoose)
 
 //Routes
-app.get('/api', (req, res) => {
-  res.json({ hehe: req.user })
-})
-
+app.get('/api', (_req, res) => res.json('Välkommen!'))
 app.use('/api/users', auth)
 app.use('/api/allUsers', users)
 app.use('/api/setlist', setlist)
