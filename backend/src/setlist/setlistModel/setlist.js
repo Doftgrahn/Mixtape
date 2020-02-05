@@ -12,8 +12,7 @@ const SetlistSchema = new Schema({
   },
   title: {
     type: String,
-    required: true,
-    default: 'Ny låtlista...'
+    required: true
   },
   date: {
     type: Date,
@@ -21,11 +20,7 @@ const SetlistSchema = new Schema({
   },
   collaborators: {
     type: Array,
-    default: []
-  },
-  isOwner: {
-    type: Boolean,
-    default: true
+    default: [String]
   }
 })
 

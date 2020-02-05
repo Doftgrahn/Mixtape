@@ -11,10 +11,10 @@ import { setCurrentSong } from '../activeList/activeListAction'
 import { PayLoad } from '../types'
 
 export const fetchSongList = () => (dispatch: any, state: any) => {
-  const { activeBoard } = state().activeBoard
+  const { _id } = state().activeBoard.activeBoard
   dispatch(isLoading(true))
   axios
-    .get(`/api/playlist/getplaylist/${activeBoard}`)
+    .get(`/api/playlist/getplaylist/${_id}`)
     .then(result => {
       const { data } = result
       dispatch(getList(data))

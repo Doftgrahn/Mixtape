@@ -32,16 +32,18 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
         <button className="sideMenu_goBack" onClick={() => history.goBack()}>
           go Back
         </button>
-        <button className="sideMenu_delete" onClick={deleteBoard}>
-          delete Setlist
-        </button>
+        {activeBoard.isOwner ? (
+          <button className="sideMenu_delete" onClick={deleteBoard}>
+            delete Setlist
+          </button>
+        ) : null}
       </footer>
     </section>
   )
 }
 
 const mapStateToProps = (state: any) => ({
-  activeBoard: state.activeBoard
+  activeBoard: state.activeBoard.activeBoard
 })
 
 export default connect(mapStateToProps)(BoardSettings)

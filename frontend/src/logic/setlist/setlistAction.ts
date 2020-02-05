@@ -18,7 +18,10 @@ export const AppModel = () => (dispatch: any, state: any) => {
     .get(`/api/setlist/getsetlists/${id}`)
     .then(result => {
       const { mySetlist, collaborators } = result.data
-      dispatch(setBoard(mySetlist))
+
+      const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
+      console.log(collaborators)
+      dispatch(setBoard(mutateIfOwner))
       dispatch(getCollabotorsSetList(collaborators))
       dispatch(IsLoading(false))
     })
