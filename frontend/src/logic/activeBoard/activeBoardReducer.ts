@@ -1,13 +1,20 @@
-import { ACTIVE_BOARD, ActiveBoardInterface } from './types'
+import { ACTIVE_BOARD, USER_NAME, ActiveBoardInterface } from './types'
 
 const initialState: ActiveBoardInterface = {
-  activeBoard: ''
+  activeBoard: '',
+  user: ''
 }
 export default (state = initialState, action: any) => {
   switch (action.type) {
     case ACTIVE_BOARD:
       return {
+        ...state,
         activeBoard: action.payload
+      }
+    case USER_NAME:
+      return {
+        ...state,
+        user: action.payload
       }
 
     default:
