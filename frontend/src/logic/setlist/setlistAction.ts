@@ -23,7 +23,6 @@ export const AppModel = () => (dispatch: any, state: any) => {
     .get(`/api/setlist/getsetlists/${id}`)
     .then(result => {
       const { mySetlist, collaborators } = result.data
-
       const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
       dispatch(setBoard(mutateIfOwner))
       dispatch(getCollabotorsSetList(collaborators))
@@ -44,7 +43,8 @@ export const addBoard = (board: any) => (dispatch: any, getState: any) => {
     .post('/api/setlist/newsetlist', data)
     .then(response => {
       const { data } = response
-      dispatch(addSetlist(data))
+      const ifOwner = { ...data, isOwner: true }
+      dispatch(addSetlist(ifOwner))
       dispatch(IsLoading(false))
     })
     .catch(error => dispatch(setErrors(error)))
