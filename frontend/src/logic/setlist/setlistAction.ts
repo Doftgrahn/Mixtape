@@ -7,7 +7,8 @@ import {
   CLEAR_SETLIST,
   CREATE_BOARD,
   SET_SETLIST_ERRORS,
-  INVITE_COLLABORATOR
+  INVITE_COLLABORATOR,
+  LEAVE_SETLIST
 } from './constants'
 import { PayLoad, BoardInterface } from '../types'
 
@@ -67,9 +68,18 @@ export const inviteCollaborator = (userId: string) => (dispatch: any, getState: 
     })
 }
 
-export const updateSetlistTitle = (setlist: object) => (dispatch: any) => {
-  console.log(setlist)
+export const leaveSetlist = (id: string) => async (dispatch: any, getState: any) => {
+  const { setlist, auth } = getState()
+  const currentSetlist = setlist.collaborators.find((x: any) => x._id === id)
+  const userId = auth.user._id
+  dispatch(leaveIfnotOwner(currentSetlist))
+  await axios.delete(`/api/setlist/leaveSetlist/${userId}`)
 }
+
+const leaveIfnotOwner = (setlist: any): PayLoad => ({
+  type: LEAVE_SETLIST,
+  payload: setlist
+})
 
 const deleteBoard = (id: string) => ({
   type: DELETE_BOARD,
@@ -80,11 +90,6 @@ const addSetlist = (setlist: BoardInterface) => ({
   type: CREATE_BOARD,
   payload: setlist
 })
-
-// const mutateSetList = (setlist: object): PayLoad => ({
-//   type: MUTATE_SETLIST,
-//   payload: setlist
-// })
 
 const addCollaborator = (setlist: string): PayLoad => ({
   type: INVITE_COLLABORATOR,
@@ -101,9 +106,7 @@ const getCollabotorsSetList = (setlists: any): PayLoad => ({
   payload: setlists
 })
 
-export const clearSetlist = () => ({
-  type: CLEAR_SETLIST
-})
+export const clearSetlist = () => ({ type: CLEAR_SETLIST })
 
 const IsLoading = (isLoading: boolean): PayLoad => ({ type: IS_LOADING, payload: isLoading })
 

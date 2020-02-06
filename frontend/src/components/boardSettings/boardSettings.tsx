@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { deletion } from '../../logic/setlist/setlistAction'
+import { deletion, leaveSetlist } from '../../logic/setlist/setlistAction'
 
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import SearchUsers from './searchUsers/searchUsers'
@@ -17,8 +17,13 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
     history.goBack()
   }
 
+  const leaveSetListIfNotOwner = (id: string) => {
+    history.goBack()
+    dispatch(leaveSetlist(id))
+  }
+
   return (
-    <section className={`boardSettings sidebar ${isVisible ? 'active' : null}`}>
+    <section className={`boardSettings sidebar ${!isVisible ? 'active' : null}`}>
       <header>
         <button onClick={hide}>
           <SideMenuCross height={20} width={20} />
@@ -35,6 +40,13 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
         {activeBoard.isOwner ? (
           <button className="sideMenu_delete" onClick={deleteBoard}>
             delete Setlist
+          </button>
+        ) : null}
+        {!activeBoard.isOwner ? (
+          <button
+            className="sideMenu_delete"
+            onClick={() => leaveSetListIfNotOwner(activeBoard._id)}>
+            Leave Setlist
           </button>
         ) : null}
       </footer>

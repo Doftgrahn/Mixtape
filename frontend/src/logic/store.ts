@@ -25,6 +25,7 @@ export default (initialState: object) => {
     const persist = {
       auth: state.auth,
       activeBoard: state.activeBoard,
+      setlist: state.setlist,
       theme: state.theme
     }
 

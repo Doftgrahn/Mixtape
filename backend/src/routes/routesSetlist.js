@@ -9,6 +9,7 @@ const deleteSetlist = require('../setlist/controller/deletesetlist')
 const moveSetlist = require('../setlist/controller/moveSetlist')
 
 const addCollaborator = require('../setlist/controller/addCollaborator')
+const leaveSetlist = require('../setlist/controller/leaveSetlist')
 
 const authCheck = require('./authCheck')
 
@@ -19,5 +20,6 @@ router.delete('/deletesetlist/:id', authCheck, deleteSetlist)
 router.put('/moveSetlist', authCheck, moveSetlist)
 
 router.post('/addcollaborator', authCheck, addCollaborator)
+router.delete('/leaveSetlist/:id', authCheck, leaveSetlist)
 
 module.exports = router

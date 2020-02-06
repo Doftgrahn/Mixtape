@@ -44,11 +44,6 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
         <div className="socialBtns">
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
           <button onClick={spotifyModal}>+ add from spotify</button>
-          <iframe
-            src="https://open.spotify.com/embed/track/7Am8I3Yk0ElEG7Z0mNWxkk"
-            width="300"
-            height="380"
-            allow="encrypted-media"></iframe>
         </div>
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />

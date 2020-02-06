@@ -13,9 +13,6 @@ const Setlist: FC<any> = ({ modal, user }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
-    return () => {
-      dispatch(clearSetlist())
-    }
   }, [dispatch])
 
   const setListModal = modal ? <SetlistModal /> : null

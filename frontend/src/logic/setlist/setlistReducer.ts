@@ -7,7 +7,8 @@ import {
   CREATE_BOARD,
   SET_SETLIST_ERRORS,
   MUTATE_SETLIST,
-  INVITE_COLLABORATOR
+  INVITE_COLLABORATOR,
+  LEAVE_SETLIST
 } from './constants'
 import { PayLoad } from '../types'
 
@@ -57,7 +58,6 @@ export default (state = initialState, action: PayLoad) => {
         })
       }
     case INVITE_COLLABORATOR:
-      console.log(action.payload)
       return {
         ...state,
         boards: state.boards.map((setlist: any) => {
@@ -66,6 +66,13 @@ export default (state = initialState, action: PayLoad) => {
           }
           return setlist
         })
+      }
+    case LEAVE_SETLIST:
+      return {
+        ...state,
+        collaborators: state.collaborators.filter(
+          (setlist: any) => setlist._id !== action.payload._id
+        )
       }
     case IS_LOADING:
       return {
@@ -79,8 +86,8 @@ export default (state = initialState, action: PayLoad) => {
       }
     case CLEAR_SETLIST:
       return {
-        ...state,
-        boards: []
+        ...state
+        //   boards: []
       }
     default:
       return state

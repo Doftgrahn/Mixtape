@@ -30,13 +30,7 @@ export const setalternativelist = (playlist: any) => ({
 export const moveplaylistPUT = (finalIndex: any) => (_dispatch: any, getState: any) => {
   const firstItem = getState().list.referenceList[finalIndex]
   const secondItem = getState().list.list[finalIndex]
-  console.log(firstItem)
-  console.log(secondItem)
   Axios.post('/api/playlist/moveplaylist', { firstItem, secondItem })
-    .then(result => {
-      console.log(result)
-    })
-    .catch(error => {
-      console.log('error')
-    })
+    .then(result => {})
+    .catch(error => {})
 }
