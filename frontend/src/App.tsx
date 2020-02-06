@@ -1,7 +1,6 @@
 import React, { FC, useEffect, Suspense } from 'react'
 import './styles/App.scss'
 import { connect, useDispatch } from 'react-redux'
-import Routes from './routes/routes'
 import ReactGA from 'react-ga'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -11,6 +10,7 @@ import { getActiveUser } from './logic/auth/authAction'
 
 import { AppInterface } from './types/propTypes'
 
+import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
 

@@ -16,7 +16,6 @@ module.exports = function addCollaborator(req, res) {
           { new: true }
         )
           .then(setlist => {
-            console.log(setlist)
             res.status(200).json(setlist)
           })
           .catch(error => {
@@ -25,6 +24,6 @@ module.exports = function addCollaborator(req, res) {
       }
     })
     .catch(error => {
-      console.log('hej', error)
+      res.status(404).json(error)
     })
 }

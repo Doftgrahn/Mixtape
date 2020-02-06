@@ -15,9 +15,7 @@ export const fetchSetLyric = (url: string, id: string) => (dispatch: any) => {
       dispatch(setLyricInActiveSong(lyrics))
       dispatch(isLoading(false))
     })
-    .catch(error => {
-      console.log(error)
-    })
+    .catch(_error => {})
 }
 
 const setLyric = (song: any) => ({

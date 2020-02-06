@@ -4,16 +4,23 @@ import {
   CLEAR,
   MUTATE_ACTIVE_LIST,
   SET_ACTIVE_LYRIC,
-  ActivePlaylist
+  ActivePlaylistStateInterface
 } from './types'
 import { PayLoad } from '../types'
 
-const initialState: ActivePlaylist = {
-  current: {},
+const initialState: ActivePlaylistStateInterface = {
+  current: {
+    title: '',
+    date: '',
+    _id: '',
+    boardId: '',
+    userId: ''
+  },
   isActive: false
 }
 
 export default (state = initialState, action: PayLoad) => {
+  console.log(state)
   switch (action.type) {
     case SET_ACTIVE_LIST:
       return {

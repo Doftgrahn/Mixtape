@@ -2,11 +2,12 @@ import {
   TOOGLE_PLAYLIST_MODAL,
   TOGGLE_SETLIST_MODAL,
   TOGGlE_LYRIC_MODAL,
-  TOGGLE_SPOTIFY_MODAL
+  TOGGLE_SPOTIFY_MODAL,
+  ModalStateInterface
 } from './constants'
 import { PayLoad } from '../types'
 
-const initialState = {
+const initialState: ModalStateInterface = {
   setlistModal: false,
   playlistModal: false,
   lyricModal: false,

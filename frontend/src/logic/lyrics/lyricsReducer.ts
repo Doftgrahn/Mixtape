@@ -1,7 +1,13 @@
-import { GET_TRACKS, LYRIC_IS_LOADING, CLEAR_LYRICS, SET_LYRIC_ERROR } from './constants'
+import {
+  GET_TRACKS,
+  LYRIC_IS_LOADING,
+  CLEAR_LYRICS,
+  SET_LYRIC_ERROR,
+  LyricsStateInterface
+} from './constants'
 import { PayLoad } from '../types'
 
-const initialState = {
+const initialState: LyricsStateInterface = {
   lyrics: [],
   isLoading: false,
   errors: {}

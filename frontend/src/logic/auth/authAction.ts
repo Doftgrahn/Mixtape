@@ -106,7 +106,6 @@ export const getActiveUser = () => (dispatch: any) => {
       dispatch(setCurrentUser(user))
     })
     .catch(error => {
-      console.log('error', error)
       dispatch({
         type: GET_ERRORS,
         payload: error.response.data

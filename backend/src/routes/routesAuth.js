@@ -23,7 +23,6 @@ router.post('/update_password', recieveNewPassword)
 router.get('/getusers', getUsers)
 
 let url = 'https://www.mixtape.nu/'
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'development') {
   url = 'http://localhost:3000/'
 }

@@ -1,4 +1,4 @@
-import { compose, createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware, Store } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
@@ -31,5 +31,5 @@ export default (initialState: object) => {
 
     window.localStorage.setItem('state', JSON.stringify(persist))
   })
-  return store
+  return store as Store
 }

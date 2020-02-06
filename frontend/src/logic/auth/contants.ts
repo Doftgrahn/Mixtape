@@ -4,13 +4,21 @@ export const SET_CURRENT_USER: string = 'SET_CURRENT_USER'
 export const SHOW_ERROR_TO_USER: string = 'SHOW_ERROR_TO_USER'
 export const CLEAR_USER = 'CLEAR_USER'
 
-export interface User {
+interface UserInterface {
+  date: string
+  _id: string
   id: string
   name: string
+  googleId: string
+  spotifyId: string
+  avatar: []
+  spotifyToken: string
+  googleToken: string
+  email: string
 }
 
-export interface AuthState {
+export interface AuthStateInterface {
   isAuthenticated: boolean
-  user: User
+  user: UserInterface
   loading: boolean
 }

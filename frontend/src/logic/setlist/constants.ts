@@ -11,3 +11,19 @@ export const LEAVE_SETLIST = 'LEAVE_SETLIST'
 export const IS_LOADING = 'IS_LOADING'
 export const CLEAR_SETLIST = 'CLEAR_SETLIST'
 export const SET_SETLIST_ERRORS = 'SET_SETLIST_ERRORS'
+
+interface SetlistInterface {
+  date: string
+  _id: string
+  userId: string
+  user: string
+  title: string
+  isOwner?: boolean
+}
+
+export interface SetlistStateInterface {
+  boards: SetlistInterface[]
+  collaborators: SetlistInterface[]
+  loading: false
+  errors: object
+}

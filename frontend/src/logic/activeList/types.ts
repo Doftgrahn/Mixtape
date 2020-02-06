@@ -4,7 +4,15 @@ export const IS_ACTIVE = 'IS_ACTIVE'
 export const CLEAR = 'CLEAR'
 export const SET_ACTIVE_LYRIC = 'SET_ACTIVE_LYRIC'
 
-export interface ActivePlaylist {
-  current: object
+interface ActiveTrackInterface {
+  title: string
+  date: string
+  _id: string
+  boardId: string
+  userId: string
+}
+
+export interface ActivePlaylistStateInterface {
+  current: ActiveTrackInterface
   isActive: boolean
 }

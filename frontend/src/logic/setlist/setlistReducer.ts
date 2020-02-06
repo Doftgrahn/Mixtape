@@ -8,11 +8,12 @@ import {
   SET_SETLIST_ERRORS,
   MUTATE_SETLIST,
   INVITE_COLLABORATOR,
-  LEAVE_SETLIST
+  LEAVE_SETLIST,
+  SetlistStateInterface
 } from './constants'
 import { PayLoad } from '../types'
 
-const initialState: any = {
+const initialState: SetlistStateInterface = {
   boards: [],
   collaborators: [],
   loading: false,

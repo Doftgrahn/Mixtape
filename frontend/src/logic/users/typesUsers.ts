@@ -3,3 +3,11 @@ export const GET_USERS = 'GET_USERS'
 export const SEARCH_USERS = 'SEARCH_USERS'
 export const IS_USERS_LOADING = 'IS_USERS_LOADING'
 export const USERS_ERROR = 'USERS_ERROR'
+
+export interface UsersInterface {
+  input: string
+  users: []
+  searchUsers: []
+  isloading: boolean
+  errors: object
+}

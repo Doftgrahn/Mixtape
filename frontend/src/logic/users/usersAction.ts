@@ -25,7 +25,6 @@ export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
 export const deleteUser = () => async (dispatch: any) => {
   dispatch(isUsersLoading(true))
   const deletion = await Axios.delete('/api/allUsers/deleteUser')
-  console.log(deletion)
 }
 
 export const usersInput = (text: string): PayLoad => ({

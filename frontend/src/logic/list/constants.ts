@@ -11,3 +11,18 @@ export const MOVE_PLAYLIST_ITEM = 'MOVE_PLAYLIST_ITEM'
 export const SET_REFERENCE_LIST = 'SET_REFERENCE_LIST'
 
 export const SET_LYRIC = 'SET_LYRIC'
+
+interface TrackInterface {
+  title: string
+  date: string
+  _id: string
+  boardId: string
+  userId: string
+}
+
+export interface PlaylistStateInterface {
+  list: TrackInterface[]
+  isLoading: boolean
+  referenceList: TrackInterface[]
+  errors: object
+}

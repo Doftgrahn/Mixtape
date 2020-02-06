@@ -2,10 +2,7 @@ import React, { FC } from 'react'
 import { connect } from 'react-redux'
 
 const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
-  const addSongToUser = (spotUrl: string) => {
-    console.log('hej', spotUrl)
-  }
-  console.log(spotify)
+  const addSongToUser = (spotUrl: string) => {}
   const renderSearchResult = spotify.map((song: any) => (
     <li key={song.id}>
       <h3>{song.name}</h3>

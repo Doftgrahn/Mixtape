@@ -8,10 +8,11 @@ import {
   SET_LYRIC,
   MOVE_PLAYLIST_ITEM,
   SET_REFERENCE_LIST,
-  SET_PLAYLIST_ERROR
+  SET_PLAYLIST_ERROR,
+  PlaylistStateInterface
 } from './constants'
 
-const initialState: any = {
+const initialState: PlaylistStateInterface = {
   list: [],
   isLoading: false,
   referenceList: [],

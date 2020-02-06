@@ -32,11 +32,9 @@ const sendPasswordReset = (req, res) => {
     const sendEmail = () => {
       transporter.sendMail(emailTemplate, (err, info) => {
         if (err) {
-          console.log('ERROR Sending Mail', err)
           return res.status(500).json({ error: 'Error Sending Mail', err })
         }
         res.status(200).json({ success: true })
-        console.log('** Email Sent **', info)
       })
     }
 

@@ -21,7 +21,7 @@ export const fetchSongList = () => (dispatch: any, state: any) => {
       dispatch(isLoading(false))
     })
     .catch(error => {
-      console.log('Could not get list')
+      dispatch(setErrors(error))
     })
 }
 

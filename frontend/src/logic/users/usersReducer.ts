@@ -1,8 +1,15 @@
-import { GET_USERS, IS_USERS_LOADING, USERS_ERROR, USERS_INPUT, SEARCH_USERS } from './typesUsers'
+import {
+  GET_USERS,
+  IS_USERS_LOADING,
+  USERS_ERROR,
+  USERS_INPUT,
+  SEARCH_USERS,
+  UsersInterface
+} from './typesUsers'
 
 import { PayLoad } from '../types'
 
-const initialState = {
+const initialState: UsersInterface = {
   input: '',
   users: [],
   searchUsers: [],

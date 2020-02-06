@@ -24,7 +24,6 @@ export const getSpotifySearch = (searchString: string) => (dispatch: any, useSta
   Axios.get(url, config)
     .then(result => {
       const { items } = result.data.tracks
-      console.log(items)
       const takeOut = items.map((song: any) => {
         const artist = song.artists.map((artist: any) => artist.name)
         const spotUrl = song.external_urls.spotify

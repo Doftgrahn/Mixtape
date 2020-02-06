@@ -20,7 +20,6 @@ const checkSpotifyToken = (spotifyToken: string, dispatch: any) => {
     .catch(error => {
       if (error.response.status === 401) {
         dispatch(logoutUser())
-        console.log(logoutUser())
         window.location.href = url
       }
     })
