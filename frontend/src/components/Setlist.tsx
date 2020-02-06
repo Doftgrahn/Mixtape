@@ -6,16 +6,16 @@ import Collaborators from './setlist/collaborators/collaborators'
 import BoardHeader from './setlist/boardHeader/boardHeader'
 import SetlistModal from './setlistModal/setlistModal'
 
-import { AppModel, clearSetlist } from '../logic/setlist/setlistAction'
+import { AppModel } from '../logic/setlist/setlistAction'
 
-const Setlist: FC<any> = ({ modal, user }) => {
-  //const { spotifyToken } = user
+const Setlist: FC<any> = ({ modal, collaborators }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
   }, [dispatch])
 
   const setListModal = modal ? <SetlistModal /> : null
+  const invited = collaborators.length ? <h1>Collaborators</h1> : null
 
   return (
     <main className="board">
@@ -23,7 +23,7 @@ const Setlist: FC<any> = ({ modal, user }) => {
       <section className="container">
         <h1>My Setlists</h1>
         <BoardList />
-        <h1>Collaborations</h1>
+        {invited}
         <Collaborators />
       </section>
       {setListModal}
@@ -33,7 +33,7 @@ const Setlist: FC<any> = ({ modal, user }) => {
 
 const mapStateToProps = (state: any) => ({
   modal: state.modal.setlistModal,
-  user: state.auth.user
+  collaborators: state.setlist.collaborators
 })
 
 export default connect(mapStateToProps)(Setlist)

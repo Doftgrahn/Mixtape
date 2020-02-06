@@ -12,9 +12,9 @@ import SpotifyModal from './spotifyModal/spotifyModal'
 
 import { PlaylistInterface } from '../types/propTypes'
 
-const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
+const Playlist: FC<PlaylistInterface> = ({ list, modal, activeSetlist }) => {
   const { isLoading } = list
-  const { title } = match.params
+  const { title, user } = activeSetlist
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
@@ -24,7 +24,10 @@ const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
     <main className="list">
       <ListHeader title={title} />
       <div className="list_container">
-        <h1>{title}</h1>
+        <div className="title">
+          <h1>{title}</h1>
+          <h1>{user}</h1>
+        </div>
         {isLoading ? <Spinner /> : null}
         <NewSong />
         <ShowList />
@@ -39,6 +42,7 @@ const Playlist: FC<PlaylistInterface> = ({ match, list, modal }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
+  activeSetlist: state.activeBoard.activeBoard,
   list: state.list,
   modal: state.modal
 })

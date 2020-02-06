@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { logoutUser } from '../../logic/auth/authAction'
-import { deleteUser } from '../../logic/users/usersAction'
+//import { deleteUser } from '../../logic/users/usersAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import ThemeSwitcher from '../shared/themeswitcher/themeswitcher'
 
@@ -14,7 +14,7 @@ const UserProfile: FC<any> = ({ auth, isVisible, hide }) => {
     url = 'http://localhost:4000/api/users/logout'
   }
 
-  const deleteProfile = () => dispatch(deleteUser())
+  //const deleteProfile = () => dispatch(deleteUser())
 
   return (
     <section className={`userProfile sidebar ${isVisible ? 'active' : null}`}>

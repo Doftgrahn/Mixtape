@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import SpotifyPlayer from 'react-spotify-web-playback'
 
 import { connect, useDispatch } from 'react-redux'
 

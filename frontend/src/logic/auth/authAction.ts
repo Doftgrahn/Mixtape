@@ -115,7 +115,7 @@ export const getActiveUser = () => (dispatch: any) => {
 }
 
 // Set logged in user
-export const setCurrentUser = (decoded: string) => {
+export const setCurrentUser = (decoded: string): PayLoad => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded
@@ -123,7 +123,7 @@ export const setCurrentUser = (decoded: string) => {
 }
 
 // User loading
-export const setUserIsLoading = (isLoading: boolean) => {
+export const setUserIsLoading = (isLoading: boolean): PayLoad => {
   return {
     type: USER_LOADING,
     payload: isLoading

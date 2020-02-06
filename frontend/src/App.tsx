@@ -9,8 +9,10 @@ import { createBrowserHistory } from 'history'
 
 import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
-import checkSpotifyToken from './utils/checkSpotifyToken/checkSpotifyToken'
-import checkGoogleToken from './utils/checkGoogleToken/checkGoogleToken'
+
+//Used for later?
+//import checkSpotifyToken from './utils/checkSpotifyToken/checkSpotifyToken'
+//import checkGoogleToken from './utils/checkGoogleToken/checkGoogleToken'
 
 import { AppInterface } from './types/propTypes'
 

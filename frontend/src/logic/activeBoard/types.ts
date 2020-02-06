@@ -3,5 +3,4 @@ export const USER_NAME = 'USER_NAME'
 
 export interface ActiveBoardInterface {
   activeBoard: string
-  user: string
 }

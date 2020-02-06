@@ -1,8 +1,7 @@
 import { ACTIVE_BOARD, USER_NAME, ActiveBoardInterface } from './types'
 
 const initialState: ActiveBoardInterface = {
-  activeBoard: '',
-  user: ''
+  activeBoard: ''
 }
 export default (state = initialState, action: any) => {
   switch (action.type) {

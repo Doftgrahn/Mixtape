@@ -18,6 +18,7 @@ export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
   auth: any
   list: any
   modal: any
+  activeSetlist: any
 }
 
 export interface SetlistInterface {

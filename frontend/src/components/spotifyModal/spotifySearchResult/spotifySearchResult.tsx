@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-import SpotifyPlayer from 'react-spotify-web-playback'
 
 const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
   const addSongToUser = (spotUrl: string) => {

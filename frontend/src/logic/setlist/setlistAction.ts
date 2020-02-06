@@ -21,7 +21,6 @@ export const AppModel = () => (dispatch: any, state: any) => {
       const { mySetlist, collaborators } = result.data
 
       const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
-      console.log(collaborators)
       dispatch(setBoard(mutateIfOwner))
       dispatch(getCollabotorsSetList(collaborators))
       dispatch(IsLoading(false))
@@ -61,7 +60,6 @@ export const inviteCollaborator = (userId: string) => (dispatch: any, getState: 
     .post('/api/setlist/addcollaborator', { userId, setlistId })
     .then(result => {
       dispatch(addCollaborator(result.data))
-      console.log('restult', result)
     })
     .catch(error => {
       dispatch(setErrors(error))
