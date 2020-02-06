@@ -12,7 +12,6 @@ const initialState: ActiveSetlistStateInterface = {
   }
 }
 export default (state = initialState, action: any) => {
-  console.log(state)
   switch (action.type) {
     case ACTIVE_BOARD:
       return {

@@ -21,7 +21,7 @@ browserHistory.listen((location, _action) => {
   ReactGA.pageview(location.pathname + location.search)
 })
 
-const App: FC<AppInterface> = ({ theme, user }) => {
+const App: FC<AppInterface> = ({ theme }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
@@ -52,8 +52,7 @@ const App: FC<AppInterface> = ({ theme, user }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  theme: state.theme.state,
-  user: state.auth.user
+  theme: state.theme.state
 })
 
 export default connect(mapStateToProps)(App)

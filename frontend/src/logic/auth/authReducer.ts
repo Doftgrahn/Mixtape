@@ -25,7 +25,6 @@ const initialState: AuthStateInterface = {
 }
 
 export default function(state = initialState, action: PayLoad) {
-  console.log(state)
   switch (action.type) {
     case SET_CURRENT_USER:
       return {

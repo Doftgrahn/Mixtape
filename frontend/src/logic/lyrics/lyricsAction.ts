@@ -8,7 +8,6 @@ export const fetchgetTracks = (song: string) => (dispatch: any) => {
   Axios.get(`/api/lyrics/getTracks/${song}`)
     .then((result: any) => {
       const { data } = result
-      console.log(data)
       dispatch(getTracks(data))
       dispatch(isLoading(false))
     })

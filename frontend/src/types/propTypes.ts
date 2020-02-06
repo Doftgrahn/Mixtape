@@ -1,8 +1,7 @@
-import { RouteComponentProps, RouteProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 
 export interface AppInterface {
   theme: string
-  user: any
 }
 
 export interface LandingInterface {

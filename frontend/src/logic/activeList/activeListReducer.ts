@@ -20,7 +20,6 @@ const initialState: ActivePlaylistStateInterface = {
 }
 
 export default (state = initialState, action: PayLoad) => {
-  console.log(state)
   switch (action.type) {
     case SET_ACTIVE_LIST:
       return {

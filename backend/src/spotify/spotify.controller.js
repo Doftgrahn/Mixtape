@@ -5,7 +5,6 @@ module.exports = async function searchSpotify(req, res) {
   const url = `https://api.spotify.com/v1/search?q=${searchString}&type=track`
 
   const client_token = req.user.spotifyToken
-  console.log(client_token)
   const config = {
     headers: {
       Authorization: `Bearer ${client_token}`

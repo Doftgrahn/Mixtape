@@ -19,7 +19,10 @@ const Collaborators: FC<any> = ({ setlist }) => {
       </Link>
     </li>
   ))
-  return <ul className="boardlist">{renderMyBoards}</ul>
+
+  const list = setlist.collaborators.length ? <ul className="boardlist">{renderMyBoards}</ul> : null
+
+  return <>{list}</>
 }
 
 const mapStateToProps = (state: any) => ({
