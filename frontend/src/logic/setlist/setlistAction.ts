@@ -6,10 +6,14 @@ import {
   DELETE_BOARD,
   CLEAR_SETLIST,
   CREATE_BOARD,
+  MUTATE_SETLIST,
   SET_SETLIST_ERRORS,
   INVITE_COLLABORATOR,
   LEAVE_SETLIST
 } from './constants'
+
+import { mutateActiveSetlistTitle } from '../activeBoard/activeBoardAction'
+
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -44,6 +48,18 @@ export const addBoard = (board: any) => (dispatch: any, getState: any) => {
       dispatch(IsLoading(false))
     })
     .catch(error => dispatch(setErrors(error)))
+}
+
+export const mutateSetlist = (title: string) => async (dispatch: any, getState: any) => {
+  const id = getState().activeBoard.activeBoard._id
+  const data = {
+    title: title,
+    id: id
+  }
+  await axios.put('/api/setlist/mutatesetlist/', data)
+
+  dispatch(mutateActiveSetlistTitle(title))
+  dispatch(mutateSetlistTitle(data))
 }
 
 export const deletion = (id: string) => (dispatch: any) => {
@@ -86,6 +102,11 @@ const deleteBoard = (id: string) => ({
 
 const addSetlist = (setlist: BoardInterface) => ({
   type: CREATE_BOARD,
+  payload: setlist
+})
+
+const mutateSetlistTitle = (setlist: object): PayLoad => ({
+  type: MUTATE_SETLIST,
   payload: setlist
 })
 

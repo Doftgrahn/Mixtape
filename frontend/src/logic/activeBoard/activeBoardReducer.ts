@@ -1,7 +1,7 @@
-import { ACTIVE_BOARD, USER_NAME, ActiveBoardInterface } from './types'
+import { ACTIVE_BOARD, MUTATE_ACTIVE_SETLIST } from './types'
 
-const initialState: ActiveBoardInterface = {
-  activeBoard: ''
+const initialState: any = {
+  activeBoard: {}
 }
 export default (state = initialState, action: any) => {
   switch (action.type) {
@@ -10,12 +10,11 @@ export default (state = initialState, action: any) => {
         ...state,
         activeBoard: action.payload
       }
-    case USER_NAME:
+    case MUTATE_ACTIVE_SETLIST:
       return {
         ...state,
-        user: action.payload
+        activeBoard: { ...state.activeBoard, title: action.payload }
       }
-
     default:
       return state
   }

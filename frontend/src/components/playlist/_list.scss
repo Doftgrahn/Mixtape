@@ -11,6 +11,14 @@
     .title {
       display: flex;
       justify-content: space-between;
+      .mutate_setlist_title {
+        background: 0;
+        border: 0;
+        outline: none;
+        font-size: 32px;
+        padding: 0;
+        margin-bottom: 20px;
+      }
       h1 {
         text-transform: capitalize;
       }

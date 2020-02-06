@@ -13,7 +13,7 @@ const BoardSettings: FC<any> = ({ isVisible, hide, activeBoard }) => {
   const dispatch = useDispatch()
 
   const deleteBoard = () => {
-    dispatch(deletion(activeBoard.activeBoard))
+    dispatch(deletion(activeBoard._id))
     history.goBack()
   }
 

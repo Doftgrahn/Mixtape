@@ -7,8 +7,8 @@ import Account from '../../../assets/account/account'
 
 const ListHeader: FC<any> = () => {
   const history = useHistory()
-
   const [isVisible, setIsVisible] = useState(false)
+
   const show = () => setIsVisible(true)
   const hide = () => setIsVisible(false)
 

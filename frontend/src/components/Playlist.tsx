@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
 
+import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
 import ActiveSong from './activeSong/activeSong'
 import ShowList from './playlist/showlist/showList'
@@ -12,9 +13,8 @@ import SpotifyModal from './spotifyModal/spotifyModal'
 
 import { PlaylistInterface } from '../types/propTypes'
 
-const Playlist: FC<PlaylistInterface> = ({ list, modal, activeSetlist }) => {
+const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
   const { isLoading } = list
-  const { title, user } = activeSetlist
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
@@ -22,12 +22,9 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal, activeSetlist }) => {
 
   return (
     <main className="list">
-      <ListHeader title={title} />
+      <ListHeader />
       <div className="list_container">
-        <div className="title">
-          <h1>{title}</h1>
-          <h1>{user}</h1>
-        </div>
+        <PlaylistTitle />
         {isLoading ? <Spinner /> : null}
         <NewSong />
         <ShowList />
