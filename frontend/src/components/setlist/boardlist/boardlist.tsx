@@ -15,7 +15,7 @@ const BoardList: FC<any> = ({ setlist }) => {
   const setActiveBoard = (board: any): any => dispatch(activeBoard(board))
 
   const renderMyBoards = setlist.boards.map((board: BoardInterface): any => (
-    <li key={board._id}>
+    <li key={board._id} title={`Setlist: ${board.title}`}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
         <h3>{board.title}</h3>
       </Link>

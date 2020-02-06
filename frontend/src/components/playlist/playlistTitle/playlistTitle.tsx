@@ -47,7 +47,11 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
     />
   ) : null
 
-  const setListTitle = !isEditing ? <h1 onClick={() => setIsEditing(true)}>{title}</h1> : null
+  const setListTitle = !isEditing ? (
+    <button title="change title" onClick={() => setIsEditing(true)}>
+      <h1>{title}</h1>
+    </button>
+  ) : null
 
   return (
     <div className="title">
