@@ -1,4 +1,5 @@
 import React, { FC, useEffect, Suspense } from 'react'
+
 import './styles/App.scss'
 import { connect, useDispatch } from 'react-redux'
 import ReactGA from 'react-ga'
@@ -10,6 +11,7 @@ import { getActiveUser } from './logic/auth/authAction'
 
 import { AppInterface } from './types/propTypes'
 
+import Header from './components/header/header'
 import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
@@ -44,6 +46,7 @@ const App: FC<AppInterface> = ({ theme }) => {
       <Router>
         <ScrollToTop />
         <Suspense fallback={<Spinner />}>
+          <Header />
           <Routes />
         </Suspense>
       </Router>

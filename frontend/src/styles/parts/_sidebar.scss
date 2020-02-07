@@ -4,14 +4,14 @@
   color: var(--color-sidemenu-button);
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   transition: 200ms ease-out;
   top: 0;
   right: 0;
   bottom: 0;
   width: 40vh;
-  transform: translateX(40vh);
+  transform: translateX(44vh);
   overflow: hidden;
   padding: 20px;
   box-shadow: -5px 0px 10px 1px $color-shadow-base;

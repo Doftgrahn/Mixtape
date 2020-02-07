@@ -5,15 +5,15 @@ import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
 import ActiveSong from './activeSong/activeSong'
 import ShowList from './playlist/showlist/showList'
-import ListHeader from './playlist/listHeader/listHeader'
 import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
 import SpotifyModal from './spotifyModal/spotifyModal'
+import BoardSettings from './boardSettings/boardSettings'
 
 import { PlaylistInterface } from '../types/propTypes'
 
-const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
+const Playlist: FC<PlaylistInterface> = ({ list, modal, sidemenu }) => {
   const { isLoading } = list
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
@@ -22,7 +22,6 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
 
   return (
     <main className="list">
-      <ListHeader />
       <div className="list_container">
         <PlaylistTitle />
         {isLoading ? <Spinner /> : null}
@@ -30,6 +29,7 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
         <ShowList />
       </div>
       <ActiveSong />
+      <BoardSettings />
       {/*Modals */}
       {playlistModal}
       {lyricModal}
@@ -41,7 +41,8 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
 const mapStatetoProp = (state: any) => ({
   activeSetlist: state.activeBoard.activeBoard,
   list: state.list,
-  modal: state.modal
+  modal: state.modal,
+  sidemenu: state.sidemenu.setlist
 })
 
 export default connect(mapStatetoProp)(Playlist)

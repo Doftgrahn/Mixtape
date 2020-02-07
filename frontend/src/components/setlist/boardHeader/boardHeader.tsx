@@ -17,7 +17,6 @@ const BoardHeader = () => {
         <Logo height={50} width={80} />
         <h1>MixTape</h1>
       </div>
-
       <button className="profile_button" onClick={showUserProfil}>
         <Account height={50} width={50} />
       </button>

@@ -3,7 +3,6 @@ import { connect, useDispatch } from 'react-redux'
 
 import BoardList from './setlist/boardlist/boardlist'
 import Collaborators from './setlist/collaborators/collaborators'
-import BoardHeader from './setlist/boardHeader/boardHeader'
 import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel } from '../logic/setlist/setlistAction'
@@ -19,7 +18,6 @@ const Setlist: FC<any> = ({ modal, collaborators }) => {
 
   return (
     <main className="board">
-      <BoardHeader />
       <section className="container">
         <h1>My Setlists</h1>
         <BoardList />

@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { createBrowserHistory } from 'history'
-
 import { mutateSetlist } from '../../../logic/setlist/setlistAction'
+import Edit from '../../../assets/edit/edit'
+import { toggleEditSetlist } from '../../../logic/sidemenu/sidemenuAction'
 
 interface PlaylistTitleInterface {
   activeSetlist: object | any
@@ -47,17 +48,26 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
     />
   ) : null
 
+  const setToEdit = () => (activeSetlist.isOwner ? setIsEditing(true) : null)
+
   const setListTitle = !isEditing ? (
-    <button title="change title" onClick={() => setIsEditing(true)}>
+    <button title="change title" onClick={setToEdit}>
       <h1>{title}</h1>
     </button>
   ) : null
 
   return (
     <div className="title">
-      {setListTitle}
-      {input}
-      <h1>{user}</h1>
+      <div className="title_info">
+        {setListTitle}
+        {input}
+        <h2>{user}</h2>
+      </div>
+      <div className="editPlaylist_btn">
+        <button onClick={() => dispatch(toggleEditSetlist())}>
+          <Edit height={20} width={20} />
+        </button>
+      </div>
     </div>
   )
 }

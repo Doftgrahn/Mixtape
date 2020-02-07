@@ -11,11 +11,24 @@
     .title {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 20px;
+      @media screen and (max-width: 800px) {
+        padding: 20px;
+      }
+
       button {
         margin: 0;
         padding: 0;
         background: 0;
         font-size: initial;
+        h1 {
+          margin: 0;
+          padding: 0;
+        }
+
+        .userName {
+          margin: 0;
+        }
       }
       .mutate_setlist_title {
         background: 0;
@@ -23,7 +36,14 @@
         outline: none;
         font-size: 32px;
         padding: 0;
-        margin-bottom: 20px;
+        color: var(--color-headlineText);
+        &::placeholder {
+          color: var(--color-headlineText);
+        }
+      }
+      .editPlaylist_btn {
+        display: flex;
+        align-items: flex-end;
       }
       h1 {
         text-transform: capitalize;
