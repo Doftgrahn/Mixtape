@@ -1,10 +1,7 @@
 import React, { FC } from 'react'
-
 import { connect, useDispatch } from 'react-redux'
 
-import { clearAndHide } from '../../logic/activeList/activeListAction'
 import { toggleActiveTrack } from '../../logic/sidemenu/sidemenuAction'
-
 import { deleteListItem } from '../../logic/list/listAction'
 import { showLyricModal, showSpotifyModal } from '../../logic/modal/modalAction'
 
