@@ -25,7 +25,6 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
     history.goBack()
     dispatch(leaveSetlist(id))
   }
-  console.log(playlist)
 
   return (
     <section className={`boardSettings sidebar ${!sidemenu ? 'active' : null}`}>

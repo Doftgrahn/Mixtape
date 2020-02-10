@@ -22,6 +22,7 @@ const ShowUsers: FC<any> = () => {
   useEffect(() => {
     dispatch(searchUsers(input))
   }, [input, dispatch])
+
   return <ul>{renderUsers}</ul>
 }
 

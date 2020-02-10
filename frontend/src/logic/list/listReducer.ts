@@ -9,6 +9,7 @@ import {
   MOVE_PLAYLIST_ITEM,
   SET_REFERENCE_LIST,
   SET_PLAYLIST_ERROR,
+  CLEAR_TRACKS,
   PlaylistStateInterface
 } from './constants'
 
@@ -75,6 +76,13 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         errors: action.payload
+      }
+
+    case CLEAR_TRACKS:
+      return {
+        ...state,
+        list: [],
+        referenceList: []
       }
     default:
       return state

@@ -5,6 +5,7 @@ import { showSetlistModal } from '../../../logic/modal/modalAction'
 
 const NewBoard: FC<any> = () => {
   const dispatch = useDispatch()
+
   const showModal = () => dispatch(showSetlistModal())
 
   return (

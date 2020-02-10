@@ -4,7 +4,7 @@ import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import TouchBackend from 'react-dnd-touch-backend'
 
-import { fetchSongList } from '../../../logic/list/listAction'
+import { fetchSongList, clearAllTracks } from '../../../logic/list/listAction'
 import { movePlaylistItem } from '../../../logic/list/moveAction'
 
 import Playlistitem from './playlistItem/playListItem'
@@ -18,6 +18,9 @@ const ShowList: FC<any> = ({ list }) => {
 
   useEffect(() => {
     dispatch(fetchSongList())
+    return () => {
+      dispatch(clearAllTracks())
+    }
   }, [dispatch])
 
   const moveCard = (dragIndex: any, hoverIndex: any) => {

@@ -4,7 +4,8 @@ import {
   IS_LOADING,
   DELETE_LIST_ITEM,
   MUTATE_LIST,
-  SET_PLAYLIST_ERROR
+  SET_PLAYLIST_ERROR,
+  CLEAR_TRACKS
 } from './constants'
 import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
@@ -104,3 +105,5 @@ const setErrors = (errors: any): PayLoad => ({
   type: SET_PLAYLIST_ERROR,
   payload: errors
 })
+
+export const clearAllTracks = () => ({ type: CLEAR_TRACKS })
