@@ -9,10 +9,9 @@ import Account from '../../assets/account/account'
 import { toggleUserProfile } from '../../logic/sidemenu/sidemenuAction'
 
 const Header: FC<{}> = () => {
-  const IsloggedIn = useSelector((state: any) => state.auth.isAuthenticated)
-
   const history = useHistory()
   const dispatch = useDispatch()
+  const IsloggedIn = useSelector((state: any): boolean => state.auth.isAuthenticated)
 
   if (!IsloggedIn) return null
 

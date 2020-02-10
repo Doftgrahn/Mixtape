@@ -28,7 +28,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
   }
 
   return (
-    <section className={`boardSettings sidebar ${!sidemenu ? 'active' : null}`}>
+    <section className={`boardSettings sidebar ${sidemenu ? 'active' : null}`}>
       <header>
         <h1>{activeBoard.title}</h1>
         <button onClick={hide}>

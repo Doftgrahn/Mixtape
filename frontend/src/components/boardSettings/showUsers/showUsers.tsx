@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fechGetAllUsers, searchUsers } from '../../../logic/users/usersAction'
+import { fechGetAllUsers, searchUsers, usersInput } from '../../../logic/users/usersAction'
 
 import { inviteCollaborator } from '../../../logic/setlist/setlistAction'
 
@@ -16,6 +16,11 @@ const ShowUsers: FC<any> = () => {
     dispatch(fechGetAllUsers())
   })
 
+  const invite = (id: string) => {
+    dispatch(inviteCollaborator(id))
+    dispatch(usersInput(''))
+  }
+
   const renderUsers = searchResult.map((user: any) => {
     const find = currentCollaborators.find((x: string) => x === user._id)
     return (
@@ -24,9 +29,7 @@ const ShowUsers: FC<any> = () => {
         {find ? (
           <span>Already Invited</span>
         ) : (
-          <button
-            className="addCollaborator"
-            onClick={() => dispatch(inviteCollaborator(user._id))}>
+          <button className="addCollaborator" onClick={() => invite(user._id)}>
             +
           </button>
         )}
