@@ -9,10 +9,14 @@ import {
   MUTATE_SETLIST,
   SET_SETLIST_ERRORS,
   INVITE_COLLABORATOR,
+  UNINVITE_COLLABORSTOR,
   LEAVE_SETLIST
 } from './constants'
 
-import { mutateActiveSetlistTitle } from '../activeBoard/activeBoardAction'
+import {
+  mutateActiveSetlistTitle,
+  uninviteFromActiveSetlist
+} from '../activeBoard/activeBoardAction'
 
 import { PayLoad, BoardInterface } from '../types'
 
@@ -81,6 +85,25 @@ export const inviteCollaborator = (userId: string) => (dispatch: any, getState: 
       dispatch(setErrors(error))
     })
 }
+
+export const unInviteCollaborator = (colabId: string) => async (dispatch: any, getState: any) => {
+  const currentSetlist = getState().activeBoard.activeBoard._id
+  const deletion = await axios.delete(`/api/allUsers/unInviteUser/${colabId}`)
+  console.log(deletion)
+  const mapColab = getState().setlist.boards.find((x: any) => x._id === currentSetlist)
+  const filterSetlist = mapColab.collaborators.filter((x: any) => x !== colabId)
+  const data = {
+    collaborators: filterSetlist,
+    currentSetlist: currentSetlist
+  }
+  dispatch(unInvite(data))
+  dispatch(uninviteFromActiveSetlist(filterSetlist))
+}
+
+const unInvite = (data: any): PayLoad => ({
+  type: UNINVITE_COLLABORSTOR,
+  payload: data
+})
 
 export const leaveSetlist = (id: string) => async (dispatch: any, getState: any) => {
   const { setlist, auth } = getState()

@@ -9,11 +9,11 @@ import {
 } from './typesUsers'
 import Axios from 'axios'
 
-export const fechGetAllUsers = () => async (dispatch: any) => {
+export const fechGetAllUsers = () => async (dispatch: any, getState: any) => {
   dispatch(isUsersLoading(true))
   try {
-    const users = await Axios.get('/api/allUsers/getAllUsers')
-    dispatch(getAllUsers(users.data))
+    const { data } = await Axios.get('/api/allUsers/getAllUsers')
+    dispatch(getAllUsers(data))
   } catch (error) {
     dispatch(userErrors(error))
   }
@@ -34,7 +34,6 @@ export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
   const collaborators = await Axios.get(`/api/allUsers/getInvitedUsers/${currentSetlist}`)
   try {
     const { data } = collaborators
-
     dispatch(invitedUsers(data))
   } catch (e) {
     dispatch(userErrors(e))

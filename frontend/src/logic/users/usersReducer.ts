@@ -14,9 +14,9 @@ const initialState: UsersInterface = {
   input: '',
   users: [],
   searchUsers: [],
+  invitedUsers: [],
   isloading: false,
-  errors: {},
-  invitedUsers: []
+  errors: {}
 }
 
 export default (state = initialState, action: PayLoad) => {

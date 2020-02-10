@@ -1,4 +1,9 @@
-import { ACTIVE_BOARD, MUTATE_ACTIVE_SETLIST, ActiveSetlistStateInterface } from './types'
+import {
+  ACTIVE_BOARD,
+  MUTATE_ACTIVE_SETLIST,
+  ActiveSetlistStateInterface,
+  UNINVITE_ACTIVE_COLLABORATOR
+} from './types'
 
 const initialState: ActiveSetlistStateInterface = {
   activeBoard: {
@@ -20,6 +25,10 @@ export default (state = initialState, action: any) => {
     case MUTATE_ACTIVE_SETLIST:
       return {
         activeBoard: { ...state.activeBoard, title: action.payload }
+      }
+    case UNINVITE_ACTIVE_COLLABORATOR:
+      return {
+        activeBoard: { ...state.activeBoard, collaborators: action.payload }
       }
     default:
       return state

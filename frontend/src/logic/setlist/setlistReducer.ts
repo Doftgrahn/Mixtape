@@ -9,6 +9,7 @@ import {
   MUTATE_SETLIST,
   INVITE_COLLABORATOR,
   LEAVE_SETLIST,
+  UNINVITE_COLLABORSTOR,
   SetlistStateInterface
 } from './constants'
 import { PayLoad } from '../types'
@@ -63,6 +64,16 @@ export default (state = initialState, action: PayLoad) => {
         ...state,
         boards: state.boards.map((setlist: any) => {
           if (setlist._id === action.payload._id) {
+            return { ...setlist, collaborators: action.payload.collaborators }
+          }
+          return setlist
+        })
+      }
+    case UNINVITE_COLLABORSTOR:
+      return {
+        ...state,
+        boards: state.boards.map((setlist: any) => {
+          if (setlist._id === action.payload.currentSetlist) {
             return { ...setlist, collaborators: action.payload.collaborators }
           }
           return setlist
