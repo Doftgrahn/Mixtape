@@ -5,9 +5,9 @@ export const calculateHowManySetlists = (setlists: any) => {
   if (totalSetlists === 0) return null
   const ifMoreThanOne = totalSetlists > 1 ? 'setlists' : 'setlist'
   return (
-    <h3>
+    <p>
       You have {totalSetlists} {ifMoreThanOne}
-    </h3>
+    </p>
   )
 }
 
@@ -16,8 +16,8 @@ export const calculateHowManyInvitedTo = (setlists: any) => {
   const ifMoreThanOne = totalCollaborators > 1 ? 'setlists' : 'setlist'
   if (totalCollaborators === 0) return null
   return (
-    <h3>
+    <p>
       You are invited to {totalCollaborators} {ifMoreThanOne}
-    </h3>
+    </p>
   )
 }

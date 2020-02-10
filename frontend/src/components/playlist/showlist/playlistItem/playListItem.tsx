@@ -7,14 +7,18 @@ import { showLyricModal } from '../../../../logic/modal/modalAction'
 import ItemTypes from './itemType'
 import Paper from '../../../../assets/paper/paper'
 import { moveplaylistPUT, alternativePlatlist } from '../../../../logic/list/moveAction'
+import { toggleActiveTrack } from '../../../../logic/sidemenu/sidemenuAction'
 
 import { CardProps, DragItem } from './itemType'
 
-const Playlistitem: FC<CardProps> = ({ active, list, index, id, moveCard }) => {
+const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
   const ref = useRef<HTMLLIElement>(null)
-  const { current, isActive } = active
-  const setActiveSong = (id: string) => dispatch(activeSong(id))
+  const { current } = active
+  const setActiveSong = (id: string) => {
+    dispatch(activeSong(id))
+    dispatch(toggleActiveTrack())
+  }
   const shortCutLyrics = (song: any) => dispatch(setCurrentSong(song)) && dispatch(showLyricModal())
 
   const [, drop] = useDrop({
@@ -89,7 +93,7 @@ const Playlistitem: FC<CardProps> = ({ active, list, index, id, moveCard }) => {
     <li
       ref={ref}
       key={list._id}
-      className={current._id === list._id && isActive ? 'showActiveSong' : ''}
+      className={current._id === list._id && activeTrack ? 'showActiveSong' : ''}
       style={{ opacity }}>
       <div className="song">
         <h3>{list.title}</h3>
@@ -107,7 +111,8 @@ const Playlistitem: FC<CardProps> = ({ active, list, index, id, moveCard }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  active: state.activeList
+  active: state.activeList,
+  activeTrack: state.sidemenu.activeTrack
 })
 
 export default connect(mapStateToProps)(Playlistitem)

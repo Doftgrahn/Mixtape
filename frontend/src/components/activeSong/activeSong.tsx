@@ -3,6 +3,8 @@ import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import { clearAndHide } from '../../logic/activeList/activeListAction'
+import { toggleActiveTrack } from '../../logic/sidemenu/sidemenuAction'
+
 import { deleteListItem } from '../../logic/list/listAction'
 import { showLyricModal, showSpotifyModal } from '../../logic/modal/modalAction'
 
@@ -10,29 +12,29 @@ import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import Trash from '../../assets/trash/trash'
 
-const ActiveSong: FC<any> = ({ currentsong }) => {
+const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
   const dispatch = useDispatch()
-  const { current, isActive } = currentsong
+  const { current } = currentsong
 
-  const hide = () => dispatch(clearAndHide())
+  const hide = () => dispatch(toggleActiveTrack())
 
   const deleteSong = (id: any) => {
     dispatch(deleteListItem(id))
-    dispatch(clearAndHide())
+    hide()
   }
 
   const lyricModal = () => {
     dispatch(showLyricModal())
-    dispatch(clearAndHide())
+    hide()
   }
 
   const spotifyModal = () => {
     dispatch(showSpotifyModal())
-    dispatch(clearAndHide())
+    hide()
   }
 
   return (
-    <article className={`activeSong sidebar ${isActive ? 'active' : null}`}>
+    <article className={`activeSong sidebar ${activeTrack ? 'active' : null}`}>
       <header className="sidebarHeader">
         <button onClick={hide}>
           <SideMenuCross height={20} width={20} />
@@ -54,7 +56,8 @@ const ActiveSong: FC<any> = ({ currentsong }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  currentsong: state.activeList
+  currentsong: state.activeList,
+  activeTrack: state.sidemenu.activeTrack
 })
 
 export default connect(mapStateToProps)(ActiveSong)

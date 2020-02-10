@@ -6,9 +6,12 @@ h1 {
 }
 
 html {
-  min-height: 100vh;
+  // min-height: 100vh;
   background-color: var(--color-background);
   overflow-x: hidden;
+  // @media screen and (max-width: 800px) {
+  //   min-height: calc(var(--vh, 1vh) * 100);
+  // }
 }
 
 body {

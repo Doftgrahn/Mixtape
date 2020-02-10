@@ -41,6 +41,16 @@ const App: FC<AppInterface> = ({ theme }) => {
     })
   }, [theme])
 
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+
+    document.addEventListener('reize', () => {
+      let vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    })
+  })
+
   return (
     <div className="App">
       <Router>

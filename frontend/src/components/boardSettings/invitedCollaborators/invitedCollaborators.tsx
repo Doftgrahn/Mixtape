@@ -8,10 +8,14 @@ const InvitedCollaborators: FC<any> = ({ invitedUsers, isOwner }) => {
   const dispatch = useDispatch()
 
   const renderCurrentCollaborators = invitedUsers.map((user: any) => (
-    <li key={user._id}>
-      <h2>{user.name}</h2>
+    <li className="invitedCollaborators" key={user._id}>
+      <p>{user.name}</p>
       {isOwner ? (
-        <button onClick={() => dispatch(unInviteCollaborator(user._id))}>UnInvite</button>
+        <button
+          className="addCollaborator"
+          onClick={() => dispatch(unInviteCollaborator(user._id))}>
+          Remove
+        </button>
       ) : null}
     </li>
   ))

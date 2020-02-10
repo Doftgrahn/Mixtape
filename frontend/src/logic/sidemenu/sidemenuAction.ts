@@ -4,4 +4,4 @@ export const toggleUserProfile = () => ({ type: TOGGLE_USER_PROFILE })
 
 export const toggleEditSetlist = () => ({ type: TOGGLE_EDIT_SETLIST })
 
-export const toggleActive = () => ({ type: TOGGLE_ACTIVE_SONG_MENU })
+export const toggleActiveTrack = () => ({ type: TOGGLE_ACTIVE_SONG_MENU })

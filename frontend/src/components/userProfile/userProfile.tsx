@@ -25,7 +25,7 @@ const UserProfile: FC<any> = ({ auth, sidemenu, setlists }) => {
   return (
     <section className={`userProfile sidebar ${sidemenu ? 'active' : null}`}>
       <header className="sidebarHeader">
-        <h1 className="profileTitle">Profile</h1>
+        <h1>Profile</h1>
         <button className="hide" onClick={hide}>
           <SideMenuCross height={20} width={20} />
         </button>

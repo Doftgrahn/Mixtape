@@ -8,6 +8,7 @@ export interface CardProps {
   moveCard: (dragIndex: number, hoverIndex: number) => void
   active: any
   list: any
+  activeTrack: boolean
 }
 
 export interface DragItem {
