@@ -5,7 +5,9 @@ import {
   IS_USERS_LOADING,
   USERS_ERROR,
   SEARCH_USERS,
-  INVITED_USERS
+  INVITED_USERS,
+  ADD_USERS_COLLABORATOR,
+  DELETE_USER_COLLABORATOR
 } from './typesUsers'
 import Axios from 'axios'
 
@@ -39,6 +41,21 @@ export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
     dispatch(userErrors(e))
   }
 }
+
+export const addUserCollaborator = (collaboratorId: any) => (dispatch: any, getState: any) => {
+  const getUserBasedOnIt = getState().users.users.find((x: any) => x._id === collaboratorId)
+  dispatch(addUser(getUserBasedOnIt))
+}
+
+const addUser = (user: any) => ({
+  type: ADD_USERS_COLLABORATOR,
+  payload: user
+})
+
+export const unInviteUserCollaborator = (id: string) => ({
+  type: DELETE_USER_COLLABORATOR,
+  payload: id
+})
 
 // export const deleteUser = () => async (dispatch: any) => {
 //   dispatch(isUsersLoading(true))

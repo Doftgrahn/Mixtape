@@ -18,6 +18,8 @@ import {
   uninviteFromActiveSetlist
 } from '../activeBoard/activeBoardAction'
 
+import { addUserCollaborator, unInviteUserCollaborator } from '../users/usersAction'
+
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -80,6 +82,8 @@ export const inviteCollaborator = (userId: string) => (dispatch: any, getState: 
     .post('/api/setlist/addcollaborator', { userId, setlistId })
     .then(result => {
       dispatch(addCollaborator(result.data))
+      dispatch(addUserCollaborator(userId))
+      //add to userslists here
     })
     .catch(error => {
       dispatch(setErrors(error))
@@ -88,14 +92,14 @@ export const inviteCollaborator = (userId: string) => (dispatch: any, getState: 
 
 export const unInviteCollaborator = (colabId: string) => async (dispatch: any, getState: any) => {
   const currentSetlist = getState().activeBoard.activeBoard._id
-  const deletion = await axios.delete(`/api/allUsers/unInviteUser/${colabId}`)
-  console.log(deletion)
+  await axios.delete(`/api/allUsers/unInviteUser/${colabId}`)
   const mapColab = getState().setlist.boards.find((x: any) => x._id === currentSetlist)
   const filterSetlist = mapColab.collaborators.filter((x: any) => x !== colabId)
   const data = {
     collaborators: filterSetlist,
     currentSetlist: currentSetlist
   }
+  dispatch(unInviteUserCollaborator(colabId))
   dispatch(unInvite(data))
   dispatch(uninviteFromActiveSetlist(filterSetlist))
 }

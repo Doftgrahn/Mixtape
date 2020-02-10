@@ -4,5 +4,6 @@ module.exports = async function unInviteUser(req, res) {
 
   const query = { collaborators: colabId }
   const setting = { $pull: { collaborators: colabId } }
-  await Setlist.findOneAndUpdate(query, setting)
+  const uninvite = await Setlist.findOneAndUpdate(query, setting)
+  res.status(200).json(uninvite)
 }

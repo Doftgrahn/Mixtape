@@ -5,6 +5,8 @@ import {
   USERS_INPUT,
   SEARCH_USERS,
   INVITED_USERS,
+  ADD_USERS_COLLABORATOR,
+  DELETE_USER_COLLABORATOR,
   UsersInterface
 } from './typesUsers'
 
@@ -36,6 +38,18 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         users: payload
+      }
+    case ADD_USERS_COLLABORATOR:
+      return {
+        ...state,
+        invitedUsers: [...state.invitedUsers, action.payload]
+      }
+    case DELETE_USER_COLLABORATOR:
+      console.log(action.payload)
+      console.log(state.invitedUsers)
+      return {
+        ...state,
+        invitedUsers: state.invitedUsers.filter((x: any) => x._id !== action.payload)
       }
     case INVITED_USERS:
       return {
