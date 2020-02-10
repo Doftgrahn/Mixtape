@@ -1,5 +1,12 @@
 import { PayLoad } from '../types'
-import { USERS_INPUT, GET_USERS, IS_USERS_LOADING, USERS_ERROR, SEARCH_USERS } from './typesUsers'
+import {
+  USERS_INPUT,
+  GET_USERS,
+  IS_USERS_LOADING,
+  USERS_ERROR,
+  SEARCH_USERS,
+  INVITED_USERS
+} from './typesUsers'
 import Axios from 'axios'
 
 export const fechGetAllUsers = () => async (dispatch: any) => {
@@ -22,10 +29,22 @@ export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
   dispatch(setSearchResult(searchResult))
 }
 
-export const deleteUser = () => async (dispatch: any) => {
-  dispatch(isUsersLoading(true))
-  const deletion = await Axios.delete('/api/allUsers/deleteUser')
+export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
+  const currentSetlist = getState().activeBoard.activeBoard._id
+  const collaborators = await Axios.get(`/api/allUsers/getInvitedUsers/${currentSetlist}`)
+  try {
+    const { data } = collaborators
+
+    dispatch(invitedUsers(data))
+  } catch (e) {
+    dispatch(userErrors(e))
+  }
 }
+
+// export const deleteUser = () => async (dispatch: any) => {
+//   dispatch(isUsersLoading(true))
+//   const deletion = await Axios.delete('/api/allUsers/deleteUser')
+// }
 
 export const usersInput = (text: string): PayLoad => ({
   type: USERS_INPUT,
@@ -34,6 +53,10 @@ export const usersInput = (text: string): PayLoad => ({
 
 const getAllUsers = (users: any): PayLoad => ({
   type: GET_USERS,
+  payload: users
+})
+const invitedUsers = (users: any): PayLoad => ({
+  type: INVITED_USERS,
   payload: users
 })
 

@@ -1,0 +1,13 @@
+.UsersList {
+  display: flex;
+  flex-direction: column;
+  &_single {
+    background: none;
+    display: flex;
+    align-items: center;
+  }
+  .addCollaborator {
+    margin-left: auto;
+    background: none;
+  }
+}

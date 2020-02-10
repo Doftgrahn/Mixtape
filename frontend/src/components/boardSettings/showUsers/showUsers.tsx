@@ -13,17 +13,19 @@ const ShowUsers: FC<any> = () => {
   })
 
   const renderUsers = searchResult.map((user: any) => (
-    <div key={user._id}>
-      <h2>{user.name}</h2>
-      <button onClick={() => dispatch(inviteCollaborator(user._id))}>+ add to setlist</button>
-    </div>
+    <li className="UsersList_single" key={user._id}>
+      <h3>{user.name}</h3>
+      <button className="addCollaborator" onClick={() => dispatch(inviteCollaborator(user._id))}>
+        +
+      </button>
+    </li>
   ))
 
   useEffect(() => {
     dispatch(searchUsers(input))
   }, [input, dispatch])
 
-  return <ul>{renderUsers}</ul>
+  return <ul className="UsersList">{renderUsers}</ul>
 }
 
 export default ShowUsers

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import UserProfil from '../userProfile/userProfile'
@@ -8,9 +8,13 @@ import Account from '../../assets/account/account'
 
 import { toggleUserProfile } from '../../logic/sidemenu/sidemenuAction'
 
-const Header: FC = () => {
+const Header: FC<{}> = () => {
+  const IsloggedIn = useSelector((state: any) => state.auth.isAuthenticated)
+
   const history = useHistory()
   const dispatch = useDispatch()
+
+  if (!IsloggedIn) return null
 
   return (
     <header className="header">

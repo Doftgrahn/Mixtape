@@ -4,6 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion, leaveSetlist } from '../../logic/setlist/setlistAction'
 
+import InvitedCollaborators from './invitedCollaborators/invitedCollaborators'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import SearchUsers from './searchUsers/searchUsers'
 import ShowUsers from './showUsers/showUsers'
@@ -36,8 +37,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
       </header>
       <article>
         <h3>you currently have {playlist.length} songs</h3>
-        <span>Invited Members</span>
-        <p>Simon</p>
+        <InvitedCollaborators />
         <SearchUsers />
         <ShowUsers />
       </article>

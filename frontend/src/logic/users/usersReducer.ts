@@ -4,6 +4,7 @@ import {
   USERS_ERROR,
   USERS_INPUT,
   SEARCH_USERS,
+  INVITED_USERS,
   UsersInterface
 } from './typesUsers'
 
@@ -14,7 +15,8 @@ const initialState: UsersInterface = {
   users: [],
   searchUsers: [],
   isloading: false,
-  errors: {}
+  errors: {},
+  invitedUsers: []
 }
 
 export default (state = initialState, action: PayLoad) => {
@@ -34,6 +36,11 @@ export default (state = initialState, action: PayLoad) => {
       return {
         ...state,
         users: payload
+      }
+    case INVITED_USERS:
+      return {
+        ...state,
+        invitedUsers: payload
       }
     case IS_USERS_LOADING:
       return {
