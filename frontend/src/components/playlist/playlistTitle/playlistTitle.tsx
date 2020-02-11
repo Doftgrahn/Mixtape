@@ -13,7 +13,7 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
   const [isEditing, setIsEditing] = useState(false)
-  const { title, user } = activeSetlist
+  const { title, user, description } = activeSetlist
   const history = createBrowserHistory()
 
   const changeUrl = () => history.replace(`/dashboard/${value}`)
@@ -54,13 +54,16 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
     <button title="change title" onClick={setToEdit}>
       <h1>{title}</h1>
     </button>
-  ) : null
+  ) : (
+    input
+  )
 
   return (
     <div className="title">
       <div className="title_info">
-        {setListTitle}
-        {input}
+        <div className="title_container">
+          {setListTitle} <p>{description}</p>
+        </div>
         <h2>{user}</h2>
       </div>
       <div className="editPlaylist_btn">
