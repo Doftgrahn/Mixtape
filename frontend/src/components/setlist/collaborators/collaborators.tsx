@@ -15,6 +15,7 @@ const Collaborators: FC<any> = ({ setlist }) => {
   const renderMyBoards = setlist.collaborators.map((board: BoardInterface): any => (
     <li key={board._id}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
+        <p>{board.description}</p>
         <h3>{board.title}</h3>
       </Link>
     </li>

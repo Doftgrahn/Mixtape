@@ -10,6 +10,7 @@ import {
   INVITE_COLLABORATOR,
   LEAVE_SETLIST,
   UNINVITE_COLLABORSTOR,
+  ADD_DESCRIPTION,
   SetlistStateInterface
 } from './constants'
 import { PayLoad } from '../types'
@@ -55,6 +56,16 @@ export default (state = initialState, action: PayLoad) => {
         boards: state.boards.map((setlist: any) => {
           if (setlist._id === action.payload.id) {
             return { ...setlist, title: action.payload.title }
+          }
+          return setlist
+        })
+      }
+    case ADD_DESCRIPTION:
+      return {
+        ...state,
+        boards: state.boards.map((setlist: any) => {
+          if (setlist._id === action.payload.id) {
+            return { ...setlist, description: action.payload.description }
           }
           return setlist
         })

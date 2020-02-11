@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 export interface BoardInterface {
   userId: string
   title: string
+  description: string
   isLoading: boolean
   list: any
   _id: string

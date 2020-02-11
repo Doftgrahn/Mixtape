@@ -10,6 +10,7 @@ import {
   SET_SETLIST_ERRORS,
   INVITE_COLLABORATOR,
   UNINVITE_COLLABORSTOR,
+  ADD_DESCRIPTION,
   LEAVE_SETLIST
 } from './constants'
 
@@ -42,7 +43,8 @@ export const addBoard = (board: any) => (dispatch: any, getState: any) => {
   const data = {
     userId: board.userId,
     title: board.title,
-    user: user
+    user: user,
+    description: ''
   }
   dispatch(IsLoading(true))
   axios
@@ -62,7 +64,7 @@ export const mutateSetlist = (title: string) => async (dispatch: any, getState: 
     title: title,
     id: id
   }
-  await axios.put('/api/setlist/mutatesetlist/', data)
+  await axios.put('/api/setlist/mutatesetlist', data)
 
   dispatch(mutateActiveSetlistTitle(title))
   dispatch(mutateSetlistTitle(data))
@@ -75,6 +77,20 @@ export const deletion = (id: string) => (dispatch: any) => {
     .then((result: any) => {})
     .catch((error: any) => dispatch(setErrors(error)))
 }
+
+export const addDescription = (description: string) => async (dispatch: any, getState: any) => {
+  const setlistId = getState().activeBoard.activeBoard._id
+  const data = {
+    id: setlistId,
+    description: description
+  }
+  dispatch(dispatchAddDescription(data))
+  await axios.post('/api/setlist/adddescription', data)
+}
+const dispatchAddDescription = (setlist: object) => ({
+  type: ADD_DESCRIPTION,
+  payload: setlist
+})
 
 export const inviteCollaborator = (userId: string) => (dispatch: any, getState: any) => {
   const setlistId = getState().activeBoard.activeBoard

@@ -6,15 +6,15 @@ import ReactGA from 'react-ga'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
-import { lightTheme, darkTheme } from './utils/colors/colors'
-import { getActiveUser } from './logic/auth/authAction'
-
-import { AppInterface } from './types/propTypes'
-
 import Header from './components/header/header'
 import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
+
+import { lightTheme, darkTheme } from './utils/colors/colors'
+import { getActiveUser } from './logic/auth/authAction'
+
+import { AppInterface } from './types/propTypes'
 
 const browserHistory = createBrowserHistory()
 

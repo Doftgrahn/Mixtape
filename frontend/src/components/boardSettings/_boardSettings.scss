@@ -11,3 +11,19 @@
     background: none;
   }
 }
+
+.description_wrapper {
+  p {
+    cursor: pointer;
+    white-space: pre-line;
+  }
+  textarea {
+    background: inherit;
+    border: 0;
+    width: 100%;
+    height: 300px;
+    resize: none;
+    color: currentColor;
+    white-space: pre-line;
+  }
+}
