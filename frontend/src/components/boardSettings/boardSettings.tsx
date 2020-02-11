@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -11,7 +11,11 @@ import ShowUsers from './showUsers/showUsers'
 
 import { toggleEditSetlist } from '../../logic/sidemenu/sidemenuAction'
 
+import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
+
 const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
+
   const history = useHistory()
   const dispatch = useDispatch()
 
@@ -27,8 +31,16 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
     dispatch(leaveSetlist(id))
   }
 
+  useEffect(() => {
+    if (!sidemenu) {
+      setIsComponentVisible(true)
+    }
+  })
+
   return (
-    <section className={`boardSettings sidebar ${sidemenu ? 'active' : null}`}>
+    <section
+      ref={ref}
+      className={`boardSettings sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
       <header>
         <h1>{activeBoard.title}</h1>
         <button onClick={hide}>

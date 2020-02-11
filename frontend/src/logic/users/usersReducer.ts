@@ -45,8 +45,6 @@ export default (state = initialState, action: PayLoad) => {
         invitedUsers: [...state.invitedUsers, action.payload]
       }
     case DELETE_USER_COLLABORATOR:
-      console.log(action.payload)
-      console.log(state.invitedUsers)
       return {
         ...state,
         invitedUsers: state.invitedUsers.filter((x: any) => x._id !== action.payload)

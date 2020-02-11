@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { logoutUser } from '../../logic/auth/authAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
@@ -11,7 +11,11 @@ import {
   calculateHowManyInvitedTo
 } from '../../utils/calculatePlaylists/calculatePlaylist'
 
+import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
+
 const UserProfile: FC<any> = ({ auth, sidemenu, setlists }) => {
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
+
   const dispatch = useDispatch()
   const { user } = auth
 
@@ -20,10 +24,21 @@ const UserProfile: FC<any> = ({ auth, sidemenu, setlists }) => {
     url = 'http://localhost:4000/api/users/logout'
   }
 
-  const hide = () => dispatch(toggleUserProfile())
+  const hide = () => {
+    dispatch(toggleUserProfile())
+    setIsComponentVisible(true)
+  }
+
+  useEffect(() => {
+    if (!sidemenu) {
+      setIsComponentVisible(true)
+    }
+  })
 
   return (
-    <section className={`userProfile sidebar ${sidemenu ? 'active' : null}`}>
+    <section
+      ref={ref}
+      className={`userProfile sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
       <header className="sidebarHeader">
         <h1>Profile</h1>
         <button className="hide" onClick={hide}>
