@@ -9,18 +9,21 @@ const Description: FC<any> = ({ description }) => {
   const [descriptionValue, setDescriptionValue] = useState('')
   const dispatch = useDispatch()
 
-  const onBlur = () => {
+  const updateDescription = () => {
     const send = descriptionValue || description
     dispatch(addDescription(send))
     dispatch(setDescription(send))
     setIsEditing(false)
   }
 
+  const onBlur = () => updateDescription()
+
   const textArea = (
     <textarea
       onBlur={onBlur}
       value={descriptionValue}
       onChange={e => setDescriptionValue(e.target.value)}
+      autoFocus
     />
   )
 

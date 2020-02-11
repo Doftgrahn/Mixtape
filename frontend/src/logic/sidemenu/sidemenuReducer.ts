@@ -1,6 +1,11 @@
 import { PayLoad } from '../types'
 
-import { TOGGLE_USER_PROFILE, TOGGLE_EDIT_SETLIST, TOGGLE_ACTIVE_SONG_MENU } from './types'
+import {
+  TOGGLE_USER_PROFILE,
+  TOGGLE_EDIT_SETLIST,
+  TOGGLE_ACTIVE_SONG_MENU,
+  CLEAN_ALL_SIDEMENUS
+} from './types'
 
 const initialState = {
   userprofile: false,
@@ -30,6 +35,13 @@ export default (state = initialState, action: PayLoad) => {
         userprofile: false,
         setlist: false,
         activeTrack: !state.activeTrack
+      }
+    case CLEAN_ALL_SIDEMENUS:
+      return {
+        ...state,
+        userprofile: false,
+        setlist: false,
+        activeTrack: false
       }
     default:
       return state

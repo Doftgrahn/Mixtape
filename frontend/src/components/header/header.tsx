@@ -15,9 +15,15 @@ const Header: FC<{}> = () => {
 
   if (!IsloggedIn) return null
 
+  const goBack = () => {
+    const atDashBoard = history.location.pathname === '/dashboard'
+    if (atDashBoard) return
+    history.goBack()
+  }
+
   return (
     <header className="header">
-      <div onClick={() => history.goBack()} className="logoWrapper">
+      <div onClick={goBack} className="logoWrapper">
         <Logo height={50} width={80} />
         <h1>MixTape</h1>
       </div>

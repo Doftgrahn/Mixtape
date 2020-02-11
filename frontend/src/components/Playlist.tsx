@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { connect } from 'react-redux'
+import React, { FC, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
 
 import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
@@ -13,12 +13,21 @@ import BoardSettings from './boardSettings/boardSettings'
 
 import { PlaylistInterface } from '../types/propTypes'
 
-const Playlist: FC<PlaylistInterface> = ({ list, modal, sidemenu }) => {
+import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
+
+const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
   const { isLoading } = list
+  const dispatch = useDispatch()
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
   const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
+
+  useEffect(() => {
+    return () => {
+      dispatch(cleanAllSideMenus())
+    }
+  }, [dispatch])
 
   return (
     <main className="list">

@@ -14,11 +14,8 @@ interface MatchParams {
 }
 
 export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
-  auth: any
   list: any
   modal: any
-  activeSetlist: any
-  sidemenu: any
 }
 
 export interface SetlistInterface {
