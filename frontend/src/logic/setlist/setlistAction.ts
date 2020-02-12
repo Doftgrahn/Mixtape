@@ -70,12 +70,9 @@ export const mutateSetlist = (title: string) => async (dispatch: any, getState: 
   dispatch(mutateSetlistTitle(data))
 }
 
-export const deletion = (id: string) => (dispatch: any) => {
+export const deletion = (id: string) => async (dispatch: any) => {
   dispatch(deleteBoard(id))
-  axios
-    .delete(`/api/setlist/deletesetlist/${id}`)
-    .then((result: any) => {})
-    .catch((error: any) => dispatch(setErrors(error)))
+  await axios.delete(`/api/setlist/deletesetlist/${id}`)
 }
 
 export const addDescription = (description: string) => async (dispatch: any, getState: any) => {
@@ -87,23 +84,21 @@ export const addDescription = (description: string) => async (dispatch: any, get
   dispatch(dispatchAddDescription(data))
   await axios.post('/api/setlist/adddescription', data)
 }
+
 const dispatchAddDescription = (setlist: object) => ({
   type: ADD_DESCRIPTION,
   payload: setlist
 })
 
-export const inviteCollaborator = (userId: string) => (dispatch: any, getState: any) => {
+export const inviteCollaborator = (userId: string) => async (dispatch: any, getState: any) => {
   const setlistId = getState().activeBoard.activeBoard
-  axios
-    .post('/api/setlist/addcollaborator', { userId, setlistId })
-    .then(result => {
-      dispatch(addCollaborator(result.data))
-      dispatch(addUserCollaborator(userId))
-      //add to userslists here
-    })
-    .catch(error => {
-      dispatch(setErrors(error))
-    })
+  const result = await axios.post('/api/setlist/addcollaborator', { userId, setlistId })
+  dispatch(addCollaborator(result.data))
+  dispatch(addUserCollaborator(userId))
+
+  if (!result) {
+    dispatch(setErrors(result))
+  }
 }
 
 export const unInviteCollaborator = (colabId: string) => async (dispatch: any, getState: any) => {
