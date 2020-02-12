@@ -14,7 +14,7 @@ const ShowUsers: FC<any> = () => {
 
   useEffect(() => {
     dispatch(fechGetAllUsers())
-  })
+  }, [dispatch])
 
   const invite = (id: string) => {
     dispatch(inviteCollaborator(id))

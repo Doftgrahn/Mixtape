@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 const Playsong: FC<{}> = () => {
   const track = useSelector((state: any) => state.activeList.current.spotifyTrackID)
+
   if (!track) return null
   return (
     <figure className="spotify_track_container">
@@ -11,7 +12,9 @@ const Playsong: FC<{}> = () => {
         src={`https://open.spotify.com/embed/track/${track}`}
         width="300"
         height="380"
-        allow="encrypted-media"></iframe>
+        allow="encrypted-media"
+        title={track}
+      />
     </figure>
   )
 }
