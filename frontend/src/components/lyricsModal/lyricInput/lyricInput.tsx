@@ -33,7 +33,9 @@ const LyricInput: FC = () => {
         placeholder="search for a song..."
         autoFocus
       />
-      <button onClick={getAllTracks}>Check for lyrics</button>
+      <button className="modal_add_btn" onClick={getAllTracks}>
+        Check for lyrics
+      </button>
     </div>
   )
 }

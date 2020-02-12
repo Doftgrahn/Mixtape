@@ -29,7 +29,11 @@ const SearchUsers: FC<{}> = () => {
     />
   )
 
-  const button = <button onClick={toggle}>Add Collaborators</button>
+  const button = (
+    <button className="addCollaborator_btn" onClick={toggle}>
+      Add Collaborators
+    </button>
+  )
 
   return <>{!isSearching ? button : renderInput} </>
 }
