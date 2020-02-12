@@ -27,7 +27,7 @@ const Header: FC<{}> = () => {
         <Logo height={50} width={80} />
         <h1>MixTape</h1>
       </div>
-      <div>
+      <div className="accountLogo_container">
         <button className="listMeny" onClick={() => dispatch(toggleUserProfile())}>
           <Account height={50} width={50} />
         </button>

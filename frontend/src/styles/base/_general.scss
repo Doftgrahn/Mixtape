@@ -21,6 +21,15 @@ ul {
       display: none;
     }
   }
+  .accountLogo_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      position: relative;
+      top: 4px;
+    }
+  }
 }
 
 button {

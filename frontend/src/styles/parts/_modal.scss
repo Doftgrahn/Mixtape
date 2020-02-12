@@ -43,7 +43,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 0 auto;
+      margin: auto;
 
       h1 {
         font-size: 40px;
@@ -52,6 +52,7 @@
       input {
         border: 0;
         padding: 20px;
+        margin-top: 20px;
         width: 80%;
         background-color: var(--color-modal-input-background);
         color: var(--color-modal-input-text);

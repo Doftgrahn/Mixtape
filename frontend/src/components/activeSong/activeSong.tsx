@@ -41,16 +41,16 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
   })
 
   return (
-    <article
+    <section
       ref={ref}
       className={`activeSong sidebar ${activeTrack && isComponentVisible ? 'active' : null}`}>
       <header className="sidebarHeader">
+        <UpdateSong />
         <button onClick={hide}>
           <SideMenuCross height={20} width={20} />
         </button>
       </header>
       <article>
-        <UpdateSong />
         <div className="socialBtns">
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
           <button onClick={spotifyModal}>+ add from spotify</button>
@@ -60,7 +60,7 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
         </button>
       </article>
       <footer></footer>
-    </article>
+    </section>
   )
 }
 

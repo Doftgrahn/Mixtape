@@ -18,11 +18,19 @@ const Description: FC<any> = ({ description }) => {
 
   const onBlur = () => updateDescription()
 
+  const onEnter = (e: any) => {
+    if (e.key === 'Enter') {
+      updateDescription()
+    }
+  }
+
   const textArea = (
-    <textarea
+    <input
+      className="input_description"
       onBlur={onBlur}
       value={descriptionValue}
       onChange={e => setDescriptionValue(e.target.value)}
+      onKeyPress={e => onEnter(e)}
       autoFocus
     />
   )
