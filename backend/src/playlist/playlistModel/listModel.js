@@ -17,6 +17,10 @@ const PlaylistSchema = new Schema({
   lyrics: {
     type: String
   },
+  spotifyTrackID: {
+    type: String,
+    default: ''
+  },
   date: {
     type: Date,
     default: Date.now()

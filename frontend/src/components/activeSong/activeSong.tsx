@@ -9,6 +9,8 @@ import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import Trash from '../../assets/trash/trash'
 
+import PlaySong from './playSong/playSong'
+
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
 const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
@@ -53,8 +55,11 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
       <article>
         <div className="socialBtns">
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
-          <button onClick={spotifyModal}>+ add from spotify</button>
+          <button onClick={spotifyModal}>
+            {current.spotifyTrackID ? 'Change song from Spotify' : '+ add from spotify'}
+          </button>
         </div>
+        <PlaySong />
       </article>
       <footer>
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>

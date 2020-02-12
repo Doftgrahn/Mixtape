@@ -66,7 +66,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
               pressEnter={pressEnter}
               placeholder="New Setlist"
             />
-            <button tabIndex={0} onClick={createBoard}>
+            <button className="modal_add_btn" tabIndex={0} onClick={createBoard}>
               add setlist!
             </button>
           </div>

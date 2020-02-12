@@ -5,7 +5,8 @@ import {
   DELETE_LIST_ITEM,
   MUTATE_LIST,
   SET_PLAYLIST_ERROR,
-  CLEAR_TRACKS
+  CLEAR_TRACKS,
+  SET_SPOTIFY_TRACK
 } from './constants'
 import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
@@ -75,6 +76,21 @@ export const deleteListItem = (id: string) => (dispatch: any) => {
       dispatch(setErrors(error))
     })
 }
+
+export const addSpotifyTrack = (trackId: string) => async (dispatch: any, getState: any) => {
+  const currentTrack = getState().activeList.current._id
+  const data = {
+    spotifyTrackID: trackId,
+    id: currentTrack
+  }
+  dispatch(spotifyTrack(data))
+  await axios.post('/api/playlist/addSpotifyTrack', data)
+}
+
+const spotifyTrack = (data: object): PayLoad => ({
+  type: SET_SPOTIFY_TRACK,
+  payload: data
+})
 
 export const deletetion = (id: string): PayLoad => ({
   type: DELETE_LIST_ITEM,

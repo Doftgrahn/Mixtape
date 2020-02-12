@@ -60,7 +60,7 @@ const PlaylistModal: FC<any> = ({ modal }) => {
               pressEnter={pressEnter}
               placeholder="Add a song!"
             />
-            <button tabIndex={0} onClick={addSong}>
+            <button className="modal_add_btn" tabIndex={0} onClick={addSong}>
               Add song!
             </button>
           </div>

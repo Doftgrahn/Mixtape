@@ -11,6 +11,9 @@ import { toggleActiveTrack } from '../../../../logic/sidemenu/sidemenuAction'
 
 import { CardProps, DragItem } from './itemType'
 
+import Edit from '../../../../assets/edit/edit'
+import SpotifyIcon from '../../../../assets/spotify/spotifyIcon'
+
 const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
   const ref = useRef<HTMLLIElement>(null)
@@ -99,12 +102,19 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
         <h3>{list.title}</h3>
       </div>
       <div className="edit">
+        {list.spotifyTrackID ? (
+          <button onClick={() => setActiveSong(list._id)}>
+            <SpotifyIcon height={20} width={20} />
+          </button>
+        ) : null}
         {list.lyrics ? (
           <button onClick={() => shortCutLyrics(list)}>
             <Paper height={20} width={20} />
           </button>
         ) : null}
-        <button onClick={() => setActiveSong(list._id)}>Edit / More info</button>
+        <button onClick={() => setActiveSong(list._id)}>
+          <Edit height={20} width={20} />
+        </button>
       </div>
     </li>
   )

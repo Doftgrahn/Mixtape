@@ -2,6 +2,7 @@
   list-style-type: none;
 
   li {
+    cursor: pointer;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
@@ -25,6 +26,9 @@
       button {
         background: none;
         font-style: italic;
+        svg {
+          fill: currentColor;
+        }
       }
     }
   }

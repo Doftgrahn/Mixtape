@@ -1,19 +1,30 @@
 import React, { FC } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+
+import { addSpotifyTrack } from '../../../logic/list/listAction'
+import { hideSpotifyModal } from '../../../logic/modal/modalAction'
 
 const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
-  const addSongToUser = (spotUrl: string) => {}
+  const dispatch = useDispatch()
+
+  const addSongToUser = (id: string) => {
+    dispatch(addSpotifyTrack(id))
+    dispatch(hideSpotifyModal())
+  }
+
   const renderSearchResult = spotify.map((song: any) => (
-    <li key={song.id}>
-      <h3>{song.name}</h3>
-      <span>{song.albumName}</span>
-      <h4>{song.artist}</h4>
-      <img src={song.img} alt={song.name} />
-      <button onClick={() => addSongToUser(song.spotUrl)}>Add me</button>
-      <span>{song.previewURL}</span>
-      <audio controls>
-        <source src={song.previewURL} type="audio/ogg" />
-      </audio>
+    <li className="spotifySearchResult" key={song.id}>
+      <img className="spotifyIMG" src={song.img} alt={song.name} />
+
+      <div className="info_container">
+        <p>{song.artist}</p>
+
+        <p>{song.name}</p>
+        <p>{song.albumName}</p>
+      </div>
+      <button className="addSpotifytrack-btn" onClick={() => addSongToUser(song.id)}>
+        Add me
+      </button>
     </li>
   ))
 
@@ -31,7 +42,7 @@ const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
     )
   }
 
-  return <ul>{renderSearchResult} </ul>
+  return <ul className="spotifyListContainer">{renderSearchResult} </ul>
 }
 
 const mapStatetoProp = (state: any) => ({

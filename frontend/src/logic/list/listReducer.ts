@@ -10,6 +10,7 @@ import {
   SET_REFERENCE_LIST,
   SET_PLAYLIST_ERROR,
   CLEAR_TRACKS,
+  SET_SPOTIFY_TRACK,
   PlaylistStateInterface
 } from './constants'
 
@@ -63,6 +64,17 @@ export default (state = initialState, action: PayLoad) => {
         list: state.list.map((list: any) => {
           if (list._id === action.payload._id) {
             return { ...list, lyrics: action.payload.lyrics }
+          }
+          return list
+        })
+      }
+
+    case SET_SPOTIFY_TRACK:
+      return {
+        ...state,
+        list: state.list.map((list: any) => {
+          if (list._id === action.payload.id) {
+            return { ...list, spotifyTrackID: action.payload.spotifyTrackID }
           }
           return list
         })

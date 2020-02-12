@@ -5,13 +5,15 @@ module.exports = function movePlaylist(req, res) {
   const second = {
     title: secondItem.title,
     date: secondItem.date,
-    lyrics: secondItem.lyrics
+    lyrics: secondItem.lyrics,
+    spotifyTrackID: secondItem.spotifyTrackID
   }
 
   const first = {
     title: firstItem.title,
     date: firstItem.date,
-    lyrics: firstItem.lyrics
+    lyrics: firstItem.lyrics,
+    spotifyTrackID: firstItem.spotifyTrackID
   }
 
   Playlist.findOneAndUpdate({ _id: firstItem._id }, second)
