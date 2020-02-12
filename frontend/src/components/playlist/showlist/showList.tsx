@@ -39,8 +39,7 @@ const ShowList: FC<any> = ({ list }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  list: state.list.list,
-  active: state.activeList
+  list: state.list.list
 })
 
 export default connect(mapStateToProps)(ShowList)

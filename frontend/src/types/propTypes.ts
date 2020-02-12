@@ -14,7 +14,7 @@ interface MatchParams {
 }
 
 export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
-  list: any
+  isLoading: boolean
   modal: any
 }
 

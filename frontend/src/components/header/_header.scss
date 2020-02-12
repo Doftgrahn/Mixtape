@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .logoWrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    h1 {
+      margin: 0 10px;
+      @media (max-width: 800px) {
+        display: none;
+      }
+    }
+    .profile_button {
+      background: 0;
+    }
+  }
+  .profile_button {
+    background: 0;
+  }
+
+  .accountLogo_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      position: relative;
+      top: 4px;
+    }
+  }
+
+  .listMeny {
+    background: 0;
+  }
+}

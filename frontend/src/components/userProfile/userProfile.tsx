@@ -13,11 +13,10 @@ import {
 
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 
-const UserProfile: FC<any> = ({ auth, sidemenu, setlists }) => {
+const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   const dispatch = useDispatch()
-  const { user } = auth
 
   let url = 'https://www.mixtape.nu/api/users/logout'
   if (process.env.NODE_ENV === 'development') {
@@ -59,7 +58,7 @@ const UserProfile: FC<any> = ({ auth, sidemenu, setlists }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth,
+  user: state.auth.user,
   sidemenu: state.sidemenu.userprofile,
   setlists: state.setlist
 })

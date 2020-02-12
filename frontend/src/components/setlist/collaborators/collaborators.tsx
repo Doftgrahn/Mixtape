@@ -10,7 +10,7 @@ import { BoardInterface } from '../../../logic/types'
 const Collaborators: FC<any> = ({ setlist }) => {
   const dispatch = useDispatch()
 
-  const setActiveBoard = (board: any) => dispatch(activeBoard(board))
+  const setActiveBoard = (board: object) => dispatch(activeBoard(board))
 
   const renderMyBoards = setlist.collaborators.map((board: BoardInterface): any => (
     <li key={board._id}>

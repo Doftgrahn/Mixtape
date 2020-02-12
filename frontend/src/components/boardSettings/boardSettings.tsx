@@ -58,7 +58,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
       <footer>
         {activeBoard.isOwner ? (
           <button className="sideMenu_delete" onClick={deleteBoard}>
-            delete Setlist
+            Delete Setlist
           </button>
         ) : null}
         {!activeBoard.isOwner ? (

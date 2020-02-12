@@ -15,13 +15,13 @@ import { PlaylistInterface } from '../types/propTypes'
 
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 
-const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
-  const { isLoading } = list
+const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
   const dispatch = useDispatch()
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
   const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
+  const spinner = isLoading ? <Spinner /> : null
 
   useEffect(() => {
     return () => {
@@ -33,7 +33,7 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
     <main className="list">
       <div className="list_container">
         <PlaylistTitle />
-        {isLoading ? <Spinner /> : null}
+        {spinner}
         <NewSong />
         <ShowList />
       </div>
@@ -49,7 +49,7 @@ const Playlist: FC<PlaylistInterface> = ({ list, modal }) => {
 
 const mapStatetoProp = (state: any) => ({
   activeSetlist: state.activeBoard.activeBoard,
-  list: state.list,
+  isLoading: state.list.isLoading,
   modal: state.modal,
   sidemenu: state.sidemenu.setlist
 })

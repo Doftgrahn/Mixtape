@@ -12,31 +12,15 @@ ul {
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  h1 {
-    @media (max-width: 800px) {
-      display: none;
-    }
-  }
-  .accountLogo_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      position: relative;
-      top: 4px;
-    }
-  }
-}
-
 button {
   font-size: 20px;
   border: 0;
   cursor: pointer;
   border-radius: 4px;
+  transition: 200ms;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 h1,
@@ -56,4 +40,8 @@ a {
   color: var(--color-text);
   text-decoration: none;
   cursor: pointer;
+  transition: 200ms;
+  &:hover {
+    opacity: 0.8;
+  }
 }

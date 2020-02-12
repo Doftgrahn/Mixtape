@@ -15,6 +15,9 @@
     padding: 20px;
     color: var(--color-headlineText);
     background-color: var(--color-sidemenu-button);
+    a {
+      color: currentColor;
+    }
   }
   .hide {
     display: block;

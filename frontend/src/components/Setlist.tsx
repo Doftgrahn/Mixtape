@@ -24,6 +24,7 @@ const Setlist: FC<any> = ({ modal, collaborators }) => {
         {invited}
         <Collaborators />
       </section>
+      {/* Modals */}
       {setListModal}
     </main>
   )

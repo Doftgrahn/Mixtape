@@ -55,11 +55,12 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
           <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
           <button onClick={spotifyModal}>+ add from spotify</button>
         </div>
+      </article>
+      <footer>
         <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
           <Trash height={50} width={50} />
         </button>
-      </article>
-      <footer></footer>
+      </footer>
     </section>
   )
 }

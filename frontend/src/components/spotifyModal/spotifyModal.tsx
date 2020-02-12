@@ -8,10 +8,10 @@ import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
 import SpotifySearchResult from './spotifySearchResult/spotifySearchResult'
 
 const SpotifyModal: FC<any> = ({ modal }) => {
+  const [search, setSearch] = useState('')
+
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
-
-  const [search, setSearch] = useState('')
 
   const pressEnter = (e: any) => {
     if (e.key === 'Enter') {

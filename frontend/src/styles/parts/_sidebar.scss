@@ -42,17 +42,22 @@
       color: inherit;
     }
   }
+  article {
+    flex-grow: 1;
+  }
 
   footer {
-    margin-top: auto;
     text-align: center;
-    padding: 20px;
-
-    .sideMenu_goBack {
-      background-color: var(--color-sidemenu-button);
+    button {
+      width: 100%;
     }
+
     .sideMenu_delete {
       background-color: var(--color-sidemenu-delete);
+      margin-top: auto;
+      padding: 20px;
+      color: var(--color-headlineText);
+      background-color: var(--color-sidemenu-button);
     }
   }
 }

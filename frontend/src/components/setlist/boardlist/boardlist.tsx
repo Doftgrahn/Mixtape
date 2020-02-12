@@ -9,12 +9,12 @@ import NewBoard from '../newboard/newBoard'
 import Spinner from '../../shared/spinner/spinner'
 
 const BoardList: FC<any> = ({ setlist }) => {
-  const { loading } = setlist
+  const { loading, boards } = setlist
   const dispatch = useDispatch()
 
   const setActiveBoard = (board: any): any => dispatch(activeBoard(board))
 
-  const renderMyBoards = setlist.boards.map((board: BoardInterface): any => (
+  const renderMyBoards = boards.map((board: BoardInterface): any => (
     <li key={board._id} title={`Setlist: ${board.title}`}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
         <p>{board.description}</p>

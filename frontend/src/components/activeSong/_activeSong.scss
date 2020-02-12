@@ -32,15 +32,15 @@
 
   .deleteSongBtn {
     margin-left: auto;
-    background: blue;
-    padding: 10px;
+    padding: 20px;
+    width: 100%;
     background: var(--color-sidemenu-delete);
   }
 
   footer {
     margin-top: auto;
     text-align: center;
-    padding: 20px;
+    //  padding: 20px;
   }
 }
 .active {
