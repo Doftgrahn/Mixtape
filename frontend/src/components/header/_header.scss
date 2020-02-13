@@ -8,6 +8,7 @@
     cursor: pointer;
     h1 {
       margin: 0 10px;
+      font-size: 22px;
       @media (max-width: 800px) {
         display: none;
       }

@@ -25,7 +25,7 @@ const ShowUsers: FC<any> = () => {
     const find = currentCollaborators.find((x: string) => x === user._id)
     return (
       <li className="UsersList_single" key={user._id}>
-        <h3>{user.name}</h3>
+        <span>{user.name}</span>
         {find ? (
           <span>Already Invited</span>
         ) : (

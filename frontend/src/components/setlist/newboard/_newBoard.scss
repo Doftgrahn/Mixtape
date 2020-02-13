@@ -16,6 +16,7 @@
     justify-content: center;
 
     .text {
+      overflow: hidden;
       .plusWrapper {
         display: flex;
         justify-content: center;
@@ -31,18 +32,21 @@
           display: block;
           font-size: 4.5em;
           color: var(--color-cross);
-          padding-top: 5px;
+          padding-top: 10px;
+          padding-bottom: 20px;
           @media screen and (max-width: 800px) {
             font-size: 4em;
           }
         }
       }
 
-      h3 {
+      .addSetlist {
         margin: 10px auto;
         display: block;
         text-align: center;
         position: relative;
+        color: var(--color-add);
+        background: transparent;
         @media screen and (max-width: 800px) {
           display: none;
         }

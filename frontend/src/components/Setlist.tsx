@@ -14,15 +14,19 @@ const Setlist: FC<any> = ({ modal, collaborators }) => {
   }, [dispatch])
 
   const setListModal = modal ? <SetlistModal /> : null
-  const invited = collaborators.length ? <h1>Collaborators</h1> : null
 
   return (
     <main className="board">
       <section className="container">
         <h1>My Setlists</h1>
         <BoardList />
-        {invited}
-        <Collaborators />
+
+        {collaborators.length > 0 ? (
+          <>
+            <h2>Collaborators</h2>
+            <Collaborators />
+          </>
+        ) : null}
       </section>
       {/* Modals */}
       {setListModal}

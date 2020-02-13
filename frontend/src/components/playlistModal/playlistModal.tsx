@@ -14,6 +14,7 @@ const PlaylistModal: FC<any> = ({ modal }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 
   const [title, setTitle] = useState('')
+  const [dirty, setIsDirty] = useState(false)
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
@@ -27,13 +28,20 @@ const PlaylistModal: FC<any> = ({ modal }) => {
     }
   }, [dispatch])
 
-  const addSong = (): void => {
+  useEffect(() => {
     if (title) {
-      dispatch(addToList(title))
-      setTitle('')
-      dispatch(closePlaylistModal())
-      setIsComponentVisible(false)
+      setIsDirty(false)
     }
+  }, [title])
+
+  const addSong = (): void => {
+    if (!title) {
+      return setIsDirty(true)
+    }
+    dispatch(addToList(title))
+    setTitle('')
+    dispatch(closePlaylistModal())
+    setIsComponentVisible(false)
   }
 
   const exitModal = () => {
@@ -63,6 +71,7 @@ const PlaylistModal: FC<any> = ({ modal }) => {
             <button className="modal_add_btn" tabIndex={0} onClick={addSong}>
               Add song!
             </button>
+            {dirty ? <p className="errorMessageModal">Yo! You need to write something!</p> : null}
           </div>
         </article>
       ) : (

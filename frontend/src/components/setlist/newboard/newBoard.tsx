@@ -15,7 +15,7 @@ const NewBoard: FC<any> = () => {
           <div className="plusWrapper">
             <span>+</span>
           </div>
-          <h3>Add setlist</h3>
+          <h3 className="addSetlist">Add setlist</h3>
         </div>
       </button>
     </li>

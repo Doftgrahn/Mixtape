@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 15px;
+  margin-bottom: 3rem;
 
   @media screen and (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -34,6 +35,8 @@
       width: 100%;
       top: 0;
       left: 0;
+      right: 0;
+      text-overflow: ellipsis;
 
       &:focus {
         border: 6px solid var(--color-background-button);
@@ -41,8 +44,17 @@
       }
     }
     p {
-      padding: 0 10px;
       color: currentColor;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 20px;
+      vertical-align: middle;
+      .account {
+        vertical-align: text-bottom;
+        margin-right: 5px;
+        fill: currentColor;
+      }
     }
 
     h3 {

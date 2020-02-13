@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import Account from '../../../assets/account/account'
 
 import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
 
@@ -15,7 +16,9 @@ const Collaborators: FC<any> = ({ setlist }) => {
   const renderMyBoards = setlist.collaborators.map((board: BoardInterface): any => (
     <li key={board._id}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
-        <p>{board.description}</p>
+        <p>
+          <Account height={20} width={20} /> {board.user}
+        </p>
         <h3>{board.title}</h3>
       </Link>
     </li>

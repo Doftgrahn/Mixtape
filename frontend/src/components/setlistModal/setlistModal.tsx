@@ -13,6 +13,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
   const dispatch = useDispatch()
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const [title, setTitle] = useState('')
+  const [dirty, setIsDirty] = useState(false)
 
   useEffect(() => {
     const onPressEscape = (event: any) => {
@@ -26,16 +27,23 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
     }
   }, [dispatch])
 
-  const createBoard = () => {
+  useEffect(() => {
     if (title) {
-      const data = {
-        userId: auth.user.id,
-        title: title
-      }
-      dispatch(addBoard(data))
-      setTitle('')
-      dispatch(closeSetlistModal())
+      setIsDirty(false)
     }
+  }, [title])
+
+  const createBoard = () => {
+    if (!title) {
+      return setIsDirty(true)
+    }
+    const data = {
+      userId: auth.user.id,
+      title: title
+    }
+    dispatch(addBoard(data))
+    setTitle('')
+    dispatch(closeSetlistModal())
   }
 
   const pressEnter = (e: any) => {
@@ -69,6 +77,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
             <button className="modal_add_btn" tabIndex={0} onClick={createBoard}>
               add setlist!
             </button>
+            {dirty ? <p className="errorMessageModal">Yo! You need to write something!</p> : null}
           </div>
         </article>
       ) : (

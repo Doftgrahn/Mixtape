@@ -53,12 +53,19 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
           </button>
         </header>
         <article>
-          <Description />
-          <h3>you currently have {playlist.length} songs</h3>
-          <InvitedCollaborators />
-          <SearchUsers />
-          <ShowUsers />
-          <CreateSpotifyPlayList />
+          <div className="sidebar_section">
+            <Description />
+          </div>
+          <div className="sidebar_section">
+            <h4>This setlist contains of {playlist.length} songs</h4>
+            <CreateSpotifyPlayList />
+          </div>
+          <div className="sidebar_section">
+            <h4>Collaborators</h4>
+            <InvitedCollaborators />
+            <SearchUsers />
+            <ShowUsers />
+          </div>
         </article>
         <footer>
           {activeBoard.isOwner ? (

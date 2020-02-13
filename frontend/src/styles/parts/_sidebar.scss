@@ -36,18 +36,36 @@
 
     h1 {
       color: currentColor;
-      text-transform: uppercase;
       letter-spacing: 2px;
       margin: 0;
     }
+
     button {
       background: 0;
       margin-left: auto;
       color: inherit;
     }
   }
+
   article {
     flex-grow: 1;
+  }
+
+  &_section {
+    margin-bottom: 2rem;
+
+    button {
+      background-color: var(--color-sidemenu-button);
+      color: var(--color-headlineText);
+      padding: 1rem;
+      font-family: $font-headline;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    input {
+      padding: 1rem;
+      border: 0;
+    }
   }
 
   footer {

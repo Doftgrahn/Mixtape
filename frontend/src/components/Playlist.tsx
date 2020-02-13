@@ -3,12 +3,13 @@ import { connect, useDispatch } from 'react-redux'
 
 import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
-import ActiveSong from './activeSong/activeSong'
 import ShowList from './playlist/showlist/showList'
 import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
 import SpotifyModal from './spotifyModal/spotifyModal'
+
+import ActiveSong from './activeSong/activeSong'
 import BoardSettings from './boardSettings/boardSettings'
 
 import { PlaylistInterface } from '../types/propTypes'
@@ -37,8 +38,8 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
         <NewSong />
         <ShowList />
       </div>
-      <ActiveSong />
       <BoardSettings />
+      <ActiveSong />
       {/*Modals */}
       {playlistModal}
       {lyricModal}

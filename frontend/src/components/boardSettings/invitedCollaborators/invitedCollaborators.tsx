@@ -9,7 +9,7 @@ const InvitedCollaborators: FC<any> = ({ invitedUsers, isOwner }) => {
 
   const renderCurrentCollaborators = invitedUsers.map((user: any) => (
     <li className="invitedCollaborators" key={user._id}>
-      <p>{user.name}</p>
+      <span>{user.name}</span>
       {isOwner ? (
         <button
           className="addCollaborator"

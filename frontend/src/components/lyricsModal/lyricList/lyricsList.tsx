@@ -16,12 +16,12 @@ const LyricsList: FC<any> = ({ getLyrics, activeSong }) => {
   }
 
   const renderLyrics = lyrics.map((song: any) => (
-    <div key={song.id}>
-      <h3>{song.full_title}</h3>
-      <button onClick={() => setMyLyric(song.url)}>get Lyric</button>
+    <div className="lyricsList_item" key={song.id}>
+      <h4>{song.full_title}</h4>
+      <button onClick={() => setMyLyric(song.url)}>Add</button>
     </div>
   ))
-  return <div>{isLoading ? <Spinner /> : renderLyrics}</div>
+  return <div className="lyricsList">{isLoading ? <Spinner /> : renderLyrics}</div>
 }
 
 const mapStateToProps = (state: any) => ({

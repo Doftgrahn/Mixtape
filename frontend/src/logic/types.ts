@@ -3,9 +3,11 @@ import { ReactNode } from 'react'
 export interface BoardInterface {
   userId: string
   title: string
+  user: string
   description: string
   isLoading: boolean
   list: any
+  collaborators: []
   _id: string
 }
 

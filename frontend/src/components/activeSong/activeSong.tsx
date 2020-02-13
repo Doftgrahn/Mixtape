@@ -55,13 +55,15 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
           </button>
         </header>
         <article>
-          <div className="socialBtns">
+          <div className="sidebar_section">
             <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
+          </div>
+          <div className="sidebar_section">
+            <PlaySong />
             <button onClick={spotifyModal}>
               {current.spotifyTrackID ? 'Change song from Spotify' : '+ add from spotify'}
             </button>
           </div>
-          <PlaySong />
         </article>
         <footer>
           <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>

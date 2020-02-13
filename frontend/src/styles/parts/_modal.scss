@@ -24,6 +24,7 @@
     border-radius: 4px;
 
     @media screen and (max-width: 800px) {
+      max-height: 100vh;
       height: 100%;
       width: 100%;
       padding: 10px;
@@ -61,6 +62,10 @@
         &::placeholder {
           color: var(--color-modal-input-text);
         }
+        @media screen and (max-width: 800px) {
+          width: 100%;
+          margin: 0 1rem;
+        }
       }
       .modal_add_btn {
         padding: 20px;
@@ -70,6 +75,38 @@
         margin: 0 auto;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+        @media screen and (max-width: 800px) {
+          width: 100%;
+          margin: 0 1rem;
+        }
+      }
+      .errorMessageModal {
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
       }
     }
   }

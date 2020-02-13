@@ -1,16 +1,18 @@
 .spotifyListContainer {
-  width: 100%;
-  //height: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    margin: 1rem;
+  }
+
   .spotifySearchResult {
     display: flex;
     flex-direction: row;
-    // align-items: center;
-    //padding: 20px;
-    margin: 10px;
+    margin: 0 0 10px;
     width: 100%;
 
     .spotifyIMG {

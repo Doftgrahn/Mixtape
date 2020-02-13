@@ -7,6 +7,7 @@ import { BoardInterface } from '../../../logic/types'
 
 import NewBoard from '../newboard/newBoard'
 import Spinner from '../../shared/spinner/spinner'
+import Account from '../../../assets/account/account'
 
 const BoardList: FC<any> = ({ setlist }) => {
   const { loading, boards } = setlist
@@ -17,7 +18,10 @@ const BoardList: FC<any> = ({ setlist }) => {
   const renderMyBoards = boards.map((board: BoardInterface): any => (
     <li key={board._id} title={`Setlist: ${board.title}`}>
       <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
-        <p>{board.description}</p>
+        <p>
+          <Account height={20} width={20} />{' '}
+          {board.collaborators.length ? board.collaborators.length : 'Only you'}
+        </p>
         <h3>{board.title}</h3>
       </Link>
     </li>

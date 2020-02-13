@@ -17,8 +17,13 @@ const ThemeSwitcher: FC<any> = ({ theme }) => {
 
   return (
     <div className="theme_switch">
-      <input checked={isChecked} onChange={toggleTheme} type="checkbox" id="switch" />
-      <label htmlFor="switch">Toggle</label>
+      <h4 className="theme_switch-title">Theme Settings:</h4>
+      <div className="theme_switch-wrapper">
+        <span>☀️</span>
+        <input checked={isChecked} onChange={toggleTheme} type="checkbox" id="switch" />
+        <label htmlFor="switch">Toggle</label>
+        <span>🌛</span>
+      </div>
     </div>
   )
 }

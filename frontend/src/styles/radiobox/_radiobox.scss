@@ -1,4 +1,10 @@
 .theme_switch {
+  &-wrapper {
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+  }
+
   input[type='checkbox'] {
     height: 0;
     width: 0;
@@ -8,7 +14,7 @@
   label {
     cursor: pointer;
     text-indent: -9999px;
-    width: 50px;
+    width: 100px;
     height: 35px;
     background: var(--color-theme);
     display: block;
@@ -19,13 +25,15 @@
   label:after {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 4px;
+    left: 4px;
+    right: auto;
     width: 28px;
     height: 28px;
+    display: block;
     background: var(--color-theme-circle);
     border-radius: 50%;
-    transition: 0.3s;
+    transition: left 0.4s ease;
   }
 
   input:checked + label {
@@ -33,11 +41,10 @@
   }
 
   input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
+    left: calc(100% - 32px);
   }
 
   label:active:after {
-    width: 65px;
+    //width: 65px;
   }
 }

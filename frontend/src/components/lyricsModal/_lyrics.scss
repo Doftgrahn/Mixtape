@@ -1,3 +1,21 @@
 .lyricText {
   white-space: pre-line;
 }
+
+.lyricsList {
+  width: 80%;
+  margin: 1rem auto;
+
+  &_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    button {
+      padding: 1rem;
+      background: var(--color-add-song-button);
+      font-family: $font-headline;
+    }
+  }
+}

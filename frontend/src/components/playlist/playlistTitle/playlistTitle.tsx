@@ -62,9 +62,10 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
     <div className="title">
       <div className="title_info">
         <div className="title_container">
-          {setListTitle} <p>{description}</p>
+          {setListTitle}
+          <h3 className="userName">by {user}</h3>
+          <p>{description}</p>
         </div>
-        <h2>{user}</h2>
       </div>
       <div className="editPlaylist_btn">
         <button onClick={() => dispatch(toggleEditSetlist())}>

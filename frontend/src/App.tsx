@@ -10,7 +10,10 @@ import { createBrowserHistory } from 'history'
 import Header from './components/header/header'
 import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
+
 import UserProfile from './components/userProfile/userProfile'
+import ActiveSong from './components/activeSong/activeSong'
+
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
 
 import { lightTheme, darkTheme } from './utils/colors/colors'
@@ -50,8 +53,11 @@ const App: FC<AppInterface> = ({ theme }) => {
           <ScrollToTop />
           <Suspense fallback={<Spinner />}>
             <Header />
+            {/* SideMenus */}
             <UserProfile />
-            <Routes />
+            <div className="container">
+              <Routes />
+            </div>
           </Suspense>
         </Router>
       </div>
