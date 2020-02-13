@@ -40,8 +40,8 @@ const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
 
     return (
       <div>
-        <h3>Du behöver logga in med spotify för att forsätta!</h3>
-        <a href={url}>Logga in.</a>
+        <h3>Yo! You need to log into Spotify to continue.</h3>
+        <a href={url}>Log in.</a>
       </div>
     )
   }
