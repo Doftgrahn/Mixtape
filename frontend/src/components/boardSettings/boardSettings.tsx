@@ -1,5 +1,7 @@
 import React, { FC, useEffect } from 'react'
 
+import Div100vh from 'react-div-100vh'
+
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion, leaveSetlist } from '../../logic/setlist/setlistAction'
@@ -13,6 +15,7 @@ import ShowUsers from './showUsers/showUsers'
 import { toggleEditSetlist } from '../../logic/sidemenu/sidemenuAction'
 
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
+import CreateSpotifyPlayList from './createSpotifyPlaylist/createSpotifyPlaylist'
 
 const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
@@ -42,33 +45,36 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
     <section
       ref={ref}
       className={`boardSettings sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
-      <header>
-        <h1>{activeBoard.title}</h1>
-        <button onClick={hide}>
-          <SideMenuCross height={20} width={20} />
-        </button>
-      </header>
-      <article>
-        <Description />
-        <h3>you currently have {playlist.length} songs</h3>
-        <InvitedCollaborators />
-        <SearchUsers />
-        <ShowUsers />
-      </article>
-      <footer>
-        {activeBoard.isOwner ? (
-          <button className="sideMenu_delete" onClick={deleteBoard}>
-            Delete Setlist
+      <Div100vh>
+        <header>
+          <h1>{activeBoard.title}</h1>
+          <button onClick={hide}>
+            <SideMenuCross height={20} width={20} />
           </button>
-        ) : null}
-        {!activeBoard.isOwner ? (
-          <button
-            className="sideMenu_delete"
-            onClick={() => leaveSetListIfNotOwner(activeBoard._id)}>
-            Leave Setlist
-          </button>
-        ) : null}
-      </footer>
+        </header>
+        <article>
+          <Description />
+          <h3>you currently have {playlist.length} songs</h3>
+          <InvitedCollaborators />
+          <SearchUsers />
+          <ShowUsers />
+          <CreateSpotifyPlayList />
+        </article>
+        <footer>
+          {activeBoard.isOwner ? (
+            <button className="sideMenu_delete" onClick={deleteBoard}>
+              Delete Setlist
+            </button>
+          ) : null}
+          {!activeBoard.isOwner ? (
+            <button
+              className="sideMenu_delete"
+              onClick={() => leaveSetListIfNotOwner(activeBoard._id)}>
+              Leave Setlist
+            </button>
+          ) : null}
+        </footer>
+      </Div100vh>
     </section>
   )
 }

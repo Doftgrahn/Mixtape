@@ -30,8 +30,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(
   cookieSession({
+    name: 'session',
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    keys: ['hejejejeejeje']
+    keys: ['hejejejeejeje', 'ke2']
   })
 )
 app.use(passport.initialize())

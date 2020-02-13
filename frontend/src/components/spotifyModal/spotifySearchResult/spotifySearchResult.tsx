@@ -7,8 +7,12 @@ import { hideSpotifyModal } from '../../../logic/modal/modalAction'
 const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
   const dispatch = useDispatch()
 
-  const addSongToUser = (id: string) => {
-    dispatch(addSpotifyTrack(id))
+  const addSongToUser = (song: any) => {
+    const data = {
+      id: song.id,
+      uri: song.uri
+    }
+    dispatch(addSpotifyTrack(data))
     dispatch(hideSpotifyModal())
   }
 
@@ -22,7 +26,7 @@ const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
         <p>{song.name}</p>
         <p>{song.albumName}</p>
       </div>
-      <button className="addSpotifytrack-btn" onClick={() => addSongToUser(song.id)}>
+      <button className="addSpotifytrack-btn" onClick={() => addSongToUser(song)}>
         Add me
       </button>
     </li>

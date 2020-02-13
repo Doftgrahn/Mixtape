@@ -21,6 +21,10 @@ const PlaylistSchema = new Schema({
     type: String,
     default: ''
   },
+  uri: {
+    Type: String,
+    default: ''
+  },
   date: {
     type: Date,
     default: Date.now()

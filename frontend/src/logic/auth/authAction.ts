@@ -90,6 +90,7 @@ export const getActiveUser = () => (dispatch: any) => {
       const { data } = result
 
       if (!result.data) return
+
       const user: any = {
         date: data.date,
         _id: data._id,

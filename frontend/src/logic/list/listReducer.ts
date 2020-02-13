@@ -74,7 +74,11 @@ export default (state = initialState, action: PayLoad) => {
         ...state,
         list: state.list.map((list: any) => {
           if (list._id === action.payload.id) {
-            return { ...list, spotifyTrackID: action.payload.spotifyTrackID }
+            return {
+              ...list,
+              spotifyTrackID: action.payload.spotifyTrackID,
+              uri: action.payload.uri
+            }
           }
           return list
         })

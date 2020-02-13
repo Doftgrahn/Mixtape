@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  min-height: 100vh;
+  // min-height: 100vh;
   transition: 500ms ease;
   top: 0;
   bottom: 0;
@@ -24,6 +24,7 @@
       margin-top: 10px;
       background: 0;
       padding: 0;
+      color: currentColor;
     }
     .lyricText {
       white-space: pre-line;
@@ -32,8 +33,11 @@
 
   .deleteSongBtn {
     margin-left: auto;
-    padding: 20px;
-    width: 100%;
+    padding: 10px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--color-sidemenu-delete);
   }
 

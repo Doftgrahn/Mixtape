@@ -1,4 +1,5 @@
 import React, { FC, useEffect, Suspense } from 'react'
+import Div100vh from 'react-div-100vh'
 
 import './styles/App.scss'
 import { connect, useDispatch } from 'react-redux'
@@ -9,6 +10,7 @@ import { createBrowserHistory } from 'history'
 import Header from './components/header/header'
 import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
+import UserProfile from './components/userProfile/userProfile'
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
 
 import { lightTheme, darkTheme } from './utils/colors/colors'
@@ -42,25 +44,22 @@ const App: FC<AppInterface> = ({ theme }) => {
   }, [theme])
 
   useEffect(() => {
-    let vh = window.innerHeight * 0.01
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-
-    document.addEventListener('reize', () => {
-      let vh = window.innerHeight * 0.01
-      document.documentElement.style.setProperty('--vh', `${vh}px`)
-    })
+    console.log(document.cookie)
   })
 
   return (
-    <div className="App">
-      <Router>
-        <ScrollToTop />
-        <Suspense fallback={<Spinner />}>
-          <Header />
-          <Routes />
-        </Suspense>
-      </Router>
-    </div>
+    <Div100vh style={{ minHeight: '100rvh' }}>
+      <div className="App">
+        <Router>
+          <ScrollToTop />
+          <Suspense fallback={<Spinner />}>
+            <Header />
+            <UserProfile />
+            <Routes />
+          </Suspense>
+        </Router>
+      </div>
+    </Div100vh>
   )
 }
 

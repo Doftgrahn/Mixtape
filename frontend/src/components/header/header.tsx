@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import UserProfil from '../userProfile/userProfile'
 import Logo from '../../assets/logo/Logo'
 import Account from '../../assets/account/account'
 
@@ -32,7 +31,6 @@ const Header: FC<{}> = () => {
           <Account height={50} width={50} />
         </button>
       </div>
-      <UserProfil />
     </header>
   )
 }

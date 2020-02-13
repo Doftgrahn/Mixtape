@@ -12,75 +12,59 @@ import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
 import { PayLoad } from '../types'
 
-export const fetchSongList = () => (dispatch: any, state: any) => {
+export const fetchSongList = () => async (dispatch: any, state: any) => {
   const { _id } = state().activeBoard.activeBoard
   dispatch(isLoading(true))
-  axios
-    .get(`/api/playlist/getplaylist/${_id}`)
-    .then(result => {
-      const { data } = result
-      dispatch(getList(data))
-      dispatch(isLoading(false))
-    })
-    .catch(error => {
-      dispatch(setErrors(error))
-    })
+  const result = await axios.get(`/api/playlist/getplaylist/${_id}`)
+  dispatch(getList(result.data))
+  dispatch(isLoading(false))
+  if (!result) {
+    dispatch(setErrors(result))
+  }
 }
 
-export const addToList = (title: any) => (dispatch: any, state: any) => {
+export const addToList = (title: any) => async (dispatch: any, state: any) => {
   const { activeBoard } = state().activeBoard
   const { id } = state().auth.user
   dispatch(isLoading(true))
   const add = { activeBoard, id, title }
-  axios
-    .post('/api/playlist/addplaylist', add)
-    .then(response => {
-      const { data } = response
-      dispatch(addList(data))
-      dispatch(isLoading(false))
-    })
-    .catch(error => {
-      dispatch(setErrors(error))
-    })
+  const response = await axios.post('/api/playlist/addplaylist', add)
+  dispatch(addList(response.data))
+  dispatch(isLoading(false))
+
+  if (!response) {
+    dispatch(setErrors(response))
+  }
 }
 
-export const updateListTitle = (data: any) => (dispatch: any) => {
-  dispatch(isLoading(true))
+export const updateListTitle = (data: any) => async (dispatch: any) => {
   const update = {
     id: data.id,
     title: data.title
   }
   dispatch(mutateList(update))
-  axios
-    .put('/api/playlist/mutateplaylist', update)
-    .then(respose => {
-      const { data } = respose
-      dispatch(setCurrentSong(data))
-      dispatch(isLoading(false))
-    })
-    .catch(error => {
-      dispatch(setErrors(error))
-    })
+  dispatch(isLoading(true))
+  const response = await axios.put('/api/playlist/mutateplaylist', update)
+  dispatch(setCurrentSong(response.data))
+  dispatch(isLoading(false))
+
+  if (!response) {
+    dispatch(setErrors(response))
+  }
 }
 
-export const deleteListItem = (id: string) => (dispatch: any) => {
+export const deleteListItem = (id: string) => async (dispatch: any) => {
   dispatch(isLoading(true))
   dispatch(deletetion(id))
-
-  axios
-    .delete(`/api/playlist/deleteplaylist/${id}`)
-    .then(response => {
-      dispatch(isLoading(false))
-    })
-    .catch(error => {
-      dispatch(setErrors(error))
-    })
+  await axios.delete(`/api/playlist/deleteplaylist/${id}`)
+  dispatch(isLoading(false))
 }
 
-export const addSpotifyTrack = (trackId: string) => async (dispatch: any, getState: any) => {
+export const addSpotifyTrack = (song: any) => async (dispatch: any, getState: any) => {
   const currentTrack = getState().activeList.current._id
   const data = {
-    spotifyTrackID: trackId,
+    spotifyTrackID: song.id,
+    uri: song.uri,
     id: currentTrack
   }
   dispatch(spotifyTrack(data))

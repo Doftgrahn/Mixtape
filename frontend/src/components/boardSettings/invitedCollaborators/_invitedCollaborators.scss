@@ -3,12 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 0px 0;
+  color: var(--color-collaborator-list);
 
   .addCollaborator {
     background: #d8b4a0;
     font-size: 14px;
     display: inline-block;
     padding: 5px;
+    color: var(--color-text);
   }
 }

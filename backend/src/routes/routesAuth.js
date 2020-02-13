@@ -35,7 +35,10 @@ router.get(
       'user-read-private',
       'streaming',
       'user-read-playback-state',
-      'user-modify-playback-state'
+      'user-modify-playback-state',
+      'user-read-private',
+      'playlist-modify-public',
+      'playlist-modify-private'
     ]
   })
 )

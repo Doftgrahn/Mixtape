@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import Div100vh from 'react-div-100vh'
 
 import { toggleActiveTrack } from '../../logic/sidemenu/sidemenuAction'
 import { deleteListItem } from '../../logic/list/listAction'
@@ -46,26 +47,28 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
     <section
       ref={ref}
       className={`activeSong sidebar ${activeTrack && isComponentVisible ? 'active' : null}`}>
-      <header className="sidebarHeader">
-        <UpdateSong />
-        <button onClick={hide}>
-          <SideMenuCross height={20} width={20} />
-        </button>
-      </header>
-      <article>
-        <div className="socialBtns">
-          <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
-          <button onClick={spotifyModal}>
-            {current.spotifyTrackID ? 'Change song from Spotify' : '+ add from spotify'}
+      <Div100vh>
+        <header className="sidebarHeader">
+          <UpdateSong />
+          <button onClick={hide}>
+            <SideMenuCross height={20} width={20} />
           </button>
-        </div>
-        <PlaySong />
-      </article>
-      <footer>
-        <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
-          <Trash height={50} width={50} />
-        </button>
-      </footer>
+        </header>
+        <article>
+          <div className="socialBtns">
+            <button onClick={lyricModal}>{current.lyrics ? 'see lyrics..' : '+ add lyric'}</button>
+            <button onClick={spotifyModal}>
+              {current.spotifyTrackID ? 'Change song from Spotify' : '+ add from spotify'}
+            </button>
+          </div>
+          <PlaySong />
+        </article>
+        <footer>
+          <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
+            <Trash height={50} width={50} />
+          </button>
+        </footer>
+      </Div100vh>
     </section>
   )
 }

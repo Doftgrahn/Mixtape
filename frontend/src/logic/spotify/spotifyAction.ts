@@ -31,6 +31,7 @@ export const getSpotifySearch = (searchString: string) => (dispatch: any, useSta
 
         const newSong = {
           id: song.id,
+          uri: song.uri,
           name: song.name,
           albumName: song.album.name,
           artist: artist,

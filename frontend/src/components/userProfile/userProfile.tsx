@@ -1,5 +1,8 @@
 import React, { FC, useEffect } from 'react'
+
 import { connect, useDispatch } from 'react-redux'
+import Div100vh from 'react-div-100vh'
+
 import { logoutUser } from '../../logic/auth/authAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import ThemeSwitcher from '../shared/themeswitcher/themeswitcher'
@@ -38,21 +41,23 @@ const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
     <section
       ref={ref}
       className={`userProfile sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
-      <header className="sidebarHeader">
-        <h1>Profile</h1>
-        <button className="hide" onClick={hide}>
-          <SideMenuCross height={20} width={20} />
+      <Div100vh>
+        <header className="sidebarHeader">
+          <h1>Profile</h1>
+          <button className="hide" onClick={hide}>
+            <SideMenuCross height={20} width={20} />
+          </button>
+        </header>
+        <h2 className="userName">{user.name}</h2>
+        {calculateHowManySetlists(setlists)}
+        {calculateHowManyInvitedTo(setlists)}
+        <ThemeSwitcher />
+        <button className="logout">
+          <a href={url} onClick={() => dispatch(logoutUser())} className="link">
+            Log out
+          </a>
         </button>
-      </header>
-      <h2 className="userName">{user.name}</h2>
-      {calculateHowManySetlists(setlists)}
-      {calculateHowManyInvitedTo(setlists)}
-      <ThemeSwitcher />
-      <button className="logout">
-        <a href={url} onClick={() => dispatch(logoutUser())} className="link">
-          Log out
-        </a>
-      </button>
+      </Div100vh>
     </section>
   )
 }
