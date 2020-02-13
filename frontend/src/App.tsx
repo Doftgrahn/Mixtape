@@ -43,10 +43,6 @@ const App: FC<AppInterface> = ({ theme }) => {
     })
   }, [theme])
 
-  useEffect(() => {
-    console.log(document.cookie)
-  })
-
   return (
     <Div100vh style={{ minHeight: '100rvh' }}>
       <div className="App">
