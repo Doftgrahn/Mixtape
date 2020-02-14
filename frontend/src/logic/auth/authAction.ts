@@ -6,6 +6,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, CLEAR_USER } from './contan
 import { Dispatch } from 'redux'
 
 import { clearSetlist } from '../setlist/setlistAction'
+import { cleanAllSideMenus } from '../sidemenu/sidemenuAction'
 import { PayLoad } from '../types'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
@@ -143,4 +144,5 @@ export const logoutUser = () => (dispatch: Dispatch) => {
   dispatch(clearUser())
   // dispatch(setCurrentUser(''))
   dispatch(clearSetlist())
+  dispatch(cleanAllSideMenus())
 }

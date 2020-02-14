@@ -1,11 +1,12 @@
 import React from 'react'
-import { Fade } from 'react-awesome-reveal'
+import Fade from 'react-reveal/Fade'
 
 const Info = () => {
   return (
-    <section>
-      <Fade>
-        <h2>This is bla bla bla</h2>
+    <section className="landingpage_info">
+      <Fade left>
+        <h2>Connect with friends</h2>
+        <h2>Across The Globe.</h2>
       </Fade>
     </section>
   )

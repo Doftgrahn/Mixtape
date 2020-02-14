@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,9 +15,8 @@
     "noEmit": true,
     "jsx": "react",
     "experimentalDecorators": true,
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+    "typeRoots": ["/src/react-app-env.d.ts", "../../node_modules/@types"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

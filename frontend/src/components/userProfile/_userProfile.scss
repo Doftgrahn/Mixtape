@@ -12,12 +12,8 @@
 
   .logout {
     margin-top: auto;
-    padding: 20px;
     color: var(--color-headlineText);
     background-color: var(--color-sidemenu-button);
-    a {
-      color: currentColor;
-    }
   }
   .hide {
     display: block;
@@ -26,7 +22,11 @@
     outline: none;
   }
   .link {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
     display: block;
     font-family: $font-headline;
+    color: currentColor;
   }
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import Account from '../../../assets/account/account'
+import Fade from 'react-reveal/Fade'
 
 import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
 
@@ -24,7 +25,11 @@ const Collaborators: FC<any> = ({ setlist }) => {
     </li>
   ))
 
-  const list = setlist.collaborators.length ? <ul className="boardlist">{renderMyBoards}</ul> : null
+  const list = setlist.collaborators.length && (
+    <Fade cascade>
+      <ul className="boardlist">{renderMyBoards}</ul>
+    </Fade>
+  )
 
   return <>{list}</>
 }

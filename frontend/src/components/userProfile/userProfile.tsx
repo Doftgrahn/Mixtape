@@ -40,7 +40,7 @@ const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
   return (
     <section
       ref={ref}
-      className={`userProfile sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
+      className={`userProfile sidebar ${sidemenu && isComponentVisible && 'active'}`}>
       <Div100vh>
         <header className="sidebarHeader">
           <h1>Profile</h1>

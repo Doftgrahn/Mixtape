@@ -44,7 +44,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
   return (
     <section
       ref={ref}
-      className={`boardSettings sidebar ${sidemenu && isComponentVisible ? 'active' : null}`}>
+      className={`boardSettings sidebar ${sidemenu && isComponentVisible && 'active'}`}>
       <Div100vh>
         <header>
           <h1>{activeBoard.title}</h1>
@@ -57,7 +57,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
             <Description />
           </div>
           <div className="sidebar_section">
-            <h4>This setlist contains of {playlist.length} songs</h4>
+            <h4>This setlist contains {playlist.length} songs</h4>
             <CreateSpotifyPlayList />
           </div>
           <div className="sidebar_section">

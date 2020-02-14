@@ -34,9 +34,9 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
     <main className="list">
       <div className="list_container">
         <PlaylistTitle />
-        {spinner}
         <NewSong />
         <ShowList />
+        {spinner}
       </div>
       <BoardSettings />
       <ActiveSong />

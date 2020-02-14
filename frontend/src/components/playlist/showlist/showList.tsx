@@ -9,6 +9,8 @@ import { movePlaylistItem } from '../../../logic/list/moveAction'
 
 import Playlistitem from './playlistItem/playListItem'
 
+import Fade from 'react-reveal/Fade'
+
 // Checks if touchScreen
 const isTouchDevice = () => ('ontouchstart' in window ? true : false)
 const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend
@@ -33,7 +35,9 @@ const ShowList: FC<any> = ({ list }) => {
 
   return (
     <DndProvider backend={backendForDND}>
-      <ul className="playlist">{playistItem}</ul>
+      <Fade cascade>
+        <ul className="playlist">{playistItem}</ul>
+      </Fade>
     </DndProvider>
   )
 }

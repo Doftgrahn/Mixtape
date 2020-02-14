@@ -46,7 +46,7 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
   return (
     <section
       ref={ref}
-      className={`activeSong sidebar ${activeTrack && isComponentVisible ? 'active' : null}`}>
+      className={`activeSong sidebar ${activeTrack && isComponentVisible && 'active'}`}>
       <Div100vh>
         <header className="sidebarHeader">
           <UpdateSong />

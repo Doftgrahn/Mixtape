@@ -8,13 +8,16 @@ const ShowUsers: FC<any> = () => {
   const dispatch = useDispatch()
   const input = useSelector((state: any) => state.users.input)
   const searchResult = useSelector((state: any) => state.users.searchUsers)
+  const sidemenu = useSelector((state: any) => state.sidemenu.setlist)
   const currentCollaborators = useSelector((state: any) => state.users.invitedUsers).map(
     (user: any) => user._id
   )
 
   useEffect(() => {
-    dispatch(fechGetAllUsers())
-  }, [dispatch])
+    if (sidemenu) {
+      dispatch(fechGetAllUsers())
+    }
+  }, [dispatch, sidemenu])
 
   const invite = (id: string) => {
     dispatch(inviteCollaborator(id))

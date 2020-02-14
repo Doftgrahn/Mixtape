@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Fade from 'react-reveal/Fade'
 
 import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
 import { BoardInterface } from '../../../logic/types'
@@ -29,9 +30,8 @@ const BoardList: FC<any> = ({ setlist }) => {
 
   return (
     <ul className="boardlist">
-      {loading ? <Spinner /> : null}
       <NewBoard />
-      {renderMyBoards}
+      <Fade cascade>{loading ? <Spinner /> : renderMyBoards}</Fade>
     </ul>
   )
 }
