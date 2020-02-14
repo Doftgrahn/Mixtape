@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import Hero from './landingpage/hero'
 import Info from './landingpage/info'
 import About from './landingpage/about'
+import Footer from './landingpage/footer'
 
 const Landingpage: FC<{}> = () => {
   return (
@@ -10,6 +11,7 @@ const Landingpage: FC<{}> = () => {
       <Hero />
       <Info />
       <About />
+      <Footer />
     </>
   )
 }
