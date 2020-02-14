@@ -5,8 +5,8 @@ const Info = () => {
   return (
     <section className="landingpage_info">
       <Fade left>
-        <h2>Connect with friends</h2>
-        <h2>Across The Globe.</h2>
+        <h2>Lorem ipsum dolor sit amet, </h2>
+        <h2>Consectetur adipiscing elit.</h2>
       </Fade>
     </section>
   )

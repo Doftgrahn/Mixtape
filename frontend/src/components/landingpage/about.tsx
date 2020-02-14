@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section className="landingpage_about">
       <Fade left>
-        <h1>The creator of this app</h1>
+        <h1>Lorem ipsum dolor sit amet, </h1>
       </Fade>
     </section>
   )

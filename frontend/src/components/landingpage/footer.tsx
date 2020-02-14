@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 const Footer: FC = () => {
   return (
     <footer className="landingpage_footer">
-      <h1>hej</h1>
+      <h1>Nam ipsum nisi, mattis id blandit sed, auctor scelerisque justo.</h1>
     </footer>
   )
 }
