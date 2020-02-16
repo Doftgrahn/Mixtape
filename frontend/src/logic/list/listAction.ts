@@ -16,6 +16,9 @@ export const fetchSongList = () => async (dispatch: any, state: any) => {
   const { _id } = state().activeBoard.activeBoard
   dispatch(isLoading(true))
   const result = await axios.get(`/api/playlist/getplaylist/${_id}`)
+
+  dispatch(isLoading(false))
+
   dispatch(getList(result.data))
   dispatch(isLoading(false))
   if (!result) {

@@ -14,6 +14,8 @@ import BoardSettings from './boardSettings/boardSettings'
 
 import { PlaylistInterface } from '../types/propTypes'
 
+import { fetchSongList, clearAllTracks } from '../logic/list/listAction'
+
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 
 const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
@@ -22,7 +24,13 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
   const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
-  const spinner = isLoading ? <Spinner /> : null
+
+  useEffect(() => {
+    dispatch(fetchSongList())
+    return () => {
+      dispatch(clearAllTracks())
+    }
+  }, [dispatch])
 
   useEffect(() => {
     return () => {
@@ -30,14 +38,19 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
     }
   }, [dispatch])
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
     <main className="list">
-      <div className="list_container">
-        <PlaylistTitle />
-        <NewSong />
-        <ShowList />
-        {spinner}
-      </div>
+      {
+        <div className="list_container">
+          <PlaylistTitle />
+          <NewSong />
+          <ShowList />
+        </div>
+      }
       <BoardSettings />
       <ActiveSong />
       {/*Modals */}

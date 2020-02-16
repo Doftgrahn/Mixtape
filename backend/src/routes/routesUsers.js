@@ -10,7 +10,7 @@ const authCheck = require('./authCheck')
 
 router.get('/getAllUsers', authCheck, getUsers)
 router.get('/getInvitedUsers/:setListId', authCheck, getInvitedUsers)
-router.delete('/deleteUser', deleteUser)
-router.delete('/unInviteUser/:colabId', unInviteUser)
+router.delete('/deleteUser', authCheck, deleteUser)
+router.delete('/unInviteUser/:colabId', authCheck, unInviteUser)
 
 module.exports = router

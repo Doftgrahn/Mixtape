@@ -163,7 +163,7 @@ const getCollabotorsSetList = (setlists: any): PayLoad => ({
   payload: setlists
 })
 
-export const clearSetlist = () => ({ type: CLEAR_SETLIST })
+export const clearSetlist = (): any => ({ type: CLEAR_SETLIST })
 
 const IsLoading = (isLoading: boolean): PayLoad => ({ type: IS_LOADING, payload: isLoading })
 

@@ -15,7 +15,7 @@ const leaveSetlist = require('../setlist/controller/leaveSetlist')
 
 const authCheck = require('./authCheck')
 
-router.get('/getsetlists/:id', getAllSetlists)
+router.get('/getsetlists/:id', authCheck, getAllSetlists)
 router.post('/newsetlist', authCheck, createSetlist)
 router.put('/mutatesetlist', authCheck, mutateSetlist)
 router.delete('/deletesetlist/:id', authCheck, deleteSetlist)
