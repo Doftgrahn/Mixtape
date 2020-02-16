@@ -4,7 +4,6 @@ import { connect, useDispatch } from 'react-redux'
 import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
 import ShowList from './playlist/showlist/showList'
-import Spinner from './shared/spinner/spinner'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
 import SpotifyModal from './spotifyModal/spotifyModal'
@@ -19,7 +18,7 @@ import { getInvitedUsers } from '../logic/users/usersAction'
 
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 
-const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
+const Playlist: FC<PlaylistInterface> = ({ modal }) => {
   const dispatch = useDispatch()
 
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null

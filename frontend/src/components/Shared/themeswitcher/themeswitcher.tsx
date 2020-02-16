@@ -19,10 +19,14 @@ const ThemeSwitcher: FC<any> = ({ theme }) => {
     <div className="theme_switch">
       <h4 className="theme_switch-title">Theme Settings:</h4>
       <div className="theme_switch-wrapper">
-        <span>☀️</span>
+        <span aria-labelledby="emoji" role="img">
+          ☀️
+        </span>
         <input checked={isChecked} onChange={toggleTheme} type="checkbox" id="switch" />
         <label htmlFor="switch">Toggle</label>
-        <span>🌛</span>
+        <span role="img" aria-labelledby="emoji">
+          🌛
+        </span>
       </div>
     </div>
   )

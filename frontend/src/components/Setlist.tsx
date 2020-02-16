@@ -7,7 +7,7 @@ import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel } from '../logic/setlist/setlistAction'
 
-const Setlist: FC<any> = ({ modal, collaborators, loading }) => {
+const Setlist: FC<any> = ({ modal, collaborators }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
