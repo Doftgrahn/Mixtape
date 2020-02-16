@@ -1,7 +1,6 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { getInvitedUsers } from '../../../logic/users/usersAction'
 import { unInviteCollaborator } from '../../../logic/setlist/setlistAction'
 
 const InvitedCollaborators: FC<any> = ({ invitedUsers, isOwner }) => {
@@ -20,9 +19,6 @@ const InvitedCollaborators: FC<any> = ({ invitedUsers, isOwner }) => {
     </li>
   ))
 
-  useEffect(() => {
-    dispatch(getInvitedUsers())
-  }, [dispatch])
   return <ul>{renderCurrentCollaborators}</ul>
 }
 

@@ -15,6 +15,7 @@ import BoardSettings from './boardSettings/boardSettings'
 import { PlaylistInterface } from '../types/propTypes'
 
 import { fetchSongList, clearAllTracks } from '../logic/list/listAction'
+import { getInvitedUsers } from '../logic/users/usersAction'
 
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 
@@ -24,6 +25,10 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
   const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
   const lyricModal = modal.lyricModal ? <LyricModal /> : null
   const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
+
+  useEffect(() => {
+    dispatch(getInvitedUsers())
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchSongList())
@@ -37,10 +42,6 @@ const Playlist: FC<PlaylistInterface> = ({ isLoading, modal }) => {
       dispatch(cleanAllSideMenus())
     }
   }, [dispatch])
-
-  if (isLoading) {
-    return <Spinner />
-  }
 
   return (
     <main className="list">

@@ -6,7 +6,6 @@ import Collaborators from './setlist/collaborators/collaborators'
 import SetlistModal from './setlistModal/setlistModal'
 
 import { AppModel } from '../logic/setlist/setlistAction'
-import Spinner from './shared/spinner/spinner'
 
 const Setlist: FC<any> = ({ modal, collaborators, loading }) => {
   const dispatch = useDispatch()

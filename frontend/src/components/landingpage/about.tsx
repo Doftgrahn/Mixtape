@@ -1,12 +1,9 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
 
 const About = () => {
   return (
     <section className="landingpage_about">
-      <Fade bottom>
-        <h1>Lorem ipsum dolor sit amet, </h1>
-      </Fade>
+      <h1>Lorem ipsum dolor sit amet, </h1>
     </section>
   )
 }

@@ -33,8 +33,8 @@ export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
 
 export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
   const currentSetlist = getState().activeBoard.activeBoard._id
-  const collaborators = await Axios.get(`/api/allUsers/getInvitedUsers/${currentSetlist}`)
   try {
+    const collaborators = await Axios.get(`/api/allUsers/getInvitedUsers/${currentSetlist}`)
     const { data } = collaborators
     dispatch(invitedUsers(data))
   } catch (e) {
