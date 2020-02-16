@@ -16,20 +16,18 @@ const Setlist: FC<any> = ({ modal, collaborators, loading }) => {
 
   const setListModal = modal ? <SetlistModal /> : null
 
-  if (loading) return <Spinner />
-
   return (
     <main className="board">
       <section className="container">
         <h1>My Setlists</h1>
         <BoardList />
 
-        {collaborators.length > 0 ? (
+        {collaborators.length > 0 && (
           <>
             <h2>Collaborators</h2>
             <Collaborators />
           </>
-        ) : null}
+        )}
       </section>
       {/* Modals */}
       {setListModal}

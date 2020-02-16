@@ -7,9 +7,10 @@ import { BoardInterface } from '../../../logic/types'
 
 import NewBoard from '../newboard/newBoard'
 import Account from '../../../assets/account/account'
+import Spinner from '../../shared/spinner/spinner'
 
 const BoardList: FC<any> = ({ setlist }) => {
-  const { boards } = setlist
+  const { boards, loading } = setlist
   const dispatch = useDispatch()
 
   const setActiveBoard = (board: any): any => dispatch(activeBoard(board))
@@ -29,6 +30,7 @@ const BoardList: FC<any> = ({ setlist }) => {
   return (
     <ul className="boardlist">
       <NewBoard />
+      {loading && <Spinner />}
       {renderMyBoards}
     </ul>
   )
