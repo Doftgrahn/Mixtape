@@ -84,14 +84,27 @@ export const updatePassword = (userData: any, history: any) => (dispatch: Dispat
     })
 }
 
-export const getActiveUser = () => (dispatch: any) => {
+export const getActiveUser = () => (dispatch: any, getState: any) => {
+  const isLoggedIn = getState().auth.isAuthenticated
+
   axios
     .get('/api/users/getActiveUser')
     .then(result => {
       const { data } = result
 
-      // VERY IMPORTANT
-      if (!data) return
+      if (!data && !isLoggedIn) {
+        return
+      }
+
+      // Checks if user is null and if user is logged i.
+      if (!data && isLoggedIn) {
+        let url = 'https://www.mixtape.nu/api/users/logout'
+        if (process.env.NODE_ENV === 'development') {
+          url = 'http://localhost:4000/api/users/logout'
+        }
+        dispatch(logoutUser())
+        return window.location.replace(url)
+      }
 
       const user: any = {
         date: data.date,

@@ -31,7 +31,7 @@ app.use(express.json())
 app.use(
   cookieSession({
     name: 'session',
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours,
     keys: ['hejejejeejeje', 'ke2']
   })
 )
