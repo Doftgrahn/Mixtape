@@ -9,6 +9,7 @@
     h1 {
       margin: 0 10px;
       font-size: 22px;
+      color: var(--color-logo-text);
       @media (max-width: 800px) {
         display: none;
       }

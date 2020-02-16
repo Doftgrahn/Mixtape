@@ -12,6 +12,7 @@ export const blueGray = '#C5CCCF'
 export const orange = '#D77A61'
 
 export const lightTheme: any = {
+  '--color-logo-text': black,
   '--color-background': whiteGray,
   '--color-background-list': white,
   '--color-text': black,
@@ -29,6 +30,7 @@ export const lightTheme: any = {
 }
 
 export const darkTheme: any = {
+  '--color-logo-text': blueGray,
   '--color-background': black,
   '--color-background-list': lightOrange,
   '--color-text': black,
