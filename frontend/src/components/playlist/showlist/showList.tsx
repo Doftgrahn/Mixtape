@@ -4,6 +4,8 @@ import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import TouchBackend from 'react-dnd-touch-backend'
 
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
 import { movePlaylistItem } from '../../../logic/list/moveAction'
 
 import Playlistitem from './playlistItem/playListItem'
@@ -20,12 +22,16 @@ const ShowList: FC<any> = ({ list, loading }) => {
   }
 
   const playistItem = list.map((list: any, index: number) => (
-    <Playlistitem key={list._id} list={list} index={index} id={list._id} moveCard={moveCard} />
+    <CSSTransition key={list._id} timeout={500} classNames="item">
+      <Playlistitem key={list._id} list={list} index={index} id={list._id} moveCard={moveCard} />
+    </CSSTransition>
   ))
 
   return (
     <DndProvider backend={backendForDND}>
-      <ul className="playlist">{playistItem}</ul>
+      <ul className="playlist">
+        <TransitionGroup component={null}>{playistItem} </TransitionGroup>
+      </ul>
     </DndProvider>
   )
 }

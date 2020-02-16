@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
 import { BoardInterface } from '../../../logic/types'
@@ -16,22 +17,24 @@ const BoardList: FC<any> = ({ setlist }) => {
   const setActiveBoard = (board: any): any => dispatch(activeBoard(board))
 
   const renderMyBoards = boards.map((board: BoardInterface): any => (
-    <li key={board._id} title={`Setlist: ${board.title}`}>
-      <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
-        <p>
-          <Account height={20} width={20} />{' '}
-          {board.collaborators.length ? board.collaborators.length : 'Only you'}
-        </p>
-        <h3>{board.title}</h3>
-      </Link>
-    </li>
+    <CSSTransition key={board._id} timeout={500} classNames="item">
+      <li title={`Setlist: ${board.title}`}>
+        <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
+          <p>
+            <Account height={20} width={20} />{' '}
+            {board.collaborators.length ? board.collaborators.length : 'Only you'}
+          </p>
+          <h3>{board.title}</h3>
+        </Link>
+      </li>
+    </CSSTransition>
   ))
 
   return (
     <ul className="boardlist">
-      <NewBoard />
       {loading && <Spinner />}
-      {renderMyBoards}
+      <NewBoard />
+      <TransitionGroup component={null}>{renderMyBoards}</TransitionGroup>
     </ul>
   )
 }

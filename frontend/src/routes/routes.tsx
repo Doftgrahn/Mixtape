@@ -51,7 +51,7 @@ const Routes: FC<{}> = () => {
   ))
 
   return (
-    <TransitionGroup>
+    <TransitionGroup component={null}>
       <CSSTransition key={location.key} classNames="fade" timeout={200}>
         <Switch location={location}>
           {PrivateRoutes}
