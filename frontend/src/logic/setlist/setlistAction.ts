@@ -33,7 +33,8 @@ export const AppModel = () => (dispatch: any, state: any) => {
       const { mySetlist, collaborators } = result.data
       const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
       dispatch(setBoard(mutateIfOwner))
-      dispatch(getCollabotorsSetList(collaborators))
+      const notOwner = collaborators.map((list: any) => ({ ...list, isOwner: false }))
+      dispatch(getCollabotorsSetList(notOwner))
       dispatch(IsLoading(false))
     })
     .catch(error => dispatch(setErrors(error)))

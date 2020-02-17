@@ -1,27 +1,11 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import Account from '../../../assets/account/account'
 
-import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
-
-import { BoardInterface } from '../../../logic/types'
+import SetlistItem from '../setlistItem/setlistItem'
 
 const Collaborators: FC<any> = ({ setlist }) => {
-  const dispatch = useDispatch()
-
-  const setActiveBoard = (board: object) => dispatch(activeBoard(board))
-
-  const renderMyBoards = setlist.collaborators.map((board: BoardInterface): any => (
-    <li key={board._id}>
-      <Link tabIndex={0} onClick={() => setActiveBoard(board)} to={`/dashboard/${board.title}`}>
-        <p>
-          <Account height={20} width={20} /> {board.user}
-        </p>
-        <h3>{board.title}</h3>
-      </Link>
-    </li>
+  const renderMyBoards = setlist.collaborators.map((setlist: any) => (
+    <SetlistItem key={setlist._id} board={setlist} />
   ))
 
   const list = setlist.collaborators.length && <ul className="boardlist">{renderMyBoards}</ul>
