@@ -16,7 +16,7 @@ import SpotifyIcon from '../../../../assets/spotify/spotifyIcon'
 
 const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
-  const ref = useRef<HTMLLIElement>(null)
+  const ref = useRef<any>(null)
   const { current } = active
   const setActiveSong = (id: string) => {
     dispatch(activeSong(id))
@@ -94,7 +94,7 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
   const ifDragging = isDragging ? 'isDraging' : ''
 
   return (
-    <li ref={ref} key={list._id} className={`${currentTrack} ${ifDragging}`}>
+    <div ref={ref} key={list._id} className={`playlistItem ${currentTrack} ${ifDragging}`}>
       <div className="song">
         <h3>{list.title}</h3>
       </div>
@@ -113,7 +113,7 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
           <Edit height={20} width={20} />
         </button>
       </div>
-    </li>
+    </div>
   )
 }
 

@@ -19,15 +19,17 @@ const ShowList: FC<any> = ({ list }) => {
   }
 
   const playistItem = list.map((list: any, index: number) => (
-    <CSSTransition key={list._id} timeout={500} classNames="item">
-      <Playlistitem list={list} index={index} id={list._id} moveCard={moveCard} />
+    <CSSTransition key={list._id} timeout={500} classNames="playListItem">
+      <li>
+        <Playlistitem list={list} index={index} id={list._id} moveCard={moveCard} />
+      </li>
     </CSSTransition>
   ))
 
   return (
     <DndProvider backend={backendForDND}>
       <ul className="playlist">
-        <TransitionGroup component={null}>{playistItem}</TransitionGroup>
+        <TransitionGroup component={null}>{playistItem} </TransitionGroup>
       </ul>
     </DndProvider>
   )

@@ -1,7 +1,7 @@
 .playlist {
   list-style-type: none;
 
-  li {
+  .playlistItem {
     cursor: grab;
     flex-grow: 1;
     display: flex;
@@ -55,17 +55,17 @@
   }
 }
 
-.item-enter {
+.playListItem-enter {
   opacity: 0;
 }
-.item-enter-active {
+.playListItem-enter-active {
   opacity: 1;
   transition: opacity 400ms ease-in;
 }
-.item-exit {
+.playListItem-exit {
   opacity: 1;
 }
-.item-exit-active {
+.playListItem-exit-active {
   opacity: 0;
   transition: opacity 400ms ease-in;
 }
