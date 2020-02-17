@@ -2,7 +2,7 @@
   list-style-type: none;
 
   li {
-    cursor: pointer;
+    cursor: grab;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
@@ -11,6 +11,11 @@
     padding: 10px;
     border-radius: 4px;
     transition: 400ms;
+    opacity: 1;
+
+    &.isDraging {
+      opacity: 0.6;
+    }
 
     .song {
       display: flex;

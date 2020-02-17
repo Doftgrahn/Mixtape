@@ -8,6 +8,8 @@ import { Dispatch } from 'redux'
 import { clearSetlist } from '../setlist/setlistAction'
 import { cleanAllSideMenus } from '../sidemenu/sidemenuAction'
 import { PayLoad } from '../types'
+
+import logOutUserAuto from '../utils/autoLogOut'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
@@ -98,12 +100,13 @@ export const getActiveUser = () => (dispatch: any, getState: any) => {
 
       // Checks if user is null and if user is logged i.
       if (!data && isLoggedIn) {
-        let url = 'https://www.mixtape.nu/api/users/logout'
-        if (process.env.NODE_ENV === 'development') {
-          url = 'http://localhost:4000/api/users/logout'
-        }
-        dispatch(logoutUser())
-        return window.location.replace(url)
+        return logOutUserAuto(dispatch, logoutUser)
+        // let url = 'https://www.mixtape.nu/api/users/logout'
+        // if (process.env.NODE_ENV === 'development') {
+        //   url = 'http://localhost:4000/api/users/logout'
+        // }
+        // dispatch(logoutUser())
+        // return window.location.replace(url)
       }
 
       const user: any = {

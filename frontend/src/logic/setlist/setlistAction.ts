@@ -20,6 +20,7 @@ import {
 } from '../activeBoard/activeBoardAction'
 
 import { addUserCollaborator, unInviteUserCollaborator } from '../users/usersAction'
+import makeAnIdForMe from '../utils/createObjectId'
 
 import { PayLoad, BoardInterface } from '../types'
 
@@ -40,19 +41,21 @@ export const AppModel = () => (dispatch: any, state: any) => {
 
 export const addBoard = (board: any) => (dispatch: any, getState: any) => {
   const user = getState().auth.user.name
-  const data = {
+  const data: any = {
+    _id: makeAnIdForMe(),
     userId: board.userId,
     title: board.title,
     user: user,
-    description: ''
+    description: '',
+    collaborators: []
   }
+  const ifOwner = { ...data, isOwner: true }
+  dispatch(addSetlist(ifOwner))
   dispatch(IsLoading(true))
   axios
     .post('/api/setlist/newsetlist', data)
     .then(response => {
-      const { data } = response
-      const ifOwner = { ...data, isOwner: true }
-      dispatch(addSetlist(ifOwner))
+      //const { data } = response
       dispatch(IsLoading(false))
     })
     .catch(error => dispatch(setErrors(error)))

@@ -12,7 +12,7 @@ const Hero: FC<LandingInterface> = ({ auth }) => {
     return <Redirect to="/dashboard" />
   }
   return (
-    <main className="landingpage">
+    <section className="landingpage">
       <div className="landing_wrapper">
         <div className="landing_container">
           <Logo height={120} width={220} />
@@ -21,7 +21,7 @@ const Hero: FC<LandingInterface> = ({ auth }) => {
           <GoogleButton />
         </div>
       </div>
-    </main>
+    </section>
   )
 }
 

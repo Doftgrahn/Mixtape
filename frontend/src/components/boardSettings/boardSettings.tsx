@@ -11,6 +11,7 @@ import InvitedCollaborators from './invitedCollaborators/invitedCollaborators'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import SearchUsers from './searchUsers/searchUsers'
 import ShowUsers from './showUsers/showUsers'
+import Trash from '../../assets/trash/trash'
 
 import { toggleEditSetlist } from '../../logic/sidemenu/sidemenuAction'
 
@@ -70,7 +71,7 @@ const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
         <footer>
           {activeBoard.isOwner ? (
             <button className="sideMenu_delete" onClick={deleteBoard}>
-              Delete Setlist
+              <span className="deleteText">Delete Setlist</span> <Trash height={20} width={20} />
             </button>
           ) : null}
           {!activeBoard.isOwner ? (

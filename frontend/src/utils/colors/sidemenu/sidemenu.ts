@@ -9,6 +9,7 @@ export const lightSideMenu = {
   '--color-sidemenu-background': black,
   '--color-sidemenu-text': white,
   '--color-sidemenu-delete': orange,
+  '--color-sidemenu-delete-text': black,
   '--color-sidemenu-button': lightOrange
 }
 
@@ -16,5 +17,6 @@ export const darkSideMenu = {
   '--color-sidemenu-background': blueGray,
   '--color-sidemenu-text': black,
   '--color-sidemenu-delete': orange,
+  '--color-sidemenu-delete-text': black,
   '--color-sidemenu-button': black
 }

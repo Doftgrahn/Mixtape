@@ -27,6 +27,7 @@ browserHistory.listen((location, _action) => {
 
 const App: FC<AppInterface> = ({ theme }) => {
   const dispatch = useDispatch()
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])

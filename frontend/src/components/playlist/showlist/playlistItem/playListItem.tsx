@@ -33,7 +33,6 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
       if (!ref.current) {
         return
       }
-
       const dragIndex = item.index
       const hoverIndex = index
 
@@ -90,14 +89,12 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
 
   drag(drop(ref))
 
-  const opacity = isDragging ? 0.6 : 1
+  // Classes
+  const currentTrack = current._id === list._id && activeTrack ? 'showActiveSong' : ''
+  const ifDragging = isDragging ? 'isDraging' : ''
 
   return (
-    <li
-      ref={ref}
-      key={list._id}
-      className={current._id === list._id && activeTrack ? 'showActiveSong' : ''}
-      style={{ opacity }}>
+    <li ref={ref} key={list._id} className={`${currentTrack} ${ifDragging}`}>
       <div className="song">
         <h3>{list.title}</h3>
       </div>

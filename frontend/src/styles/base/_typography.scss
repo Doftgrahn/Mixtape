@@ -1,12 +1,16 @@
 * {
   font-family: $font-text;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+input,
+button {
   font-family: $font-headline;
   font-weight: 700;
   letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
 }

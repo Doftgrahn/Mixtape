@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import { setCurrentSong, mutateCurrentSong } from '../../../logic/activeList/activeListAction'
 import { updateListTitle } from '../../../logic/list/listAction'
 
-const UpdateSong: FC<any> = ({ activeList }) => {
+const UpdateSong: FC<any> = ({ activeList, sidemenu }) => {
   const { current } = activeList
   const dispatch = useDispatch()
   const [isEditingTitle, setIsEditingTitle] = useState(false)
@@ -37,6 +37,12 @@ const UpdateSong: FC<any> = ({ activeList }) => {
     }
   }
 
+  useEffect(() => {
+    if (!sidemenu) {
+      setUpdateTitle('')
+    }
+  }, [setUpdateTitle, sidemenu])
+
   return (
     <div className="updateSong">
       <h1
@@ -59,7 +65,8 @@ const UpdateSong: FC<any> = ({ activeList }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  activeList: state.activeList
+  activeList: state.activeList,
+  sidemenu: state.sidemenu.activeTrack
 })
 
 export default connect(mapStateToProps)(UpdateSong)

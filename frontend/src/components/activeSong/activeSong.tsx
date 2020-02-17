@@ -67,7 +67,8 @@ const ActiveSong: FC<any> = ({ currentsong, activeTrack }) => {
         </article>
         <footer>
           <button className="deleteSongBtn" onClick={() => deleteSong(current._id)}>
-            <Trash height={50} width={50} />
+            <span className="deleteText">Delete Song</span>
+            <Trash height={20} width={20} />
           </button>
         </footer>
       </Div100vh>

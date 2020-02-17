@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const PlaylistSchema = new Schema({
+  _id: {
+    type: String,
+    required: true
+  },
   boardId: {
     type: String,
     required: true

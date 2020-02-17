@@ -7,8 +7,9 @@ export interface BoardInterface {
   description: string
   isLoading: boolean
   list: any
-  collaborators: []
+  collaborators: [String]
   _id: string
+  isOwner?: boolean
 }
 
 export interface BoardStateInterface {

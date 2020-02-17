@@ -7,12 +7,12 @@ import Footer from './landingpage/footer'
 
 const Landingpage: FC<{}> = () => {
   return (
-    <>
+    <main>
       <Hero />
       <Info />
       <About />
       <Footer />
-    </>
+    </main>
   )
 }
 

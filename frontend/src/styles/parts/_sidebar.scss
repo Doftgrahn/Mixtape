@@ -75,12 +75,15 @@
     }
 
     .sideMenu_delete {
-      background-color: var(--color-sidemenu-delete);
+      background: var(--color-sidemenu-delete);
       margin-top: auto;
       padding: 20px;
-      color: var(--color-headlineText);
-      background-color: var(--color-sidemenu-button);
+      color: var(--color-sidemenu-delete-text);
+      //background-color: var(--color-sidemenu-button);
       font-family: $font-headline;
+      .deleteText {
+        margin: 0 10px;
+      }
     }
   }
 }

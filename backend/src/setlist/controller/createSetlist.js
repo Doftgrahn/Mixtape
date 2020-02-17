@@ -1,8 +1,9 @@
 const Setlist = require('../setlistModel/setlist')
 
 module.exports = async function createSetlist(req, res) {
-  const { userId, title, user } = req.body
+  const { userId, title, user, _id } = req.body
   const newBoard = new Setlist({
+    _id: _id,
     userId: userId,
     user: user,
     title: title,

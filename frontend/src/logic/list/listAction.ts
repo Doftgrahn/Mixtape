@@ -12,6 +12,8 @@ import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
 import { PayLoad } from '../types'
 
+import generateObjectId from '../utils/createObjectId'
+
 export const fetchSongList = () => async (dispatch: any, state: any) => {
   const { _id } = state().activeBoard.activeBoard
   dispatch(isLoading(true))
@@ -27,16 +29,24 @@ export const fetchSongList = () => async (dispatch: any, state: any) => {
 }
 
 export const addToList = (title: any) => async (dispatch: any, state: any) => {
-  const { activeBoard } = state().activeBoard
-  const { id } = state().auth.user
-  dispatch(isLoading(true))
-  const add = { activeBoard, id, title }
-  const response = await axios.post('/api/playlist/addplaylist', add)
-  dispatch(addList(response.data))
-  dispatch(isLoading(false))
+  const activeBoardId = state().activeBoard.activeBoard._id
+  const userId = state().auth.user.id
 
+  const data: any = {
+    _id: generateObjectId(),
+    activeBoardId: activeBoardId,
+    userId: userId,
+    title: title,
+    lyrics: '',
+    spotifyTrackID: '',
+    uri: '',
+    date: Date.now()
+  }
+
+  dispatch(addList(data))
+  const response = await axios.post('/api/playlist/addplaylist', data)
   if (!response) {
-    dispatch(setErrors(response))
+    return dispatch(setErrors(response))
   }
 }
 
