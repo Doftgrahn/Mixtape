@@ -4,7 +4,7 @@ import { fechGetAllUsers, searchUsers, usersInput } from '../../../logic/users/u
 
 import { inviteCollaborator } from '../../../logic/setlist/setlistAction'
 
-const ShowUsers: FC<any> = () => {
+const ShowUsers: FC<{}> = () => {
   const dispatch = useDispatch()
   const input = useSelector((state: any) => state.users.input)
   const searchResult = useSelector((state: any) => state.users.searchUsers)

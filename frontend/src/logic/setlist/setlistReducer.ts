@@ -38,7 +38,11 @@ export default (state = initialState, action: PayLoad) => {
     case GET_COLLABORATOR_SETLIST:
       return {
         ...state,
-        collaborators: action.payload
+        collaborators: payload.slice().sort((a: any, b: any) => {
+          const first = new Date(b.date).getTime()
+          const second = new Date(a.date).getTime()
+          return first - second
+        })
       }
     case CREATE_BOARD:
       return {

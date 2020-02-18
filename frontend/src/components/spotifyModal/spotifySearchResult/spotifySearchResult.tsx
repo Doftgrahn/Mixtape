@@ -3,8 +3,14 @@ import { connect, useDispatch } from 'react-redux'
 
 import { addSpotifyTrack } from '../../../logic/list/listAction'
 import { hideSpotifyModal } from '../../../logic/modal/modalAction'
+import { SpotifyInterface } from '../../../logic/spotify/types'
 
-const SpotifySearchResult: FC<any> = ({ spotify, needsRefresh }) => {
+interface SpotifySearchResult {
+  spotify: SpotifyInterface[]
+  needsRefresh: boolean
+}
+
+const SpotifySearchResult: FC<SpotifySearchResult> = ({ spotify, needsRefresh }) => {
   const dispatch = useDispatch()
 
   const addSongToUser = (song: any) => {

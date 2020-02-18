@@ -7,11 +7,17 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { movePlaylistItem } from '../../../logic/list/moveAction'
 import Playlistitem from './playlistItem/playListItem'
 
+import { TrackInterface } from '../../../logic/list/constants'
+
 // Checks if touchScreen
 const isTouchDevice = () => ('ontouchstart' in window ? true : false)
 const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend
 
-const ShowList: FC<any> = ({ list }) => {
+interface ShowlistInterface {
+  list: TrackInterface[]
+}
+
+const ShowList: FC<ShowlistInterface> = ({ list }) => {
   const dispatch = useDispatch()
 
   const moveCard = (dragIndex: any, hoverIndex: any) => {

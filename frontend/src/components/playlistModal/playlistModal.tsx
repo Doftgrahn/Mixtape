@@ -9,7 +9,11 @@ import Close from '../../assets/cross/close'
 
 import { closePlaylistModal } from '../../logic/modal/modalAction'
 
-const PlaylistModal: FC<any> = ({ modal }) => {
+interface PlaylistModalInterface {
+  modal: boolean
+}
+
+const PlaylistModal: FC<PlaylistModalInterface> = ({ modal }) => {
   const dispatch = useDispatch()
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
 

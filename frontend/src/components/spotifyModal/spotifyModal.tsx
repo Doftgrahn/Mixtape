@@ -7,7 +7,11 @@ import Close from '../../assets/cross/close'
 import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
 import SpotifySearchResult from './spotifySearchResult/spotifySearchResult'
 
-const SpotifyModal: FC<any> = ({ modal }) => {
+interface SpotifyModalInterface {
+  modal: boolean
+}
+
+const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
   const [search, setSearch] = useState('')
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)

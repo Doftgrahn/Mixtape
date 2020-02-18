@@ -5,14 +5,20 @@ import { useDispatch } from 'react-redux'
 import { setActiveBoard as activeBoard } from '../../../logic/activeBoard/activeBoardAction'
 
 import Account from '../../../assets/account/account'
+import { BoardInterface } from '../../../logic/types'
 
-const SetlistItem: FC<any> = ({ board }) => {
+interface SetlistItemInterface {
+  board: BoardInterface
+}
+
+const SetlistItem: FC<SetlistItemInterface> = ({ board }) => {
   const dispatch = useDispatch()
   const setActiveBoard = (board: object) => dispatch(activeBoard(board))
 
+  const showOwnerIfnotOwner = !board.isOwner && <span>{board.user}</span>
+
   const howmanyIfowner =
-    board.isOwner && board.collaborators.length ? board.collaborators.length : 'Only you'
-  const showOwnerIfnotOwner = !board.isOwner && board.user
+    board.isOwner && board.collaborators.length ? board.collaborators.length : <span>Only you</span>
 
   return (
     <li key={board._id} title={`Setlist: ${board.title}`}>

@@ -1,12 +1,17 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
+import { TrackInterface } from '../../logic/list/constants'
 
-const ShowLyrics: FC<any> = ({ active }) => {
-  return <p className="lyricText">{active.current.lyrics ? active.current.lyrics : null}</p>
+interface ShowLyricsInterface {
+  activeTrack: TrackInterface
+}
+
+const ShowLyrics: FC<ShowLyricsInterface> = ({ activeTrack }) => {
+  return <p className="lyricText">{activeTrack.lyrics ? activeTrack.lyrics : null}</p>
 }
 
 const mapStatetoProp = (state: any) => ({
-  active: state.activeList
+  activeTrack: state.activeList.current
 })
 
 export default connect(mapStatetoProp)(ShowLyrics)

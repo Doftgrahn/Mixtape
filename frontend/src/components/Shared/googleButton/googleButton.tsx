@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import './google.scss'
 
-const GoogleButton: FC = () => {
+const GoogleButton: FC<{}> = () => {
   let url = 'https://www.mixtape.nu/api/users/google'
   if (process.env.NODE_ENV === 'development') {
     url = 'http://localhost:4000/api/users/google'

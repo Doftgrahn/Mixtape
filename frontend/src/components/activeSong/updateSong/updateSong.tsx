@@ -1,11 +1,15 @@
 import React, { FC, useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
-
 import { setCurrentSong, mutateCurrentSong } from '../../../logic/activeList/activeListAction'
 import { updateListTitle } from '../../../logic/list/listAction'
+import { TrackInterface } from '../../../logic/list/constants'
 
-const UpdateSong: FC<any> = ({ activeList, sidemenu }) => {
-  const { current } = activeList
+interface UpdateSongInterface {
+  activeList: TrackInterface
+  sidemenu: boolean
+}
+
+const UpdateSong: FC<UpdateSongInterface> = ({ activeList, sidemenu }) => {
   const dispatch = useDispatch()
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [updateTitle, setUpdateTitle] = useState('')
@@ -26,14 +30,14 @@ const UpdateSong: FC<any> = ({ activeList, sidemenu }) => {
 
   const onEnter = (e: any) => {
     const data = {
-      id: current._id,
-      title: updateTitle || current.title
+      id: activeList._id,
+      title: updateTitle || activeList.title
     }
     if (e.key === 'Enter') {
       dispatch(updateListTitle(data))
       dispatch(mutateCurrentSong(updateTitle))
       setEditToFalse()
-      dispatch(setCurrentSong(current))
+      dispatch(setCurrentSong(activeList))
     }
   }
 
@@ -48,11 +52,11 @@ const UpdateSong: FC<any> = ({ activeList, sidemenu }) => {
       <h1
         className={`${isEditingTitle ? 'hideTitle' : ''}`}
         onClick={() => setIsEditingTitle(!isEditingTitle)}>
-        {updateTitle || current.title}
+        {updateTitle || activeList.title}
       </h1>
       {isEditingTitle ? (
         <input
-          placeholder={current.title}
+          placeholder={activeList.title}
           value={updateTitle}
           onChange={e => setUpdateTitle(e.target.value)}
           onKeyPress={e => onEnter(e)}
@@ -65,7 +69,7 @@ const UpdateSong: FC<any> = ({ activeList, sidemenu }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  activeList: state.activeList,
+  activeList: state.activeList.current,
   sidemenu: state.sidemenu.activeTrack
 })
 

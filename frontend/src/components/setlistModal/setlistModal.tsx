@@ -1,15 +1,18 @@
 import React, { FC, useState, useEffect } from 'react'
-import { addBoard } from '../../logic/setlist/setlistAction'
 import { useDispatch, connect } from 'react-redux'
-
-import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
-
 import Close from '../../assets/cross/close'
 import ModalInput from '../shared/modalInput/modalInput'
-
+import { addBoard } from '../../logic/setlist/setlistAction'
 import { closeSetlistModal } from '../../logic/modal/modalAction'
+import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
+import { UserInterface } from '../../logic/auth/contants'
 
-const SetlistModal: FC<any> = ({ auth, modal }) => {
+interface SetlistModalInterface {
+  user: UserInterface
+  modal: boolean
+}
+
+const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
   const dispatch = useDispatch()
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const [title, setTitle] = useState('')
@@ -38,7 +41,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
       return setIsDirty(true)
     }
     const data = {
-      userId: auth.user.id,
+      userId: user.id,
       title: title
     }
     dispatch(addBoard(data))
@@ -88,7 +91,7 @@ const SetlistModal: FC<any> = ({ auth, modal }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth,
+  user: state.auth.user,
   modal: state.modal.setlistModal
 })
 

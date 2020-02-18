@@ -1,6 +1,5 @@
 import React, { FC, useEffect, ReactNode } from 'react'
 import Div100vh from 'react-div-100vh'
-
 import { useComponentVisible } from '../../../utils/useComponentVisible/useComponentVisible'
 
 interface SideMenuInterface {

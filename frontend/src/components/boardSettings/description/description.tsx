@@ -4,7 +4,12 @@ import { connect, useDispatch } from 'react-redux'
 import { setDescription } from '../../../logic/activeBoard/activeBoardAction'
 import { addDescription } from '../../../logic/setlist/setlistAction'
 
-const Description: FC<any> = ({ description, isOwner }) => {
+interface DescriptionInterface {
+  description: string
+  isOwner: boolean
+}
+
+const Description: FC<DescriptionInterface> = ({ description, isOwner }) => {
   const [isEditiing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState('')
   const dispatch = useDispatch()

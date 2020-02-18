@@ -14,8 +14,16 @@ import Trash from '../../assets/trash/trash'
 import CreateSpotifyPlayList from './createSpotifyPlaylist/createSpotifyPlaylist'
 
 import { toggleEditSetlist } from '../../logic/sidemenu/sidemenuAction'
+import { BoardInterface } from '../../logic/types'
+import { TrackInterface } from '../../logic/list/constants'
 
-const BoardSettings: FC<any> = ({ activeBoard, playlist, sidemenu }) => {
+interface BoardSettingsInterface {
+  activeBoard: BoardInterface
+  playlist: TrackInterface[]
+  sidemenu: boolean
+}
+
+const BoardSettings: FC<BoardSettingsInterface> = ({ activeBoard, playlist, sidemenu }) => {
   const history = useHistory()
   const dispatch = useDispatch()
 

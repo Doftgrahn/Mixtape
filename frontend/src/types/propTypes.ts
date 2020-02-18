@@ -18,6 +18,7 @@ export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
   modal: any
 }
 
-export interface SetlistInterface {
+export interface SetlistProps {
   modal: boolean
+  collaborators: [string]
 }

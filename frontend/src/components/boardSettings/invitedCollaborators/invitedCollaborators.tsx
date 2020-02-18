@@ -3,8 +3,14 @@ import { connect, useDispatch } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { unInviteCollaborator } from '../../../logic/setlist/setlistAction'
+import { UsersInterface } from '../../../logic/users/typesUsers'
 
-const InvitedCollaborators: FC<any> = ({ invitedUsers, isOwner }) => {
+interface InvitedCollaborators {
+  invitedUsers: UsersInterface[]
+  isOwner: boolean
+}
+
+const InvitedCollaborators: FC<InvitedCollaborators> = ({ invitedUsers, isOwner }) => {
   const dispatch = useDispatch()
 
   const renderCurrentCollaborators = invitedUsers.map((user: any) => (

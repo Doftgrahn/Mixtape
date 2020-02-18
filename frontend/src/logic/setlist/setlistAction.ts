@@ -127,7 +127,6 @@ const unInvite = (data: any): PayLoad => ({
 export const leaveSetlist = (id: string) => async (dispatch: any, getState: any) => {
   const { setlist, auth } = getState()
   const currentSetlist = setlist.collaborators.find((x: any) => x._id === id)
-  console.log(currentSetlist)
   const userId = auth.user._id
   dispatch(leaveIfnotOwner(currentSetlist))
   await axios.delete(`/api/setlist/leaveSetlist/${userId}/${currentSetlist._id}`)

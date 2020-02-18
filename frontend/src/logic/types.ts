@@ -14,11 +14,10 @@ export interface BoardInterface {
 
 export interface BoardStateInterface {
   activeBoard: string
-  boards: BoardInterface
+  boards: BoardInterface[]
+  collaborators: BoardInterface[]
   loading: boolean
 }
-
-export interface PlaylistInterface {}
 
 export interface PayLoad {
   type: string

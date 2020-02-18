@@ -1,15 +1,19 @@
 import React, { FC, useEffect } from 'react'
 import { useDispatch, connect } from 'react-redux'
-
 import Close from '../../assets/cross/close'
+import SearchLyrics from './searchLyrics'
+import ShowLyrics from './showLyrics'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 import { closeLyricModal } from '../../logic/modal/modalAction'
 import { clearLyrics } from '../../logic/lyrics/lyricsAction'
+import { TrackInterface } from '../../logic/list/constants'
 
-import SearchLyrics from './searchLyrics'
-import ShowLyrics from './showLyrics'
+interface LyricsInterface {
+  modal: boolean
+  activeSong: TrackInterface
+}
 
-const Lyrics: FC<any> = ({ modal, activeSong }) => {
+const Lyrics: FC<LyricsInterface> = ({ modal, activeSong }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
   const dispatch = useDispatch()
 

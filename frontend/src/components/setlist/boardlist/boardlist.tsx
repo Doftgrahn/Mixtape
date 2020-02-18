@@ -5,8 +5,13 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import NewBoard from '../newboard/newBoard'
 import SetlistItem from '../setlistItem/setlistItem'
 import Spinner from '../../shared/spinner/spinner'
+import { BoardStateInterface } from '../../../logic/types'
 
-const BoardList: FC<any> = ({ setlist }) => {
+interface SetListItems {
+  setlist: BoardStateInterface
+}
+
+const BoardList: FC<SetListItems> = ({ setlist }) => {
   const { boards, loading } = setlist
 
   const renderMyBoards = boards.map((board: any) => (

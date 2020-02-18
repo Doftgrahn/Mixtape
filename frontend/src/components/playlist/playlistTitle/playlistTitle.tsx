@@ -4,9 +4,10 @@ import { createBrowserHistory } from 'history'
 import { mutateSetlist } from '../../../logic/setlist/setlistAction'
 import Edit from '../../../assets/edit/edit'
 import { toggleEditSetlist } from '../../../logic/sidemenu/sidemenuAction'
+import { BoardInterface } from '../../../logic/types'
 
 interface PlaylistTitleInterface {
-  activeSetlist: object | any
+  activeSetlist: BoardInterface
 }
 
 const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
@@ -17,7 +18,6 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
   const history = createBrowserHistory()
 
   const changeUrl = () => history.replace(`/dashboard/${value}`)
-
   const send = () => (value ? dispatch(mutateSetlist(value)) : false)
 
   const onBlur = () => {

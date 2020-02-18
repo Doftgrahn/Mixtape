@@ -1,10 +1,9 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { closeLyricModal } from '../../../logic/modal/modalAction'
-
 import { fetchgetTracks } from '../../../logic/lyrics/lyricsAction'
 
-const LyricInput: FC = () => {
+const LyricInput: FC<{}> = () => {
   const dispatch = useDispatch()
   const [song, setSong] = useState('')
 

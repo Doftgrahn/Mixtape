@@ -15,7 +15,8 @@ const initialState: ActivePlaylistStateInterface = {
     _id: '',
     boardId: '',
     userId: '',
-    spotifyTrackID: ''
+    spotifyTrackID: '',
+    uri: ''
   },
   isActive: false
 }

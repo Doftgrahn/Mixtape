@@ -16,12 +16,15 @@ export const SET_SPOTIFY_TRACK = 'SET_SPOTIFY_TRACK'
 
 export const CLEAR_TRACKS = 'CLEAR_TRACKS'
 
-interface TrackInterface {
+export interface TrackInterface {
   title: string
   date: string
   _id: string
   boardId: string
   userId: string
+  lyrics: string
+  spotifyTrackID: string
+  uri: string
 }
 
 export interface PlaylistStateInterface {

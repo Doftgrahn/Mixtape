@@ -14,8 +14,16 @@ import {
 } from '../../utils/calculatePlaylists/calculatePlaylist'
 
 import Sidemenu from '../shared/sidemenu/sidemenu'
+import { UserInterface } from '../../logic/auth/contants'
+import { SetlistStateInterface } from '../../logic/setlist/constants'
 
-const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
+interface UserProfileInterface {
+  user: UserInterface
+  sidemenu: boolean
+  setlists: SetlistStateInterface
+}
+
+const UserProfile: FC<UserProfileInterface> = ({ user, sidemenu, setlists }) => {
   const dispatch = useDispatch()
 
   let url = 'https://www.mixtape.nu/api/users/logout'

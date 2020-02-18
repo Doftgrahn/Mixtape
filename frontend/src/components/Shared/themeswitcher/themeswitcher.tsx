@@ -2,16 +2,22 @@ import React, { FC, useState, useEffect } from 'react'
 import { setLightTheme, setDarkTheme } from '../../../logic/theme/themeAction'
 import { useDispatch, connect } from 'react-redux'
 
-const ThemeSwitcher: FC<any> = ({ theme }) => {
+interface ThemeSwitcherInterface {
+  theme: string
+}
+
+const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ theme }) => {
   const dispatch = useDispatch()
   const [isChecked, setIsChecked] = useState(false)
 
+  const light = 'light'
+
   useEffect(() => {
-    theme.state === 'light' ? setIsChecked(false) : setIsChecked(true)
-  }, [theme.state])
+    theme === light ? setIsChecked(false) : setIsChecked(true)
+  }, [theme])
 
   const toggleTheme = () => {
-    theme.state === 'light' ? dispatch(setDarkTheme()) : dispatch(setLightTheme())
+    theme === light ? dispatch(setDarkTheme()) : dispatch(setLightTheme())
     setIsChecked(!isChecked)
   }
 
@@ -33,7 +39,7 @@ const ThemeSwitcher: FC<any> = ({ theme }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  theme: state.theme
+  theme: state.theme.state
 })
 
 export default connect(mapStateToProps)(ThemeSwitcher)

@@ -4,8 +4,15 @@ import { useDispatch, connect } from 'react-redux'
 import Spinner from '../../shared/spinner/spinner'
 
 import { fetchSetLyric } from '../../../logic/list/lyricsAction'
+import { TrackInterface } from '../../../logic/list/constants'
+import { LyricsStateInterface } from '../../../logic/lyrics/constants'
 
-const LyricsList: FC<any> = ({ getLyrics, activeSong }) => {
+interface LyricsListInterface {
+  getLyrics: LyricsStateInterface
+  activeSong: TrackInterface
+}
+
+const LyricsList: FC<LyricsListInterface> = ({ getLyrics, activeSong }) => {
   const { lyrics, isLoading } = getLyrics
   const { _id } = activeSong
 

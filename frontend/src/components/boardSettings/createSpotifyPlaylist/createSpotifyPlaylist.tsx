@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { useSelector } from 'react-redux'
 import Axios from 'axios'
 
-const CreateSpotifyPlayList = () => {
+const CreateSpotifyPlayList: FC<{}> = () => {
   const [hasSaved, SethasSaved] = useState(false)
   const [needToBeLoggedIn, setNeedtoBeLoggedIn] = useState(false)
   const user = useSelector((state: any) => state.auth.user)

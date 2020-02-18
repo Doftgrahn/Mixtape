@@ -11,6 +11,7 @@ interface ActiveTrackInterface {
   boardId: string
   userId: string
   spotifyTrackID: string
+  uri: string
 }
 
 export interface ActivePlaylistStateInterface {
