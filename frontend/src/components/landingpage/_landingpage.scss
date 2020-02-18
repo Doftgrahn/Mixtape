@@ -14,14 +14,14 @@
       text-align: center;
     }
     h1 {
-      margin-top: 20px;
+      margin-top: $regular-spacing;
       font-size: 60px;
       margin-bottom: 0;
       text-align: center;
       color: var(--color-logo-text);
     }
     h3 {
-      margin-top: 20px;
+      margin-top: $regular-spacing;
       color: var(--color-button);
     }
   }
@@ -49,7 +49,7 @@
     max-width: $max-width;
     margin: 0 auto;
     display: flex;
-    padding: 20px;
+    padding: $regular-spacing;
     border-top: 1px solid var(--color-button);
     justify-content: center;
     align-items: center;

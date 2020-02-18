@@ -1,9 +1,7 @@
 import React, { FC, lazy } from 'react'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-
 import { RoutesInterface } from './routeTypes'
-
 // Higher order Route for authentication
 import PrivateRoute from './privateRoute'
 
@@ -52,7 +50,7 @@ const Routes: FC<{}> = () => {
 
   return (
     <TransitionGroup component={null}>
-      <CSSTransition key={location.key} classNames="fade" timeout={200}>
+      <CSSTransition key={location.key} classNames="fade" timeout={{ enter: 400, exit: 400 }}>
         <Switch location={location}>
           {PrivateRoutes}
           {PublicRoutes}

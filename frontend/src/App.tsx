@@ -5,22 +5,16 @@ import ReactGA from 'react-ga'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import Div100vh from 'react-div-100vh'
-
 import Header from './components/header/header'
 import Routes from './routes/routes'
 import Spinner from './components/shared/spinner/spinner'
 import UserProfile from './components/userProfile/userProfile'
 import ScrollToTop from './utils/scrollToTop/scrollToTop'
-
 import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
-
 import { AppInterface } from './types/propTypes'
-
 const browserHistory = createBrowserHistory()
-
 ReactGA.initialize('UA-153619692-2')
-
 browserHistory.listen((location, _action) => {
   ReactGA.pageview(location.pathname + location.search)
 })

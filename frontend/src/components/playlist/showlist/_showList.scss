@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     box-shadow: $color-shadow;
-    margin-top: 20px;
+    margin-top: $regular-spacing;
     padding: 10px;
     border-radius: 4px;
     transition: 400ms;
@@ -21,7 +21,7 @@
       display: flex;
       flex-direction: row;
       h3 {
-        margin: 20px;
+        margin: $regular-spacing;
       }
     }
     .edit {

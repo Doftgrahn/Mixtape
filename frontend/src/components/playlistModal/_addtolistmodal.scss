@@ -33,13 +33,13 @@
       align-items: center;
       input {
         border: 0;
-        padding: 20px;
+        padding: $regular-spacing;
         width: 100%;
-        margin: 0 20px;
+        margin: 0 $regular-spacing;
         outline: none;
       }
       button {
-        margin: 20px 0;
+        margin: $regular-spacing 0;
       }
     }
   }

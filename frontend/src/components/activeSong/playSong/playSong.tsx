@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 
 const Playsong: FC<{}> = () => {
-  const track = useSelector((state: any) => state.activeList.current.spotifyTrackID)
+  const track: string = useSelector((state: any) => state.activeList.current.spotifyTrackID)
 
   if (!track) return null
   return (

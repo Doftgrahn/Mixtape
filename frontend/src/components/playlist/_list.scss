@@ -5,12 +5,12 @@
 
   .list_container {
     max-width: $max-width;
-    margin: 20px auto;
+    margin: $regular-spacing auto;
 
     .title {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: $regular-spacing;
       @media screen and (max-width: 800px) {
         padding: 0 0;
       }

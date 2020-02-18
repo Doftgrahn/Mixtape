@@ -1,18 +1,26 @@
+$height: 100vh;
+$transition-time: 400ms;
+
 .fade-enter {
   opacity: 0;
+  min-height: $height;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 200ms ease-in;
+  transition: $transition-time ease-in;
+  min-height: $height;
+  transform: translateX(0);
 }
 
 .fade-exit {
   opacity: 1;
   z-index: 1;
+  min-height: $height;
 }
 
 .fade-exit.fade-exit-active {
   opacity: 0;
-  transition: opacity 200ms ease-in;
+  transition: $transition-time ease-in;
+  min-height: $height;
 }
