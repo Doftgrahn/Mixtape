@@ -56,7 +56,7 @@ router.get(
   })
 )
 
-router.get('/google/redirect', passport.authenticate('google'), (_req, res) => {
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   res.redirect(url)
 })
 

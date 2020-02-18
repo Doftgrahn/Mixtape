@@ -21,10 +21,6 @@ import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 const Playlist: FC<PlaylistInterface> = ({ modal }) => {
   const dispatch = useDispatch()
 
-  const playlistModal = modal.playlistModal ? <PlaylistModal /> : null
-  const lyricModal = modal.lyricModal ? <LyricModal /> : null
-  const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : null
-
   useEffect(() => {
     dispatch(getInvitedUsers())
   }, [dispatch])
@@ -41,6 +37,10 @@ const Playlist: FC<PlaylistInterface> = ({ modal }) => {
       dispatch(cleanAllSideMenus())
     }
   }, [dispatch])
+
+  const playlistModal = modal.playlistModal && <PlaylistModal />
+  const lyricModal = modal.lyricModal && <LyricModal />
+  const spotifyModal = modal.spotifyModal && <SpotifyModal />
 
   return (
     <main className="list">

@@ -10,7 +10,7 @@ const BoardList: FC<any> = ({ setlist }) => {
   const { boards, loading } = setlist
 
   const renderMyBoards = boards.map((board: any) => (
-    <CSSTransition key={board._id} timeout={400} classNames="item">
+    <CSSTransition key={board._id} timeout={200} classNames="item">
       <SetlistItem key={board._id} board={board} />
     </CSSTransition>
   ))

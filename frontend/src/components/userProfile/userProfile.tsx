@@ -1,7 +1,6 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 
 import { connect, useDispatch } from 'react-redux'
-import Div100vh from 'react-div-100vh'
 
 import { logoutUser } from '../../logic/auth/authAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
@@ -14,11 +13,9 @@ import {
   calculateHowManyInvitedTo
 } from '../../utils/calculatePlaylists/calculatePlaylist'
 
-import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
+import Sidemenu from '../shared/sidemenu/sidemenu'
 
 const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
-
   const dispatch = useDispatch()
 
   let url = 'https://www.mixtape.nu/api/users/logout'
@@ -26,39 +23,26 @@ const UserProfile: FC<any> = ({ user, sidemenu, setlists }) => {
     url = 'http://localhost:4000/api/users/logout'
   }
 
-  const hide = () => {
-    dispatch(toggleUserProfile())
-    setIsComponentVisible(true)
-  }
-
-  useEffect(() => {
-    if (!sidemenu) {
-      setIsComponentVisible(true)
-    }
-  })
+  const hide = () => dispatch(toggleUserProfile())
 
   return (
-    <section
-      ref={ref}
-      className={`userProfile sidebar ${sidemenu && isComponentVisible && 'active'}`}>
-      <Div100vh>
-        <header className="sidebarHeader">
-          <h1>Profile</h1>
-          <button className="hide" onClick={hide}>
-            <SideMenuCross height={20} width={20} />
-          </button>
-        </header>
-        <h2 className="userName">{user.name}</h2>
-        {calculateHowManySetlists(setlists)}
-        {calculateHowManyInvitedTo(setlists)}
-        <ThemeSwitcher />
-        <button className="logout">
-          <a href={url} onClick={() => dispatch(logoutUser())} className="link">
-            Log out
-          </a>
+    <Sidemenu sidemenu={sidemenu}>
+      <header className="sidebarHeader">
+        <h1>Profile</h1>
+        <button className="hide" onClick={hide}>
+          <SideMenuCross height={20} width={20} />
         </button>
-      </Div100vh>
-    </section>
+      </header>
+      <h2 className="userName">{user.name}</h2>
+      {calculateHowManySetlists(setlists)}
+      {calculateHowManyInvitedTo(setlists)}
+      <ThemeSwitcher />
+      <button className="logout">
+        <a href={url} onClick={() => dispatch(logoutUser())} className="link">
+          Log out
+        </a>
+      </button>
+    </Sidemenu>
   )
 }
 

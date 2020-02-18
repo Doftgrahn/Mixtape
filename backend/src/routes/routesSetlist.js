@@ -24,6 +24,6 @@ router.put('/moveSetlist', authCheck, moveSetlist)
 router.post('/adddescription', authCheck, addDescription)
 
 router.post('/addcollaborator', authCheck, addCollaborator)
-router.delete('/leaveSetlist/:id', authCheck, leaveSetlist)
+router.delete('/leaveSetlist/:userId/:boardId', authCheck, leaveSetlist)
 
 module.exports = router

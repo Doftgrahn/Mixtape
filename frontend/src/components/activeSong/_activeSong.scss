@@ -1,54 +1,39 @@
-.activeSong {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  // min-height: 100vh;
-  transition: 500ms ease;
-  top: 0;
-  bottom: 0;
-  width: 400px;
-  right: 300px;
-  transform: translateX(180%);
-  overflow: hidden;
-  padding: 0;
+.socialBtns {
+  text-align: left;
+  margin-bottom: 100px;
 
-  .socialBtns {
-    text-align: left;
-    margin-bottom: 100px;
-
-    button {
-      font-style: 16px;
-      font-style: italic;
-      display: block;
-      margin-top: 10px;
-      background: 0;
-      padding: 0;
-      color: currentColor;
-    }
-    .lyricText {
-      white-space: pre-line;
-    }
+  button {
+    font-style: 16px;
+    font-style: italic;
+    display: block;
+    margin-top: 10px;
+    background: 0;
+    padding: 0;
+    color: currentColor;
   }
+  .lyricText {
+    white-space: pre-line;
+  }
+}
 
-  footer {
-    margin-top: auto;
-    text-align: center;
+footer {
+  margin-top: auto;
+  text-align: center;
 
-    .deleteSongBtn {
-      margin-left: auto;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--color-sidemenu-delete);
-      color: var(--color-sidemenu-delete-text);
-      .deleteText {
-        margin: 0 10px;
-      }
+  .deleteSongBtn {
+    margin-left: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-sidemenu-delete);
+    color: var(--color-sidemenu-delete-text);
+    .deleteText {
+      margin: 0 10px;
     }
   }
 }
+
 .active {
   transform: translateX(0);
   right: 0;

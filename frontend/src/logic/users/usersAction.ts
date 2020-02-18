@@ -39,6 +39,7 @@ export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
     const { data } = collaborators
     dispatch(invitedUsers(data))
   } catch (e) {
+    console.log('GETINVITED USERS', e)
     dispatch(userErrors(e))
   }
 }

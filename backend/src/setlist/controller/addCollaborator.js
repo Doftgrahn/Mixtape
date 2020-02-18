@@ -7,9 +7,7 @@ module.exports = function addCollaborator(req, res) {
     .then(list => {
       const { collaborators } = list
       const collaboratorAlreadyExists = collaborators.find(x => x === userId)
-      console.log('CollaboratorExists', collaboratorAlreadyExists)
       if (collaboratorAlreadyExists) {
-        console.log('User already a member')
         return res.status(404).json('User already member.')
       } else {
         Setlist.findOneAndUpdate(

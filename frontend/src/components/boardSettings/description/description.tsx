@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import { setDescription } from '../../../logic/activeBoard/activeBoardAction'
 import { addDescription } from '../../../logic/setlist/setlistAction'
 
-const Description: FC<any> = ({ description }) => {
+const Description: FC<any> = ({ description, isOwner }) => {
   const [isEditiing, setIsEditing] = useState(false)
   const [descriptionValue, setDescriptionValue] = useState('')
   const dispatch = useDispatch()
@@ -36,13 +36,16 @@ const Description: FC<any> = ({ description }) => {
   )
 
   const showDescription = (
-    <p onClick={() => setIsEditing(true)}>{!description ? 'Add a description' : description}</p>
+    <p onClick={() => isOwner && setIsEditing(true)}>
+      {!description ? 'Add a description' : description}
+    </p>
   )
 
   return <div className="description_wrapper">{isEditiing ? textArea : showDescription}</div>
 }
 const mapStateToProps = (state: any) => ({
-  description: state.activeBoard.activeBoard.description
+  description: state.activeBoard.activeBoard.description,
+  isOwner: state.activeBoard.activeBoard.isOwner
 })
 
 export default connect(mapStateToProps)(Description)
