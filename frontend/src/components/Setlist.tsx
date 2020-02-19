@@ -5,11 +5,17 @@ import Collaborators from './setlist/collaborators/collaborators'
 import SetlistModal from './setlistModal/setlistModal'
 import { AppModel } from '../logic/setlist/setlistAction'
 import { SetlistProps } from '../types/propTypes'
+import { closeModals } from '../logic/modal/modalAction'
+import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 
 const Setlist: FC<SetlistProps> = ({ modal, collaborators }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(AppModel())
+    return () => {
+      dispatch(closeModals())
+      dispatch(cleanAllSideMenus())
+    }
   }, [dispatch])
 
   const setListModal = modal ? <SetlistModal /> : null

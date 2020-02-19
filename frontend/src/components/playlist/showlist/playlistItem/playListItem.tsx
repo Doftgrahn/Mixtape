@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { useDrag, useDrop, DropTargetMonitor, DragLayerMonitor } from 'react-dnd'
 import { XYCoord } from 'dnd-core'
 import { activeSong, setCurrentSong } from '../../../../logic/activeList/activeListAction'
-import { showLyricModal } from '../../../../logic/modal/modalAction'
+import { toggleLyricsModal } from '../../../../logic/modal/modalAction'
 import ItemTypes from './itemType'
 import Paper from '../../../../assets/paper/paper'
 import { moveplaylistPUT, alternativePlatlist } from '../../../../logic/list/moveAction'
@@ -22,7 +22,8 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
     dispatch(activeSong(id))
     dispatch(toggleActiveTrack())
   }
-  const shortCutLyrics = (song: any) => dispatch(setCurrentSong(song)) && dispatch(showLyricModal())
+  const shortCutLyrics = (song: any) =>
+    dispatch(setCurrentSong(song)) && dispatch(toggleLyricsModal())
 
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,

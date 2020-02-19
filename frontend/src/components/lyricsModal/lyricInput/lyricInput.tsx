@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { closeLyricModal } from '../../../logic/modal/modalAction'
+import { toggleLyricsModal } from '../../../logic/modal/modalAction'
 import { fetchgetTracks } from '../../../logic/lyrics/lyricsAction'
 
 const LyricInput: FC<{}> = () => {
@@ -10,7 +10,7 @@ const LyricInput: FC<{}> = () => {
   useEffect(() => {
     const onPressEscape = (event: any) => {
       if (event.keyCode === 27) {
-        dispatch(closeLyricModal())
+        dispatch(toggleLyricsModal())
       }
     }
     window.addEventListener('keydown', onPressEscape)

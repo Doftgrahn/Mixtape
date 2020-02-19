@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 
 import { useDispatch } from 'react-redux'
-import { showPlaylistModal } from '../../../logic/modal/modalAction'
+import { togglePlaylistModal } from '../../../logic/modal/modalAction'
 const NewSong: FC<{}> = () => {
   const dispatch = useDispatch()
 
   return (
-    <button className="addPlaylistBtn" onClick={() => dispatch(showPlaylistModal())}>
+    <button className="addPlaylistBtn" onClick={() => dispatch(togglePlaylistModal())}>
       <h3>+ Add a song</h3>
     </button>
   )

@@ -3,7 +3,8 @@ import {
   TOGGLE_SETLIST_MODAL,
   TOGGlE_LYRIC_MODAL,
   TOGGLE_SPOTIFY_MODAL,
-  ModalStateInterface
+  ModalStateInterface,
+  CLOSE_MODALS
 } from './constants'
 import { PayLoad } from '../types'
 
@@ -15,27 +16,33 @@ const initialState: ModalStateInterface = {
 }
 
 export default (state = initialState, action: PayLoad) => {
-  const { payload } = action
   switch (action.type) {
     case TOGGLE_SETLIST_MODAL:
       return {
         ...state,
-        setlistModal: payload
+        setlistModal: !state.setlistModal
       }
     case TOOGLE_PLAYLIST_MODAL:
       return {
         ...state,
-        playlistModal: payload
+        playlistModal: !state.playlistModal
       }
     case TOGGlE_LYRIC_MODAL:
       return {
         ...state,
-        lyricModal: payload
+        lyricModal: !state.lyricModal
       }
     case TOGGLE_SPOTIFY_MODAL:
       return {
         ...state,
-        spotifyModal: payload
+        spotifyModal: !state.spotifyModal
+      }
+    case CLOSE_MODALS:
+      return {
+        setlistModal: false,
+        playlistModal: false,
+        lyricModal: false,
+        spotifyModal: false
       }
     default:
       return state

@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 
 import { useDispatch } from 'react-redux'
-import { showSetlistModal } from '../../../logic/modal/modalAction'
+import { toggleSetlistModal } from '../../../logic/modal/modalAction'
 
 const NewBoard: FC<{}> = () => {
   const dispatch = useDispatch()
 
-  const showModal = () => dispatch(showSetlistModal())
+  const showModal = () => dispatch(toggleSetlistModal())
 
   return (
     <li className="newSetlist">

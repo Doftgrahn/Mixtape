@@ -3,7 +3,7 @@ import { useDispatch, connect } from 'react-redux'
 import Close from '../../assets/cross/close'
 import ModalInput from '../shared/modalInput/modalInput'
 import { addBoard } from '../../logic/setlist/setlistAction'
-import { closeSetlistModal } from '../../logic/modal/modalAction'
+import { toggleSetlistModal } from '../../logic/modal/modalAction'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
 import { UserInterface } from '../../logic/auth/contants'
 
@@ -21,7 +21,7 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
   useEffect(() => {
     const onPressEscape = (event: any) => {
       if (event.keyCode === 27) {
-        dispatch(closeSetlistModal())
+        dispatch(toggleSetlistModal())
       }
     }
     window.addEventListener('keydown', onPressEscape)
@@ -46,7 +46,7 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
     }
     dispatch(addBoard(data))
     setTitle('')
-    dispatch(closeSetlistModal())
+    dispatch(toggleSetlistModal())
   }
 
   const pressEnter = (e: any): void => {
@@ -56,7 +56,7 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
   }
 
   const exitModal = (): void => {
-    dispatch(closeSetlistModal())
+    dispatch(toggleSetlistModal())
     setIsComponentVisible(false)
   }
 
@@ -84,7 +84,7 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
           </div>
         </article>
       ) : (
-        dispatch(closeSetlistModal()) && null
+        dispatch(toggleSetlistModal()) && null
       )}
     </div>
   )

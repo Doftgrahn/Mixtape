@@ -2,51 +2,21 @@ import {
   TOGGLE_SETLIST_MODAL,
   TOOGLE_PLAYLIST_MODAL,
   TOGGlE_LYRIC_MODAL,
-  TOGGLE_SPOTIFY_MODAL
+  TOGGLE_SPOTIFY_MODAL,
+  CLOSE_MODALS,
+  ModalAction
 } from './constants'
-import { PayLoad } from '../types'
 
 // Setlist Modal
-export const showSetlistModal = (): PayLoad => ({
-  type: TOGGLE_SETLIST_MODAL,
-  payload: true
-})
-
-export const closeSetlistModal = (): PayLoad => ({
-  type: TOGGLE_SETLIST_MODAL,
-  payload: false
-})
+export const toggleSetlistModal = (): ModalAction => ({ type: TOGGLE_SETLIST_MODAL })
 
 // Playlist Modal
-export const showPlaylistModal = (): PayLoad => ({
-  type: TOOGLE_PLAYLIST_MODAL,
-  payload: true
-})
-
-export const closePlaylistModal = (): PayLoad => ({
-  type: TOOGLE_PLAYLIST_MODAL,
-  payload: false
-})
+export const togglePlaylistModal = (): ModalAction => ({ type: TOOGLE_PLAYLIST_MODAL })
 
 // Lyrics MOdal
-export const showLyricModal = (): PayLoad => ({
-  type: TOGGlE_LYRIC_MODAL,
-  payload: true
-})
-
-export const closeLyricModal = (): PayLoad => ({
-  type: TOGGlE_LYRIC_MODAL,
-  payload: false
-})
+export const toggleLyricsModal = (): ModalAction => ({ type: TOGGlE_LYRIC_MODAL })
 
 // Spotify Modal
+export const toggleSpotifyModal = (): ModalAction => ({ type: TOGGLE_SPOTIFY_MODAL })
 
-export const showSpotifyModal = (): PayLoad => ({
-  type: TOGGLE_SPOTIFY_MODAL,
-  payload: true
-})
-
-export const hideSpotifyModal = (): PayLoad => ({
-  type: TOGGLE_SPOTIFY_MODAL,
-  payload: false
-})
+export const closeModals = (): ModalAction => ({ type: CLOSE_MODALS })

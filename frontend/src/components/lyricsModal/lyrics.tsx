@@ -4,7 +4,7 @@ import Close from '../../assets/cross/close'
 import SearchLyrics from './searchLyrics'
 import ShowLyrics from './showLyrics'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
-import { closeLyricModal } from '../../logic/modal/modalAction'
+import { toggleLyricsModal } from '../../logic/modal/modalAction'
 import { clearLyrics } from '../../logic/lyrics/lyricsAction'
 import { TrackInterface } from '../../logic/list/constants'
 
@@ -18,7 +18,7 @@ const Lyrics: FC<LyricsInterface> = ({ modal, activeSong }) => {
   const dispatch = useDispatch()
 
   const exitModal = () => {
-    dispatch(closeLyricModal())
+    dispatch(toggleLyricsModal())
     setIsComponentVisible(false)
   }
 
@@ -40,7 +40,7 @@ const Lyrics: FC<LyricsInterface> = ({ modal, activeSong }) => {
           <article>{activeSong.lyrics ? <ShowLyrics /> : <SearchLyrics />}</article>
         </div>
       ) : (
-        dispatch(closeLyricModal()) && null
+        dispatch(toggleLyricsModal()) && null
       )}
     </div>
   )

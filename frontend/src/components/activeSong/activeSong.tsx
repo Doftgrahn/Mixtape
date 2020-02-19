@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { toggleActiveTrack } from '../../logic/sidemenu/sidemenuAction'
 import { deleteListItem } from '../../logic/list/listAction'
-import { showLyricModal, showSpotifyModal } from '../../logic/modal/modalAction'
+import { toggleLyricsModal, toggleSpotifyModal } from '../../logic/modal/modalAction'
 import Sidemenu from '../shared/sidemenu/sidemenu'
 import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
@@ -25,12 +25,12 @@ const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
   }
 
   const lyricModal = () => {
-    dispatch(showLyricModal())
+    dispatch(toggleLyricsModal())
     hide()
   }
 
   const spotifyModal = () => {
-    dispatch(showSpotifyModal())
+    dispatch(toggleSpotifyModal())
     hide()
   }
 

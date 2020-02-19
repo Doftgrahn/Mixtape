@@ -4,7 +4,7 @@ import { useComponentVisible } from '../../utils/useComponentVisible/useComponen
 import Close from '../../assets/cross/close'
 import SpotifySearchResult from './spotifySearchResult/spotifySearchResult'
 
-import { hideSpotifyModal } from '../../logic/modal/modalAction'
+import { toggleSpotifyModal } from '../../logic/modal/modalAction'
 import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
 
 import useDebounce from '../../utils/debounce/debounce'
@@ -26,7 +26,7 @@ const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
   }, [debouncedSearchTerm, dispatch, search])
 
   const exitModal = () => {
-    dispatch(hideSpotifyModal())
+    dispatch(toggleSpotifyModal())
     setIsComponentVisible(false)
   }
 
@@ -53,7 +53,7 @@ const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
           </div>
         </div>
       ) : (
-        dispatch(hideSpotifyModal()) && null
+        dispatch(toggleSpotifyModal()) && null
       )}
     </div>
   )

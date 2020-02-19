@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 import { addSpotifyTrack } from '../../../logic/list/listAction'
-import { hideSpotifyModal } from '../../../logic/modal/modalAction'
+import { toggleSpotifyModal } from '../../../logic/modal/modalAction'
 import { SpotifyInterface } from '../../../logic/spotify/types'
 
 interface SpotifySearchResult {
@@ -19,7 +19,7 @@ const SpotifySearchResult: FC<SpotifySearchResult> = ({ spotify, needsRefresh })
       uri: song.uri
     }
     dispatch(addSpotifyTrack(data))
-    dispatch(hideSpotifyModal())
+    dispatch(toggleSpotifyModal())
   }
 
   const renderSearchResult = spotify.map((song: any) => (

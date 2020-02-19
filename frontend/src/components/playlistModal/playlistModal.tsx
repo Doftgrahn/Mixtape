@@ -7,7 +7,7 @@ import { useComponentVisible } from '../../utils/useComponentVisible/useComponen
 
 import Close from '../../assets/cross/close'
 
-import { closePlaylistModal } from '../../logic/modal/modalAction'
+import { togglePlaylistModal } from '../../logic/modal/modalAction'
 
 interface PlaylistModalInterface {
   modal: boolean
@@ -23,7 +23,7 @@ const PlaylistModal: FC<PlaylistModalInterface> = ({ modal }) => {
   useEffect(() => {
     const onPressEscape = (event: any) => {
       if (event.keyCode === 27) {
-        dispatch(closePlaylistModal())
+        dispatch(togglePlaylistModal())
       }
     }
     window.addEventListener('keydown', onPressEscape)
@@ -44,12 +44,12 @@ const PlaylistModal: FC<PlaylistModalInterface> = ({ modal }) => {
     }
     dispatch(addToList(title))
     setTitle('')
-    dispatch(closePlaylistModal())
+    dispatch(togglePlaylistModal())
     setIsComponentVisible(false)
   }
 
   const exitModal = () => {
-    dispatch(closePlaylistModal())
+    dispatch(togglePlaylistModal())
     setIsComponentVisible(false)
   }
 
@@ -79,7 +79,7 @@ const PlaylistModal: FC<PlaylistModalInterface> = ({ modal }) => {
           </div>
         </article>
       ) : (
-        dispatch(closePlaylistModal()) && null
+        dispatch(togglePlaylistModal()) && null
       )}
     </main>
   )

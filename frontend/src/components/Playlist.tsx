@@ -7,34 +7,27 @@ import ShowList from './playlist/showlist/showList'
 import PlaylistModal from './playlistModal/playlistModal'
 import LyricModal from './lyricsModal/lyrics'
 import SpotifyModal from './spotifyModal/spotifyModal'
-
 import ActiveSong from './activeSong/activeSong'
 import BoardSettings from './boardSettings/boardSettings'
 
-import { PlaylistInterface } from '../types/propTypes'
-
 import { fetchSongList, clearAllTracks } from '../logic/list/listAction'
 import { getInvitedUsers } from '../logic/users/usersAction'
-
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
+import { closeModals } from '../logic/modal/modalAction'
+
+import { PlaylistInterface } from '../types/propTypes'
 
 const Playlist: FC<PlaylistInterface> = ({ modal }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getInvitedUsers())
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(fetchSongList())
+    dispatch(getInvitedUsers())
+
     return () => {
       dispatch(clearAllTracks())
-    }
-  }, [dispatch])
-
-  useEffect(() => {
-    return () => {
       dispatch(cleanAllSideMenus())
+      dispatch(closeModals())
     }
   }, [dispatch])
 
