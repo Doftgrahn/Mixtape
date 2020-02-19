@@ -37,7 +37,7 @@ const UserProfile: FC<UserProfileInterface> = ({ user, sidemenu, setlists }) => 
     <Sidemenu sidemenu={sidemenu}>
       <header className="sidebarHeader">
         <h1>Profile</h1>
-        <button className="hide" onClick={hide}>
+        <button aria-label="Hide" className="hide" onClick={hide}>
           <SideMenuCross height={20} width={20} />
         </button>
       </header>

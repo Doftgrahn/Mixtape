@@ -1,32 +1,29 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { useDispatch, connect } from 'react-redux'
 import { useComponentVisible } from '../../utils/useComponentVisible/useComponentVisible'
-import { hideSpotifyModal } from '../../logic/modal/modalAction'
 import Close from '../../assets/cross/close'
-
-import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
 import SpotifySearchResult from './spotifySearchResult/spotifySearchResult'
+
+import { hideSpotifyModal } from '../../logic/modal/modalAction'
+import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
+
+import useDebounce from '../../utils/debounce/debounce'
 
 interface SpotifyModalInterface {
   modal: boolean
 }
 
 const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
-  const [search, setSearch] = useState('')
-
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true)
+  const [search, setSearch] = useState('')
+  const debouncedSearchTerm = useDebounce(search, 1000)
   const dispatch = useDispatch()
 
-  const pressEnter = (e: any) => {
-    if (e.key === 'Enter') {
-      searchForSong(e)
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      dispatch(getSpotifySearch(debouncedSearchTerm))
     }
-  }
-
-  const searchForSong = (e: any) => {
-    dispatch(getSpotifySearch(search))
-    setSearch(e.target.value)
-  }
+  }, [debouncedSearchTerm, dispatch, search])
 
   const exitModal = () => {
     dispatch(hideSpotifyModal())
@@ -47,9 +44,8 @@ const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
             <input
               type="text"
               value={search}
-              onChange={e => searchForSong(e)}
+              onChange={e => setSearch(e.target.value)}
               placeholder="Search on spotify"
-              onKeyPress={e => pressEnter(e)}
               autoFocus
             />
             <SpotifySearchResult />

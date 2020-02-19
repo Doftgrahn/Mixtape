@@ -25,15 +25,15 @@ import makeAnIdForMe from '../utils/createObjectId'
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
-  const { id } = state().auth.user
+  const { _id } = state().auth.user
   dispatch(IsLoading(true))
   axios
-    .get(`/api/setlist/getsetlists/${id}`)
+    .get(`/api/setlist/getsetlists/${_id}`)
     .then(result => {
       const { mySetlist, collaborators } = result.data
       const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
-      dispatch(setBoard(mutateIfOwner))
       const notOwner = collaborators.map((list: any) => ({ ...list, isOwner: false }))
+      dispatch(setBoard(mutateIfOwner))
       dispatch(getCollabotorsSetList(notOwner))
       dispatch(IsLoading(false))
     })

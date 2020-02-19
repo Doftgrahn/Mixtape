@@ -27,7 +27,10 @@ const Header: FC<{}> = () => {
         <h1>MixTape</h1>
       </div>
       <div className="accountLogo_container">
-        <button className="listMeny" onClick={() => dispatch(toggleUserProfile())}>
+        <button
+          aria-label="User Profile"
+          className="listMeny-btn"
+          onClick={() => dispatch(toggleUserProfile())}>
           <Account height={50} width={50} />
         </button>
       </div>

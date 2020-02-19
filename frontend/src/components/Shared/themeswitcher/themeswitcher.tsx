@@ -25,12 +25,12 @@ const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ theme }) => {
     <div className="theme_switch">
       <h4 className="theme_switch-title">Theme Settings:</h4>
       <div className="theme_switch-wrapper">
-        <span aria-labelledby="emoji" role="img">
+        <span aria-label="Emoji of the sun" role="img">
           ☀️
         </span>
         <input checked={isChecked} onChange={toggleTheme} type="checkbox" id="switch" />
         <label htmlFor="switch">Toggle</label>
-        <span role="img" aria-labelledby="emoji">
+        <span role="img" aria-label="Emoji on the moon">
           🌛
         </span>
       </div>

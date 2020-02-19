@@ -20,7 +20,7 @@
     max-height: 80vh;
     box-shadow: $color-shadow;
     overflow: auto;
-    padding: 20px;
+    padding: $regular-spacing;
     border-radius: 4px;
 
     @media screen and (max-width: 800px) {
@@ -31,7 +31,7 @@
     }
 
     .modalHeader {
-      padding: 20px;
+      padding: $regular-spacing;
       button {
         text-align: right;
         background: none;
@@ -52,8 +52,8 @@
       }
       input {
         border: 0;
-        padding: 20px;
-        margin-top: 20px;
+        padding: $regular-spacing;
+        margin-top: $regular-spacing;
         width: 80%;
         background-color: var(--color-modal-input-background);
         color: var(--color-modal-input-text);
@@ -68,7 +68,7 @@
         }
       }
       .modal_add_btn {
-        padding: 20px;
+        padding: $regular-spacing;
         color: var(--color-modal-button-text);
         background: var(--color-modal-button);
         width: 80%;

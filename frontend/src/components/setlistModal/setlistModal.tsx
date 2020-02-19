@@ -30,13 +30,13 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
     }
   }, [dispatch])
 
-  useEffect(() => {
+  useEffect((): void => {
     if (title) {
       setIsDirty(false)
     }
   }, [title])
 
-  const createBoard = () => {
+  const createBoard = (): void => {
     if (!title) {
       return setIsDirty(true)
     }
@@ -49,13 +49,13 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
     dispatch(closeSetlistModal())
   }
 
-  const pressEnter = (e: any) => {
+  const pressEnter = (e: any): void => {
     if (e.key === 'Enter') {
       createBoard()
     }
   }
 
-  const exitModal = () => {
+  const exitModal = (): void => {
     dispatch(closeSetlistModal())
     setIsComponentVisible(false)
   }

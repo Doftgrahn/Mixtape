@@ -1,12 +1,13 @@
 require('dotenv').config()
-import express from 'express'
-import path from 'path'
+const express = require('express')
+const path = require('path')
 const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const cookieSession = require('cookie-session')
+const compression = require('compression')
 
 //Strategies
 require('./authentication/strategies/spotify')
@@ -25,6 +26,7 @@ const spotify = require('./routes/routesSpotify')
 const app = express()
 app.use(express.static(`${__dirname}/../../frontend/build/`))
 app.use(favicon(path.join(__dirname, '/../../frontend/build/favicon.ico')))
+app.use(compression())
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())

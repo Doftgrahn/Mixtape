@@ -14,10 +14,9 @@ interface SetlistItemInterface {
 const SetlistItem: FC<SetlistItemInterface> = ({ board }) => {
   const dispatch = useDispatch()
   const setActiveBoard = (board: object) => dispatch(activeBoard(board))
-
   const showOwnerIfnotOwner = !board.isOwner && <span>{board.user}</span>
 
-  const howmanyIfowner =
+  const howManyIfOwner =
     board.isOwner && board.collaborators.length ? board.collaborators.length : <span>Only you</span>
 
   return (
@@ -26,7 +25,7 @@ const SetlistItem: FC<SetlistItemInterface> = ({ board }) => {
         <p>
           <Account height={20} width={20} />
           {showOwnerIfnotOwner}
-          {howmanyIfowner}
+          {board.isOwner && howManyIfOwner}
         </p>
         <h3>{board.title}</h3>
       </Link>

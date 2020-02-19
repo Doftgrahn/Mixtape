@@ -10,7 +10,7 @@ const Landingpage = lazy(() => import('../components/LandingPage'))
 const Register = lazy(() => import('../components/authentication/Register'))
 const ForgotPassword = lazy(() => import('../components/authentication/ForgotPassword'))
 const UpdatePassword = lazy(() => import('../components/authentication/UpdatePassword'))
-const NotFound = lazy(() => import('../components/shared/NotFound'))
+const NotFound = lazy(() => import('../components/shared/notFound/NotFound'))
 const Setlist = lazy(() => import('../components/Setlist'))
 const Playlist = lazy(() => import('../components/Playlist'))
 
