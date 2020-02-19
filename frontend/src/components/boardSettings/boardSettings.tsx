@@ -13,7 +13,7 @@ import ShowUsers from './showUsers/showUsers'
 import Trash from '../../assets/trash/trash'
 import CreateSpotifyPlayList from './createSpotifyPlaylist/createSpotifyPlaylist'
 
-import { toggleEditSetlist } from '../../logic/sidemenu/sidemenuAction'
+import { cleanAllSideMenus } from '../../logic/sidemenu/sidemenuAction'
 import { BoardInterface } from '../../logic/types'
 import { TrackInterface } from '../../logic/list/constants'
 
@@ -27,7 +27,7 @@ const BoardSettings: FC<BoardSettingsInterface> = ({ activeBoard, playlist, side
   const history = useHistory()
   const dispatch = useDispatch()
 
-  const hide = () => dispatch(toggleEditSetlist())
+  const hide = () => dispatch(cleanAllSideMenus())
 
   const deleteBoard = () => {
     dispatch(deletion(activeBoard._id))

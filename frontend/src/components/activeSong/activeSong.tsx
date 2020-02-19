@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { toggleActiveTrack } from '../../logic/sidemenu/sidemenuAction'
+import { cleanAllSideMenus } from '../../logic/sidemenu/sidemenuAction'
 import { deleteListItem } from '../../logic/list/listAction'
 import { toggleLyricsModal, toggleSpotifyModal } from '../../logic/modal/modalAction'
 import Sidemenu from '../shared/sidemenu/sidemenu'
@@ -17,7 +17,7 @@ interface ActiveSongInterface {
 
 const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
   const dispatch = useDispatch()
-  const hide = () => dispatch(toggleActiveTrack())
+  const hide = () => dispatch(cleanAllSideMenus())
 
   const deleteSong = (id: any) => {
     dispatch(deleteListItem(id))

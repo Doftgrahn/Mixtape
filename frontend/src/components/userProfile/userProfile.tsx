@@ -6,7 +6,7 @@ import { logoutUser } from '../../logic/auth/authAction'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import ThemeSwitcher from '../shared/themeswitcher/themeswitcher'
 
-import { toggleUserProfile } from '../../logic/sidemenu/sidemenuAction'
+import { cleanAllSideMenus } from '../../logic/sidemenu/sidemenuAction'
 
 import {
   calculateHowManySetlists,
@@ -31,7 +31,7 @@ const UserProfile: FC<UserProfileInterface> = ({ user, sidemenu, setlists }) => 
     url = 'http://localhost:4000/api/users/logout'
   }
 
-  const hide = () => dispatch(toggleUserProfile())
+  const hide = () => dispatch(cleanAllSideMenus())
 
   return (
     <Sidemenu sidemenu={sidemenu}>
