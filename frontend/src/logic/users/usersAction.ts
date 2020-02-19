@@ -11,7 +11,7 @@ import {
 } from './typesUsers'
 import Axios from 'axios'
 
-export const fechGetAllUsers = () => async (dispatch: any, getState: any) => {
+export const fechGetAllUsers = () => async (dispatch: any) => {
   dispatch(isUsersLoading(true))
   try {
     const { data } = await Axios.get('/api/allUsers/getAllUsers')
@@ -32,7 +32,7 @@ export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
 }
 
 export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
-  const currentSetlist = getState().activeBoard.activeBoard._id
+  const currentSetlist = getState().activeBoard._id
 
   try {
     const collaborators = await Axios.get(`/api/allUsers/getInvitedUsers/${currentSetlist}`)

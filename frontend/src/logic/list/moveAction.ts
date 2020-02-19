@@ -27,10 +27,8 @@ export const setalternativelist = (playlist: any) => ({
   payload: playlist
 })
 
-export const moveplaylistPUT = (finalIndex: any) => (_dispatch: any, getState: any) => {
+export const moveplaylistPUT = (finalIndex: any) => async (_dispatch: any, getState: any) => {
   const firstItem = getState().list.referenceList[finalIndex]
   const secondItem = getState().list.list[finalIndex]
-  Axios.post('/api/playlist/moveplaylist', { firstItem, secondItem })
-    .then(result => {})
-    .catch(error => {})
+  await Axios.post('/api/playlist/moveplaylist', { firstItem, secondItem })
 }

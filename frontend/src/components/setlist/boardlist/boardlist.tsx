@@ -5,6 +5,7 @@ import NewBoard from '../newboard/newBoard'
 import SetlistItem from '../setlistItem/setlistItem'
 import Spinner from '../../shared/spinner/spinner'
 import { BoardStateInterface } from '../../../logic/types'
+import { BoardInterface } from '../../../types/propTypes'
 
 interface SetListItems {
   setlist: BoardStateInterface
@@ -13,7 +14,7 @@ interface SetListItems {
 const BoardList: FC<SetListItems> = ({ setlist }) => {
   const { boards, loading } = setlist
 
-  const renderMyBoards = boards.map((board: any) => (
+  const renderMyBoards = boards.map((board: BoardInterface) => (
     <CSSTransition key={board._id} timeout={500} classNames="item">
       <SetlistItem board={board} />
     </CSSTransition>

@@ -7,36 +7,29 @@ import {
 } from './types'
 
 const initialState: ActiveSetlistStateInterface = {
-  activeBoard: {
-    user: '',
-    title: '',
-    description: '',
-    date: '',
-    collaborators: [],
-    _id: '',
-    userId: '',
-    isOwner: false
-  }
+  user: '',
+  title: '',
+  description: '',
+  date: '',
+  collaborators: [],
+  _id: '',
+  userId: '',
+  isOwner: false
 }
 export default (state = initialState, action: any) => {
   switch (action.type) {
     case ACTIVE_BOARD:
-      return {
-        activeBoard: action.payload
-      }
+      return action.payload
+
     case MUTATE_ACTIVE_SETLIST:
-      return {
-        activeBoard: { ...state.activeBoard, title: action.payload }
-      }
+      return { ...state, title: action.payload }
+
     case SET_ACTIVE_DESCRIPTION:
-      return {
-        ...state,
-        activeBoard: { ...state.activeBoard, description: action.payload }
-      }
+      return { ...state, description: action.payload }
+
     case UNINVITE_ACTIVE_COLLABORATOR:
-      return {
-        activeBoard: { ...state.activeBoard, collaborators: action.payload }
-      }
+      return { ...state, collaborators: action.payload }
+
     default:
       return state
   }

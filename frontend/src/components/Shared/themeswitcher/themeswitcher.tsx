@@ -9,7 +9,6 @@ interface ThemeSwitcherInterface {
 const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ theme }) => {
   const dispatch = useDispatch()
   const [isChecked, setIsChecked] = useState(false)
-
   const light = 'light'
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ theme }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  theme: state.theme.state
+  theme: state.theme
 })
 
 export default connect(mapStateToProps)(ThemeSwitcher)

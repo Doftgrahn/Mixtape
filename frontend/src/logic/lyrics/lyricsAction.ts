@@ -1,19 +1,13 @@
-import { GET_TRACKS, LYRIC_IS_LOADING, SET_LYRIC_ERROR, CLEAR_LYRICS } from './constants'
+import { GET_TRACKS, LYRIC_IS_LOADING, CLEAR_LYRICS } from './constants'
 import Axios from 'axios'
 import { PayLoad } from '../types'
 
-export const fetchgetTracks = (song: string) => (dispatch: any) => {
+export const fetchgetTracks = (song: string) => async (dispatch: any) => {
   dispatch(isLoading(true))
-
-  Axios.get(`/api/lyrics/getTracks/${song}`)
-    .then((result: any) => {
-      const { data } = result
-      dispatch(getTracks(data))
-      dispatch(isLoading(false))
-    })
-    .catch((error: any) => {
-      dispatch(setError(error))
-    })
+  const lyric = await Axios.get(`/api/lyrics/getTracks/${song}`)
+  const { data } = lyric
+  dispatch(getTracks(data))
+  dispatch(isLoading(false))
 }
 
 const getTracks = (tracks: any): PayLoad => ({
@@ -28,9 +22,4 @@ export const clearLyrics = () => ({
 const isLoading = (loading: boolean): PayLoad => ({
   type: LYRIC_IS_LOADING,
   payload: loading
-})
-
-const setError = (error: string): PayLoad => ({
-  type: SET_LYRIC_ERROR,
-  payload: error
 })

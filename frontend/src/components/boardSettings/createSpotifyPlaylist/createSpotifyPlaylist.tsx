@@ -7,7 +7,7 @@ const CreateSpotifyPlayList: FC<{}> = () => {
   const [needToBeLoggedIn, setNeedtoBeLoggedIn] = useState(false)
   const user = useSelector((state: any) => state.auth.user)
   const tracks = useSelector((state: any) => state.list)
-  const setlistTitle = useSelector((state: any) => state.activeBoard.activeBoard.title)
+  const setlistTitle = useSelector((state: any) => state.activeBoard.title)
 
   const createPlaylist = async () => {
     SethasSaved(true)

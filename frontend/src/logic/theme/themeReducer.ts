@@ -6,13 +6,11 @@ const initialState: string = Theme.LIGHT
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case SET_LIGHT_THEME:
-      return {
-        state: action.payload
-      }
+      return action.payload
+
     case SET_DARK_THEME:
-      return {
-        state: action.payload
-      }
+      return action.payload
+
     default:
       return state
   }

@@ -2,14 +2,15 @@ import React, { FC } from 'react'
 import { connect } from 'react-redux'
 
 import SetlistItem from '../setlistItem/setlistItem'
-import { BoardInterface } from '../../../logic/types'
+import { BoardStateInterface } from '../../../logic/types'
+import { BoardInterface } from '../../../types/propTypes'
 
 interface CollaboratorsInterface {
-  setlist: BoardInterface
+  setlist: BoardStateInterface
 }
 
 const Collaborators: FC<CollaboratorsInterface> = ({ setlist }) => {
-  const renderMyBoards = setlist.collaborators.map((setlist: any) => (
+  const renderMyBoards = setlist.collaborators.map((setlist: BoardInterface) => (
     <SetlistItem key={setlist._id} board={setlist} />
   ))
   const list = setlist.collaborators.length && <ul className="boardlist">{renderMyBoards}</ul>

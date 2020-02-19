@@ -55,7 +55,7 @@ const Playlist: FC<PlaylistInterface> = ({ modal }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
-  activeSetlist: state.activeBoard.activeBoard,
+  activeSetlist: state.activeBoard,
   isLoading: state.list.isLoading,
   modal: state.modal,
   sidemenu: state.sidemenu.setlist

@@ -49,8 +49,8 @@ const Description: FC<DescriptionInterface> = ({ description, isOwner }) => {
   return <div className="description_wrapper">{isEditiing ? textArea : showDescription}</div>
 }
 const mapStateToProps = (state: any) => ({
-  description: state.activeBoard.activeBoard.description,
-  isOwner: state.activeBoard.activeBoard.isOwner
+  description: state.activeBoard.description,
+  isOwner: state.activeBoard.isOwner
 })
 
 export default connect(mapStateToProps)(Description)

@@ -58,7 +58,7 @@ const App: FC<AppInterface> = ({ theme }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  theme: state.theme.state
+  theme: state.theme
 })
 
 export default connect(mapStateToProps)(App)

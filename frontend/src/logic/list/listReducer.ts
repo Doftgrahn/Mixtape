@@ -11,7 +11,8 @@ import {
   SET_PLAYLIST_ERROR,
   CLEAR_TRACKS,
   SET_SPOTIFY_TRACK,
-  PlaylistStateInterface
+  PlaylistStateInterface,
+  TrackInterface
 } from './constants'
 
 const initialState: PlaylistStateInterface = {
@@ -31,17 +32,17 @@ export default (state = initialState, action: PayLoad) => {
     case ADD_LIST:
       return {
         ...state,
-        list: [...state.list, action.payload].flat()
+        list: [...state.list, action.payload].flat(Infinity)
       }
     case DELETE_LIST_ITEM:
       return {
         ...state,
-        list: state.list.filter((list: any) => list._id !== action.payload)
+        list: state.list.filter((list: TrackInterface) => list._id !== action.payload)
       }
     case MUTATE_LIST:
       return {
         ...state,
-        list: state.list.map((list: any) => {
+        list: state.list.map((list: TrackInterface) => {
           if (list._id === action.payload.id) {
             return { ...list, title: action.payload.title }
           }
@@ -61,7 +62,7 @@ export default (state = initialState, action: PayLoad) => {
     case SET_LYRIC:
       return {
         ...state,
-        list: state.list.map((list: any) => {
+        list: state.list.map((list: TrackInterface) => {
           if (list._id === action.payload._id) {
             return { ...list, lyrics: action.payload.lyrics }
           }
@@ -72,7 +73,7 @@ export default (state = initialState, action: PayLoad) => {
     case SET_SPOTIFY_TRACK:
       return {
         ...state,
-        list: state.list.map((list: any) => {
+        list: state.list.map((list: TrackInterface) => {
           if (list._id === action.payload.id) {
             return {
               ...list,

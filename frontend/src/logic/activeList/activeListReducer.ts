@@ -1,11 +1,4 @@
-import {
-  SET_ACTIVE_LIST,
-  IS_ACTIVE,
-  CLEAR,
-  MUTATE_ACTIVE_LIST,
-  SET_ACTIVE_LYRIC,
-  ActivePlaylistStateInterface
-} from './types'
+import { SET_ACTIVE_LIST, MUTATE_ACTIVE_LIST, SET_ACTIVE_LYRIC } from './types'
 import { PayLoad } from '../types'
 import { TrackInterface } from '../list/constants'
 
@@ -23,6 +16,8 @@ const initialState: TrackInterface = {
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case SET_ACTIVE_LIST:
+      console.log(action.payload)
+
       return action.payload
 
     case MUTATE_ACTIVE_LIST:

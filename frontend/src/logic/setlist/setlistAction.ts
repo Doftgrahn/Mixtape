@@ -18,10 +18,8 @@ import {
   mutateActiveSetlistTitle,
   uninviteFromActiveSetlist
 } from '../activeBoard/activeBoardAction'
-
 import { addUserCollaborator, unInviteUserCollaborator } from '../users/usersAction'
 import makeAnIdForMe from '../utils/createObjectId'
-
 import { PayLoad, BoardInterface } from '../types'
 
 export const AppModel = () => (dispatch: any, state: any) => {
@@ -31,8 +29,8 @@ export const AppModel = () => (dispatch: any, state: any) => {
     .get(`/api/setlist/getsetlists/${_id}`)
     .then(result => {
       const { mySetlist, collaborators } = result.data
-      const mutateIfOwner = mySetlist.map((list: any) => ({ ...list, isOwner: true }))
-      const notOwner = collaborators.map((list: any) => ({ ...list, isOwner: false }))
+      const mutateIfOwner = mySetlist.map((list: BoardInterface) => ({ ...list, isOwner: true }))
+      const notOwner = collaborators.map((list: BoardInterface) => ({ ...list, isOwner: false }))
       dispatch(setBoard(mutateIfOwner))
       dispatch(getCollabotorsSetList(notOwner))
       dispatch(IsLoading(false))
@@ -63,7 +61,7 @@ export const addBoard = (board: any) => (dispatch: any, getState: any) => {
 }
 
 export const mutateSetlist = (title: string) => async (dispatch: any, getState: any) => {
-  const id = getState().activeBoard.activeBoard._id
+  const id = getState().activeBoard._id
   const data = {
     title: title,
     id: id
@@ -80,7 +78,7 @@ export const deletion = (id: string) => async (dispatch: any) => {
 }
 
 export const addDescription = (description: string) => async (dispatch: any, getState: any) => {
-  const setlistId = getState().activeBoard.activeBoard._id
+  const setlistId = getState().activeBoard._id
   const data = {
     id: setlistId,
     description: description
@@ -95,7 +93,7 @@ const dispatchAddDescription = (setlist: object) => ({
 })
 
 export const inviteCollaborator = (userId: string) => async (dispatch: any, getState: any) => {
-  const setlistId = getState().activeBoard.activeBoard
+  const setlistId: BoardInterface = getState().activeBoard
   const result = await axios.post('/api/setlist/addcollaborator', { userId, setlistId })
   dispatch(addCollaborator(result.data))
   dispatch(addUserCollaborator(userId))
@@ -106,7 +104,7 @@ export const inviteCollaborator = (userId: string) => async (dispatch: any, getS
 }
 
 export const unInviteCollaborator = (colabId: string) => async (dispatch: any, getState: any) => {
-  const currentSetlist = getState().activeBoard.activeBoard._id
+  const currentSetlist = getState().activeBoard._id
   await axios.delete(`/api/allUsers/unInviteUser/${colabId}`)
   const mapColab = getState().setlist.boards.find((x: any) => x._id === currentSetlist)
   const filterSetlist = mapColab.collaborators.filter((x: any) => x !== colabId)

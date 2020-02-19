@@ -14,6 +14,17 @@ export interface BoardInterface {
   isOwner?: boolean
 }
 
+export interface TrackInterface {
+  title: string
+  date: string
+  _id: string
+  boardId: string
+  userId: string
+  lyrics: string
+  spotifyTrackID: string
+  uri: string
+}
+
 export interface BoardStateInterface {
   activeBoard: string
   boards: BoardInterface[]

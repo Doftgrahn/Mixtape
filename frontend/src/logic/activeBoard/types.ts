@@ -4,7 +4,7 @@ export const MUTATE_ACTIVE_SETLIST = 'MUTATE_ACTIVE_SETLIST'
 export const SET_ACTIVE_DESCRIPTION = 'SET_ACTIVE_DESCRIPTION'
 export const UNINVITE_ACTIVE_COLLABORATOR = 'UNINVITE_ACTIVE_COLLABORATOR'
 
-interface ActiveSetlistInterface {
+export interface ActiveSetlistStateInterface {
   user: string
   title: string
   description: string
@@ -13,8 +13,4 @@ interface ActiveSetlistInterface {
   _id: string
   userId: string
   isOwner: boolean
-}
-
-export interface ActiveSetlistStateInterface {
-  activeBoard: ActiveSetlistInterface
 }

@@ -37,7 +37,7 @@ const InvitedCollaborators: FC<InvitedCollaborators> = ({ invitedUsers, isOwner 
 
 const mapStateToProps = (state: any) => ({
   invitedUsers: state.users.invitedUsers,
-  isOwner: state.activeBoard.activeBoard.isOwner
+  isOwner: state.activeBoard.isOwner
 })
 
 export default connect(mapStateToProps)(InvitedCollaborators)

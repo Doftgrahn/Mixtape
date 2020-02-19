@@ -81,7 +81,7 @@ const BoardSettings: FC<BoardSettingsInterface> = ({ activeBoard, playlist, side
 }
 
 const mapStateToProps = (state: any) => ({
-  activeBoard: state.activeBoard.activeBoard,
+  activeBoard: state.activeBoard,
   sidemenu: state.sidemenu.setlist,
   playlist: state.list.list
 })

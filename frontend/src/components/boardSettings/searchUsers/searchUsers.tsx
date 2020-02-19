@@ -8,7 +8,7 @@ const SearchUsers: FC<{}> = () => {
   const dispatch = useDispatch()
   const input = useSelector((state: any) => state.users.input)
   const sidemenu = useSelector((state: any) => state.sidemenu.setlist)
-  const isOwner = useSelector((state: any) => state.activeBoard.activeBoard.isOwner)
+  const isOwner = useSelector((state: any) => state.activeBoard.isOwner)
 
   const toggle = () => setIsSearching(!isSearching)
 

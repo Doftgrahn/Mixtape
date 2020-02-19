@@ -15,13 +15,10 @@ import { PayLoad } from '../types'
 import generateObjectId from '../utils/createObjectId'
 
 export const fetchSongList = () => async (dispatch: any, state: any) => {
-  const { _id } = state().activeBoard.activeBoard
-  console.log(_id)
+  const { _id } = state().activeBoard
   dispatch(isLoading(true))
   const result = await axios.get(`/api/playlist/getplaylist/${_id}`)
-
   dispatch(isLoading(false))
-
   dispatch(getList(result.data))
   dispatch(isLoading(false))
   if (!result) {
@@ -30,7 +27,7 @@ export const fetchSongList = () => async (dispatch: any, state: any) => {
 }
 
 export const addToList = (title: any) => async (dispatch: any, state: any) => {
-  const activeBoardId = state().activeBoard.activeBoard._id
+  const activeBoardId = state().activeBoard._id
   const userId = state().auth.user.id
 
   const data: any = {

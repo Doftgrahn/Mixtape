@@ -77,7 +77,7 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
-  activeSetlist: state.activeBoard.activeBoard
+  activeSetlist: state.activeBoard
 })
 
 export default connect(mapStatetoProp)(PlaylistTitle)
