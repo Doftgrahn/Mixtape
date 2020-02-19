@@ -16,16 +16,11 @@ const initialState: TrackInterface = {
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case SET_ACTIVE_LIST:
-      console.log(action.payload)
-
       return action.payload
-
     case MUTATE_ACTIVE_LIST:
       return { ...state, title: action.payload }
-
     case SET_ACTIVE_LYRIC:
       return { ...state, lyrics: action.payload }
-
     default:
       return state
   }

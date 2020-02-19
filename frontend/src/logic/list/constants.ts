@@ -13,7 +13,7 @@ export const CLEAR_TRACKS = 'CLEAR_TRACKS'
 
 export interface TrackInterface {
   title: string
-  date: string
+  date: string | number
   _id: string
   boardId: string
   userId: string

@@ -14,12 +14,13 @@ import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
 import { AppInterface } from './types/propTypes'
 const browserHistory = createBrowserHistory()
-ReactGA.initialize('UA-153619692-2')
-browserHistory.listen((location, _action) => {
-  ReactGA.pageview(location.pathname + location.search)
-})
 
 const App: FC<AppInterface> = ({ theme }) => {
+  ReactGA.initialize('UA-153619692-2')
+  browserHistory.listen((location, _action) => {
+    ReactGA.pageview(location.pathname + location.search)
+  })
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -42,15 +43,16 @@ const App: FC<AppInterface> = ({ theme }) => {
     <Div100vh style={{ minHeight: '100rvh' }}>
       <div className="App">
         <Router>
-          <ScrollToTop />
-          <Suspense fallback={<Spinner />}>
-            <Header />
-            {/* SideMenus */}
-            <UserProfile />
-            <div className="container">
-              <Routes />
-            </div>
-          </Suspense>
+          <ScrollToTop>
+            <Suspense fallback={<Spinner />}>
+              <Header />
+              {/* SideMenus */}
+              <UserProfile />
+              <div className="container">
+                <Routes />
+              </div>
+            </Suspense>
+          </ScrollToTop>
         </Router>
       </div>
     </Div100vh>

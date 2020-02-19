@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   GET_LIST,
   ADD_LIST,
@@ -6,12 +7,11 @@ import {
   MUTATE_LIST,
   SET_PLAYLIST_ERROR,
   CLEAR_TRACKS,
-  SET_SPOTIFY_TRACK
+  SET_SPOTIFY_TRACK,
+  TrackInterface
 } from './constants'
-import axios from 'axios'
 import { setCurrentSong } from '../activeList/activeListAction'
 import { PayLoad } from '../types'
-
 import generateObjectId from '../utils/createObjectId'
 
 export const fetchSongList = () => async (dispatch: any, state: any) => {
@@ -30,9 +30,9 @@ export const addToList = (title: any) => async (dispatch: any, state: any) => {
   const activeBoardId = state().activeBoard._id
   const userId = state().auth.user.id
 
-  const data: any = {
+  const data: TrackInterface = {
     _id: generateObjectId(),
-    activeBoardId: activeBoardId,
+    boardId: activeBoardId,
     userId: userId,
     title: title,
     lyrics: '',
@@ -102,7 +102,7 @@ export const mutateList = (updateString: any): PayLoad => ({
   payload: updateString
 })
 
-export const addList = (boardId: string): PayLoad => ({
+export const addList = (boardId: TrackInterface): PayLoad => ({
   type: ADD_LIST,
   payload: boardId
 })

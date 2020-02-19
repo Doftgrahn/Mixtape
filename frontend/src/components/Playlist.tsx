@@ -31,9 +31,9 @@ const Playlist: FC<PlaylistInterface> = ({ modal }) => {
     }
   }, [dispatch])
 
-  const playlistModal = modal.playlistModal && <PlaylistModal />
-  const lyricModal = modal.lyricModal && <LyricModal />
-  const spotifyModal = modal.spotifyModal && <SpotifyModal />
+  const playlistModal = modal.playlistModal ? <PlaylistModal /> : ''
+  const lyricModal = modal.lyricModal ? <LyricModal /> : ''
+  const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : ''
 
   return (
     <main className="list">

@@ -18,8 +18,8 @@ module.exports = function addCollaborator(req, res) {
           .then(setlist => {
             res.status(200).json(setlist)
           })
-          .catch(error => {
-            res.json({ error: 'Could not add', error })
+          .catch(e => {
+            res.json({ error: 'Could not add', e })
           })
       }
     })

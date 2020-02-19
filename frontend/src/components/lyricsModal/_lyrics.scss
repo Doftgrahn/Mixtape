@@ -5,6 +5,10 @@
 .lyricsList {
   width: 80%;
   margin: 1rem auto;
+  position: relative;
+  .spinner {
+    top: 200px;
+  }
 
   &_item {
     display: flex;
