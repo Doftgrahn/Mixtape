@@ -14,10 +14,9 @@ import { CardProps, DragItem } from './itemType'
 import Edit from '../../../../assets/edit/edit'
 import SpotifyIcon from '../../../../assets/spotify/spotifyIcon'
 
-const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, moveCard }) => {
+const Playlistitem: FC<CardProps> = ({ active, sidemenu, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
   const ref = useRef<any>(null)
-  const { current } = active
   const setActiveSong = (id: string) => {
     dispatch(activeSong(id))
     dispatch(toggleActiveTrack())
@@ -91,7 +90,7 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
   drag(drop(ref))
 
   // Classes
-  const currentTrack = current._id === list._id && activeTrack ? 'showActiveSong' : ''
+  const currentTrack = active._id === list._id && sidemenu ? 'showActiveSong' : ''
   const ifDragging = isDragging ? 'isDraging' : ''
 
   return (
@@ -120,7 +119,7 @@ const Playlistitem: FC<CardProps> = ({ active, activeTrack, list, index, id, mov
 
 const mapStateToProps = (state: any) => ({
   active: state.activeList,
-  activeTrack: state.sidemenu.activeTrack
+  sidemenu: state.sidemenu.activeTrack
 })
 
 export default connect(mapStateToProps)(Playlistitem)

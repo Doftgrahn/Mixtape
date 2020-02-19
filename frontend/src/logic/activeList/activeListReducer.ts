@@ -7,51 +7,29 @@ import {
   ActivePlaylistStateInterface
 } from './types'
 import { PayLoad } from '../types'
+import { TrackInterface } from '../list/constants'
 
-const initialState: ActivePlaylistStateInterface = {
-  current: {
-    title: '',
-    date: '',
-    _id: '',
-    boardId: '',
-    userId: '',
-    spotifyTrackID: '',
-    uri: ''
-  },
-  isActive: false
+const initialState: TrackInterface = {
+  title: '',
+  date: '',
+  _id: '',
+  boardId: '',
+  userId: '',
+  spotifyTrackID: '',
+  uri: '',
+  lyrics: ''
 }
 
 export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case SET_ACTIVE_LIST:
-      return {
-        ...state,
-        current: action.payload
-      }
-    case IS_ACTIVE:
-      return {
-        ...state,
-        isActive: action.payload
-      }
-    case MUTATE_ACTIVE_LIST:
-      return {
-        ...state,
-        current: {
-          ...state.current,
-          title: action.payload
-        }
-      }
-    case SET_ACTIVE_LYRIC:
-      return {
-        ...state,
-        current: { ...state.current, lyrics: action.payload }
-      }
+      return action.payload
 
-    case CLEAR:
-      return {
-        ...state,
-        isActive: false
-      }
+    case MUTATE_ACTIVE_LIST:
+      return { ...state, title: action.payload }
+
+    case SET_ACTIVE_LYRIC:
+      return { ...state, lyrics: action.payload }
 
     default:
       return state

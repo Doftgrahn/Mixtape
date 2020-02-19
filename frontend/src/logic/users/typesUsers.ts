@@ -10,9 +10,9 @@ export const USERS_ERROR = 'USERS_ERROR'
 
 export interface UsersInterface {
   input: string
-  users: []
-  searchUsers: []
+  users: UsersInterface[]
+  searchUsers: UsersInterface[]
+  invitedUsers: UsersInterface[]
   isloading: boolean
   errors: object
-  invitedUsers: any
 }

@@ -48,7 +48,7 @@ const Lyrics: FC<LyricsInterface> = ({ modal, activeSong }) => {
 
 const mapStatetoProp = (state: any) => ({
   modal: state.modal.lyricModal,
-  activeSong: state.activeList.current
+  activeSong: state.activeList
 })
 
 export default connect(mapStatetoProp)(Lyrics)

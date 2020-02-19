@@ -4,11 +4,13 @@ export interface BoardInterface {
   userId: string
   title: string
   user: string
+  date: ''
+  boardId: ''
   description: string
-  isLoading: boolean
-  list: any
   collaborators: [String]
   _id: string
+  spotifyTrackID: ''
+  uri: ''
   isOwner?: boolean
 }
 

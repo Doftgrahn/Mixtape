@@ -69,7 +69,7 @@ const UpdateSong: FC<UpdateSongInterface> = ({ activeList, sidemenu }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  activeList: state.activeList.current,
+  activeList: state.activeList,
   sidemenu: state.sidemenu.activeTrack
 })
 

@@ -16,5 +16,4 @@ interface ActiveTrackInterface {
 
 export interface ActivePlaylistStateInterface {
   current: ActiveTrackInterface
-  isActive: boolean
 }

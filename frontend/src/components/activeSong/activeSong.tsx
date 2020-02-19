@@ -8,15 +8,15 @@ import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import Trash from '../../assets/trash/trash'
 import PlaySong from './playSong/playSong'
+import { TrackInterface } from '../../logic/list/constants'
 
 interface ActiveSongInterface {
-  currentsong: any
+  currentsong: TrackInterface
   sidemenu: boolean
 }
 
 const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
   const dispatch = useDispatch()
-
   const hide = () => dispatch(toggleActiveTrack())
 
   const deleteSong = (id: any) => {
@@ -66,7 +66,7 @@ const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  currentsong: state.activeList.current,
+  currentsong: state.activeList,
   sidemenu: state.sidemenu.activeTrack
 })
 

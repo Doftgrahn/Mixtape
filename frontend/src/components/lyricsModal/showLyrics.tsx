@@ -11,7 +11,7 @@ const ShowLyrics: FC<ShowLyricsInterface> = ({ activeTrack }) => {
 }
 
 const mapStatetoProp = (state: any) => ({
-  activeTrack: state.activeList.current
+  activeTrack: state.activeList
 })
 
 export default connect(mapStatetoProp)(ShowLyrics)

@@ -33,7 +33,7 @@ const LyricsList: FC<LyricsListInterface> = ({ getLyrics, activeSong }) => {
 
 const mapStateToProps = (state: any) => ({
   getLyrics: state.lyrics,
-  activeSong: state.activeList.current
+  activeSong: state.activeList
 })
 
 export default connect(mapStateToProps)(LyricsList)

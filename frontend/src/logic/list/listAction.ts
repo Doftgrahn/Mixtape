@@ -16,6 +16,7 @@ import generateObjectId from '../utils/createObjectId'
 
 export const fetchSongList = () => async (dispatch: any, state: any) => {
   const { _id } = state().activeBoard.activeBoard
+  console.log(_id)
   dispatch(isLoading(true))
   const result = await axios.get(`/api/playlist/getplaylist/${_id}`)
 
@@ -74,7 +75,7 @@ export const deleteListItem = (id: string) => async (dispatch: any) => {
 }
 
 export const addSpotifyTrack = (song: any) => async (dispatch: any, getState: any) => {
-  const currentTrack = getState().activeList.current._id
+  const currentTrack = getState().activeList._id
   const data = {
     spotifyTrackID: song.id,
     uri: song.uri,
