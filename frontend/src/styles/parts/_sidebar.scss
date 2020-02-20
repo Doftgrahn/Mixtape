@@ -87,7 +87,28 @@
   }
 }
 
+$duration: 300ms;
 .active {
   overflow: auto;
   transform: translateX(0);
+  transition: opacity $duration, transform $duration;
+}
+
+.alert-enter {
+  opacity: 1;
+  transform: translateX(55vh);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity $duration, transform $duration;
+}
+.alert-exit {
+  opacity: 1;
+  transform: translateX(55vh);
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: translateX(55vh);
+  transition: opacity $duration, transform $duration;
 }

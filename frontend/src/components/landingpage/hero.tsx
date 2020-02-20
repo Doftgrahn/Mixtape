@@ -16,7 +16,7 @@ const Hero: FC<LandingInterface> = ({ auth }) => {
       <div className="landing_wrapper">
         <div className="landing_container">
           <Logo height={120} width={220} />
-          <h1>Mixtape</h1>
+          <h1 aria-label="Mixtape">Mixtape</h1>
           <h3>BETA</h3>
           <GoogleButton />
         </div>
