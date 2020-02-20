@@ -3,6 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { setCurrentSong, mutateCurrentSong } from '../../../logic/activeList/activeListAction'
 import { updateListTitle } from '../../../logic/list/listAction'
 import { TrackInterface } from '../../../logic/list/constants'
+import { RootStateInterface } from '../../../logic/types'
 
 interface UpdateSongInterface {
   activeList: TrackInterface
@@ -68,7 +69,7 @@ const UpdateSong: FC<UpdateSongInterface> = ({ activeList, sidemenu }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   activeList: state.activeList,
   sidemenu: state.sidemenu.activeTrack
 })

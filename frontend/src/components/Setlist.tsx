@@ -7,6 +7,7 @@ import { AppModel } from '../logic/setlist/setlistAction'
 import { SetlistProps } from '../types/propTypes'
 import { closeModals } from '../logic/modal/modalAction'
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
+import { RootStateInterface } from '../logic/types'
 
 const Setlist: FC<SetlistProps> = ({ modal, collaborators }) => {
   const dispatch = useDispatch()
@@ -38,7 +39,7 @@ const Setlist: FC<SetlistProps> = ({ modal, collaborators }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   modal: state.modal.setlistModal,
   loading: state.setlist.loading,
   collaborators: state.setlist.collaborators

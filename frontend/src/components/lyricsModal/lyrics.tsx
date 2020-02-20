@@ -6,6 +6,7 @@ import ShowLyrics from './showLyrics'
 import { toggleLyricsModal } from '../../logic/modal/modalAction'
 import { clearLyrics } from '../../logic/lyrics/lyricsAction'
 import { TrackInterface } from '../../logic/list/constants'
+import { RootStateInterface } from '../../logic/types'
 
 interface LyricsInterface {
   modal: boolean
@@ -28,7 +29,7 @@ const Lyrics: FC<LyricsInterface> = ({ modal, activeSong }) => {
   )
 }
 
-const mapStatetoProp = (state: any) => ({
+const mapStatetoProp = (state: RootStateInterface) => ({
   modal: state.modal.lyricModal,
   activeSong: state.activeList
 })

@@ -2,13 +2,14 @@ import React, { FC, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { usersInput } from '../../../logic/users/usersAction'
+import { RootStateInterface } from '../../../logic/types'
 
 const SearchUsers: FC<{}> = () => {
   const [isSearching, setIsSearching] = useState(false)
   const dispatch = useDispatch()
-  const input = useSelector((state: any) => state.users.input)
-  const sidemenu = useSelector((state: any) => state.sidemenu.setlist)
-  const isOwner = useSelector((state: any) => state.activeBoard.isOwner)
+  const input = useSelector((state: RootStateInterface) => state.users.input)
+  const sidemenu = useSelector((state: RootStateInterface) => state.sidemenu.setlist)
+  const isOwner = useSelector((state: RootStateInterface) => state.activeBoard.isOwner)
 
   const toggle = () => setIsSearching(!isSearching)
 

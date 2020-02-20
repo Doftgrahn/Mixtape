@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fechGetAllUsers, searchUsers, usersInput } from '../../../logic/users/usersAction'
 
 import { inviteCollaborator } from '../../../logic/setlist/setlistAction'
+import { RootStateInterface } from '../../../logic/types'
+import { UserInterface } from '../../../logic/auth/contants'
 
 const ShowUsers: FC<{}> = () => {
   const dispatch = useDispatch()
-  const input = useSelector((state: any) => state.users.input)
-  const searchResult = useSelector((state: any) => state.users.searchUsers)
-  const sidemenu = useSelector((state: any) => state.sidemenu.setlist)
-  const currentCollaborators = useSelector((state: any) => state.users.invitedUsers).map(
-    (user: any) => user._id
-  )
+  const input = useSelector((state: RootStateInterface) => state.users.input)
+  const searchResult = useSelector((state: RootStateInterface) => state.users.searchUsers)
+  const sidemenu = useSelector((state: RootStateInterface) => state.sidemenu.setlist)
+  const currentCollaborators = useSelector(
+    (state: RootStateInterface) => state.users.invitedUsers
+  ).map((user: UserInterface) => user._id)
 
   useEffect(() => {
     if (sidemenu) {

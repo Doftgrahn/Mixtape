@@ -4,10 +4,11 @@ import {
   TOGGLE_USER_PROFILE,
   TOGGLE_EDIT_SETLIST,
   TOGGLE_ACTIVE_SONG_MENU,
-  CLEAN_ALL_SIDEMENUS
+  CLEAN_ALL_SIDEMENUS,
+  SidemenuStateInterface
 } from './types'
 
-const initialState = {
+const initialState: SidemenuStateInterface = {
   userprofile: false,
   setlist: false,
   activeTrack: false

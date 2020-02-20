@@ -20,7 +20,7 @@ const Hero: FC<LandingInterface> = ({ auth }) => {
           <h3>BETA</h3>
           <GoogleButton />
           <Link className="permissions" to="/policy">
-            By logging in you accept our terms and permissions
+            By logging in you accept Mixtapes terms and permissions
           </Link>
         </div>
       </div>

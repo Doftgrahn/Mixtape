@@ -3,6 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 
 import { setDescription } from '../../../logic/activeBoard/activeBoardAction'
 import { addDescription } from '../../../logic/setlist/setlistAction'
+import { RootStateInterface } from '../../../logic/types'
 
 interface DescriptionInterface {
   description: string
@@ -48,7 +49,7 @@ const Description: FC<DescriptionInterface> = ({ description, isOwner }) => {
 
   return <div className="description_wrapper">{isEditiing ? textArea : showDescription}</div>
 }
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   description: state.activeBoard.description,
   isOwner: state.activeBoard.isOwner
 })

@@ -13,6 +13,7 @@ import { getInvitedUsers } from '../logic/users/usersAction'
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 import { closeModals } from '../logic/modal/modalAction'
 import { PlaylistInterface } from '../types/propTypes'
+import { RootStateInterface } from '../logic/types'
 
 const Playlist: FC<PlaylistInterface> = ({ modal }) => {
   const dispatch = useDispatch()
@@ -51,7 +52,7 @@ const Playlist: FC<PlaylistInterface> = ({ modal }) => {
   )
 }
 
-const mapStatetoProp = (state: any) => ({
+const mapStatetoProp = (state: RootStateInterface) => ({
   activeSetlist: state.activeBoard,
   isLoading: state.list.isLoading,
   modal: state.modal,

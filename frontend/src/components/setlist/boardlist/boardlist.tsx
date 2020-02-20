@@ -4,11 +4,11 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import NewBoard from '../newboard/newBoard'
 import SetlistItem from '../setlistItem/setlistItem'
 import Spinner from '../../shared/spinner/spinner'
-import { BoardStateInterface } from '../../../logic/types'
-import { BoardInterface } from '../../../types/propTypes'
+import { RootStateInterface, BoardInterface } from '../../../logic/types'
+import { SetlistStateInterface } from '../../../logic/setlist/constants'
 
 interface SetListItems {
-  setlist: BoardStateInterface
+  setlist: SetlistStateInterface
 }
 
 const BoardList: FC<SetListItems> = ({ setlist }) => {
@@ -29,7 +29,7 @@ const BoardList: FC<SetListItems> = ({ setlist }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   setlist: state.setlist
 })
 

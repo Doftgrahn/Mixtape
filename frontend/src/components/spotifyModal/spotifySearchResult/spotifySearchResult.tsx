@@ -3,10 +3,11 @@ import { connect, useDispatch } from 'react-redux'
 
 import { addSpotifyTrack } from '../../../logic/list/listAction'
 import { toggleSpotifyModal } from '../../../logic/modal/modalAction'
-import { SpotifyInterface } from '../../../logic/spotify/types'
+import { SpotifyStateInterface } from '../../../logic/spotify/types'
+import { RootStateInterface } from '../../../logic/types'
 
 interface SpotifySearchResult {
-  spotify: SpotifyInterface[]
+  spotify: SpotifyStateInterface[]
   needsRefresh: boolean
 }
 
@@ -55,7 +56,7 @@ const SpotifySearchResult: FC<SpotifySearchResult> = ({ spotify, needsRefresh })
   return <ul className="spotifyListContainer">{renderSearchResult} </ul>
 }
 
-const mapStatetoProp = (state: any) => ({
+const mapStatetoProp = (state: RootStateInterface) => ({
   spotify: state.spotify.spotify,
   needsRefresh: state.spotify.needsRefresh
 })

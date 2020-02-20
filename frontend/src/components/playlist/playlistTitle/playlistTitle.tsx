@@ -4,10 +4,11 @@ import { createBrowserHistory } from 'history'
 import { mutateSetlist } from '../../../logic/setlist/setlistAction'
 import Edit from '../../../assets/edit/edit'
 import { toggleEditSetlist } from '../../../logic/sidemenu/sidemenuAction'
-import { BoardInterface } from '../../../logic/types'
+import { RootStateInterface } from '../../../logic/types'
+import { ActiveSetlistStateInterface } from '../../../logic/activeBoard/types'
 
 interface PlaylistTitleInterface {
-  activeSetlist: BoardInterface
+  activeSetlist: ActiveSetlistStateInterface
 }
 
 const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
@@ -76,7 +77,7 @@ const PlaylistTitle: FC<PlaylistTitleInterface> = ({ activeSetlist }) => {
   )
 }
 
-const mapStatetoProp = (state: any) => ({
+const mapStatetoProp = (state: RootStateInterface) => ({
   activeSetlist: state.activeBoard
 })
 

@@ -12,6 +12,7 @@ import Sidemenu from '../shared/sidemenu/sidemenu'
 import { UserInterface } from '../../logic/auth/contants'
 import { SetlistStateInterface } from '../../logic/setlist/constants'
 import Settings from './settings/settings'
+import { RootStateInterface } from '../../logic/types'
 
 interface UserProfileInterface {
   user: UserInterface
@@ -69,7 +70,7 @@ const UserProfile: FC<UserProfileInterface> = ({ user, sidemenu, setlists }) => 
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   user: state.auth.user,
   sidemenu: state.sidemenu.userprofile,
   setlists: state.setlist

@@ -4,6 +4,7 @@ import { useDispatch, connect } from 'react-redux'
 import ModalInput from '../shared/modalInput/modalInput'
 import Modal from '../shared/modal/modal'
 import { togglePlaylistModal } from '../../logic/modal/modalAction'
+import { RootStateInterface } from '../../logic/types'
 
 interface PlaylistModalInterface {
   modal: boolean
@@ -50,7 +51,7 @@ const PlaylistModal: FC<PlaylistModalInterface> = ({ modal }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   modal: state.modal.playlistModal
 })
 

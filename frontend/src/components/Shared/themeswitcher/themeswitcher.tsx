@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { setLightTheme, setDarkTheme } from '../../../logic/theme/themeAction'
 import { useDispatch, connect } from 'react-redux'
+import { RootStateInterface } from '../../../logic/types'
 
 interface ThemeSwitcherInterface {
   theme: string
@@ -37,7 +38,7 @@ const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ theme }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   theme: state.theme
 })
 

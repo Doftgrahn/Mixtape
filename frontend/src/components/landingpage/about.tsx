@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section className="landingpage_about">
       <h2>Link to Spotify</h2>
-      <h2>Create Platlists</h2>
+      <h2>Create Playlists</h2>
       <h2>Get Your Lyrics</h2>
     </section>
   )

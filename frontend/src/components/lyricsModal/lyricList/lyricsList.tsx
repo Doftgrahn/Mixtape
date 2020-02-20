@@ -6,6 +6,7 @@ import Spinner from '../../shared/spinner/spinner'
 import { fetchSetLyric } from '../../../logic/list/lyricsAction'
 import { TrackInterface } from '../../../logic/list/constants'
 import { LyricsStateInterface } from '../../../logic/lyrics/constants'
+import { RootStateInterface } from '../../../logic/types'
 
 interface LyricsListInterface {
   getLyrics: LyricsStateInterface
@@ -31,7 +32,7 @@ const LyricsList: FC<LyricsListInterface> = ({ getLyrics, activeSong }) => {
   return <div className="lyricsList">{isLoading ? <Spinner /> : renderLyrics}</div>
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   getLyrics: state.lyrics,
   activeSong: state.activeList
 })

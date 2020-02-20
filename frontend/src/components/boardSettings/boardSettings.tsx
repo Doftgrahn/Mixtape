@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
-
 import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { deletion, leaveSetlist } from '../../logic/setlist/setlistAction'
-
 import Sidemenu from '../shared/sidemenu/sidemenu'
 import Description from './description/description'
 import InvitedCollaborators from './invitedCollaborators/invitedCollaborators'
@@ -12,13 +10,13 @@ import SearchUsers from './searchUsers/searchUsers'
 import ShowUsers from './showUsers/showUsers'
 import Trash from '../../assets/trash/trash'
 import CreateSpotifyPlayList from './createSpotifyPlaylist/createSpotifyPlaylist'
-
 import { cleanAllSideMenus } from '../../logic/sidemenu/sidemenuAction'
-import { BoardInterface } from '../../logic/types'
+import { RootStateInterface } from '../../logic/types'
 import { TrackInterface } from '../../logic/list/constants'
+import { ActiveSetlistStateInterface } from '../../logic/activeBoard/types'
 
 interface BoardSettingsInterface {
-  activeBoard: BoardInterface
+  activeBoard: ActiveSetlistStateInterface
   playlist: TrackInterface[]
   sidemenu: boolean
 }
@@ -80,7 +78,7 @@ const BoardSettings: FC<BoardSettingsInterface> = ({ activeBoard, playlist, side
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   activeBoard: state.activeBoard,
   sidemenu: state.sidemenu.setlist,
   playlist: state.list.list

@@ -8,6 +8,7 @@ import { movePlaylistItem } from '../../../logic/list/moveAction'
 import Playlistitem from './playlistItem/playListItem'
 
 import { TrackInterface } from '../../../logic/list/constants'
+import { RootStateInterface } from '../../../logic/types'
 
 // Checks if touchScreen
 const isTouchDevice = () => ('ontouchstart' in window ? true : false)
@@ -41,7 +42,7 @@ const ShowList: FC<ShowlistInterface> = ({ list }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   list: state.list.list
 })
 

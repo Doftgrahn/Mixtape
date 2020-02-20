@@ -3,11 +3,11 @@ import {
   IS_SPOTIFY_LOADING,
   ERRORS_SPOTIFY,
   DOES_SPOTIFY_NEED_REFRESH,
-  SpotifyInterface
+  SpotifyStateInterface
 } from './types'
 import { PayLoad } from '../types'
 
-const intialState: SpotifyInterface = {
+const intialState: SpotifyStateInterface = {
   spotify: [],
   isLoading: false,
   errors: {},

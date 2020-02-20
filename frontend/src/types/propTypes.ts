@@ -1,21 +1,21 @@
-import { RouteComponentProps } from 'react-router-dom'
+import { ModalStateInterface } from '../logic/modal/constants'
 
 export interface AppInterface {
   theme: string
 }
 
 export interface LandingInterface {
-  auth: any
+  auth: boolean
 }
 
 export interface PlaylistInterface {
   isLoading: boolean
-  modal: any
+  modal: ModalStateInterface
 }
 
 export interface SetlistProps {
   modal: boolean
-  collaborators: [string]
+  collaborators: BoardInterface[]
 }
 
 export interface BoardInterface {

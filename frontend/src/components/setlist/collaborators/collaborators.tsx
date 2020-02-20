@@ -1,12 +1,11 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-
 import SetlistItem from '../setlistItem/setlistItem'
-import { BoardStateInterface } from '../../../logic/types'
-import { BoardInterface } from '../../../types/propTypes'
+import { RootStateInterface, BoardInterface } from '../../../logic/types'
+import { SetlistStateInterface } from '../../../logic/setlist/constants'
 
 interface CollaboratorsInterface {
-  setlist: BoardStateInterface
+  setlist: SetlistStateInterface
 }
 
 const Collaborators: FC<CollaboratorsInterface> = ({ setlist }) => {
@@ -17,7 +16,7 @@ const Collaborators: FC<CollaboratorsInterface> = ({ setlist }) => {
   return <>{list}</>
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   setlist: state.setlist
 })
 

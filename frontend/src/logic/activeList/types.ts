@@ -4,7 +4,7 @@ export const IS_ACTIVE = 'IS_ACTIVE'
 export const CLEAR = 'CLEAR'
 export const SET_ACTIVE_LYRIC = 'SET_ACTIVE_LYRIC'
 
-interface ActiveTrackInterface {
+export interface ActiveTrackStateInterface {
   title: string
   date: string
   _id: string
@@ -12,8 +12,5 @@ interface ActiveTrackInterface {
   userId: string
   spotifyTrackID: string
   uri: string
-}
-
-export interface ActivePlaylistStateInterface {
-  current: ActiveTrackInterface
+  lyrics: string
 }

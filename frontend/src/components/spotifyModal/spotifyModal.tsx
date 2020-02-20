@@ -5,6 +5,7 @@ import SpotifySearchResult from './spotifySearchResult/spotifySearchResult'
 import { toggleSpotifyModal } from '../../logic/modal/modalAction'
 import { getSpotifySearch } from '../../logic/spotify/spotifyAction'
 import useDebounce from '../../utils/debounce/debounce'
+import { RootStateInterface } from '../../logic/types'
 
 interface SpotifyModalInterface {
   modal: boolean
@@ -38,7 +39,7 @@ const SpotifyModal: FC<SpotifyModalInterface> = ({ modal }) => {
   )
 }
 
-const mapStatetoProp = (state: any) => ({
+const mapStatetoProp = (state: RootStateInterface) => ({
   modal: state.modal.spotifyModal
 })
 

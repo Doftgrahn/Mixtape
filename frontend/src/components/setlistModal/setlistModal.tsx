@@ -6,6 +6,7 @@ import { toggleSetlistModal } from '../../logic/modal/modalAction'
 import { UserInterface } from '../../logic/auth/contants'
 
 import Modal from '../shared/modal/modal'
+import { RootStateInterface } from '../../logic/types'
 
 interface SetlistModalInterface {
   user: UserInterface
@@ -61,7 +62,7 @@ const SetlistModal: FC<SetlistModalInterface> = ({ user, modal }) => {
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   user: state.auth.user,
   modal: state.modal.setlistModal
 })

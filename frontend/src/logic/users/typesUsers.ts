@@ -1,3 +1,5 @@
+import { UserInterface } from '../auth/contants'
+
 export const USERS_INPUT = 'USERS_INPUT'
 export const GET_USERS = 'GET_USERS'
 export const SEARCH_USERS = 'SEARCH_USERS'
@@ -8,11 +10,11 @@ export const DELETE_USER_COLLABORATOR = 'DELETE_USER_COLLABORATOR'
 export const IS_USERS_LOADING = 'IS_USERS_LOADING'
 export const USERS_ERROR = 'USERS_ERROR'
 
-export interface UsersInterface {
+export interface UsersStateInterface {
   input: string
-  users: UsersInterface[]
-  searchUsers: UsersInterface[]
-  invitedUsers: UsersInterface[]
+  users: UserInterface[]
+  searchUsers: UserInterface[]
+  invitedUsers: UserInterface[]
   isloading: boolean
   errors: object
 }

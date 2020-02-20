@@ -13,6 +13,7 @@ import { CardProps, DragItem } from './itemType'
 
 import Edit from '../../../../assets/edit/edit'
 import SpotifyIcon from '../../../../assets/spotify/spotifyIcon'
+import { RootStateInterface } from '../../../../logic/types'
 
 const Playlistitem: FC<CardProps> = ({ active, sidemenu, list, index, id, moveCard }) => {
   const dispatch = useDispatch()
@@ -117,7 +118,7 @@ const Playlistitem: FC<CardProps> = ({ active, sidemenu, list, index, id, moveCa
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   active: state.activeList,
   sidemenu: state.sidemenu.activeTrack
 })

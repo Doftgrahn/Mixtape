@@ -1,4 +1,27 @@
 import { ReactNode } from 'react'
+import { AuthStateInterface } from './auth/contants'
+import { ActiveSetlistStateInterface } from './activeBoard/types'
+import { SetlistStateInterface } from './setlist/constants'
+import { LyricsStateInterface } from './lyrics/constants'
+import { ModalStateInterface } from './modal/constants'
+import { SidemenuStateInterface } from './sidemenu/types'
+import { UsersStateInterface } from './users/typesUsers'
+import { SpotifyStateInterface } from './spotify/types'
+import { PlaylistStateInterface } from './list/constants'
+
+export interface RootStateInterface {
+  auth: AuthStateInterface
+  activeBoard: ActiveSetlistStateInterface
+  activeList: TrackInterface
+  setlist: SetlistStateInterface
+  list: PlaylistStateInterface
+  lyrics: LyricsStateInterface
+  theme: string
+  modal: ModalStateInterface
+  sidemenu: SidemenuStateInterface
+  users: UsersStateInterface
+  spotify: SpotifyStateInterface
+}
 
 export interface BoardInterface {
   userId: string

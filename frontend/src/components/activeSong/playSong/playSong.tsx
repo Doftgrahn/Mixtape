@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-
 import { useSelector } from 'react-redux'
+import { RootStateInterface } from '../../../logic/types'
 
 const Playsong: FC<{}> = () => {
-  const track: string = useSelector((state: any) => state.activeList.spotifyTrackID)
+  const track: string = useSelector((state: RootStateInterface) => state.activeList.spotifyTrackID)
 
   if (!track) return null
   return (

@@ -7,12 +7,12 @@ import {
   INVITED_USERS,
   ADD_USERS_COLLABORATOR,
   DELETE_USER_COLLABORATOR,
-  UsersInterface
+  UsersStateInterface
 } from './typesUsers'
 
 import { PayLoad } from '../types'
 
-const initialState: UsersInterface = {
+const initialState: UsersStateInterface = {
   input: '',
   users: [],
   searchUsers: [],

@@ -8,13 +8,14 @@ import UpdateSong from './updateSong/updateSong'
 import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import Trash from '../../assets/trash/trash'
 import PlaySong from './playSong/playSong'
-import { TrackInterface } from '../../logic/list/constants'
-import { BoardInterface } from '../../types/propTypes'
+import { RootStateInterface } from '../../logic/types'
+import { ActiveTrackStateInterface } from '../../logic/activeList/types'
+import { ActiveSetlistStateInterface } from '../../logic/activeBoard/types'
 
 interface ActiveSongInterface {
-  currentsong: TrackInterface
+  currentsong: ActiveTrackStateInterface
   sidemenu: boolean
-  activeSetlist: BoardInterface
+  activeSetlist: ActiveSetlistStateInterface
 }
 
 const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu, activeSetlist }) => {
@@ -69,7 +70,7 @@ const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu, activeSetl
   )
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootStateInterface) => ({
   currentsong: state.activeList,
   sidemenu: state.sidemenu.activeTrack,
   activeSetlist: state.activeBoard

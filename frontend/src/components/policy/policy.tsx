@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode, FC } from 'react'
 import { Link } from 'react-router-dom'
 interface P {
   text: string
@@ -14,8 +14,8 @@ const policyData: P[] = [
   { text: 'If you have any questions:' }
 ]
 
-const Policy = () => {
-  const policy = policyData.map((text: P) => <p>{text.text}</p>)
+const Policy: FC<{}> = () => {
+  const policy = policyData.map((text: P): ReactNode => <p>{text.text}</p>)
 
   return (
     <main className="policy">

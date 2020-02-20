@@ -1,13 +1,14 @@
 import React, { useState, FC } from 'react'
 import { useSelector } from 'react-redux'
 import Axios from 'axios'
+import { RootStateInterface } from '../../../logic/types'
 
 const CreateSpotifyPlayList: FC<{}> = () => {
   const [hasSaved, SethasSaved] = useState(false)
   const [needToBeLoggedIn, setNeedtoBeLoggedIn] = useState(false)
-  const user = useSelector((state: any) => state.auth.user)
-  const tracks = useSelector((state: any) => state.list)
-  const setlistTitle = useSelector((state: any) => state.activeBoard.title)
+  const user = useSelector((state: RootStateInterface) => state.auth.user)
+  const tracks = useSelector((state: RootStateInterface) => state.list)
+  const setlistTitle = useSelector((state: RootStateInterface) => state.activeBoard.title)
 
   const createPlaylist = async () => {
     SethasSaved(true)
