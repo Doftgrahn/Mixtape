@@ -1,19 +1,25 @@
 import React, { FC, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
 import { fechGetAllUsers, searchUsers, usersInput } from '../../../logic/users/usersAction'
 
 import { inviteCollaborator } from '../../../logic/setlist/setlistAction'
 import { RootStateInterface } from '../../../logic/types'
 import { UserInterface } from '../../../logic/auth/contants'
 
-const ShowUsers: FC<{}> = () => {
+interface ShowUsersInterface {
+  input: string
+  searchResult: UserInterface[]
+  sidemenu: boolean
+  currentCollaborators: UserInterface[]
+}
+
+const ShowUsers: FC<ShowUsersInterface> = ({
+  input,
+  searchResult,
+  sidemenu,
+  currentCollaborators
+}) => {
   const dispatch = useDispatch()
-  const input = useSelector((state: RootStateInterface) => state.users.input)
-  const searchResult = useSelector((state: RootStateInterface) => state.users.searchUsers)
-  const sidemenu = useSelector((state: RootStateInterface) => state.sidemenu.setlist)
-  const currentCollaborators = useSelector(
-    (state: RootStateInterface) => state.users.invitedUsers
-  ).map((user: UserInterface) => user._id)
 
   useEffect(() => {
     if (sidemenu) {
@@ -27,7 +33,9 @@ const ShowUsers: FC<{}> = () => {
   }
 
   const renderUsers = searchResult.map((user: any) => {
-    const find = currentCollaborators.find((x: string) => x === user._id)
+    const find = currentCollaborators
+      .map((user: UserInterface) => user._id)
+      .find((x: string) => x === user._id)
     return (
       <li className="UsersList_single" key={user._id}>
         <span>{user.name}</span>
@@ -49,4 +57,11 @@ const ShowUsers: FC<{}> = () => {
   return <ul className="UsersList">{renderUsers}</ul>
 }
 
-export default ShowUsers
+const mapStateToProps = (state: RootStateInterface) => ({
+  input: state.users.input,
+  searchResult: state.users.searchUsers,
+  sidemenu: state.sidemenu.setlist,
+  currentCollaborators: state.users.invitedUsers
+})
+
+export default connect(mapStateToProps)(ShowUsers)
