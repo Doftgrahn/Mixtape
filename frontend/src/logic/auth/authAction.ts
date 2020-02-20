@@ -95,18 +95,14 @@ export const getActiveUser = () => (dispatch: ThunkDispatch<{}, {}, AnyAction>, 
     .get('/api/users/getActiveUser')
     .then(result => {
       const { data } = result
-
       const decoded = jwt_decode(data) as any
-
       if (!data && !isLoggedIn) {
         return
       }
-
       // Checks if user is null and if user is logged i.
       if (!data && isLoggedIn) {
         return logOutUserAuto(dispatch, logoutUser)
       }
-
       const user: any = {
         date: decoded.user.date,
         _id: decoded.user._id,
@@ -119,7 +115,6 @@ export const getActiveUser = () => (dispatch: ThunkDispatch<{}, {}, AnyAction>, 
         googleToken: decoded.user.googleToken,
         email: decoded.user.email
       }
-
       dispatch(setCurrentUser(user))
     })
     .catch(error => {
@@ -128,6 +123,13 @@ export const getActiveUser = () => (dispatch: ThunkDispatch<{}, {}, AnyAction>, 
         payload: error.response
       })
     })
+}
+
+export const deleteUserPerm = () => async (dispatch: any, getState: any) => {
+  const userid = getState().auth.user._id
+  await axios.delete(`/api/users/deleteuser/${userid}`)
+
+  // logOutUserAuto(dispatch, logoutUser)
 }
 
 // Set logged in user

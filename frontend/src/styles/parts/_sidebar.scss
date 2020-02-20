@@ -50,6 +50,18 @@
     flex-grow: 1;
   }
 
+  .settings {
+    border-top: 1px solid var(--color-sidemenu-button);
+    margin-top: 20px;
+    &_btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 1rem;
+      background-color: var(--color-sidemenu-button);
+      color: var(--color-headlineText);
+    }
+  }
+
   &_section {
     margin-bottom: 2rem;
 

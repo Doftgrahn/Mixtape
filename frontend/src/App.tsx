@@ -1,9 +1,7 @@
 import React, { FC, useEffect, Suspense } from 'react'
 import './styles/App.scss'
 import { connect, useDispatch } from 'react-redux'
-import ReactGA from 'react-ga'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
 import Div100vh from 'react-div-100vh'
 import Header from './components/header/header'
 import Routes from './routes/routes'
@@ -13,21 +11,13 @@ import ScrollToTop from './utils/scrollToTop/scrollToTop'
 import { lightTheme, darkTheme } from './utils/colors/colors'
 import { getActiveUser } from './logic/auth/authAction'
 import { AppInterface } from './types/propTypes'
-const browserHistory = createBrowserHistory()
+import googleAnalytics from './utils/reactAnalytics/reactAnalytics'
 
 const App: FC<AppInterface> = ({ theme }) => {
-  ReactGA.initialize('UA-153619692-2')
-  browserHistory.listen((location, _action) => {
-    ReactGA.pageview(location.pathname + location.search)
-  })
-
   const dispatch = useDispatch()
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search)
-  }, [])
-
-  useEffect(() => {
+    googleAnalytics()
     dispatch(getActiveUser())
   }, [dispatch])
 

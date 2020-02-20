@@ -1,0 +1,17 @@
+.settingsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 100%;
+  & a {
+    margin-bottom: auto;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .deleteProfile {
+    padding: 1rem;
+    margin-top: auto;
+    margin: 20px;
+  }
+}

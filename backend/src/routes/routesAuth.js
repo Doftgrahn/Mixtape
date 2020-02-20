@@ -5,6 +5,7 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const keys = require('../config/config')
 
+const authCheck = require('./authCheck')
 const getUsers = require('../authentication/controller/getUsers')
 const register = require('../authentication/controller/register.controller')
 const login = require('../authentication/controller/login.controller')
@@ -12,6 +13,7 @@ const {
   sendPasswordReset,
   recieveNewPassword
 } = require('../authentication/controller/email.controller')
+const deleteUser = require('../authentication/controller/deleteUser.controller')
 
 require('../authentication/strategies/google')
 
@@ -78,5 +80,7 @@ router.get('/getActiveUser', (req, res) => {
     }
   )
 })
+
+router.delete('/deleteuser/:userId', authCheck, deleteUser)
 
 module.exports = router

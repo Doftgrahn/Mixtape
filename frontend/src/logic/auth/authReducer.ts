@@ -3,7 +3,8 @@ import {
   USER_LOADING,
   SHOW_ERROR_TO_USER,
   CLEAR_USER,
-  AuthStateInterface
+  AuthStateInterface,
+  DELETE_USER
 } from './contants'
 import { PayLoad } from '../types'
 
@@ -43,12 +44,19 @@ export default function(state = initialState, action: PayLoad) {
         ...state,
         loading: action.payload
       }
+    case DELETE_USER:
+      return {
+        ...state,
+        user: {},
+        isAuthenticated: false
+      }
     case CLEAR_USER:
       return {
         ...state,
         user: {},
         isAuthenticated: false
       }
+
     default:
       return state
   }
