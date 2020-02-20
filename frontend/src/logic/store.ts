@@ -1,5 +1,5 @@
-import { compose, createStore, applyMiddleware, Store } from 'redux'
-import thunk from 'redux-thunk'
+import { compose, createStore, applyMiddleware, Store, AnyAction } from 'redux'
+import thunk, { ThunkMiddleware } from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import rootReducer from './rootReducer'

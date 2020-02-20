@@ -10,8 +10,10 @@ import {
   DELETE_USER_COLLABORATOR
 } from './typesUsers'
 import Axios from 'axios'
+import { Dispatch } from 'redux'
+import { UserInterface } from '../auth/contants'
 
-export const fechGetAllUsers = () => async (dispatch: any) => {
+export const fechGetAllUsers = () => async (dispatch: Dispatch) => {
   dispatch(isUsersLoading(true))
   try {
     const { data } = await Axios.get('/api/allUsers/getAllUsers')
@@ -21,7 +23,7 @@ export const fechGetAllUsers = () => async (dispatch: any) => {
   }
 }
 
-export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
+export const searchUsers = (text: string) => (dispatch: Dispatch, getState: any) => {
   if (!text) {
     return dispatch(setSearchResult([]))
   }
@@ -31,7 +33,7 @@ export const searchUsers = (text: string) => (dispatch: any, getState: any) => {
   dispatch(setSearchResult(searchResult))
 }
 
-export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
+export const getInvitedUsers = () => async (dispatch: Dispatch, getState: any) => {
   const currentSetlist = getState().activeBoard._id
 
   try {
@@ -44,7 +46,10 @@ export const getInvitedUsers = () => async (dispatch: any, getState: any) => {
   }
 }
 
-export const addUserCollaborator = (collaboratorId: any) => (dispatch: any, getState: any) => {
+export const addUserCollaborator = (collaboratorId: string) => (
+  dispatch: Dispatch,
+  getState: any
+) => {
   const getUserBasedOnIt = getState().users.users.find((x: any) => x._id === collaboratorId)
   dispatch(addUser(getUserBasedOnIt))
 }
@@ -69,16 +74,16 @@ export const usersInput = (text: string): PayLoad => ({
   payload: text
 })
 
-const getAllUsers = (users: any): PayLoad => ({
+const getAllUsers = (users: UserInterface[]): PayLoad => ({
   type: GET_USERS,
   payload: users
 })
-const invitedUsers = (users: any): PayLoad => ({
+const invitedUsers = (users: UserInterface[]): PayLoad => ({
   type: INVITED_USERS,
   payload: users
 })
 
-const setSearchResult = (users: any): PayLoad => ({
+const setSearchResult = (users: UserInterface[]): PayLoad => ({
   type: SEARCH_USERS,
   payload: users
 })

@@ -3,8 +3,10 @@ import {
   MUTATE_ACTIVE_SETLIST,
   ActiveSetlistStateInterface,
   UNINVITE_ACTIVE_COLLABORATOR,
-  SET_ACTIVE_DESCRIPTION
+  SET_ACTIVE_DESCRIPTION,
+  CLEAR_ACTIVE_SETLIST
 } from './types'
+import { PayLoad } from '../types'
 
 const initialState: ActiveSetlistStateInterface = {
   user: '',
@@ -16,7 +18,7 @@ const initialState: ActiveSetlistStateInterface = {
   userId: '',
   isOwner: false
 }
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: PayLoad) => {
   switch (action.type) {
     case ACTIVE_BOARD:
       return action.payload
@@ -29,6 +31,17 @@ export default (state = initialState, action: any) => {
 
     case UNINVITE_ACTIVE_COLLABORATOR:
       return { ...state, collaborators: action.payload }
+    case CLEAR_ACTIVE_SETLIST:
+      return {
+        user: '',
+        title: '',
+        description: '',
+        date: '',
+        collaborators: [],
+        _id: '',
+        userId: '',
+        isOwner: false
+      }
 
     default:
       return state

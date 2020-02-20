@@ -8,12 +8,7 @@ export interface LandingInterface {
   auth: any
 }
 
-interface MatchParams {
-  title: string
-  modal: any
-}
-
-export interface PlaylistInterface extends RouteComponentProps<MatchParams> {
+export interface PlaylistInterface {
   isLoading: boolean
   modal: any
 }

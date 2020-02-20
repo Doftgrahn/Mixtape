@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
-
 import PlaylistTitle from './playlist/playlistTitle/playlistTitle'
 import NewSong from './playlist/addtolist/addtoList'
 import ShowList from './playlist/showlist/showList'
@@ -9,12 +8,10 @@ import LyricModal from './lyricsModal/lyrics'
 import SpotifyModal from './spotifyModal/spotifyModal'
 import ActiveSong from './activeSong/activeSong'
 import BoardSettings from './boardSettings/boardSettings'
-
 import { fetchSongList, clearAllTracks } from '../logic/list/listAction'
 import { getInvitedUsers } from '../logic/users/usersAction'
 import { cleanAllSideMenus } from '../logic/sidemenu/sidemenuAction'
 import { closeModals } from '../logic/modal/modalAction'
-
 import { PlaylistInterface } from '../types/propTypes'
 
 const Playlist: FC<PlaylistInterface> = ({ modal }) => {
@@ -31,9 +28,9 @@ const Playlist: FC<PlaylistInterface> = ({ modal }) => {
     }
   }, [dispatch])
 
-  const playlistModal = modal.playlistModal ? <PlaylistModal /> : ''
-  const lyricModal = modal.lyricModal ? <LyricModal /> : ''
-  const spotifyModal = modal.spotifyModal ? <SpotifyModal /> : ''
+  const playlistModal = modal.playlistModal && <PlaylistModal />
+  const lyricModal = modal.lyricModal && <LyricModal />
+  const spotifyModal = modal.spotifyModal && <SpotifyModal />
 
   return (
     <main className="list">

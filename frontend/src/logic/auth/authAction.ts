@@ -3,13 +3,15 @@ import setAuthToken from './utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, CLEAR_USER } from './contants'
-import { Dispatch } from 'redux'
+import { Dispatch, AnyAction } from 'redux'
 
 import { clearSetlist } from '../setlist/setlistAction'
 import { cleanAllSideMenus } from '../sidemenu/sidemenuAction'
+import { clearActiveSetlist } from '../activeBoard/activeBoardAction'
 import { PayLoad } from '../types'
 
 import logOutUserAuto from '../utils/autoLogOut'
+import { ThunkDispatch } from 'redux-thunk'
 // Register User
 export const registerUser = (userData: object, history: any) => (dispatch: Dispatch) => {
   dispatch(setUserIsLoading(true))
@@ -86,13 +88,15 @@ export const updatePassword = (userData: any, history: any) => (dispatch: Dispat
     })
 }
 
-export const getActiveUser = () => (dispatch: any, getState: any) => {
+export const getActiveUser = () => (dispatch: ThunkDispatch<{}, {}, AnyAction>, getState: any) => {
   const isLoggedIn = getState().auth.isAuthenticated
 
   axios
     .get('/api/users/getActiveUser')
     .then(result => {
       const { data } = result
+
+      const decoded = jwt_decode(data) as any
 
       if (!data && !isLoggedIn) {
         return
@@ -101,25 +105,19 @@ export const getActiveUser = () => (dispatch: any, getState: any) => {
       // Checks if user is null and if user is logged i.
       if (!data && isLoggedIn) {
         return logOutUserAuto(dispatch, logoutUser)
-        // let url = 'https://www.mixtape.nu/api/users/logout'
-        // if (process.env.NODE_ENV === 'development') {
-        //   url = 'http://localhost:4000/api/users/logout'
-        // }
-        // dispatch(logoutUser())
-        // return window.location.replace(url)
       }
 
       const user: any = {
-        date: data.date,
-        _id: data._id,
-        id: data._id,
-        name: data.name,
-        googleId: data.googleId,
-        spotifyId: data.spotifyId,
-        avatar: data.avatar,
-        spotifyToken: data.spotifyToken,
-        googleToken: data.googleToken,
-        email: data.email
+        date: decoded.user.date,
+        _id: decoded.user._id,
+        id: decoded.user._id,
+        name: decoded.user.name,
+        googleId: decoded.user.googleId,
+        spotifyId: decoded.user.spotifyId,
+        avatar: decoded.user.avatar,
+        spotifyToken: decoded.user.spotifyToken,
+        googleToken: decoded.user.googleToken,
+        email: decoded.user.email
       }
 
       dispatch(setCurrentUser(user))
@@ -127,7 +125,7 @@ export const getActiveUser = () => (dispatch: any, getState: any) => {
     .catch(error => {
       dispatch({
         type: GET_ERRORS,
-        payload: error.response.data
+        payload: error.response
       })
     })
 }
@@ -153,13 +151,13 @@ export const clearUser = () => ({
 
 // Log user out
 export const logoutUser = () => (dispatch: Dispatch) => {
-  // Remove token from local storage
-  localStorage.removeItem('jwtToken')
   // Remove auth header for future requests
   setAuthToken(false)
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(clearUser())
   // dispatch(setCurrentUser(''))
+  dispatch(clearActiveSetlist())
   dispatch(clearSetlist())
+  dispatch(cleanAllSideMenus())
   dispatch(cleanAllSideMenus())
 }

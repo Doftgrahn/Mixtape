@@ -24,7 +24,7 @@ const publicRoutes: RoutesInterface[] = [
   { name: '404', path: '*', component: NotFound, isExact: false }
 ]
 
-const privateRoutes: any = [
+const privateRoutes: RoutesInterface[] = [
   { name: 'mixtape', path: '/dashboard', component: Setlist, isExact: true },
   { name: 'list', path: '/dashboard/:title', component: Playlist, isExact: true }
 ]
@@ -32,7 +32,7 @@ const privateRoutes: any = [
 const Routes: FC<{}> = () => {
   const location: any = useLocation()
 
-  const PrivateRoutes = privateRoutes.map((route: any) => (
+  const PrivateRoutes = privateRoutes.map((route: RoutesInterface) => (
     <PrivateRoute
       key={route.name}
       path={route.path}
@@ -41,7 +41,7 @@ const Routes: FC<{}> = () => {
     />
   ))
 
-  const PublicRoutes = publicRoutes.map(route => (
+  const PublicRoutes = publicRoutes.map((route: RoutesInterface) => (
     <Route
       key={route.name}
       path={route.path}
@@ -49,14 +49,12 @@ const Routes: FC<{}> = () => {
       exact={route.isExact}
     />
   ))
+
   const duration = 300
 
   return (
     <TransitionGroup component={null}>
-      <CSSTransition
-        key={location.key}
-        classNames="fade"
-        timeout={{ enter: duration, exit: duration }}>
+      <CSSTransition key={location.key} classNames="fade" timeout={duration}>
         <Switch location={location}>
           {PrivateRoutes}
           {PublicRoutes}

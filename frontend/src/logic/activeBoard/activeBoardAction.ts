@@ -2,7 +2,8 @@ import {
   ACTIVE_BOARD,
   MUTATE_ACTIVE_SETLIST,
   UNINVITE_ACTIVE_COLLABORATOR,
-  SET_ACTIVE_DESCRIPTION
+  SET_ACTIVE_DESCRIPTION,
+  CLEAR_ACTIVE_SETLIST
 } from './types'
 import { PayLoad } from '../types'
 
@@ -24,4 +25,8 @@ export const uninviteFromActiveSetlist = (data: any) => ({
 export const setDescription = (description: string): PayLoad => ({
   type: SET_ACTIVE_DESCRIPTION,
   payload: description
+})
+
+export const clearActiveSetlist = () => ({
+  type: CLEAR_ACTIVE_SETLIST
 })

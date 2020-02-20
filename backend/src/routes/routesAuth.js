@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-import passport from 'passport'
+const passport = require('passport')
 
 const jwt = require('jsonwebtoken')
 const keys = require('../config/config')
@@ -44,7 +44,7 @@ router.get(
 )
 
 router.get('/spotify/redirect', passport.authenticate('spotify'), (_req, res) => {
-  res.redirect(url)
+  res.redirect(`${url}dashboard/`)
 })
 
 // Google
@@ -67,7 +67,16 @@ router.get('/logout', (req, res) => {
 
 router.get('/getActiveUser', (req, res) => {
   const { user } = req
-  res.status(200).json(user)
+  jwt.sign(
+    { user },
+    keys.secretOrKey,
+    {
+      expiresIn: 24 * 60 * 60 * 1000 // 24 Hours
+    },
+    (_error, token) => {
+      res.status(200).json(token)
+    }
+  )
 })
 
 module.exports = router
