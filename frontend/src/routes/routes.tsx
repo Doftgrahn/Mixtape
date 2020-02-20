@@ -5,6 +5,7 @@ import { RoutesInterface } from './routeTypes'
 // Higher order Route for authentication
 import PrivateRoute from './privateRoute'
 import About from '../components/about/abouts'
+import Policy from '../components/policy/policy'
 
 // Lazy Loading Components
 const Landingpage = lazy(() => import('../components/LandingPage'))
@@ -21,6 +22,7 @@ const publicRoutes: RoutesInterface[] = [
   { name: 'forgotPassword', path: '/forgotPassword', component: ForgotPassword, isExact: false },
   { name: 'updatePassword', path: '/updatePassword', component: UpdatePassword, isExact: false },
   { name: 'about', path: '/about', component: About, isExact: false },
+  { name: 'policy', path: '/policy', component: Policy, isExact: false },
   { name: '404', path: '*', component: NotFound, isExact: false }
 ]
 

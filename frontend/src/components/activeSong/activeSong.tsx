@@ -9,13 +9,15 @@ import SideMenuCross from '../../assets/sidemenuCross/sideMenuCross'
 import Trash from '../../assets/trash/trash'
 import PlaySong from './playSong/playSong'
 import { TrackInterface } from '../../logic/list/constants'
+import { BoardInterface } from '../../types/propTypes'
 
 interface ActiveSongInterface {
   currentsong: TrackInterface
   sidemenu: boolean
+  activeSetlist: BoardInterface
 }
 
-const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
+const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu, activeSetlist }) => {
   const dispatch = useDispatch()
   const hide = () => dispatch(cleanAllSideMenus())
 
@@ -56,10 +58,12 @@ const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
         </div>
       </article>
       <footer>
-        <button className="deleteSongBtn" onClick={() => deleteSong(currentsong._id)}>
-          <span className="deleteText">Delete Song</span>
-          <Trash height={20} width={20} />
-        </button>
+        {activeSetlist.isOwner && (
+          <button className="deleteSongBtn" onClick={() => deleteSong(currentsong._id)}>
+            <span className="deleteText">Delete Song</span>
+            <Trash height={20} width={20} />
+          </button>
+        )}
       </footer>
     </Sidemenu>
   )
@@ -67,7 +71,8 @@ const ActiveSong: FC<ActiveSongInterface> = ({ currentsong, sidemenu }) => {
 
 const mapStateToProps = (state: any) => ({
   currentsong: state.activeList,
-  sidemenu: state.sidemenu.activeTrack
+  sidemenu: state.sidemenu.activeTrack,
+  activeSetlist: state.activeBoard
 })
 
 export default connect(mapStateToProps)(ActiveSong)

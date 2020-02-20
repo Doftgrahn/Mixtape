@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import GoogleButton from '../shared/googleButton/googleButton'
 import Logo from '../../assets/logo/Logo'
@@ -19,6 +19,9 @@ const Hero: FC<LandingInterface> = ({ auth }) => {
           <h1 aria-label="Mixtape">Mixtape</h1>
           <h3>BETA</h3>
           <GoogleButton />
+          <Link className="permissions" to="/policy">
+            By logging in you accept our terms and permissions
+          </Link>
         </div>
       </div>
     </section>

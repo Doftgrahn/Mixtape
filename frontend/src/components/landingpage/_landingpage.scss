@@ -24,6 +24,10 @@
       margin-top: $regular-spacing;
       color: var(--color-button);
     }
+    .permissions {
+      color: var(--color-logo-text);
+      text-decoration: underline;
+    }
   }
 
   &_info {

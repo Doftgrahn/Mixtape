@@ -113,8 +113,9 @@ export default (state = initialState, action: PayLoad) => {
       }
     case CLEAR_SETLIST:
       return {
-        ...state
-        //   boards: []
+        ...state,
+        boards: [],
+        collaborators: []
       }
     default:
       return state
