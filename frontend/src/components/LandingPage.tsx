@@ -7,7 +7,7 @@ import Footer from './landingpage/footer'
 
 const Landingpage: FC<{}> = () => {
   return (
-    <main>
+    <main className="landingpagewrapper">
       <Hero />
       <Info />
       <About />

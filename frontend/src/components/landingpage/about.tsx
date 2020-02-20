@@ -3,7 +3,9 @@ import React from 'react'
 const About = () => {
   return (
     <section className="landingpage_about">
-      <h1>Lorem ipsum dolor sit amet, </h1>
+      <h2>Link to Spotify</h2>
+      <h2>Create Platlists</h2>
+      <h2>Get Your Lyrics</h2>
     </section>
   )
 }

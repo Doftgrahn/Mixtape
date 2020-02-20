@@ -35,6 +35,9 @@
     border-bottom: 1px solid var(--color-button);
     max-width: $max-width;
     margin: 0 auto;
+    & h2 {
+      margin-top: 50px;
+    }
   }
   &_about {
     height: 100vh;
@@ -44,15 +47,22 @@
     flex-direction: column;
     max-width: $max-width;
     margin: 0 auto;
+    & h2 {
+      margin-top: 50px;
+    }
   }
   &_footer {
     max-width: $max-width;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     padding: $regular-spacing;
     border-top: 1px solid var(--color-button);
     justify-content: center;
     align-items: center;
+
+    a {
+      color: var(--color-logo-text);
+    }
   }
 }
 

@@ -1,0 +1,15 @@
+.landingpage_about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: var(--color-logo-text);
+    margin-top: 20px;
+  }
+
+  & button {
+    margin-top: 100px;
+    padding: 1rem;
+  }
+}

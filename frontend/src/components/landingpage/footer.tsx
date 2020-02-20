@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer: FC = () => {
   return (
     <footer className="landingpage_footer">
-      <h1>Nam ipsum nisi, mattis id blandit sed, auctor scelerisque justo.</h1>
+      <Link to="/about">Check out mor about the person who made this page.</Link>
     </footer>
   )
 }

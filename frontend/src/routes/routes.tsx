@@ -4,6 +4,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { RoutesInterface } from './routeTypes'
 // Higher order Route for authentication
 import PrivateRoute from './privateRoute'
+import About from '../components/about/abouts'
 
 // Lazy Loading Components
 const Landingpage = lazy(() => import('../components/LandingPage'))
@@ -19,6 +20,7 @@ const publicRoutes: RoutesInterface[] = [
   { name: 'register', path: '/register', component: Register, isExact: false },
   { name: 'forgotPassword', path: '/forgotPassword', component: ForgotPassword, isExact: false },
   { name: 'updatePassword', path: '/updatePassword', component: UpdatePassword, isExact: false },
+  { name: 'about', path: '/about', component: About, isExact: false },
   { name: '404', path: '*', component: NotFound, isExact: false }
 ]
 
@@ -47,10 +49,14 @@ const Routes: FC<{}> = () => {
       exact={route.isExact}
     />
   ))
+  const duration = 300
 
   return (
     <TransitionGroup component={null}>
-      <CSSTransition key={location.key} classNames="fade" timeout={{ enter: 400, exit: 400 }}>
+      <CSSTransition
+        key={location.key}
+        classNames="fade"
+        timeout={{ enter: duration, exit: duration }}>
         <Switch location={location}>
           {PrivateRoutes}
           {PublicRoutes}
