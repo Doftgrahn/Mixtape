@@ -11,7 +11,7 @@
     "history": "^4.10.1",
     "http-proxy-middleware": "^0.20.0",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "puppeteer": "^2.0.0",
     "react": "^16.12.0",
     "react-div-100vh": "^0.3.8",
